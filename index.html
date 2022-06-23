@@ -13,16 +13,37 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@400&display=swap');
 
-body {
-  font-size:100%;
+tw-story[tags~="title"] tw-passage {
+	min-width:150%;
+  	margin-left:-50%;
+  	margin-right:-50%;
+}
+
+@media only screen and (max-width: 750px) {
+	body {
+		font-size:75%;
+	}
+  	tw-link {
+	  	font-size:133%;
+    }
+}
+
+@media only screen and (min-width:576px) and (max-width:800px) {
+	tw-story tw-passage {
+		min-width:125%;
+		margin-left:-25%;
+		margin-right:-25%
+	}
 }
 
 tw-sidebar {
   	display: none;
 }
+
 tw-link.visited {
 	color:#4169e1;
 }
+
 tw-link.visited:hover {
 	color:#00bfff;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="The Beginning" tags="" position="1139,180" size="100,100">(if:$testing is &quot;NA&quot;)[Let&#39;s begin, shall we?]
@@ -95,8 +116,8 @@ I get it, though. You&#39;re just having some fun with me before we begin. A lit
 \(if: $ENDINGS is not (a:))[And as you might have seen already, I like to do a bit of messing around myself.]
 
 I&#39;ll make you a deal. One last chance to show me whether or not you want to play along. One more test. Let&#39;s go back to the beginning again:
-[[Go Back-&gt;The Beginning]]</tw-passagedata><tw-passagedata pid="9" name="Title Screen" tags="" position="1093,41" size="200,100">===&gt;&lt;===
-#Mayor Mystery
+[[Go Back-&gt;The Beginning]]</tw-passagedata><tw-passagedata pid="9" name="Title Screen" tags="title" position="1093,41" size="200,100">===&gt;&lt;===
+#Mayor Mystery 
 By Blue Cat and Green Guy
 \(if:visits is 1)[(set: $ENDINGS to (a:))(set: $TestFinish to 0)(set: $TestSkip to false)(set:$noflush to false)]
 \(set: $testing to &quot;NA&quot;)(set: $INV to (a:))(set: $hat to &quot;no&quot;)(set: $seenhat to false)
@@ -375,14 +396,12 @@ The buildings around you are all on fire; some are completely destroyed. You can
 Jed was at a loss of words. Jed wondered what could have caused all of this. An entire string of events leading to catastrophe that he had no idea about. Of course, there was no way that Jed would&#39;ve known that all of this could have been prevented if he had just kept the letter.
 \(set:$ENDINGS to it + (a:&quot;neglect&quot;))
 
-[[Restart-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="41" name="Library" tags="" position="587,1561" size="100,200">[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="42" name="City Hall" tags="" position="1651,1582" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="43" name="Post Office" tags="" position="1997,1589" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="44" name="Hardware Store" tags="" position="2331,1581" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="45" name="Empty Building" tags="" position="2628,1580" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="46" name="Burgerocity" tags="" position="3044,1568" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="47" name="Barber Shop" tags="" position="3348,1564" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="48" name="Clothing Store" tags="" position="3694,1564" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="49" name="Dark Alleyway" tags="" position="4020,1564" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="50" name="About" tags="" position="1610,44" size="100,100">=&gt;&lt;=
-Written and Developed by 
-Blue Cat Productions and Green Guy.
+[[Restart-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="41" name="Library" tags="" position="587,1561" size="100,200">[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="42" name="City Hall" tags="" position="1651,1582" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="43" name="Post Office" tags="" position="1997,1589" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="44" name="Hardware Store" tags="" position="2331,1581" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="45" name="Empty Building" tags="" position="2628,1580" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="46" name="Burgerocity" tags="" position="3044,1568" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="47" name="Barber Shop" tags="" position="3348,1564" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="48" name="Clothing Store" tags="" position="3694,1564" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="49" name="Dark Alleyway" tags="" position="4020,1564" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="50" name="About" tags="title" position="1610,44" size="100,100">=&gt;&lt;=
+Written and Developed by Blue Cat Productions and Green Guy.
 
 Illustrations by WizToad.
 
-Created for the Beepbox Discord
-Text Adventure Event.
+Created for the Beepbox Discord Text Adventure Event.
 
 [[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="51" name="Exit" tags="" position="1607,179" size="100,100">(font:&quot;Raleway&quot;)[
 \(unless:(history:) contains &quot;The Beginning&quot;)[
