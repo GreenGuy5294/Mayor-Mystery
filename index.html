@@ -70,7 +70,7 @@ You&#39;re well known around Webster Groves for being nice to everyone and givin
 \(set:_option1 to 0)(set:_option2 to 0)(set:_option3 to 0)
 \(set: _correct to (random:1,3)) (if:_correct is 1)[(set:_option1 to &quot;correct&quot;)(set:_option2 to (random:1,4))(set:_option3 to (random:1,4))(if: _option2 is _option3)[(set:_option3 to (_option2 + 1))](if:_option3 is 5)[(set:_option3 to 1)]] (if:_correct is 2)[(set:_option2 to &quot;correct&quot;)(set:_option3 to (random:1,4))(set:_option1 to (random:1,4))(if: _option3 is _option1)[(set:_option1 to (_option3 + 1))](if:_option1 is 5)[(set:_option1 to 1)]] (if:_correct is 3)[(set:_option3 to &quot;correct&quot;)(set:_option1 to (random:1,4))(set:_option2 to (random:1,4))(if: _option1 is _option2)[(set:_option2 to (_option1 + 1))](if:_option2 is 5)[(set:_option2 to 1)]]
 
-You&#39;re inside Bosco&#39;s Family Food Store. You&#39;re currently looking for the best bread for the amazing gourmet grilled cheese sandwiches that you&#39;re going to make for dinner tonight. Someone walks past you with their arms full of groceries, when suddenly she trip and fall, dropping all their items on the floor.
+You&#39;re inside Bosco&#39;s Family Food Store. You&#39;re currently looking for the best bread for the amazing gourmet grilled cheese sandwiches that you&#39;re going to make for dinner tonight. Someone walks past you with her arms full of groceries, when suddenly she trips and falls, dropping all her items on the floor.
 
 (if:_option1 is &quot;correct&quot;)[[[Help her pick up the grocieries-&gt;Test Passed]]](if:_option1 is 1)[[[Laugh at her misfortune-&gt;Test Failed]]](if:_option1 is 2)[[[Steal her groceries-&gt;Test Failed]]](if:_option1 is 3)[[[Sneak away from the situation-&gt;Test Failed]]](if:_option1 is 4)[[[Pretend you didn&#39;t see it-&gt;Test Failed]]]
 (if:_option2 is &quot;correct&quot;)[[[Help her pick up the grocieries-&gt;Test Passed]]](if:_option2 is 1)[[[Laugh at her misfortune-&gt;Test Failed]]](if:_option2 is 2)[[[Steal her groceries-&gt;Test Failed]]](if:_option2 is 3)[[[Sneak away from the situation-&gt;Test Failed]]](if:_option2 is 4)[[[Pretend you didn&#39;t see it-&gt;Test Failed]]]
@@ -127,8 +127,24 @@ I&#39;ll make you a deal. One last chance to show me whether or not you want to 
 [[Go Back-&gt;The Beginning]]</tw-passagedata><tw-passagedata pid="9" name="Title Screen" tags="title" position="1093,41" size="200,100">===&gt;&lt;===
 #Mayor Mystery 
 By Blue Cat and Green Guy
-\(if:visits is 1)[(set: $ENDINGS to (a:))(set: $TestFinish to 0)(set: $TestSkip to false)(set:$noflush to false)]
-\(set: $testing to &quot;NA&quot;)(set: $INV to (a:))(set: $hat to &quot;no&quot;)(set: $seenhat to false)
+\(if:visits is 1)[
+\(set: $ENDINGS to (a:))
+\(set: $TestFinish to 0)
+\(set: $TestSkip to false)
+\]
+\(set: $testing to &quot;NA&quot;)
+\(set: $INV to (a:))
+\(set: $hat to &quot;no&quot;)
+\(set: $seenhat to false)
+\
+\(if:$visitsJedsToilet is 8 or $visitsJedsToilet is 11)[(set: $visitsJedsToilet to 9)](else:)[(set: $visitsJedsToilet to 0)]
+\(set: $visitsCoffeeMaker to 0)
+\(set: $visitsRafael to 0)
+\(set: $visitsTrainStation to 0)
+\(set: $visitsCityHall to 0)
+\(set: $visitsBurgerocity to 0)
+\(set: $visitsSecretary to 0)
+
 
 =&gt;&lt;=
 (if:$TestSkip)[[[Start-&gt;START]]]
@@ -136,7 +152,7 @@ By Blue Cat and Green Guy
 \(if:$TestFinish is 3)[[[Start-&gt;More Tests?]]]
 \(else:)[[[Start-&gt;The Beginning]]]]
 [[About-&gt;About]]
-[[Exit-&gt;Exit]]</tw-passagedata><tw-passagedata pid="10" name="Test3" tags="" position="1601,321" size="100,100">You find yourself in the following scenario:
+[[Exit-&gt;Exit]]</tw-passagedata><tw-passagedata pid="10" name="Test3" tags="" position="1652,322" size="100,100">You find yourself in the following scenario:
 \(set: _correct to (either:1,2))(set:$hint to false)
 
 When walking into a bookstore, someone follows behind you holding a giant box with both hands. Do you hold the door open for him? 
@@ -163,12 +179,12 @@ Hey, aren&#39;t you sick of this by now? You&#39;ve passed the same test multipl
 (link: &quot;No&quot;)[(replace: ?option)[Yeah, I thought so. Let&#39;s just get to the real part of the story, Jed.
 \(set:$TestSkip to true)
 
-[[Begin-&gt;START]]]]]</tw-passagedata><tw-passagedata pid="12" name="Test3 Passed" tags="" position="1526,471" size="100,100">(unless:$hint)[Okay, you do want to play along. Great! Now that you&#39;ve gotten your giggles out of the way, I think it&#39;s time I send you into the real world.]
+[[Begin-&gt;START]]]]]</tw-passagedata><tw-passagedata pid="12" name="Test3 Passed" tags="" position="1577,472" size="100,100">(unless:$hint)[Okay, you do want to play along. Great! Now that you&#39;ve gotten your giggles out of the way, I think it&#39;s time I send you into the real world.]
 \(else:)[Glad to see my hint helped you. Now that we&#39;ve gotten that all out of the way I can finally send you off to the real world.]
 
 Be careful out there. Your &quot;trolling&quot; may lead to a lot of unwanted consequences. 
 
-[[Continue-&gt;START]]</tw-passagedata><tw-passagedata pid="13" name="Test3 Failed" tags="" position="1676,471" size="100,100">(unless: $ENDINGS contains &quot;TestFailure&quot;)[
+[[Continue-&gt;START]]</tw-passagedata><tw-passagedata pid="13" name="Test3 Failed" tags="" position="1727,472" size="100,100">(unless: $ENDINGS contains &quot;TestFailure&quot;)[
 \(if:$hint)[Are you kidding me? After all that time you spent thinking about, you got it wrong? Even with the hint I gave you?]
 \(else:)[Wow. just wow. There&#39;s absolute no way you just selected that.]
 
@@ -194,9 +210,13 @@ Alright, that was fun for you wasn&#39;t it? Don&#39;t come back here. I&#39;m s
 [[Kitchenette-&gt;Jed&#39;s Kitchen]]
 [[Bedroom-&gt;Jed&#39;s Bedroom]]
 [[Bathroom-&gt;Jed&#39;s Bathroom]]
-[[Exit-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="15" name="Letter" tags="letter" position="1308,622" size="100,100">(font:&quot;Kaushan Script&quot;)[
+[[Exit-&gt;The Apartment Complex]]
+
+[[Restart the Game (DEBUG)-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="15" name="Letter" tags="letter" position="1308,622" size="100,100">(font:&quot;Kaushan Script&quot;)[
 \###Dear Jed Winchester,
-There&#39;s something going on with the mayor. Last night, he made an agreement with them that would give him &quot;great power.&quot; Based on people&#39;s behaviors recently I don&#39;t trust anyone inside city hall - that&#39;s why I am writing to you. I&#39;m trying to figure this out on my own, but maybe with your help we can get to the bottom of this.
+There&#39;s something going on with the mayor. Last night, he made an agreement with some group that would give him &quot;great power.&quot; Based on people&#39;s behaviors recently I don&#39;t trust anyone inside city hall - that&#39;s why I am writing to you. I&#39;m trying to figure this out on my own, but maybe with your help we can get to the bottom of this.
+
+Please meet me at the city hall.
 
 Thanks,
 An anonymous help-seeker]
@@ -210,13 +230,13 @@ Jed folded the letter and put it in his pocket.
 [[Apartment Complex-&gt;The Apartment Complex]] 
 [[Supermarket-&gt;Bosco&#39;s Family Food Store]] 
 [[Library-&gt;Library]]
-[[Train Station-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="17" name="Town Square" tags="" position="2119,1177" size="200,200">blah blah blah
+[[Train Station-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="17" name="Town Square" tags="" position="2494,1160" size="200,200">blah blah blah
 
 [[City Hall-&gt;City Hall]]
 [[Post Office-&gt;Post Office]]
 [[Hardware Store-&gt;Hardware Store]]
 [[Empty Building-&gt;Empty Building]]
-[[Train Station-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="18" name="West Side of Town" tags="" position="3462,1161" size="200,200">blah blah blah
+[[Train Station-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="18" name="West Side of Town" tags="" position="4201,1162" size="200,200">blah blah blah
 
 [[Burgerocity]]
 [[Barber Shop]]
@@ -227,14 +247,15 @@ Jed folded the letter and put it in his pocket.
 [[Fridge-&gt;Fridge]]
 [[Coffee Maker-&gt;Coffee Maker]]
 [[Trash Can-&gt;Trash Can]]
-[[Exit-&gt;Jed&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="20" name="Train Station" tags="" position="2124,562" size="200,200">(unless:$INV contains &quot;train ticket&quot;)[
-\(if:visits is 1)[
+[[Exit-&gt;Jed&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="20" name="Train Station" tags="" position="2499,545" size="200,200">(set:$visitsTrainStation to it + 1)
+\(unless:$INV contains &quot;train ticket&quot;)[
+\(if:$visitsTrainStation is 1)[
 \&quot;(either:&quot;Good morning&quot;,&quot;Hey there&quot;,&quot;Howdy&quot;,&quot;Hello&quot;,&quot;Hey&quot;,&quot;How&#39;s it going&quot;,&quot;How ya doin&#39;&quot;,&quot;What&#39;s up&quot;) Jed!&quot; the ticket seller greets. &quot;Welcome to the $LOC Train Station! Do you have your pass?&quot;
 
 Jed reached into his pockets and realized that he didn&#39;t have his train pass. &quot;Oops!&quot; he said. (if:(history:) contains &quot;Jed&#39;s Bedroom&quot;)[&quot;Looks like I forgot it, even though I knew it&#39;s in the cabinet next to my bed! Wow, I really am so forgetful and absent minded sometimes. I wonder how I live with it!&quot;](else:)[&quot;Be right back!&quot;]
 
 [[Continue-&gt;East Side of Town]]]
-\(if:visits &gt; 1 and visits &lt;= 3)[
+\(if:$visitsTrainStation &gt; 1 and $visitsTrainStation &lt;= 3)[
 \&quot;Hey Jed!&quot; the ticket seller greets. &quot;Welcome back to the $LOC Train Station! Do you have your pass now?&quot;
 
 Jed did not in fact have his pass. He completely forgot to grab it because he was so busy doing whatever he was doing. &quot;Wow,&quot; Jed exclaimed. &quot;I really thought I grabbed it, but I guess I didn&#39;t! Everyone knows you can&#39;t ride the train without a ticket!&quot;
@@ -244,7 +265,7 @@ Jed did not in fact have his pass. He completely forgot to grab it because he wa
 &quot;No thanks! I&#39;ll just go grab my train pass at home! Wouldn&#39;t want to waste my money!&quot;
 
 [[Continue-&gt;East Side of Town]]]
-\(if:visits &gt; 3)[
+\(if:$visitsTrainStation &gt; 3)[
 \&quot;Welcome back,&quot; the ticket seller unenthusiastically says. &quot;Got your pass?&quot;
 
 For some reason, Jed kept repeatedly walking into the train station without his train pass, the pass that lets him ride the Webster Groves train without having to purchase tickets. Since the whole point of buying the train pass was so that he wouldn&#39;t have to spend any more money on transportation, Jed was not going to buy any single-time train tickets. He instead was going to go home and get his train pass or stop going into the train station.
@@ -253,13 +274,13 @@ Jed turned around and left the train station without saying a word.
 
 [[Continue-&gt;East Side of Town]]]]
 \(else:)[
-\(if:visits is 1)[
+\(if:$visitsTrainStation is 1)[
 \&quot;(either:&quot;Good morning&quot;,&quot;Hey there&quot;,&quot;Howdy&quot;,&quot;Hello&quot;,&quot;How&#39;s it going&quot;,&quot;How ya doin&#39;&quot;,&quot;What&#39;s up&quot;) Jed!&quot; the ticket seller greets. &quot;Welcome to the $LOC Train Station! Do you have your pass?&quot;
 
 &quot;Yup,&quot; Jed replies. &quot;Never leave home without it!&quot;
 
 &quot;Perfect!&quot; The ticket seller scans your pass and hands it back to you. &quot;Where&#39;d you want to go today?&quot;]
-\(if:visits &gt; 1)[
+\(if:$visitsTrainStation &gt; 1)[
 \&quot;Hey Jed!&quot; the ticket seller greets. &quot;Welcome to the $LOC Train Station! Where&#39;d you want to go?&quot;]
 
 (unless:$LOC is &quot;East Side&quot;)[[[East Side-&gt;Ticket to East Side]]
@@ -273,31 +294,37 @@ Jed turned around and left the train station without saying a word.
 \(if:$LOC is &quot;West Side&quot;)[[[&quot;Nevermind&quot;-&gt;West Side of Town]]]]</tw-passagedata><tw-passagedata pid="21" name="Bosco&#39;s Family Food Store" tags="" position="49,1563" size="100,200">[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="22" name="Jed&#39;s Bedroom" tags="" position="1151,2141" size="100,100">You are now in your bedroom. It&#39;s the room where you keep the bed. (if:$seenhat and $hat is &quot;no&quot;)[It&#39;s also where you keep your amazing hat that you never told me about but also don&#39;t even like.](unless:$INV contains &quot;train ticket&quot;)[
 
 (if:visits is 1)[Oh! Entering the bedroom again reminded you that you haven&#39;t grabbed your train pass yet. This ticket allows you to ride the train without having to purchase a normal ticket! You keep it in the cabinet next your bed.]
-\(else:)[You still haven&#39;t grabbed that awesome train pass I was telling you about. It&#39;s in the cabinet!~]]
+\(else:)[(if:$ENDINGS is (a:))[You still haven&#39;t grabbed that awesome train pass I was telling you about. It&#39;s in the cabinet!~](else:)[Jed! Don&#39;t forget your train pass! It&#39;s in the closet next to your bed!]]]
 
 [[Cabinet-&gt;Grab Ticket]] 
 [[Closet-&gt;Closet]]
 [[Bed-&gt;Sleep]] 
-(if: &quot;train ticket&quot; is not in $INV and visits is 1)[[[Exit-&gt;Train Ticket Warning]]](else:)[[[Exit-&gt;Jed&#39;s Apartment]]]</tw-passagedata><tw-passagedata pid="23" name="Jed&#39;s Bathroom" tags="" position="810,2137" size="100,100">You are in your bathroom. It&#39;s pretty cramped, but it fulfills the basic necessities of a bathroom. (if:$noflush)[//There is nothing to do here.//](else:)[There is nothing to do here.]
+(if: &quot;train ticket&quot; is not in $INV and visits is 1)[[[Exit-&gt;Train Ticket Warning]]](else:)[[[Exit-&gt;Jed&#39;s Apartment]]]</tw-passagedata><tw-passagedata pid="23" name="Jed&#39;s Bathroom" tags="" position="810,2137" size="100,100">You are in your bathroom. It&#39;s pretty cramped, but it fulfills the basic necessities of a bathroom. (if:$visitsJedsToilet is 8 or 11 and $hat is not &quot;yes&quot;)[//There is nothing to do here.//](else:)[There is nothing to do here.]
 
-(if:$noflush)[[[Flush the Toilet]]](else:)[[[Flush the Toilet-&gt;Flush Toilet]]]
+(if:$visitsJedsToilet is 8 or 11)[[[Flush the Toilet]]](else:)[[[Flush the Toilet-&gt;Flush Toilet]]]
 \(if:$hat is &quot;yes&quot;)[
 [[Look At Mirror-&gt;Mirror]]]
-[[Exit-&gt;Jed&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="24" name="Flush Toilet" tags="" position="810,2287" size="100,100">(if:visits is 1)[
+[[Exit-&gt;Jed&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="24" name="Flush Toilet" tags="" position="810,2287" size="100,100">(set:$visitsJedsToilet to it + 1)
+\(if:$visitsJedsToilet is 1)[
 \You flush the toilet.]
-\(if:visits is 2)[
+\(if:$visitsJedsToilet is 2)[
 \You flush the toilet again.]
-\(if:visits is 3)[
+\(if:$visitsJedsToilet is 3)[
 \You flush the toilet another time. Surprise surprise, nothing special happens.]
-\(if:visits is 4)[
+\(if:$visitsJedsToilet is 4)[
 \Why do you keep flushing the toilet? Are you trying to run up your water bill, because if so you&#39;re succeeding.]
-\(if:visits is 5 or visits is 6)[
+\(if:$visitsJedsToilet is 5 or $visitsJedsToilet is 6)[
 \Jed, please stop flushing the toilet. I&#39;m serious.]
-\(if:visits is 7)[
+\(if:$visitsJedsToilet is 7)[
 \Wow, I thought saying the same thing twice would make you stop. You&#39;re clearly just here to flush the toilet and that&#39;s it. Are you trying to get the toilet ending? Sorry buddy, that&#39;s off limits. Go on now.]
-\(if:visits is 8)[
-\Jed, I didn&#39;t want to have to do this but you leave me no choice. I&#39;m going to break the link to this passage. No more toilet flushing for you, mister.
-\(set:$noflush to true)]
+\(if:$visitsJedsToilet is 8)[
+\Jed, I didn&#39;t want to have to do this but you leave me no choice. I&#39;m going to break the link to this passage. No more toilet flushing for you, mister.]
+\(if:$visitsJedsToilet is 9)[
+\(font:&quot;Raleway&quot;)If you somehow see this text please let me know, this is not supposed to show up at all!]
+\(if:$visitsJedsToilet is 10)[
+\You flush the toilet.]
+\(if:$visitsJedsToilet is 11)[
+\Ha! I&#39;m kidding. Did you really think I would let you do all this again? Oh, no no no. I&#39;m cutting it short. I just wanted to lead you on a little before I did it. Bye bye!]
 
 [[Continue-&gt;Jed&#39;s Bathroom]]</tw-passagedata><tw-passagedata pid="25" name="Train Ticket Warning" tags="" position="1158,2278" size="100,100">Hey Jed, sorry for the &quot;divine interuption,&quot; but I couldn&#39;t help but notice you left your bedroom without grabbing the train ticket. Did I not point it out clearly enough? Anyway, I just wanted to let you know that this ticket is pretty helpful; you&#39;re not going to be able to do a lot of travelling without it!
 
@@ -346,31 +373,33 @@ Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I
 [[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="34" name="Throw Away Hat" tags="" position="990,2829" size="100,100">Jed no! The hat! Oh, it was such a magnificant hat. You really did look amazing in it. How I&#39;ll miss you, hat. Maybe another time, Jed can see that he was wrong about you.
 \(set:$hat to &quot;gone&quot;)
 
-[[Continue-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="35" name="Coffee Maker" tags="" position="986,2415" size="100,100">(if:visits is 1)[
+[[Continue-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="35" name="Coffee Maker" tags="" position="986,2415" size="100,100">(set:$visitsCoffeeMaker to it + 1)
+\(if:$visitsCoffeeMaker is 1)[
 \Ah yes, nothing like a cup of coffee to get yourself energized for the day. You brew yourself a nice hot coffee using your coffee maker. Delicious.]
-\(if:visits is 2)[
+\(if:$visitsCoffeeMaker is 2)[
 \You brew yourself another cup of coffee. Apparently you couldn&#39;t get enough and you&#39;re back for seconds. Drinking it hurt because your tongue was already hot from the previous cup.]
-\(if:visits is 3)[
+\(if:$visitsCoffeeMaker is 3)[
 \Jed, I don&#39;t think this is healthy. You can barely even drink it because you&#39;re basically burning yourself with these hot coffees!]
-\(if:visits is 4)[
+\(if:$visitsCoffeeMaker is 4)[
 \Alright this definitely isn&#39;t good. Aside from the fact that you seem to be drinking painfully hot coffee, this much cafine can&#39;t be good for you. You&#39;re causing yourself to crash later on in the day. We can&#39;t have that during such an important mission!]
-\(if:visits is 5)[
+\(if:$visitsCoffeeMaker is 5)[
 \You try to make yourself yet another coffee, but fortunately it appears the coffee maker is out of coffee grounds. What was supposed to last you 4-5 days has now been used up in one morning. Congratulations, Jed.]
-\(if:visits &gt; 5)[
+\(if:$visitsCoffeeMaker &gt; 5)[
 \Sorry Jed, but no matter how many times you try you can&#39;t make coffee magically appear.]
 
 [[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="36" name="The Apartment Complex" tags="" position="1159,1569" size="100,200">Here is the apartment complex, the place you live at. It looks incredibly old on the outside.
 
 [[Your Apartment-&gt;Jed&#39;s Apartment]]
 [[Visit Rafael-&gt;Rafael&#39;s Apartment]] 
-[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="37" name="Rafael&#39;s Apartment" tags="" position="1351,1846" size="100,200">You go over to Rafael&#39;s apartment and knock on the door. (if: visits is 1)[You and Rafael are good friends, but you dont visit that often anymore.
+[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="37" name="Rafael&#39;s Apartment" tags="" position="1351,1846" size="100,200">(set:$visitsRafael to it + 1)
+\You go over to Rafael&#39;s apartment and knock on the door. (if: $visitsRafael is 1)[You and Rafael are good friends, but you dont visit that often anymore.
 
 &quot;Hello- oh! Hey Jed! Its been a while. How have things been?&quot;]
-\(if: visits is 2)[
+\(if: $visitsRafael is 2)[
 &quot;Hey, something else you need?&quot;]
-\(if: visits is 3)[
+\(if: $visitsRafael is 3)[
 &quot;Hello?&quot;]
-\(if: visits &gt; 3)[
+\(if: $visitsRafael &gt; 3)[
 &quot;Hello..?&quot;]
 
 [[Burgerocity-&gt;Rafael Burgerocity]]
@@ -404,44 +433,82 @@ The buildings around you are all on fire; some are completely destroyed. You can
 Jed was at a loss of words. Jed wondered what could have caused all of this. An entire string of events leading to catastrophe that he had no idea about. Of course, there was no way that Jed would&#39;ve known that all of this could have been prevented if he had just kept the letter.
 \(set:$ENDINGS to it + (a:&quot;neglect&quot;))
 
-[[Restart-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="41" name="Library" tags="" position="587,1561" size="100,200">[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="42" name="City Hall" tags="" position="1651,1582" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="43" name="Post Office" tags="" position="1997,1589" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="44" name="Hardware Store" tags="" position="2331,1581" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="45" name="Empty Building" tags="" position="2628,1580" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="46" name="Burgerocity" tags="" position="3044,1568" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="47" name="Barber Shop" tags="" position="3348,1564" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="48" name="Clothing Store" tags="" position="3694,1564" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="49" name="Dark Alleyway" tags="" position="4020,1564" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="50" name="About" tags="title" position="1610,44" size="100,100">=&gt;&lt;=
+[[Restart-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="41" name="Library" tags="" position="587,1561" size="100,200">[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="42" name="City Hall" tags="" position="2026,1565" size="100,200">(set:$visitsCityHall to it + 1)
+\(if: $visitsCityHall is 1)[
+\You enter the Webster Groves City Hall. It&#39;s a beautiful building. The room your standing in is nothing short of luxerious, with lots of decorations and a lot more open space. 
+
+Oddly, in what is a very open and spacious room, you can only see one other person. The mayor&#39;s secretary is sitting at her desk busy. She is completely enveloped in her computer screen, almost frantically typing and scrolling. She hasn&#39;t even noticed that you&#39;ve come in.]
+\(else:)[
+\You&#39;re inside the City Hall. (if:$visitsSecretary is 0)[The secretary is still focused on her computer.](else:)[The secretary does a small wave to you.]]
+
+[[Talk to the Secretary-&gt;Talk to Secretary]]
+[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="43" name="Post Office" tags="" position="2372,1572" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="44" name="Hardware Store" tags="" position="2726,1568" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="45" name="Empty Building" tags="" position="3079,1563" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="46" name="Burgerocity" tags="" position="3783,1569" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="47" name="Barber Shop" tags="" position="4087,1565" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="48" name="Clothing Store" tags="" position="4433,1565" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="49" name="Dark Alleyway" tags="" position="4759,1565" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="50" name="About" tags="title" position="1661,45" size="100,100">=&gt;&lt;=
 Written and Developed by Blue Cat Productions and Green Guy.
 
 Illustrations by WizToad.
 
 Created for the Beepbox Discord Text Adventure Event.
 
-[[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="51" name="Exit" tags="" position="1607,179" size="100,100">(font:&quot;Raleway&quot;)[
+[[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="51" name="Exit" tags="" position="1658,180" size="100,100">(font:&quot;Raleway&quot;)[
 \(unless:(history:) contains &quot;The Beginning&quot;)[
 \Hello? You haven&#39;t even played the game and you&#39;re ready to quit? I... well... I don&#39;t know what to say. Go ahead and close the tab I guess... Twine can&#39;t close the game for you.]
 \(else:)[
 \Hello player. So this is a bit akward but... Twine doesn&#39;t exactly have a feature to close the tab for you. Trust me, I looked into it just for this joke. I kept the button here because I thought the menu looked nicer with 3 options. So if you want to quit you&#39;re going to have to put in some more effort! But hey, instead of leaving, maybe you could find some more endings!]]
 
-[[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="52" name="Ticket to East Side" tags="" position="1939,838" size="100,100">(set: $LOC to &quot;East Side&quot;)
-\[[Board Train-&gt;Train to East Side]] </tw-passagedata><tw-passagedata pid="53" name="Ticket to Town Square" tags="" position="2158,834" size="100,100">(set: $LOC to &quot;Town Square&quot;)
-\[[Board Train-&gt;Train to Town Square]] </tw-passagedata><tw-passagedata pid="54" name="Ticket to West Side" tags="" position="2373,834" size="100,100">(set: $LOC to &quot;West Side&quot;)
-\[[Board Train-&gt;Train to West Side]] </tw-passagedata><tw-passagedata pid="55" name="Train to East Side" tags="" position="1805,982" size="100,100">(set:$traintext to (either:&quot;Welp, looks like we&#39;re here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh we stopped moving? I didn&#39;t even notice!&quot;,&quot;Finally, we&#39;re here! Was it just me or was that train ride unbearably long?&quot;,&quot;Soon after, the train came to a stop and pulled into the station.&quot;))
-\(live:1s)[
+[[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="52" name="Ticket to East Side" tags="" position="2314,821" size="100,100">(set: $LOC to &quot;East Side&quot;)
+\The ticket seller takes your pass and scans it. &quot;Alright,&quot; they say, &quot;you&#39;re good to go! Enjoy your ride!&quot;
+
+[[Board Train-&gt;Train to East Side]] </tw-passagedata><tw-passagedata pid="53" name="Ticket to Town Square" tags="" position="2533,817" size="100,100">(set: $LOC to &quot;Town Square&quot;)
+\The ticket seller takes your pass and scans it. &quot;Alright,&quot; they say, &quot;you&#39;re good to go! Enjoy your ride!&quot;
+
+[[Board Train-&gt;Train to Town Square]] </tw-passagedata><tw-passagedata pid="54" name="Ticket to West Side" tags="" position="2748,817" size="100,100">(set: $LOC to &quot;West Side&quot;)
+\The ticket seller takes your pass and scans it. &quot;Alright,&quot; they say, &quot;you&#39;re good to go! Enjoy your ride!&quot;
+
+[[Board Train-&gt;Train to West Side]] </tw-passagedata><tw-passagedata pid="55" name="Train to East Side" tags="" position="2180,965" size="100,100">(set:$traintext to (either:&quot;Welp, looks like we&#39;re here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh we stopped moving? I didn&#39;t even notice!&quot;,&quot;Finally, we&#39;re here! Was it just me or was that train ride unbearably long?&quot;,&quot;Soon after, the train came to a stop and pulled into the station.&quot;))
 \Jed sat in the train wondering what kind of dialogue might appear during the train rides in the full version of the game. Would they be enjoyable to read? Will there be enough of them to make sure players aren&#39;t bored? What kind of things will happen while Jed rides the train? Only time will tell.
-\(if:time &gt; 15s)[
+\(live:1s)[(if:time &gt; 10s)[
 
 $traintext
 
-[[Continue-&gt;East Side of Town]]]]</tw-passagedata><tw-passagedata pid="56" name="Train to Town Square" tags="" position="2160,988" size="100,100">(set:$traintext to (either:&quot;Welp, looks like we&#39;re here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh we stopped moving? I didn&#39;t even notice!&quot;,&quot;Finally, we&#39;re here! Was it just me or was that train ride unbearably long?&quot;,&quot;Soon after, the train came to a stop and pulled into the station.&quot;))
-\(live:1s)[
+[[Continue-&gt;East Side of Town]]]]</tw-passagedata><tw-passagedata pid="56" name="Train to Town Square" tags="" position="2535,971" size="100,100">(set:$traintext to (either:&quot;Welp, looks like we&#39;re here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh we stopped moving? I didn&#39;t even notice!&quot;,&quot;Finally, we&#39;re here! Was it just me or was that train ride unbearably long?&quot;,&quot;Soon after, the train came to a stop and pulled into the station.&quot;))
 \Jed sat in the train wondering what kind of dialogue might appear during the train rides in the full version of the game. Would they be enjoyable to read? Will there be enough of them to make sure players aren&#39;t bored? What kind of things will happen while Jed rides the train? Only time will tell.
-\(if:time &gt; 15s)[
+\(live:1s)[(if:time &gt; 10s)[
 
 $traintext
 
-[[Continue-&gt;Town Square]]]]</tw-passagedata><tw-passagedata pid="57" name="Train to West Side" tags="" position="2530,990" size="100,100">(set:$traintext to (either:&quot;Welp, looks like we&#39;re here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh we stopped moving? I didn&#39;t even notice!&quot;,&quot;Finally, we&#39;re here! Was it just me or was that train ride unbearably long?&quot;,&quot;Soon after, the train came to a stop and pulled into the station.&quot;))
-\(live:1s)[
+[[Continue-&gt;Town Square]]]]</tw-passagedata><tw-passagedata pid="57" name="Train to West Side" tags="" position="2905,973" size="100,100">(set:$traintext to (either:&quot;Welp, looks like we&#39;re here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh we stopped moving? I didn&#39;t even notice!&quot;,&quot;Finally, we&#39;re here! Was it just me or was that train ride unbearably long?&quot;,&quot;Soon after, the train came to a stop and pulled into the station.&quot;))
 \Jed sat in the train wondering what kind of dialogue might appear during the train rides in the full version of the game. Would they be enjoyable to read? Will there be enough of them to make sure players aren&#39;t bored? What kind of things will happen while Jed rides the train? Only time will tell.
-\(if:time &gt; 15s)[
+\(live:1s)[(if:time &gt; 10s)[
 
 $traintext
 
-[[Continue-&gt;West Side of Town]]]]</tw-passagedata></tw-storydata>
+[[Continue-&gt;West Side of Town]]]]</tw-passagedata><tw-passagedata pid="58" name="Talk to Secretary" tags="" position="2030,1835" size="100,100">(set:$visitsSecretary to it + 1)
+\(if:$visitsSecretary is 1)[
+\You walk up to the secretary&#39;s desk. Your steps echo through the room, however she still stays focused. &quot;Hello?&quot; you say.
+
+&quot;Oh, hello!&quot; she responds, still looking at her computer. &quot;If you&#39;ll give me just one second, I&#39;ve just been a bit... busy. I&#39;ve been busy. Did you have an appoint...&quot; she stop speaking when she turns her head towards you. She then looks around the room to check if anyone else is around. &quot;So you got my letter,&quot; she says.
+
+(if:$INV contains &quot;letter&quot;)[&quot;Yes, I did.](else:)[&quot;Uh... yeah... I did...] What&#39;s going on? What are we going to do?&quot;
+
+&quot;The mayor communicates to th- these people in a secret room downstairs. However, that floor is on high security, meaining only certain people are allowed downstairs. Fortunately for us, that&#39;s also where the water lines are. That&#39;s why I&#39;ve scheduled a visit from the local plumber.&quot; She winks at you.
+
+[[&quot;Ah, gotcha!&quot;-&gt;Secretary Gotcha]]
+[[&quot;What do you mean?&quot;-&gt;Secretary Plan]]]
+\(if:$visitsSecretary &gt; 1 and $INV does not contain &quot;plumber outfit&quot;)[
+\You walk up to the secretary&#39;s desk. &quot;Hey Jed,&quot; she greets, &quot;did you need something else?&quot;
+
+[[&quot;Can you tell me the plan again?&quot;-&gt;Secretary Plan]]
+[[&quot;Nope!&quot;-&gt;City Hall]]]</tw-passagedata><tw-passagedata pid="59" name="Secretary Gotcha" tags="" position="1955,1985" size="100,100">&quot;I knew you&#39;d catch on!&quot; the secretary exclaims. &quot;I&#39;ll refinance you after this is all done, whatever you need to pull this off. Thank you so much, Jed. Good luck!&quot;
+
+[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="60" name="Secretary Plan" tags="" position="2105,1985" size="100,100">&quot;You&#39;ll be a plumber coming to check in on the water pipes in the basement of city hall,&quot; the secretary explains. &quot;Near here is a hardware store, there you can get a couple tools like a steel pipe wrench or a crowbar or whatever. There&#39;s a clothing store in West Side that should hopefully have something convincing that you can wear.&quot;
+
+&quot;And look!&quot; The secretary pulls out two name tags from one of the desk drawers. &quot;The finishing touch, your very own employee nametag. And I&#39;ve also got a visitor name tag saved just for you.&quot;
+
+&quot;So the tools and the outfit,&quot; Jed repeats to himself, &quot;got it.&quot;
+
+&quot;Whatever it costs, I&#39;ll refinance you once this is over. Good luck, Jed!&quot;
+
+[[Continue-&gt;City Hall]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
