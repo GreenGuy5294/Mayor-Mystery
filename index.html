@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<title>Beepcord Text Adventure</title>
+<title>Mayor Mystery</title>
 <style title="Twine CSS">@keyframes appear{0%{opacity:0}to{opacity:1}}@keyframes fade-in-out{0%,to{opacity:0}50%{opacity:1}}@keyframes rumble{25%{top:-0.1em}75%{top:0.1em}0%,to{top:0px}}@keyframes shudder{25%{left:0.1em}75%{left:-0.1em}0%,to{left:0px}}@keyframes buoy{25%{top:0.25em}75%{top:-0.25em}0%,to{top:0px}}@keyframes sway{25%{left:0.25em}75%{left:-0.25em}0%,to{left:0px}}@keyframes pulse{0%{transform:scale(0, 0)}20%{transform:scale(1.2, 1.2)}40%{transform:scale(0.9, 0.9)}60%{transform:scale(1.05, 1.05)}80%{transform:scale(0.925, 0.925)}to{transform:scale(1, 1)}}@keyframes zoom-in{0%{transform:scale(0, 0)}to{transform:scale(1, 1)}}@keyframes shudder-in{0%, to{transform:translateX(0em)}5%, 25%, 45%{transform:translateX(-1em)}15%, 35%, 55%{transform:translateX(1em)}65%{transform:translateX(-0.6em)}75%{transform:translateX(0.6em)}85%{transform:translateX(-0.2em)}95%{transform:translateX(0.2em)}}@keyframes rumble-in{0%, to{transform:translateY(0em)}5%, 25%, 45%{transform:translateY(-1em)}15%, 35%, 55%{transform:translateY(1em)}65%{transform:translateY(-0.6em)}75%{transform:translateY(0.6em)}85%{transform:translateY(-0.2em)}95%{transform:translateY(0.2em)}}@keyframes fidget{0%, 8.1%, 82.1%, 31.1%, 38.1%, 44.1%, 40.1%, 47.1%, 74.1%, 16.1%, 27.1%, 72.1%, 24.1%, 95.1%, 6.1%, 36.1%, 20.1%, 4.1%, 91.1%, 14.1%, 87.1%, to{left:0px;top:0px}8%, 82%, 31%, 38%, 44%{left:-1px}40%, 47%, 74%, 16%, 27%{left:1px}72%, 24%, 95%, 6%, 36%{top:-1px}20%, 4%, 91%, 14%, 87%{top:1px}}@keyframes slide-right{0%{transform:translateX(-100vw)}}@keyframes slide-left{0%{transform:translateX(100vw)}}@keyframes slide-up{0%{transform:translateY(100vh)}}@keyframes slide-down{0%{transform:translateY(-100vh)}}@keyframes fade-right{0%{opacity:0;transform:translateX(-1em)}to{opacity:1}}@keyframes fade-left{0%{opacity:0;transform:translateX(1em)}to{opacity:1}}@keyframes fade-up{0%{opacity:0;transform:translateY(1em)}to{opacity:1}}@keyframes fade-down{0%{opacity:0;transform:translateY(-1em)}to{opacity:1}}@keyframes flicker{0%,29%,31%,63%,65%,77%,79%,86%,88%,91%,93%{opacity:0}30%{opacity:0.2}64%{opacity:0.4}78%{opacity:0.6}87%{opacity:0.8}92%, to{opacity:1}}@keyframes blur{0%{filter:blur(2rem);opacity:0}25%{opacity:1}to{filter:blur(0rem);opacity:1}}.dom-debug-mode tw-story,.dom-debug-mode tw-passage,.dom-debug-mode tw-sidebar,.dom-debug-mode tw-include,.dom-debug-mode tw-hook,.dom-debug-mode tw-expression,.dom-debug-mode tw-link,.dom-debug-mode tw-dialog,.dom-debug-mode tw-columns,.dom-debug-mode tw-column,.dom-debug-mode tw-align{outline:1px solid #f5a3da;min-height:32px;display:block !important}.dom-debug-mode tw-story::before,.dom-debug-mode tw-passage::before,.dom-debug-mode tw-sidebar::before,.dom-debug-mode tw-include::before,.dom-debug-mode tw-hook::before,.dom-debug-mode tw-expression::before,.dom-debug-mode tw-link::before,.dom-debug-mode tw-dialog::before,.dom-debug-mode tw-columns::before,.dom-debug-mode tw-column::before,.dom-debug-mode tw-align::before{position:absolute;top:0;left:0;height:16px;background-color:#f5a3da;color:black;font-size:16px;font-weight:normal;font-style:normal;font-family:monospace;display:inline-block;line-height:100%;white-space:pre;z-index:999997}.dom-debug-mode tw-story:hover,.dom-debug-mode tw-passage:hover,.dom-debug-mode tw-sidebar:hover,.dom-debug-mode tw-include:hover,.dom-debug-mode tw-hook:hover,.dom-debug-mode tw-expression:hover,.dom-debug-mode tw-link:hover,.dom-debug-mode tw-dialog:hover,.dom-debug-mode tw-columns:hover,.dom-debug-mode tw-column:hover,.dom-debug-mode tw-align:hover{outline:1px solid #fc9}.dom-debug-mode tw-story:hover::before,.dom-debug-mode tw-passage:hover::before,.dom-debug-mode tw-sidebar:hover::before,.dom-debug-mode tw-include:hover::before,.dom-debug-mode tw-hook:hover::before,.dom-debug-mode tw-expression:hover::before,.dom-debug-mode tw-link:hover::before,.dom-debug-mode tw-dialog:hover::before,.dom-debug-mode tw-columns:hover::before,.dom-debug-mode tw-column:hover::before,.dom-debug-mode tw-align:hover::before{background-color:#fc9;transition:background-color 1s}.dom-debug-mode tw-passage,.dom-debug-mode tw-include,.dom-debug-mode tw-hook,.dom-debug-mode tw-expression,.dom-debug-mode tw-link,.dom-debug-mode tw-dialog,.dom-debug-mode tw-columns,.dom-debug-mode tw-column,.dom-debug-mode tw-align{padding:1em;margin:0}.dom-debug-mode tw-story::before{content:'<tw-story tags="' attr(tags) '">'}.dom-debug-mode tw-passage::before{top:-16px;content:'<tw-passage tags="' attr(tags) '">'}.dom-debug-mode tw-sidebar::before{top:-16px;content:"<tw-sidebar>"}.dom-debug-mode tw-hook::before{content:'<tw-hook name="' attr(name) '">'}.dom-debug-mode tw-expression::before{content:'<tw-expression name="' attr(name) '">'}.dom-debug-mode tw-link::before{content:'<tw-link name="' attr(name) '">'}.dom-debug-mode tw-dialog::before{content:"<tw-dialog>"}.dom-debug-mode tw-columns::before{content:"<tw-columns>"}.dom-debug-mode tw-column::before{content:"<tw-column>"}.dom-debug-mode tw-align::before{content:"<tw-align>"}.dom-debug-mode tw-include::before{content:'<tw-include type="' attr(type) '" title="' attr(title) '">'}.debug-mode tw-expression{display:inline-block !important}.debug-mode tw-expression[type=variable]::after{font-size:0.8rem;padding-left:0.2rem;padding-right:0.2rem;vertical-align:top;content:"$" attr(name)}.debug-mode tw-expression[type=tempVariable]::after{font-size:0.8rem;padding-left:0.2rem;padding-right:0.2rem;vertical-align:top;content:"_" attr(name)}.debug-mode tw-expression[return=boolean]{background-color:rgba(179,179,179,0.2)}.debug-mode tw-expression[return=array]{background-color:rgba(255,102,102,0.2)}.debug-mode tw-expression[return=dataset]{background-color:rgba(255,128,0,0.2)}.debug-mode tw-expression[return=number]{background-color:rgba(255,179,102,0.2)}.debug-mode tw-expression[return=datamap]{background-color:rgba(255,255,102,0.2)}.debug-mode tw-expression[return=changer]{background-color:rgba(179,255,102,0.2)}.debug-mode tw-expression[return=lambda]{background-color:rgba(102,255,102,0.2)}.debug-mode tw-expression[return=hookname]{background-color:rgba(102,255,204,0.2)}.debug-mode tw-expression[return=string]{background-color:rgba(102,255,255,0.2)}.debug-mode tw-expression[return=datatype]{background-color:rgba(102,153,255,0.2)}.debug-mode tw-expression[return=gradient],.debug-mode tw-expression[return=colour]{background-color:rgba(204,102,255,0.2)}.debug-mode tw-expression[return=instant],.debug-mode tw-expression[return=macro]{background-color:rgba(240,117,199,0.2)}.debug-mode tw-expression[return=command]{background-color:rgba(153,153,255,0.2)}.debug-mode tw-expression.false{background-color:rgba(255,0,0,0.2) !important}.debug-mode tw-expression[type=macro]::before{content:"(" attr(name) ":)";padding:0 0.5rem;font-size:1rem;vertical-align:middle;line-height:normal;background-color:inherit;border:1px solid rgba(255,255,255,0.5)}.debug-mode tw-hook{background-color:rgba(0,85,255,0.1) !important}.debug-mode tw-hook::before{font-size:0.8rem;padding-left:0.2rem;padding-right:0.2rem;vertical-align:top;content:"["}.debug-mode tw-hook::after{font-size:0.8rem;padding-left:0.2rem;padding-right:0.2rem;vertical-align:top;content:"]"}.debug-mode tw-hook[name]::after{font-size:0.8rem;padding-left:0.2rem;padding-right:0.2rem;vertical-align:top;content:"]<" attr(name) "|"}.debug-mode tw-pseudo-hook{background-color:rgba(255,170,0,0.1) !important}.debug-mode tw-collapsed::before{font-size:0.8rem;padding-left:0.2rem;padding-right:0.2rem;vertical-align:top;content:"{"}.debug-mode tw-collapsed::after{font-size:0.8rem;padding-left:0.2rem;padding-right:0.2rem;vertical-align:top;content:"}"}.debug-mode tw-verbatim::before,.debug-mode tw-verbatim::after{font-size:0.8rem;padding-left:0.2rem;padding-right:0.2rem;vertical-align:top;content:"`"}.debug-mode tw-align[style*="text-align: center"]{background:linear-gradient(to right, rgba(255,204,189,0) 0%, rgba(255,204,189,0.25) 50%, rgba(255,204,189,0) 100%)}.debug-mode tw-align[style*="text-align: left"]{background:linear-gradient(to right, rgba(255,204,189,0.25) 0%, rgba(255,204,189,0) 100%)}.debug-mode tw-align[style*="text-align: right"]{background:linear-gradient(to right, rgba(255,204,189,0) 0%, rgba(255,204,189,0.25) 100%)}.debug-mode tw-column{background-color:rgba(189,228,255,0.2)}.debug-mode tw-enchantment{animation:enchantment 0.5s infinite;border:1px solid}.debug-mode tw-link::after,.debug-mode tw-broken-link::after{font-size:0.8rem;padding-left:0.2rem;padding-right:0.2rem;vertical-align:top;content:attr(passage-name)}.debug-mode tw-include{background-color:rgba(204,128,51,0.1)}.debug-mode tw-include::before{font-size:0.8rem;padding-left:0.2rem;padding-right:0.2rem;vertical-align:top;content:attr(type) ' "' attr(title) '"'}@keyframes enchantment{0%,to{border-color:#ffb366}50%{border-color:#6fc}}tw-debugger{position:fixed;box-sizing:border-box;bottom:0;right:0;z-index:999999;min-width:10em;min-height:1em;padding:0em 0.5em 0.5em 1em;font-size:1.25em;font-family:sans-serif;color:#000;border-left:solid #000 2px;border-top:solid #000 2px;border-top-left-radius:.5em;background:#fff;opacity:1}tw-debugger select{margin-right:1em;width:12em}tw-debugger button{border-radius:3px;border:solid #999 1px;margin:auto 4px;background-color:#fff;font-size:inherit;color:#000}tw-debugger button.enabled{background-color:#eee;box-shadow:inset #ddd 3px 5px 0.5em}tw-debugger .panel{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;position:absolute;bottom:100%;left:-2px;right:0;padding:1em;max-height:40vh;overflow-y:scroll;overflow-x:hidden;z-index:999998;background:#fff;border:inherit;border-bottom:solid #999 2px;border-top-left-radius:.5em;border-bottom-left-radius:.5em;font-size:0.8em}tw-debugger .panel:empty,tw-debugger .panel[hidden]{display:none}tw-debugger .panel-source,tw-debugger .panel-row-source{font-family:monospace;overflow-x:scroll;white-space:pre;-ms-flex-preferred-size:100%;flex-basis:100%}tw-debugger .panel-row-source{margin:5px 0}tw-debugger .panel-rows{width:100%;overflow-x:scroll}tw-debugger .panel-rows>*{display:table-row}tw-debugger .panel-rows>div:nth-of-type(2n){background:#EEE}tw-debugger .panel-row-buttons{text-align:right}tw-debugger .panel-variables .panel-rows:empty::before{content:"~ No variables ~";font-style:italic;color:#888;text-align:center}tw-debugger .panel-enchantments .panel-rows:empty::before{content:"~ No enchantments ~";font-style:italic;color:#888;text-align:center}tw-debugger .panel-errors .panel-rows:empty::before{content:"~ No errors... for now. ~";font-style:italic;color:#888;text-align:center}tw-debugger .panel-rows:empty+.panel-variables-bottom{display:none}tw-debugger .panel-storylets:not(.panel-exclusive) .storylet-exclusive,tw-debugger .panel-storylets:not(.panel-urgent) .storylet-urgent{display:none}tw-debugger .panel-variables-bottom{padding-top:5px}tw-debugger .enchantment-row{min-height:1.5em}tw-debugger .variable-path{opacity:0.4}tw-debugger .temporary-variable-scope,tw-debugger .enchantment-local{font-family:sans-serif;font-weight:normal;opacity:0.8;font-size:0.75em}tw-debugger .temporary-variable-scope:not(:empty)::before,tw-debugger .enchantment-local:not(:empty)::before{content:" in "}tw-debugger .variable-name,tw-debugger .enchantment-name{font-family:monospace;font-weight:bold}tw-debugger .variable-type{color:#444;font-weight:normal;text-overflow:ellipsis;overflow:hidden;max-width:10em}tw-debugger .error-row{display:table-row;background-color:rgba(230,101,204,0.3)}tw-debugger .error-row:nth-of-type(2n){background-color:rgba(237,145,219,0.3)}tw-debugger .error-row>*{display:table-cell;padding:0.25em 0.5em}tw-debugger .error-row .error-message{cursor:help}tw-debugger .error-row .error-passage{color:#444}tw-debugger .storylet-row{background-color:rgba(201,233,222,0.3)}tw-debugger .storylet-row:nth-child(2n){background-color:rgba(128,203,178,0.3)}tw-debugger .storylet-row.storylet-closed{font-style:italic;opacity:0.4;background-color:rgba(217,217,217,0.3)}tw-debugger .storylet-row.storylet-closed:nth-child(2n){background-color:rgba(166,166,166,0.3)}.storylet-error tw-debugger .storylet-row{background-color:rgba(230,101,204,0.3)}.storylet-error tw-debugger .storylet-row:nth-child(2n){background-color:rgba(237,145,219,0.3)}tw-debugger .storylet-row .storylet-name,tw-debugger .storylet-row .storylet-value{display:inline-block;width:50%}tw-debugger .tabs{padding-bottom:0.5em}tw-debugger .tab{border-radius:0px 0px 0.5em 0.5em;border-top:none}tw-debugger .resizer{position:absolute;height:3em;border-left:2px solid #ccc;border-right:2px solid #ccc;top:10px;left:4px;width:8px;cursor:ew-resize}tw-dialog{z-index:999997;border:#fff solid 2px;padding:2em;color:#fff;background-color:#000;display:block}@media (min-width: 576px){tw-dialog{max-width:50vw}}tw-dialog input[type=text]{font-size:inherit;width:100%}tw-dialog-links{text-align:right;display:-ms-flexbox;display:flex;-ms-flex-pack:end;justify-content:flex-end}tw-backdrop{z-index:999996;position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.8);display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center}tw-backdrop ~ tw-backdrop{display:none}tw-link,.link,tw-icon,.enchantment-clickblock{cursor:pointer}tw-link,.enchantment-link{color:#4169E1;font-weight:bold;text-decoration:none;transition:color 0.2s ease-in-out}tw-passage [style^="color"] tw-link:not(:hover),tw-passage [style*=" color"] tw-link:not(:hover),tw-passage [style^="color"][hover="true"] tw-link:hover,tw-passage [style*=" color"][hover="true"] tw-link:hover,tw-passage [style^="color"] .enchantment-link:not(:hover),tw-passage [style*=" color"] .enchantment-link:not(:hover),tw-passage [style^="color"][hover="true"] .enchantment-link:hover,tw-passage [style*=" color"][hover="true"] .enchantment-link:hover{color:inherit}tw-link:hover,.enchantment-link:hover{color:#00bfff}tw-link:active,.enchantment-link:active{color:#DD4B39}.visited{color:#6941e1}tw-passage [style^="color"] .visited:not(:hover),tw-passage [style*=" color"] .visited:not(:hover),tw-passage [style^="color"][hover="true"] .visited:hover,tw-passage [style*=" color"][hover="true"] .visited:hover{color:inherit}.visited:hover{color:#E3E}tw-broken-link{color:#993333;border-bottom:2px solid #993333;cursor:not-allowed}tw-passage [style^="color"] tw-broken-link:not(:hover),tw-passage [style*=" color"] tw-broken-link:not(:hover),tw-passage [style^="color"][hover="true"] tw-broken-link:hover,tw-passage [style*=" color"][hover="true"] tw-broken-link:hover{color:inherit}.enchantment-mouseover{border-bottom:2px dashed #999}.enchantment-mouseout{border:rgba(64,149,191,0.6) 1px solid}.enchantment-mouseout:hover{background-color:rgba(175,197,207,0.75);border:transparent 1px solid;border-radius:0.2em}.enchantment-clickblock{width:100%;height:100%;display:block}.enchantment-clickblock>:not(tw-enchantment)::after{content:"";width:100%;height:100%;top:0;left:0;display:block;box-sizing:border-box;position:absolute;pointer-events:none;color:rgba(65,105,225,0.5);transition:color 0.2s ease-in-out}.enchantment-clickblock>:not(tw-enchantment):hover::after{color:rgba(0,191,255,0.5)}.enchantment-clickblock>:not(tw-enchantment):active::after{color:rgba(222,78,59,0.5)}.enchantment-clickblock>:not(tw-enchantment)::after{box-shadow:inset 0 0 0 0.5vmax}.enchantment-clickblock>tw-passage::after,.enchantment-clickblock>tw-sidebar::after{box-shadow:0 0 0 0.5vmax}.enchantment-mouseoverblock>:not(tw-enchantment)::after{content:"";width:100%;height:100%;top:0;left:0;display:block;box-sizing:border-box;position:absolute;pointer-events:none;border:2px dashed #999}.enchantment-mouseoutblock>:not(tw-enchantment)::after{content:"";width:100%;height:100%;top:0;left:0;display:block;box-sizing:border-box;position:absolute;pointer-events:none;border:rgba(64,149,191,0.6) 2px solid}.enchantment-mouseoutblock:hover>:not(tw-enchantment)::after{content:"";width:100%;height:100%;top:0;left:0;display:block;box-sizing:border-box;position:absolute;pointer-events:none;background-color:rgba(175,197,207,0.75);border:transparent 2px solid;border-radius:0.2em}tw-link.enchantment-button,.enchantment-link.enchantment-button,.enchantment-button:not(.enchantment-link) tw-link,.enchantment-button:not(.enchantment-link) .enchantment-link{border-radius:16px;border-style:solid;border-width:2px;text-align:center;padding:0px 8px;display:block}tw-dialog-links{padding-top:1.5em}tw-dialog-links tw-link{border-radius:16px;border-style:solid;border-width:2px;text-align:center;padding:0px 8px;display:block;display:inline-block}html{margin:0;height:100%;overflow-x:hidden}*,:before,:after{position:relative;box-sizing:inherit}body{margin:0;height:100%}tw-storydata{display:none}tw-story{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;font:100% Georgia, serif;box-sizing:border-box;width:100%;min-height:100%;font-size:1.5em;line-height:1.5em;padding:5% 5%;overflow:hidden;background-color:#000;color:#fff}tw-story [style*=content-box] *{box-sizing:border-box}@media (min-width: 576px){tw-story{padding:5% 20%}}tw-story tw-consecutive-br{display:block;height:1.6ex;visibility:hidden}tw-story select{background-color:transparent;font:inherit;border-style:solid;padding:2px}tw-story select:not([disabled]){color:inherit}tw-story textarea{resize:none;background-color:transparent;font:inherit;color:inherit;border-style:none;padding:2px}tw-story input[type=checkbox]{transform:scale(1.5);margin:0 0.5em}tw-story tw-noscript{animation:appear 0.8s}tw-passage{display:block}tw-sidebar{text-align:center;display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between}@media (min-width: 576px){tw-sidebar{left:-5em;width:3em;position:absolute;-ms-flex-direction:column;flex-direction:column}}tw-icon{display:inline-block;margin:0.5em 0;font-size:66px;font-family:"Verdana",sans-serif}tw-icon[alt]{opacity:0.2}tw-icon[alt]:hover{opacity:0.4}tw-icon[data-label]::after{font-weight:bold;content:attr(data-label);font-size:20px;bottom:-20px;left:-50%;white-space:nowrap}tw-meter{display:block}tw-hook:empty,tw-expression:empty{display:none}tw-error{display:inline-block;border-radius:0.2em;padding:0.2em;font-size:1rem;cursor:help;white-space:pre-wrap}tw-error.error{background-color:rgba(223,58,190,0.6);color:#fff}tw-error.warning{background-color:rgba(223,140,58,0.6);color:#fff;display:none}.debug-mode tw-error.warning{display:inline}tw-error-explanation{display:block;font-size:0.8rem;line-height:1rem}tw-open-button,tw-folddown{cursor:pointer;line-height:0em;border-radius:1px;border:1px solid black;font-size:0.8rem;margin:0 0.4rem;padding:2px;white-space:pre}tw-folddown::after{content:"\25b6"}tw-folddown.open::after{content:"\25bc"}tw-open-button::after{content:"Open"}tw-notifier{border-radius:0.2em;padding:0.2em;font-size:1rem;background-color:rgba(223,182,58,0.4);display:none}.debug-mode tw-notifier{display:inline}tw-notifier::before{content:attr(message)}tw-colour{border:1px solid black;display:inline-block;width:1em;height:1em}h1{font-size:3em}h2{font-size:2.25em}h3{font-size:1.75em}h1,h2,h3,h4,h5,h6{line-height:1em;margin:0.3em 0 0.6em 0}pre{font-size:1rem;line-height:initial}small{font-size:70%}big{font-size:120%}mark{color:rgba(0,0,0,0.6);background-color:#ff9}ins{color:rgba(0,0,0,0.6);background-color:rgba(255,242,204,0.5);border-radius:0.5em;box-shadow:0em 0em 0.2em #ffe699;text-decoration:none}center{text-align:center;margin:0 auto;width:60%}blink{text-decoration:none;animation:fade-in-out 1s steps(1, end) infinite alternate}tw-align{display:block}tw-columns{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:justify;justify-content:space-between}.transition-in{animation:appear 0ms step-start}.transition-out{animation:appear 0ms step-end}[data-t8n^=dissolve].transition-in,[data-t8n=fade].transition-in{animation:appear .8s}[data-t8n^=dissolve].transition-out,[data-t8n=fade].transition-out{animation:appear .8s reverse}[data-t8n^=shudder].transition-in{display:inline-block !important;animation:shudder-in .8s}[data-t8n^=shudder].transition-out{display:inline-block !important;animation:shudder-in .8s reverse}[data-t8n^=rumble].transition-in{display:inline-block !important;animation:rumble-in .8s}[data-t8n^=rumble].transition-out{display:inline-block !important;animation:rumble-in .8s reverse}[data-t8n^=pulse].transition-in{animation:pulse .8s;display:inline-block !important}[data-t8n^=pulse].transition-out{animation:pulse .8s reverse;display:inline-block !important}[data-t8n^=zoom].transition-in{animation:zoom-in .8s;display:inline-block !important}[data-t8n^=zoom].transition-out{animation:zoom-in .8s reverse;display:inline-block !important}[data-t8n^=blur].transition-in{animation:blur .8s;display:inline-block !important}[data-t8n^=blur].transition-out{animation:blur .8s reverse;display:inline-block !important}[data-t8n^=slideleft].transition-in{animation:slide-left .8s;display:inline-block !important}[data-t8n^=slideleft].transition-out{animation:slide-right .8s reverse;display:inline-block !important}[data-t8n^=slideright].transition-in{animation:slide-right .8s;display:inline-block !important}[data-t8n^=slideright].transition-out{animation:slide-left .8s reverse;display:inline-block !important}[data-t8n^=slideup].transition-in{animation:slide-up .8s;display:inline-block !important}[data-t8n^=slideup].transition-out{animation:slide-down .8s reverse;display:inline-block !important}[data-t8n^=slidedown].transition-in{animation:slide-down .8s;display:inline-block !important}[data-t8n^=slidedown].transition-out{animation:slide-up .8s reverse;display:inline-block !important}[data-t8n^=fadeleft].transition-in{animation:fade-left .8s;display:inline-block !important}[data-t8n^=fadeleft].transition-out{animation:fade-right .8s reverse;display:inline-block !important}[data-t8n^=faderight].transition-in{animation:fade-right .8s;display:inline-block !important}[data-t8n^=faderight].transition-out{animation:fade-left .8s reverse;display:inline-block !important}[data-t8n^=fadeup].transition-in{animation:fade-up .8s;display:inline-block !important}[data-t8n^=fadeup].transition-out{animation:fade-down .8s reverse;display:inline-block !important}[data-t8n^=fadedown].transition-in{animation:fade-down .8s;display:inline-block !important}[data-t8n^=fadedown].transition-out{animation:fade-up .8s reverse;display:inline-block !important}[data-t8n^=flicker].transition-in{animation:flicker .8s}[data-t8n^=flicker].transition-out{animation:flicker .8s reverse}
 </style>
 </head>
 <body>
-<tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Beepcord Text Adventure.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Beepcord Text Adventure" startnode="9" creator="Twine" creator-version="2.3.12" ifid="844AD62D-6CA5-4859-A33E-02A23EB7F7D3" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+<tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Mayor Mystery.</tw-noscript></noscript></tw-story>
+<tw-storydata name="Mayor Mystery" startnode="9" creator="Twine" creator-version="2.3.12" ifid="844AD62D-6CA5-4859-A33E-02A23EB7F7D3" zoom="1" format="Harlowe" format-version="3.2.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Raleway:wght@400&display=swap');
 
@@ -108,6 +108,7 @@ The bus stops and no one gets off. One person walks onto the bus, and then start
 
 &lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1022,618" size="200,100">Jed woke up from his bed feeling (either:&quot;slightly dazed&quot;,&quot;ready for a new day&quot;,&quot;well rested&quot;,&quot;extraordinarily normal&quot;,&quot;quite giddy&quot;). He hopped out of bed and went on to get ready for the day. (either:&quot;As he was pouring himself a cup of coffee,&quot;,&quot;When he finally got out of the bathroom,&quot;,&quot;As he shuffled along in his living room,&quot;,&quot;While he was unfruitfuly looking for his left shoe,&quot;) Jed noticed the news story on his TV.
 \(set:$LOC to &quot;East Side&quot;)
+\(set:$MONEY to (random:110,130))
 
 &quot;Good morning Webster Groves,&quot; the reporter said. &quot;(either:&quot;I hate to kick off the day with some bad news, but beloved&quot;,&quot;Unfortunately we have some bad news. Beloved &quot;,&quot;I&#39;m here early today because I heard beloved &quot;) local burger place Burgerocity is being shut down. When asked why this was happening, the place&#39;s owner simply said that the reason was personal.&quot;
 
@@ -131,11 +132,17 @@ By Blue Cat and Green Guy
 \(set: $ENDINGS to (a:))
 \(set: $TestFinish to 0)
 \(set: $TestSkip to false)
+\(set: $visitsWaitingRoom to 0)
+\(set: $MAILBOX to &quot;empty&quot;)
+\(set: $visit5 to false)
+\(set: $visit6 to false)
 \]
 \(set: $testing to &quot;NA&quot;)
 \(set: $INV to (a:))
 \(set: $hat to &quot;no&quot;)
 \(set: $seenhat to false)
+\(set: $visitPlumber to false)
+\(set: $TOILETS to (a:))
 \
 \(if:$visitsJedsToilet is 8 or $visitsJedsToilet is 11)[(set: $visitsJedsToilet to 9)](else:)[(set: $visitsJedsToilet to 0)]
 \(set: $visitsCoffeeMaker to 0)
@@ -184,7 +191,7 @@ Hey, aren&#39;t you sick of this by now? You&#39;ve passed the same test multipl
 
 Be careful out there. Your &quot;trolling&quot; may lead to a lot of unwanted consequences. 
 
-[[Continue-&gt;START]]</tw-passagedata><tw-passagedata pid="13" name="Test3 Failed" tags="" position="1727,472" size="100,100">(unless: $ENDINGS contains &quot;TestFailure&quot;)[
+[[Continue-&gt;START]]</tw-passagedata><tw-passagedata pid="13" name="Test3 Failed" tags="" position="1727,472" size="200,100">(unless: $ENDINGS contains &quot;TestFailure&quot;)[
 \(if:$hint)[Are you kidding me? After all that time you spent thinking about, you got it wrong? Even with the hint I gave you?]
 \(else:)[Wow. just wow. There&#39;s absolute no way you just selected that.]
 
@@ -197,7 +204,7 @@ Yeah I got nothing. You win. Is that what you wanted? Congratulations, you beat 
 
 Well, I&#39;m a man of my word. It&#39;s been 30 seconds, here you go.
 
-[[Restart-&gt;Title Screen]]]]
+[[Restart-&gt;Waiting Room Entrance]]]]
 (unless: $ENDINGS contains &quot;TestFailure&quot;)[(set:$ENDINGS to it + (a:&quot;TestFailure&quot;))]]
 \(else:)[
 \Why? Why did you go through the trouble of failing all the tests again? Did you think something special was going to happen? You just want to waste my time again? I understand failing just one or two to see if something is different, but //all 3?// Well, you wasted even more of my time, so I&#39;ll waste even more of your time. One minute until you can restart.
@@ -205,12 +212,16 @@ Well, I&#39;m a man of my word. It&#39;s been 30 seconds, here you go.
 
 Alright, that was fun for you wasn&#39;t it? Don&#39;t come back here. I&#39;m serious.
 
-[[Restart-&gt;Title Screen]]]]]</tw-passagedata><tw-passagedata pid="14" name="Jed&#39;s Apartment" tags="" position="988,1856" size="100,200">You&#39;re currently inside your apartment. (either:&quot;Home, sweet home.&quot;,&quot;You know what they say, you can&#39;t investigate a town scandal without proper rest!&quot;,&quot;Wow, you should probably get around to cleaning sometime soon. I mean-&quot;,&quot;It looks especially normal today, almost twice as much as yesterday.&quot;,&quot;The best place to spend a &quot; + (weekday:) + &quot; morning.&quot;) Where would you like to go?
+[[Restart-&gt;Waiting Room Entrance]]]]]</tw-passagedata><tw-passagedata pid="14" name="Jed&#39;s Apartment" tags="" position="988,1856" size="100,200">You&#39;re currently inside your apartment. (either:&quot;Home, sweet home.&quot;,&quot;You know what they say, you can&#39;t investigate a town scandal without proper rest!&quot;,&quot;Wow, you should probably get around to cleaning sometime soon. I mean-&quot;,&quot;It looks especially normal today, almost twice as much as yesterday.&quot;,&quot;The best place to spend a &quot; + (weekday:) + &quot; morning.&quot;) Where would you like to go?
 
 [[Kitchenette-&gt;Jed&#39;s Kitchen]]
 [[Bedroom-&gt;Jed&#39;s Bedroom]]
 [[Bathroom-&gt;Jed&#39;s Bathroom]]
 [[Exit-&gt;The Apartment Complex]]
+
+
+
+
 
 [[Restart the Game (DEBUG)-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="15" name="Letter" tags="letter" position="1308,622" size="100,100">(font:&quot;Kaushan Script&quot;)[
 \###Dear Jed Winchester,
@@ -279,7 +290,7 @@ Jed turned around and left the train station without saying a word.
 
 &quot;Yup,&quot; Jed replies. &quot;Never leave home without it!&quot;
 
-&quot;Perfect!&quot; The ticket seller scans your pass and hands it back to you. &quot;Where&#39;d you want to go today?&quot;]
+&quot;Perfect! &quot;Where&#39;d you want to go today?&quot;]
 \(if:$visitsTrainStation &gt; 1)[
 \&quot;Hey Jed!&quot; the ticket seller greets. &quot;Welcome to the $LOC Train Station! Where&#39;d you want to go?&quot;]
 
@@ -291,7 +302,8 @@ Jed turned around and left the train station without saying a word.
 ]
 \(if:$LOC is &quot;East Side&quot;)[[[&quot;Nevermind&quot;-&gt;East Side of Town]]]
 \(if:$LOC is &quot;Town Square&quot;)[[[&quot;Nevermind&quot;-&gt;Town Square]]]
-\(if:$LOC is &quot;West Side&quot;)[[[&quot;Nevermind&quot;-&gt;West Side of Town]]]]</tw-passagedata><tw-passagedata pid="21" name="Bosco&#39;s Family Food Store" tags="" position="49,1563" size="100,200">[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="22" name="Jed&#39;s Bedroom" tags="" position="1151,2141" size="100,100">You are now in your bedroom. It&#39;s the room where you keep the bed. (if:$seenhat and $hat is &quot;no&quot;)[It&#39;s also where you keep your amazing hat that you never told me about but also don&#39;t even like.](unless:$INV contains &quot;train ticket&quot;)[
+\(if:$LOC is &quot;West Side&quot;)[[[&quot;Nevermind&quot;-&gt;West Side of Town]]]]</tw-passagedata><tw-passagedata pid="21" name="Bosco&#39;s Family Food Store" tags="" position="49,1563" size="100,200">[[Supermarket Ending (DEBUG)-&gt;Supermarket Ending]] 
+[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="22" name="Jed&#39;s Bedroom" tags="" position="1151,2141" size="100,100">You are now in your bedroom. It&#39;s the room where you keep the bed. (if:$seenhat and $hat is &quot;no&quot;)[It&#39;s also where you keep your amazing hat that you never told me about but also don&#39;t even like.](unless:$INV contains &quot;train ticket&quot;)[
 
 (if:visits is 1)[Oh! Entering the bedroom again reminded you that you haven&#39;t grabbed your train pass yet. This ticket allows you to ride the train without having to purchase a normal ticket! You keep it in the cabinet next your bed.]
 \(else:)[(if:$ENDINGS is (a:))[You still haven&#39;t grabbed that awesome train pass I was telling you about. It&#39;s in the cabinet!~](else:)[Jed! Don&#39;t forget your train pass! It&#39;s in the closet next to your bed!]]]
@@ -305,6 +317,7 @@ Jed turned around and left the train station without saying a word.
 \(if:$hat is &quot;yes&quot;)[
 [[Look At Mirror-&gt;Mirror]]]
 [[Exit-&gt;Jed&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="24" name="Flush Toilet" tags="" position="810,2287" size="100,100">(set:$visitsJedsToilet to it + 1)
+\(unless:$TOILETS contains &quot;JedsApartment&quot;)[(set:$TOILETS to it + (a:&quot;JedsApartment&quot;))]
 \(if:$visitsJedsToilet is 1)[
 \You flush the toilet.]
 \(if:$visitsJedsToilet is 2)[
@@ -391,6 +404,7 @@ Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I
 
 [[Your Apartment-&gt;Jed&#39;s Apartment]]
 [[Visit Rafael-&gt;Rafael&#39;s Apartment]] 
+[[Visit the Mailboxes-&gt;Mailboxes]]
 [[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="37" name="Rafael&#39;s Apartment" tags="" position="1351,1846" size="100,200">(set:$visitsRafael to it + 1)
 \You go over to Rafael&#39;s apartment and knock on the door. (if: $visitsRafael is 1)[You and Rafael are good friends, but you dont visit that often anymore.
 
@@ -403,7 +417,7 @@ Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I
 &quot;Hello..?&quot;]
 
 [[Burgerocity-&gt;Rafael Burgerocity]]
-[[&quot;Gotta go!&quot;-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="38" name="Rafael Burgerocity" tags="" position="1362,2144" size="100,100">You mention Burgerocity shutting down.
+[[&quot;Gotta go!&quot;-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="38" name="Rafael Burgerocity" tags="" position="1354,2143" size="100,100">You mention Burgerocity shutting down.
 
 &quot;Burgerocity? The burger place? That&#39;s a shame, it&#39;s basically the only fast food joint around for miles. Though it is very strange that it randomly shut down... Any idea what happened?&quot;
 
@@ -431,9 +445,9 @@ You rushed outside, waiting for the fog to clear up.
 The buildings around you are all on fire; some are completely destroyed. You cant hear anyone, only the sound of collapsing buildings.
 
 Jed was at a loss of words. Jed wondered what could have caused all of this. An entire string of events leading to catastrophe that he had no idea about. Of course, there was no way that Jed would&#39;ve known that all of this could have been prevented if he had just kept the letter.
-\(set:$ENDINGS to it + (a:&quot;neglect&quot;))
+\(unless:$ENDINGS contains &quot;Neglect&quot;)[(set:$ENDINGS to it + (a:&quot;Neglect&quot;))]
 
-[[Restart-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="41" name="Library" tags="" position="587,1561" size="100,200">[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="42" name="City Hall" tags="" position="2026,1565" size="100,200">(set:$visitsCityHall to it + 1)
+[[Restart-&gt;Waiting Room Entrance]]</tw-passagedata><tw-passagedata pid="41" name="Library" tags="" position="587,1561" size="100,200">[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="42" name="City Hall" tags="" position="2026,1565" size="100,200">(set:$visitsCityHall to it + 1)
 \(if: $visitsCityHall is 1)[
 \You enter the Webster Groves City Hall. It&#39;s a beautiful building. The room your standing in is nothing short of luxerious, with lots of decorations and a lot more open space. 
 
@@ -442,7 +456,18 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 \You&#39;re inside the City Hall. (if:$visitsSecretary is 0)[The secretary is still focused on her computer.](else:)[The secretary does a small wave to you.]]
 
 [[Talk to the Secretary-&gt;Talk to Secretary]]
-[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="43" name="Post Office" tags="" position="2372,1572" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="44" name="Hardware Store" tags="" position="2726,1568" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="45" name="Empty Building" tags="" position="3079,1563" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="46" name="Burgerocity" tags="" position="3783,1569" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="47" name="Barber Shop" tags="" position="4087,1565" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="48" name="Clothing Store" tags="" position="4433,1565" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="49" name="Dark Alleyway" tags="" position="4759,1565" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="50" name="About" tags="title" position="1661,45" size="100,100">=&gt;&lt;=
+[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="43" name="Post Office" tags="" position="2372,1572" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="44" name="Hardware Store" tags="" position="2726,1568" size="100,200">You&#39;re inside the Town Square Hardware Store. It feels strangely cold. 
+
+[[Purchase Items-&gt;Buy Hardware]]
+[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="45" name="Empty Building" tags="" position="3079,1563" size="100,200">[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="46" name="Burgerocity" tags="" position="3783,1569" size="100,200">&quot;Hey Jed,&quot; the clerk says. &quot;Here to buy some food before I shut down shop?&quot;
+
+[[Purchase Food-&gt;Burgerocity Counter]]
+[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="47" name="Barber Shop" tags="" position="4087,1565" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="48" name="Clothing Store" tags="" position="4433,1565" size="100,200">You&#39;re inside Tactical Bold, the most well-known clothing store in West Side. &quot;You need help with something?&quot; the clerk asks.
+
+[[Look At Clothes-&gt;Clothing Selection]]
+\(if:(history:) contains &quot;Talk to Secretary&quot; and not $visitPlumber and $INV does not contain &quot;plumber outfit&quot;)[
+[[&quot;I&#39;m actually going for a plumber/mechanic kind of look...&quot;-&gt;Plumber Shortcut]]]
+[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="49" name="Dark Alleyway" tags="" position="4759,1565" size="100,200">[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="50" name="About" tags="title" position="1661,45" size="100,100">=&gt;&lt;=
 Written and Developed by Blue Cat Productions and Green Guy.
 
 Illustrations by WizToad.
@@ -484,21 +509,42 @@ $traintext
 
 [[Continue-&gt;West Side of Town]]]]</tw-passagedata><tw-passagedata pid="58" name="Talk to Secretary" tags="" position="2030,1835" size="100,100">(set:$visitsSecretary to it + 1)
 \(if:$visitsSecretary is 1)[
+\(if:$INV does not contain &quot;plumber outfit&quot;)
 \You walk up to the secretary&#39;s desk. Your steps echo through the room, however she still stays focused. &quot;Hello?&quot; you say.
 
 &quot;Oh, hello!&quot; she responds, still looking at her computer. &quot;If you&#39;ll give me just one second, I&#39;ve just been a bit... busy. I&#39;ve been busy. Did you have an appoint...&quot; she stop speaking when she turns her head towards you. She then looks around the room to check if anyone else is around. &quot;So you got my letter,&quot; she says.
 
 (if:$INV contains &quot;letter&quot;)[&quot;Yes, I did.](else:)[&quot;Uh... yeah... I did...] What&#39;s going on? What are we going to do?&quot;
 
-&quot;The mayor communicates to th- these people in a secret room downstairs. However, that floor is on high security, meaining only certain people are allowed downstairs. Fortunately for us, that&#39;s also where the water lines are. That&#39;s why I&#39;ve scheduled a visit from the local plumber.&quot; She winks at you.
+&quot;Mayor Dixon communicates to th- these people in a secret room downstairs. However, that floor is on high security, meaining only certain people are allowed downstairs. Fortunately for us, that&#39;s also where the water lines are. That&#39;s why I&#39;ve scheduled a visit from the local plumber.&quot; She winks at you.
 
 [[&quot;Ah, gotcha!&quot;-&gt;Secretary Gotcha]]
 [[&quot;What do you mean?&quot;-&gt;Secretary Plan]]]
+\(else:)[
+\You walk up to the secretary&#39;s desk. Your steps echo through the room, however she still stays focused. &quot;Hello?&quot; you say.
+
+&quot;Oh, hello!&quot; she responds, still looking at her computer. &quot;If you&#39;ll give me just one second, I&#39;ve just been a bit... busy. I&#39;ve been busy. Did you have an appoint...&quot; she stop speaking when she turns her head towards you. &quot;Jed?&quot;
+
+&quot;Yup, that&#39;s me,&quot; you reply.
+
+She looks at you confused. She looks around the room to make sure no one is here. &quot;I&#39;m sorry, I just- you got my letter, right?&quot;
+
+&quot;Of course.(if:$INV does not contain &quot;letter&quot;)[..]&quot;
+
+&quot;Well, I&#39;m just surprised because my plan was that we&#39;re going to sneak into the basement by disguising you as a plumber. But it looks like you got the look. Well, once we go downstairs there&#39;s no going back. Do you have everything you need? You&#39;ll need some kind of blunt weapon.&quot;
+
+[[&quot;I&#39;m ready!&quot;-&gt;Going Downstairs]]
+[[&quot;Not yet...&quot;-&gt;City Hall]]]
 \(if:$visitsSecretary &gt; 1 and $INV does not contain &quot;plumber outfit&quot;)[
 \You walk up to the secretary&#39;s desk. &quot;Hey Jed,&quot; she greets, &quot;did you need something else?&quot;
 
 [[&quot;Can you tell me the plan again?&quot;-&gt;Secretary Plan]]
-[[&quot;Nope!&quot;-&gt;City Hall]]]</tw-passagedata><tw-passagedata pid="59" name="Secretary Gotcha" tags="" position="1955,1985" size="100,100">&quot;I knew you&#39;d catch on!&quot; the secretary exclaims. &quot;I&#39;ll refinance you after this is all done, whatever you need to pull this off. Thank you so much, Jed. Good luck!&quot;
+[[&quot;Nope!&quot;-&gt;City Hall]]]
+\(if:$visitsSecretary &gt; 1 and $INV contains &quot;plumber outfit&quot;)[
+\&quot;Hey, hey!&quot; the secretary jokes, &quot;lookin&#39; good! Are you ready to go? Do you have everything you need? Don&#39;t forget you&#39;ll need some kind of tool.&quot;
+
+[[&quot;I&#39;m ready!&quot;-&gt;Going Downstairs]]
+[[&quot;Not yet...&quot;-&gt;City Hall]]]</tw-passagedata><tw-passagedata pid="59" name="Secretary Gotcha" tags="" position="1955,1985" size="100,100">&quot;I knew you&#39;d catch on!&quot; the secretary exclaims. &quot;I&#39;ll refinance you after this is all done, whatever you need to pull this off. Thank you so much, Jed. Good luck!&quot;
 
 [[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="60" name="Secretary Plan" tags="" position="2105,1985" size="100,100">&quot;You&#39;ll be a plumber coming to check in on the water pipes in the basement of city hall,&quot; the secretary explains. &quot;Near here is a hardware store, there you can get a couple tools like a steel pipe wrench or a crowbar or whatever. There&#39;s a clothing store in West Side that should hopefully have something convincing that you can wear.&quot;
 
@@ -508,7 +554,267 @@ $traintext
 
 &quot;Whatever it costs, I&#39;ll refinance you once this is over. Good luck, Jed!&quot;
 
-[[Continue-&gt;City Hall]]</tw-passagedata></tw-storydata>
+[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="61" name="Waiting Room Entrance" tags="" position="2514,3408.5" size="200,200">(set:$visitsWaitingRoom to it + 1)
+\(font:&quot;Raleway&quot;)[
+\(if:$ENDINGS&#39;s last is &quot;Toilet&quot;)[
+\YOU DID IT!
+
+YOU GOT THE TOILET ENDING! I&#39;M SO PROUD OF YOU!
+
+Your execution was simply flawless. Of course, with an ending so perfect, he was initially upset that I would add such a thing to the game, but I&#39;m glad to see his feelings changed by the time you got to the last toilet.
+
+Well, as always, you&#39;re free to hang out until you&#39;re ready to go. You deserve it this time, buddy!(if:$ENDINGS&#39;s length is 5)[
+
+Oh, and looks like that was ending #5. Does that mean you win? Who knows. There&#39;s still plenty of stuff to do out there. Maybe there&#39;s even more endings? But I was so sure there were only 5 endings... 
+
+There&#39;s only one way to find out. You&#39;re gonna have to go back in there and try your hardest to get a new ending. Whatever it takes. This can&#39;t be it, can it? Prove me wrong, player!]]
+\(else:)[
+\(if:visits is 1)[
+\Congratulations! You beat the game!
+
+Well, you started the game, did some stuff, and then the game ended. Good enough, right? (if:$ENDINGS contains &quot;NormalRoute&quot;)[And hey, you saved the town from aliens or whatever, so I bet you&#39;re happy with that.] 
+
+So now you get to chill in my cool waiting room. Sit down, drink some coffee(if:$visitsCoffeeMaker &gt; 4)[ (I know you love your coffee)], just chill for a sec ya know? Then you can go back to the title screen whenever you want.]
+\(if:visits is 2)[
+\Welcome back! 
+
+(if:$ENDINGS&#39;s length is 2)[Well, how was that? You did something new this time! Did you enjoy it?](else:)[Don&#39;t know why you&#39;d want to do the same thing twice in a row but hey, you do you. As long you&#39;re having a good time we&#39;re all good.]
+
+As always you&#39;re welcome to chill out for a bit before you go back into the fray.]
+\(if:visits is 3)[
+\Psst... I have a secret for you... I think - I&#39;m like 95% sure on this - there are 5 endings in this game. I know, it doesn&#39;t seem like a lot but after looking around a bit that&#39;s all that I could find.
+
+That seems like an achievable number! I believe in you!
+
+But first, take a second to rest in the waiting room as always.]
+\(if:visits &gt; 3)[
+\(if:$ENDINGS&#39;s length &lt; 5)[
+\Welcome back!
+
+As you know, you&#39;re free to hang out here before you go back in. Only (print:5 - $ENDINGS&#39;s length) more to go!]
+\(if:$ENDINGS&#39;s length is 5 and not $visit5)[
+\You did it! You got the 5 endings!
+
+So... now what? 
+
+Did you win? Is this over? Surely this can&#39;t be it. There&#39;s still plenty of stuff to do out there. Maybe there&#39;s more endings? Oh, but I was so sure there were only 5 endings...
+
+There&#39;s only one way to find out. You&#39;re gonna have to go back in there and try your hardest to get a new ending. Whatever it takes. This can&#39;t be it, can it? Prove me wrong, player! 
+\(set:$visit5 to true)]
+\(if:$ENDINGS&#39;s length is 5 and $visit5)[
+\Hmm... looks like you&#39;ve already gotten that ending...
+
+Does that mean there really are only 5 endings? Am I wrong about being wrong? Is it wrong to want to be wrong?
+
+No! We can&#39;t give up hope! Surely there&#39;s another ending out there. Try something else! Oh, but be sure to rest first. Can&#39;t find new endings without proper relaxation!]
+\(if:$ENDINGS&#39;s length is 6 and not $visit6)[
+\YOU DID IT! ENDING NUMBER 6!
+
+See look, I even brought back the party popper. This is a truly momentous occasion.
+
+Are there even more endings? How many are there? How much game is there? I actually don&#39;t know! I guess we&#39;re going to be here for a while. Be sure to take a good amount of rest in the waiting room. You deserve it especially after that one.
+\(set:$visit6 to true]
+\(if:$visit6)[
+\Welcome back!
+
+I hope you&#39;re having fun. Discovering new things. Checking out the world. Webster Groves is a pretty wacky place isn&#39;t it?
+
+Feel free to rest in my waiting room for as long as you need!
+\(set:$visitsWaitingRoom to 1000)]]]]
+
+[[Continue-&gt;Waiting Room]]</tw-passagedata><tw-passagedata pid="62" name="Waiting Room" tags="" position="2569,3700.5" size="100,100">(font:&quot;Raleway&quot;)[
+\//Yeah uhhhh, I&#39;m still getting my table installed so... ~~wow this is awkward~~//
+
+Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitWaitingRoom &lt; 1000)[/5](if:$visitsWaitingRoom &gt; 999)[/???]]
+
+[[Restart-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="63" name="Mailboxes" tags="" position="1162,1857" size="100,100">There is currently nothing inside your mailbox. Check again tomorrow!
+
+[[Continue-&gt;The Apartment Complex]] </tw-passagedata><tw-passagedata pid="64" name="Clothing Selection" tags="" position="4432,1811" size="100,100">&quot;We have some of the best clothing in Webster Groves. Take your pick.&quot;
+
+Current funds: $$MONEY
+
+(if:$INV does not contain &quot;plumber outfit&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Navy Blue Button-Up - $15&quot;,&quot;Clothing Selection&quot;)[(set:$INV to it + (a:&quot;plumber outfit&quot;))(set:$MONEY to it - 15)]](else:)[(if:$INV contains &quot;plumber outfit&quot;)[Navy Blue Button-Up - Sold Out](else:)[[[Navy Blue Button-Up - $15-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;cape&quot; and $MONEY &gt;= 100)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Superhero Cape - $100&quot;,&quot;Clothing Selection&quot;)[(set:$INV to it + (a:&quot;cape&quot;))(set:$MONEY to it - 100)]](else:)[(if:$INV contains &quot;cape&quot;)[Superhero Cape - Sold Out](else:)[[[Superhero Cape - $100-&gt;Too Poor]]]]
+
+[[Return-&gt;Clothing Store]]</tw-passagedata><tw-passagedata pid="65" name="Plumber Shortcut" tags="" position="4433,1954" size="100,100">(set:$visitPlumber to true)
+\&quot;Hmmm,&quot; the clerk thinks. They look at you for a few seconds. &quot;Yes, I can see it... You&#39;ll be able to pull this off, and I know just what you need.&quot;
+
+The clerk goes back to the clothing selection and comes back with a navy blue button-up shirt. &quot;Sometimes simple is best. And this shirt will only cost you $15. What do you say?&quot;
+
+(if:$MONEY &lt; 15)[Well. Good job, Jed. This is one of the things we need to complete the story and you don&#39;t enough money. You&#39;re quite the frugal fella, aren&#39;t you?
+
+(link:&quot;\&quot;I don&#39;t have enough money.\&quot;&quot;)[&quot;You don&#39;t have enough?&quot; the clerk gasps. &quot;Oh well, that&#39;s a shame.&quot; They then turn around and walk away.
+
+[[Continue-&gt;Clothing Store]]]]
+\(else:)[
+\|option&gt;[
+\(link:&quot;\&quot;I&#39;ll take it!\&quot;&quot;)[(replace:?option)[
+\(set:$INV to it + (a:&quot;plumber outfit&quot;))(set:$MONEY to it - 15)
+\&quot;There you go! Glad I could help.&quot;
+
+[[Continue-&gt;Clothing Store]]]]
+[[&quot;No thanks.&quot;-&gt;Clothing Store]]]]</tw-passagedata><tw-passagedata pid="66" name="Buy Hardware" tags="" position="2730,1850" size="100,100">&quot;You need it, we got it.&quot; the clerk boasts.
+
+Current funds: $$MONEY
+
+(if:$INV does not contain &quot;wrench&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Steel Pipe Wrench - $20&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;wrench&quot;))(set:$MONEY to it - 20)]](else:)[(if:$INV contains &quot;wrench&quot;)[Steel Pipe Wrench - Sold Out](else:)[[[Steel Pipe Wrench - $20-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;hammer&quot; and $MONEY &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Hammer - $5&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;hammer&quot;))(set:$MONEY to it - 5)]](else:)[(if:$INV contains &quot;hammer&quot;)[Hammer - Sold Out](else:)[[[Hammer - $5-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;crowbar&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Crowbar - $20&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;crowbar&quot;))(set:$MONEY to it - 20)]](else:)[(if:$INV contains &quot;crowbar&quot;)[Crowbar - Sold Out](else:)[[[Crowbar - $20-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;wallpaper&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Wallpaper - $15&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;wallpaper&quot;))(set:$MONEY to it - 15)]](else:)[(if:$INV contains &quot;wallpaper&quot;)[Wallpaper - Sold Out](else:)[[[Wallpaper - $15-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;paint&quot; and $MONEY &gt;= 40)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Buckets of Paint - $40&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;paint&quot;))(set:$MONEY to it - 40)]](else:)[(if:$INV contains &quot;paint&quot;)[Buckets of Paint - Sold Out](else:)[[[Buckets of Paint - $40-&gt;Too Poor]]]]
+
+[[Exit-&gt;Hardware Store]] </tw-passagedata><tw-passagedata pid="67" name="Burgerocity Counter" tags="" position="3781,1821" size="100,100">Current funds: $$MONEY
+
+(if:$MONEY &gt;= 2)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Cheeseburger - $2&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;cheeseburger&quot;))(set:$MONEY to it - 2)]](else:)[[[Cheeseburger - $2-&gt;Too Poor]]]
+(if:$MONEY &gt;= 4)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Bifurcated Burger - $4&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;double burger&quot;))(set:$MONEY to it - 4)]](else:)[[[The Bifurcated Burger - $4-&gt;Too Poor]]]
+(if:$MONEY &gt;= 6)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Behemoth - $6&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;behemoth&quot;))(set:$MONEY to it - 7)]](else:)[[[The Behemoth - $6-&gt;Too Poor]]]
+(if:$MONEY &gt;= 9)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Burgerocity - $9&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burgerocity special&quot;))(set:$MONEY to it - 9)]](else:)[[[The Burgerocity - $9-&gt;Too Poor]]]
+(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Fries - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;fries&quot;))(set:$MONEY to it - 1)]](else:)[[[Fries - $1-&gt;Too Poor]]]
+(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Soda - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;soda&quot;))(set:$MONEY to it - 1)]](else:)[[[Soda - $1-&gt;Too Poor]]]
+
+
+[[Exit-&gt;Burgerocity]] </tw-passagedata><tw-passagedata pid="68" name="Going Downstairs" tags="" position="2032,2121" size="100,100">The secretary hands you two name tags: one has a fake name and fake plumbing business, and one labels you as a City Hall visitor. The secretary then gets up from her desk and gestures for you to follow her. You go through the two large double doors on the right side of the room.
+
+The doors lead into a long hallway with an elevator at the end. Throughout the hallway, there are about 5-6 security guards walking around. You start to feel a little uneasy, but you follow the secretary nonetheless.
+
+The two of you arrive at the elevator, and two security guards are standing beside it - one on each side. The guards look at you while you enter the elevator, but they don&#39;t say anything. The elevator doors close and you can feel a slight sense of relief. The secretary presses a button and the elevator starts to go downards.
+
+&quot;That was the easy part,&quot; the secretary explains. &quot;Once we get downstairs, there&#39;s a door tucked away behind the elevator. That&#39;s where we need to go.&quot;
+
+[[Continue-&gt;City Hall Basement]]</tw-passagedata><tw-passagedata pid="69" name="City Hall Basement" tags="" position="2029,2254" size="100,100">You&#39;ve arrived in the basement of City Hall. It&#39;s quite dark, but there are small dim lights spread around. Pipes run around the room in no partcular fashion.
+
+[[Elevator-&gt;City Hall Elevator]]
+[[Maintaince Room-&gt;City Hall Maintanence Room]]
+[[Secret Room-&gt;City Hall Secret Room]]</tw-passagedata><tw-passagedata pid="70" name="City Hall Elevator" tags="" position="2029,2398" size="100,100">You turn around to call for the elevator, but the secretary stops you.
+
+&quot;Jed, what are you doing?&quot; the secretary asks. &quot;When I said there&#39;s no going back, there&#39;s no going back. We can&#39;t give up now!&quot;
+
+[[Continue-&gt;City Hall Basement]]</tw-passagedata><tw-passagedata pid="71" name="City Hall Maintanence Room" tags="" position="1950,2527" size="100,100">You go into the maintaince room. The wall is full of buttons, levers, and blinking lights. You don&#39;t understand any of it. Strangely enough, the room also seems to function as a bathroom.
+
+[[Flush the Toilet-&gt;City Hall Toilet]]
+[[Exit-&gt;City Hall Basement]] </tw-passagedata><tw-passagedata pid="72" name="City Hall Secret Room" tags="" position="2034,2667" size="100,100">(if:$INV contains &quot;letter&quot;)[
+\You and the secretary walk around the elevator, and sure enough, you can just barely see a door behind it, but it&#39;s painted to match the color of the wall. You try to open it but it&#39;s locked.
+
+&quot;I found the key to this door last night,&quot; the secretary says, &quot;and I taped it to the back of the letter I sent you!&quot;
+
+You reach into your pocket and pull out the letter. Indeed, taped to the back, is a small silver key. You take it off and open up the door...
+
+[[Continue-&gt;City Hall Confrontation]]]
+\(else:)[
+\You and the secretary walk around the elevator, and sure enough, you can just barely see a door behind it, but it&#39;s painted to match the color of the wall. You try to open it but it&#39;s locked.
+
+&quot;I found the key to this door last night,&quot; the secretary says, &quot;and I taped it to the back of the letter I sent you!&quot;
+
+You know, the important letter that you got at the beginning of the game! The one that I told you that you shouldn&#39;t have thrown away!(if:$testing is &quot;FAIL2&quot;)[ I told you your actions would have consequences.] Let&#39;s see how you deal with this one, Jed.
+
+&quot;Well you see...&quot; you start to explain, &quot;I have a bad habit of uhh, throwing away mail after I read it, so I maybe sorta kinda threw away the letter after reading it and I also never noticed that there was a key behind it. Ha ha.&quot; 
+
+The secretary just stares at you. &quot;Okay then,&quot; she replies, &quot;let&#39;s just... uh... let&#39;s just go back upstairs. I guess.&quot;
+
+the two of you start to walk around towards the front of the elevator. But before you can press one of the buttons, the doors open up, revealing four security guards. They grab you in pairs and take you into the elevator.
+
+&quot;This is a restrited area. Only certified persons are allowed.&quot; They rip off your plumber nametag. &quot;We know about your little setup. You two are under arrest for fraud and tresspassing.&quot;
+
+[[Continue-&gt;Tresspassing Ending]]]</tw-passagedata><tw-passagedata pid="73" name="City Hall Toilet" tags="" position="2109,2523" size="100,100">(unless:$TOILETS contains &quot;CityHall&quot;)[
+\(set: $TOILETS to it + (a:&quot;CityHall&quot;))
+\(if:$visitsJedsToilet &gt; 3)[Jed, why do you keep doing this? What&#39;s your deal with toilets?](else:)[You flush the toilet.
+
+&quot;What are you doing Jed?&quot; the secretary whispers. &quot;You don&#39;t have to be a real plumber, but I appreciate the getting in character.&quot;]]
+\(else:)[
+\The toilet doesn&#39;t flush.
+
+&quot;Looks like we&#39;ll have to call a real plumber once this is over,&quot; the secretary quips.]
+
+[[Continue-&gt;City Hall Maintanence Room]] </tw-passagedata><tw-passagedata pid="74" name="Tresspassing Ending" tags="" position="1743,2672" size="200,100">(unless:$ENDINGS contains &quot;Tresspassing&quot;)[(set:$ENDINGS to it + (a:&quot;Tresspassing&quot;))]
+\Next thing you know, you&#39;re inside a holding cell. &quot;We&#39;ll be back to you in a couple hours,&quot; the guards tell you.
+
+A couple hours pass, and nothing happens.
+
+What feels like a day passes. Nothing.
+
+After what feels like an eternity, you hear a loud booming sound while you were asleep. You instantly wake up to find the walls of the police station destroyed. Was this freedom? A chance to go out into the world and get some food?
+
+However, you quickly realized the atmosphere was off. The sky was a dark red, and you noticed that many other buidlings had damage done to them as well. You couldn&#39;t shake the feeling that you could&#39;ve prevented this. (if: $INV does not contain &quot;letter&quot;)[Maybe now you see why you shouldn&#39;t have thrown away that letter.](else:)[Did the mayor have something to do with this? Perhaps you&#39;ll never know.]
+
+[[Restart-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="75" name="City Hall Confrontation" tags="" position="2031,2838" size="100,100">The mayor is sitting inside the room already waiting for you. &quot;Hello Jed.&quot;
+
+You turn around and security has already grabbed the secretary and pulled her away. The door then shuts, leaving you, the mayor, and a couple security guards alone in the room.
+
+On the back wall of the room is a giant TV screen with a big panel underneath it. You can&#39;t make out what most of it says, but you can clearly see a map of Webster Groves with a dot over Burgerocity.
+
+&quot;So,&quot; the mayor says, &quot;you heard about my little shutdown. You&#39;re upset that your favorite burger place is shutting down. I get that.&quot; He starts to walk towards you. &quot;But let me explain why. I met up with some people last night, Jed. People not of this earth. And they are going to give me great power. I just have to do a little something for them in return.&quot;
+
+&quot;What are you talking about?&quot; you interregate.
+
+&quot;They told me that long long ago, they left something behind, something very important to them. It got left right under that nasty burger shop over in West Side.&quot;
+
+&quot;You take that back!&quot;
+
+&quot;Unfortunately for you, I&#39;m not going to. They&#39;re going to tear that place down and dig. And keep on digging until they find what I need. And then... I&#39;ll be a god on Earth. And as for you, well, you&#39;ve got two options here. Option number 1: I arrest you for fraud and tresspassing. Option number 2: you join me, helping me get what we need, and then you can join me.&quot; 
+
+The mayor turns around and looks at the TV, down at the panel, then back to you. &quot;So, which is it? I assume this won&#39;t be a hard decision. 
+
+[[&quot;Go ahead and arrest me.&quot;-&gt;Arrest]]
+[[&quot;I&#39;ll join you.&quot;-&gt;Evil Ending]]
+[[&quot;I choose the third option... FIGHT!&quot;-&gt;Fight!]]</tw-passagedata><tw-passagedata pid="76" name="Arrest" tags="" position="1807,2841" size="100,100">Wait, what? You&#39;re arresting yourself? You&#39;d rather do that than fight him?
+
+&quot;Wait, what?&quot; the mayor says. &quot;You&#39;re arresting yourself? You&#39;d rather do that than join me?&quot;
+
+Jed, you do realize you actually had a third option, right? You saw that didn&#39;t you? It was the bottom option on the page. Maybe you didn&#39;t scroll down far enough? I&#39;m trying to give you the benefit of the doubt here. I just, I didn&#39;t think you&#39;d select this option.
+
+&quot;Very well then,&quot; the mayor continues, &quot;I won&#39;t try to push you. More power for me! //Guards!//&quot;
+
+The two guards grab you by your arms and drag you out of the room.
+
+[[Continue-&gt;Tresspassing Ending]] </tw-passagedata><tw-passagedata pid="77" name="Evil Ending" tags="" position="2241,2664" size="200,100">Jed... what have you done? 
+
+&quot;I knew you&#39;d come to your senses, Jed,&quot; the mayor says. 
+
+BLAH BLAH BLAH 
+
+[[Restart-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="78" name="Fight!" tags="" position="2251,2840" size="100,100">Alright, Jed. We&#39;re about to go into a - dare I say - //epic// fight scene. But first, we&#39;re going to need to choose a weapon! What do you choose?
+
+\(if:$INV contains &quot;crowbar&quot;)[
+(link-reveal-goto:&quot;Crowbar&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;crowbar&quot;)]]
+(link-reveal-goto:&quot;Good Ol&#39; Fisticuffs&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;fists&quot;)]
+\(if:$INV contains &quot;hammer&quot;)[
+(link-reveal-goto:&quot;Hammer&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;hammer&quot;)]]
+\(if:$INV contains &quot;wrench&quot;)[
+(link-reveal-goto:&quot;Steel Pipe Wrench&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;wrench&quot;)]]</tw-passagedata><tw-passagedata pid="79" name="The City Hall Fight" tags="" position="2252,2999.5" size="100,100">You pull out your $weapon and knock out the guard to your right. The mayor steps back, while the second guard jumps towards you. You hit them in the head and they fall face-first into the floor.
+
+&quot;I choose option 3!&quot; you yell.
+
+(if:$wepaon is &quot;hammer&quot;)[&quot;What are you going to do&quot; the mayor bellowed, &quot;hammer me to death? You&#39;re a few nails loose if you think you can beat me in combat.&quot;](if:$weapon is &quot;fists&quot;)[&quot;You may have knocked out my guards somehow,&quot; the mayor bellows, &quot;but you won&#39;t beat me //mano a mano//.&quot;](if:$weapon is &quot;crowbar&quot;)[&quot;Nice weapon there Jed,&quot; the mayor bellows, &quot;but I already opened up to you earlier. You&#39;ll find that won&#39;t help you against me.&quot;](if:$weapon is &quot;wrench&quot;)[&quot;Woah there Mr. Mario,&quot; the mayor bellows, &quot;the pipes are in the other room. That wrench won&#39;t help you in a fight against me.&quot;]
+
+&quot;That&#39;s fine,&quot; you retort, &quot;I don&#39;t need to fight you.&quot; You jump towards the TV past the mayor and smash your $weapon down on the panel as hard as you can. The screen glitches out, sparks begin to fly, and suddenly it bursts into flames, producing a large amount of smoke.
+
+While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guardslaying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.
+
+[[Continue-&gt;Normal Ending]] </tw-passagedata><tw-passagedata pid="80" name="Normal Ending" tags="" position="1905,3002.5" size="200,100">(unless:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$ENDINGS to it + (a:&quot;NormalRoute&quot;))]
+\When you exit City Hall, you notice a large gathering of people outside in the walkway. A commotion has begun due to the large amount of smoke pouring from the building.
+
+&quot;Is everything okay, Jed?&quot; a spectator asks you.
+
+You look at the secretary. &quot;The mayor is the reason why Burgerocity shut down,&quot; she yells. &quot;He&#39;s working with an independent business from outside of town and taking property away just for them. They bribed him, and he accepted their bribe.&quot;
+
+The crowd gasps, then murmurs amongst themselves. In almost perfect timing, the mayor runs out of the building. The crowd stares at him. &quot;That&#39;s... not true...&quot; he huffs.
+
+&quot;Oh really?&quot; a voice barks from the crowd. She steps forward. It&#39;s none other than Chairwoman Sandra Clifton of the County Board of Commissions! &quot;Well then, what happened, Mayor Dixon? Why is Burgerocity being shut down? And why are there construction plans beginning tonight?&quot;
+
+&quot;I- uh... well there&#39;s uh-&quot; the mayor stammers, &quot;the place failed a uh... health examination! So for the safety of the town, I uh.. had to shut it down immediately!&quot;
+
+The crowd is quiet. Everyone knows Burgerocity has a very high health rating; the owner always has his results posted on his door.
+
+&quot;Glen Dixon,&quot; states Chairwoman Sandra Clifton of the County Board of Commissions, &quot;I will see that your impeachment trial happens soon. And I&#39;m canceling those construction plans of yours.&quot;
+
+The fire department soon arrives, ushering everyone away. As you begin to walk towards the train station, the secretary catches you. &quot;Thank you so much Jed,&quot; she says. &quot;Not only for trusting me but for diving head in to fix the problem.(if:$visitsSecretary is 1)[ Still strange how you already came to my desk in uniform, though!] Tomorrow I&#39;ll talk to you about refinancing. Have a good night!&quot; She then walked off.
+
+Congratulations, Jed. Your work here is done.
+
+[[Restart-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="81" name="Supermarket Ending" tags="" position="59,1825.5" size="200,100">(unless:$ENDINGS contains &quot;Supermarket&quot;)[(set:$ENDINGS to it + (a:&quot;Supermarket&quot;))]
+\Congrats, you got ending! You did it.
+
+[[Restart-&gt;Waiting Room Entrance]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
