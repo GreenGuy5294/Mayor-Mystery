@@ -509,7 +509,7 @@ $traintext
 
 [[Continue-&gt;West Side of Town]]]]</tw-passagedata><tw-passagedata pid="58" name="Talk to Secretary" tags="" position="2030,1835" size="100,100">(set:$visitsSecretary to it + 1)
 \(if:$visitsSecretary is 1)[
-\(if:$INV does not contain &quot;plumber outfit&quot;)
+\(if:$INV does not contain &quot;plumber outfit&quot;)[
 \You walk up to the secretary&#39;s desk. Your steps echo through the room, however she still stays focused. &quot;Hello?&quot; you say.
 
 &quot;Oh, hello!&quot; she responds, still looking at her computer. &quot;If you&#39;ll give me just one second, I&#39;ve just been a bit... busy. I&#39;ve been busy. Did you have an appoint...&quot; she stop speaking when she turns her head towards you. She then looks around the room to check if anyone else is around. &quot;So you got my letter,&quot; she says.
@@ -534,7 +534,7 @@ She looks at you confused. She looks around the room to make sure no one is here
 &quot;Well, I&#39;m just surprised because my plan was that we&#39;re going to sneak into the basement by disguising you as a plumber. But it looks like you got the look. Well, once we go downstairs there&#39;s no going back. Do you have everything you need? You&#39;ll need some kind of blunt weapon.&quot;
 
 [[&quot;I&#39;m ready!&quot;-&gt;Going Downstairs]]
-[[&quot;Not yet...&quot;-&gt;City Hall]]]
+[[&quot;Not yet...&quot;-&gt;City Hall]]]]
 \(if:$visitsSecretary &gt; 1 and $INV does not contain &quot;plumber outfit&quot;)[
 \You walk up to the secretary&#39;s desk. &quot;Hey Jed,&quot; she greets, &quot;did you need something else?&quot;
 
@@ -554,7 +554,7 @@ She looks at you confused. She looks around the room to make sure no one is here
 
 &quot;Whatever it costs, I&#39;ll refinance you once this is over. Good luck, Jed!&quot;
 
-[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="61" name="Waiting Room Entrance" tags="" position="2514,3408.5" size="200,200">(set:$visitsWaitingRoom to it + 1)
+[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="61" name="Waiting Room Entrance" tags="" position="2514,3408" size="200,200">(set:$visitsWaitingRoom to it + 1)
 \(font:&quot;Raleway&quot;)[
 \(if:$ENDINGS&#39;s last is &quot;Toilet&quot;)[
 \YOU DID IT!
@@ -601,28 +601,28 @@ Did you win? Is this over? Surely this can&#39;t be it. There&#39;s still plenty
 
 There&#39;s only one way to find out. You&#39;re gonna have to go back in there and try your hardest to get a new ending. Whatever it takes. This can&#39;t be it, can it? Prove me wrong, player! 
 \(set:$visit5 to true)]
-\(if:$ENDINGS&#39;s length is 5 and $visit5)[
+\(else:)[(if:$ENDINGS&#39;s length is 5 and $visit5)[
 \Hmm... looks like you&#39;ve already gotten that ending...
 
 Does that mean there really are only 5 endings? Am I wrong about being wrong? Is it wrong to want to be wrong?
 
-No! We can&#39;t give up hope! Surely there&#39;s another ending out there. Try something else! Oh, but be sure to rest first. Can&#39;t find new endings without proper relaxation!]
+No! We can&#39;t give up hope! Surely there&#39;s another ending out there. Try something else! Oh, but be sure to rest first. Can&#39;t find new endings without proper relaxation!]]
 \(if:$ENDINGS&#39;s length is 6 and not $visit6)[
 \YOU DID IT! ENDING NUMBER 6!
 
 See look, I even brought back the party popper. This is a truly momentous occasion.
 
 Are there even more endings? How many are there? How much game is there? I actually don&#39;t know! I guess we&#39;re going to be here for a while. Be sure to take a good amount of rest in the waiting room. You deserve it especially after that one.
-\(set:$visit6 to true]
-\(if:$visit6)[
+\(set:$visit6 to true)]
+\(else:)[(if:$visit6)[
 \Welcome back!
 
 I hope you&#39;re having fun. Discovering new things. Checking out the world. Webster Groves is a pretty wacky place isn&#39;t it?
 
 Feel free to rest in my waiting room for as long as you need!
-\(set:$visitsWaitingRoom to 1000)]]]]
+\(set:$visitsWaitingRoom to 1000)]]]]]
 
-[[Continue-&gt;Waiting Room]]</tw-passagedata><tw-passagedata pid="62" name="Waiting Room" tags="" position="2569,3700.5" size="100,100">(font:&quot;Raleway&quot;)[
+[[Continue-&gt;Waiting Room]]</tw-passagedata><tw-passagedata pid="62" name="Waiting Room" tags="" position="2569,3700" size="100,100">(font:&quot;Raleway&quot;)[
 \//Yeah uhhhh, I&#39;m still getting my table installed so... ~~wow this is awkward~~//
 
 Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitWaitingRoom &lt; 1000)[/5](if:$visitsWaitingRoom &gt; 999)[/???]]
@@ -752,7 +752,7 @@ On the back wall of the room is a giant TV screen with a big panel underneath it
 
 &quot;Unfortunately for you, I&#39;m not going to. They&#39;re going to tear that place down and dig. And keep on digging until they find what I need. And then... I&#39;ll be a god on Earth. And as for you, well, you&#39;ve got two options here. Option number 1: I arrest you for fraud and tresspassing. Option number 2: you join me, helping me get what we need, and then you can join me.&quot; 
 
-The mayor turns around and looks at the TV, down at the panel, then back to you. &quot;So, which is it? I assume this won&#39;t be a hard decision. 
+The mayor turns around and looks at the TV, down at the panel, then back to you. &quot;So, which is it? I assume this won&#39;t be a hard decision.&quot;
 
 [[&quot;Go ahead and arrest me.&quot;-&gt;Arrest]]
 [[&quot;I&#39;ll join you.&quot;-&gt;Evil Ending]]
@@ -766,7 +766,8 @@ Jed, you do realize you actually had a third option, right? You saw that didn&#3
 
 The two guards grab you by your arms and drag you out of the room.
 
-[[Continue-&gt;Tresspassing Ending]] </tw-passagedata><tw-passagedata pid="77" name="Evil Ending" tags="" position="2241,2664" size="200,100">Jed... what have you done? 
+[[Continue-&gt;Tresspassing Ending]] </tw-passagedata><tw-passagedata pid="77" name="Evil Ending" tags="" position="2241,2664" size="200,100">(unless:$ENDINGS contains &quot;Evil&quot;)[(set:$ENDINGS to it + (a:&quot;Evil&quot;))]
+\Jed... what have you done? 
 
 &quot;I knew you&#39;d come to your senses, Jed,&quot; the mayor says. 
 
@@ -780,7 +781,7 @@ BLAH BLAH BLAH
 \(if:$INV contains &quot;hammer&quot;)[
 (link-reveal-goto:&quot;Hammer&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;hammer&quot;)]]
 \(if:$INV contains &quot;wrench&quot;)[
-(link-reveal-goto:&quot;Steel Pipe Wrench&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;wrench&quot;)]]</tw-passagedata><tw-passagedata pid="79" name="The City Hall Fight" tags="" position="2252,2999.5" size="100,100">You pull out your $weapon and knock out the guard to your right. The mayor steps back, while the second guard jumps towards you. You hit them in the head and they fall face-first into the floor.
+(link-reveal-goto:&quot;Steel Pipe Wrench&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;wrench&quot;)]]</tw-passagedata><tw-passagedata pid="79" name="The City Hall Fight" tags="" position="2252,2999" size="100,100">You pull out your $weapon and knock out the guard to your right. The mayor steps back, while the second guard jumps towards you. You hit them in the head and they fall face-first into the floor.
 
 &quot;I choose option 3!&quot; you yell.
 
@@ -790,7 +791,7 @@ BLAH BLAH BLAH
 
 While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guardslaying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.
 
-[[Continue-&gt;Normal Ending]] </tw-passagedata><tw-passagedata pid="80" name="Normal Ending" tags="" position="1905,3002.5" size="200,100">(unless:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$ENDINGS to it + (a:&quot;NormalRoute&quot;))]
+[[Continue-&gt;Normal Ending]] </tw-passagedata><tw-passagedata pid="80" name="Normal Ending" tags="" position="1905,3002" size="200,100">(unless:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$ENDINGS to it + (a:&quot;NormalRoute&quot;))]
 \When you exit City Hall, you notice a large gathering of people outside in the walkway. A commotion has begun due to the large amount of smoke pouring from the building.
 
 &quot;Is everything okay, Jed?&quot; a spectator asks you.
@@ -811,7 +812,7 @@ The fire department soon arrives, ushering everyone away. As you begin to walk t
 
 Congratulations, Jed. Your work here is done.
 
-[[Restart-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="81" name="Supermarket Ending" tags="" position="59,1825.5" size="200,100">(unless:$ENDINGS contains &quot;Supermarket&quot;)[(set:$ENDINGS to it + (a:&quot;Supermarket&quot;))]
+[[Restart-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="81" name="Supermarket Ending" tags="" position="59,1825" size="200,100">(unless:$ENDINGS contains &quot;Supermarket&quot;)[(set:$ENDINGS to it + (a:&quot;Supermarket&quot;))]
 \Congrats, you got ending! You did it.
 
 [[Restart-&gt;Waiting Room Entrance]] </tw-passagedata></tw-storydata>
