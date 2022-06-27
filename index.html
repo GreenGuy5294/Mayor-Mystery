@@ -106,15 +106,32 @@ The bus stops and no one gets off. One person walks onto the bus, and then start
 (if:_option2 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option2 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option2 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option2 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option2 is 4)[[[_fail4-&gt;Test2 Failed]]]
 (if:_option3 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option3 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option3 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option3 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option3 is 4)[[[_fail4-&gt;Test2 Failed]]]
 
-&lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1022,618" size="200,100">Jed woke up from his bed feeling (either:&quot;slightly dazed&quot;,&quot;ready for a new day&quot;,&quot;well rested&quot;,&quot;extraordinarily normal&quot;,&quot;quite giddy&quot;). He hopped out of bed and went on to get ready for the day. (either:&quot;As he was pouring himself a cup of coffee,&quot;,&quot;When he finally got out of the bathroom,&quot;,&quot;As he shuffled along in his living room,&quot;,&quot;While he was unfruitfuly looking for his left shoe,&quot;) Jed noticed the news story on his TV.
+&lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1022,618" size="200,100">(set:$maxfun to 10)
+\(if:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$FUN to (random:1,$maxfun))]
 \(set:$LOC to &quot;East Side&quot;)
-\(set:$MONEY to (random:110,130))
+\(if:$FUN is 3)[(set:$MONEY to (random:490,510))](else:)[(set:$MONEY to (random:110,130))]
+\Jed woke up from his bed feeling (either:&quot;slightly dazed&quot;,&quot;ready for a new day&quot;,&quot;well rested&quot;,&quot;extraordinarily normal&quot;,&quot;quite giddy&quot;). He hopped out of bed and went on to get ready for the day. (either:&quot;As he was pouring himself a cup of coffee,&quot;,&quot;When he finally got out of the bathroom,&quot;,&quot;As he shuffled along in his living room,&quot;,&quot;While he was unfruitfuly looking for his left shoe,&quot;) Jed noticed the (if:$FUN is 1 or 6)[advertisement](else:)[news story] on his TV.
 
-&quot;Good morning Webster Groves,&quot; the reporter said. &quot;(either:&quot;I hate to kick off the day with some bad news, but beloved&quot;,&quot;Unfortunately we have some bad news. Beloved &quot;,&quot;I&#39;m here early today because I heard beloved &quot;) local burger place Burgerocity is being shut down. When asked why this was happening, the place&#39;s owner simply said that the reason was personal.&quot;
+(if:$FUN is 1)[&quot;Do you have computer issue? Do you have PC or computer who has issue? We can fix PC who has issue, or computer that has issue. Our product is good. AreWebsite.com. Because We™️&quot;
 
-This came as quite the surprise to Jed. He was just there last night, and everything seemed fine, why was it being shut down? He wanted to go investigate. Jed walked out of his apartment, and went to check his mail on the way out. When he did, he found a strange letter written to him from an unknown sender. 
+Jed currently does not own a computer, but he made a vow that when he did get his first computer, the first thing he will do is download AreWebsite software. After all, it is the most powerful software to deal with PC or computer issues! There&#39;s no reason to use anything else!
 
-[[Open the Letter-&gt;Letter]] </tw-passagedata><tw-passagedata pid="7" name="Test2 Passed" tags="" position="1216,466" size="100,100">There you go! See that wasn&#39;t so hard was it? Congratulations, Jed!
+After fanticizing about antiviruses, Jed walked out of his apartment and went to check his mail on the way. When he did, he found a strange letter written to him from an unkown sender.]
+\(else-if:$FUN is 6)[&quot;Do you feel insignificant? Do you want to help out others? Introducing the Be-Your-Own-Superhero Cape, a dazzling cape made from real superhero felt, that will make you //truly feel// like a superhero! It only costs $109! Get it now at your local clothing store!&quot;
+
+What mallarky. Of course, as the intro to the game clearly states, Jed is already well known as a sort of &quot;superhero.&quot; This cape is just a waste of money. I mean, come on, $109? Buying that would leave you with just $(print:$MONEY - 109).
+
+After fanticizing about antiviruses, Jed walked out of his apartment and went to check his mail on the way. When he did, he found a strange letter written to him from an unkown sender.]
+\(else-if:$FUN is 9)[&quot;Good morning Webster Groves,&quot; the reporter said. &quot;There has been yet another case of trouble happening in the west side of town. A small criminal group is roaming the area, mugging citizens. Until this group is found, be cautious walking alone in dark areas.&quot;
+
+Jed got quite the chill from watching this warning. He was just in the area last night. Fortunately, nothing happened, but he began to think about how lucky he was, and what would happen if something //did// happen to him last night.
+
+He then shrugged off the existential thoughts and walked out of his apartment, checking the mail on the way. When he did, he found a strange letter written to him from an unknown sender.]
+\(else:)[&quot;Good morning Webster Groves,&quot; the reporter said. &quot;(either:&quot;I hate to kick off the day with some bad news, but beloved&quot;,&quot;Unfortunately we have some bad news. Beloved &quot;,&quot;I&#39;m here early today because I heard beloved &quot;) local burger place Burgerocity is being shut down. When asked why this was happening, the place&#39;s owner simply said that the reason was personal.&quot;
+
+This came as quite the surprise to Jed. He was just there last night, and everything seemed fine, why was it being shut down? He wanted to go investigate. Jed walked out of his apartment, and went to check his mail on the way. When he did, he found a strange letter written to him from an unknown sender.]
+
+[[Open the Letter-&gt;Letter]]</tw-passagedata><tw-passagedata pid="7" name="Test2 Passed" tags="" position="1216,466" size="100,100">There you go! See that wasn&#39;t so hard was it? Congratulations, Jed!
 
 Well, I think it&#39;s time I send you out into the real world now, hm? There&#39;s no resets to help you out while you&#39;re out here, so you&#39;ll really have to think things through.
 
@@ -136,6 +153,7 @@ By Blue Cat and Green Guy
 \(set: $MAILBOX to &quot;empty&quot;)
 \(set: $visit5 to false)
 \(set: $visit6 to false)
+\(set: $FUN to 0)
 \]
 \(set: $testing to &quot;NA&quot;)
 \(set: $INV to (a:))
@@ -172,7 +190,8 @@ Hmmm, it looks like I&#39;ve made this too hard for you. Well here&#39;s a hint:
 \(set:$hint to true)]]
 
 [[Yes-&gt;Test3 Passed]]
-[[No-&gt;Test3 Failed]]</tw-passagedata><tw-passagedata pid="11" name="More Tests?" tags="" position="834,192" size="100,100">Let&#39;s begin, shall we?
+[[No-&gt;Test3 Failed]]</tw-passagedata><tw-passagedata pid="11" name="More Tests?" tags="" position="834,192" size="100,100">(set:$TestFinish to 4)
+\Let&#39;s begin, shall we?
 
 #You are Jed Winchester.
 You are a hero. A good guy. A town he-
@@ -223,14 +242,25 @@ Alright, that was fun for you wasn&#39;t it? Don&#39;t come back here. I&#39;m s
 
 
 
-[[Restart the Game (DEBUG)-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="15" name="Letter" tags="letter" position="1308,622" size="100,100">(font:&quot;Kaushan Script&quot;)[
-\###Dear Jed Winchester,
+[[Restart the Game (DEBUG)-&gt;Waiting Room Entrance]]</tw-passagedata><tw-passagedata pid="15" name="Letter" tags="letter" position="1308,622" size="100,100">(font:&quot;Kaushan Script&quot;)[
+\(if:$FUN is 4)[###Dear Webster Groves citizen,
+Something big is about to happen inside Webster Groves. Something that challenges our way of living. Something dangerous. Please, you must evacuate. Take a train and get out of town, ASAP.
+
+Sincerely,
+An anonymous insider]
+\(else-if:$FUN is 10)[###Dear Jed Winchester,
+
+Please meet me at the city hall.
+
+Thanks,
+An anonymous help-seeker,]
+\(else:)[###Dear Jed Winchester,
 There&#39;s something going on with the mayor. Last night, he made an agreement with some group that would give him &quot;great power.&quot; Based on people&#39;s behaviors recently I don&#39;t trust anyone inside city hall - that&#39;s why I am writing to you. I&#39;m trying to figure this out on my own, but maybe with your help we can get to the bottom of this.
 
 Please meet me at the city hall.
 
 Thanks,
-An anonymous help-seeker]
+An anonymous help-seeker]]
 \(set: $INV to it + (a:&quot;letter&quot;))
 
 Jed folded the letter and put it in his pocket.
@@ -625,7 +655,13 @@ Feel free to rest in my waiting room for as long as you need!
 [[Continue-&gt;Waiting Room]]</tw-passagedata><tw-passagedata pid="62" name="Waiting Room" tags="" position="2569,3700" size="100,100">(font:&quot;Raleway&quot;)[
 \//Yeah uhhhh, I&#39;m still getting my table installed so... ~~wow this is awkward~~//
 
-Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitWaitingRoom &lt; 1000)[/5](if:$visitsWaitingRoom &gt; 999)[/???]]
+Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsWaitingRoom &lt; 1000)[/5](if:$visitsWaitingRoom &gt; 999)[/???]]
+\(if:$TestSkip and $TestFinish &gt; 3)[
+
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Tests are Disabled&quot;,&quot;Waiting Room&quot;)[(set:$TestSkip to false)]]
+\(if:not $TestSkip and $TestFinish &gt; 3)[
+
+(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Tests are Enabled&quot;,&quot;Waiting Room&quot;)[(set:$TestSkip to true)]]
 
 [[Restart-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="63" name="Mailboxes" tags="" position="1162,1857" size="100,100">There is currently nothing inside your mailbox. Check again tomorrow!
 
@@ -669,6 +705,8 @@ Current funds: $$MONEY
 (if:$MONEY &gt;= 4)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Bifurcated Burger - $4&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;double burger&quot;))(set:$MONEY to it - 4)]](else:)[[[The Bifurcated Burger - $4-&gt;Too Poor]]]
 (if:$MONEY &gt;= 6)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Behemoth - $6&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;behemoth&quot;))(set:$MONEY to it - 7)]](else:)[[[The Behemoth - $6-&gt;Too Poor]]]
 (if:$MONEY &gt;= 9)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Burgerocity - $9&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burgerocity special&quot;))(set:$MONEY to it - 9)]](else:)[[[The Burgerocity - $9-&gt;Too Poor]]]
+\(if:$FUN is 2)[
+(if:$MONEY &gt;= 14)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Big Boy - $14&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;big boy&quot;))(set:$MONEY to it - 14)]](else:)[[[The Big Boy - $14-&gt;Too Poor]]]]
 (if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Fries - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;fries&quot;))(set:$MONEY to it - 1)]](else:)[[[Fries - $1-&gt;Too Poor]]]
 (if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Soda - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;soda&quot;))(set:$MONEY to it - 1)]](else:)[[[Soda - $1-&gt;Too Poor]]]
 
@@ -785,7 +823,7 @@ BLAH BLAH BLAH
 
 &quot;I choose option 3!&quot; you yell.
 
-(if:$wepaon is &quot;hammer&quot;)[&quot;What are you going to do&quot; the mayor bellowed, &quot;hammer me to death? You&#39;re a few nails loose if you think you can beat me in combat.&quot;](if:$weapon is &quot;fists&quot;)[&quot;You may have knocked out my guards somehow,&quot; the mayor bellows, &quot;but you won&#39;t beat me //mano a mano//.&quot;](if:$weapon is &quot;crowbar&quot;)[&quot;Nice weapon there Jed,&quot; the mayor bellows, &quot;but I already opened up to you earlier. You&#39;ll find that won&#39;t help you against me.&quot;](if:$weapon is &quot;wrench&quot;)[&quot;Woah there Mr. Mario,&quot; the mayor bellows, &quot;the pipes are in the other room. That wrench won&#39;t help you in a fight against me.&quot;]
+(if:$weapon is &quot;hammer&quot;)[&quot;What are you going to do&quot; the mayor bellowed, &quot;hammer me to death? You&#39;re a few nails loose if you think you can beat me in combat.&quot;](if:$weapon is &quot;fists&quot;)[&quot;You may have knocked out my guards somehow,&quot; the mayor bellows, &quot;but you won&#39;t beat me //mano a mano//.&quot;](if:$weapon is &quot;crowbar&quot;)[&quot;Nice weapon there Jed,&quot; the mayor bellows, &quot;but I already opened up to you earlier. You&#39;ll find that won&#39;t help you against me.&quot;](if:$weapon is &quot;wrench&quot;)[&quot;Woah there Mr. Mario,&quot; the mayor bellows, &quot;the pipes are in the other room. That wrench won&#39;t help you in a fight against me.&quot;]
 
 &quot;That&#39;s fine,&quot; you retort, &quot;I don&#39;t need to fight you.&quot; You jump towards the TV past the mayor and smash your $weapon down on the panel as hard as you can. The screen glitches out, sparks begin to fly, and suddenly it bursts into flames, producing a large amount of smoke.
 
