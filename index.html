@@ -330,7 +330,7 @@ Jed folded the letter and put it in his pocket.
 [[Continue-&gt;Jed&#39;s Bedroom]]</tw-passagedata><tw-passagedata pid="25" name="Grab Ticket" tags="" position="1387,2420" size="100,100">(if:$INV contains &quot;train pass new&quot;)[
 \This is where you keep important items, such as your train pass. However, you already bought a new one. Good job Jed, you wasted $(if:$FUN is 7)[40](else:)[80].]
 \(else:)[(unless:$INV contains &quot;train pass&quot;)[
-\You open your draw and you grab your train pass. Good thing you grabbed it Jed, this isn&#39;t cheap to replace!
+\You open your drawer and you grab your train pass. Good thing you grabbed it Jed, this isn&#39;t cheap to replace!
 \(set: $INV to it + (a:&quot;train pass&quot;))]
 \(else:)[
 \This is where you keep important items. There isn&#39;t anything else in here worth grabbing for this adventure.]]
@@ -397,7 +397,7 @@ Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I
 [[Visit Josefine-&gt;Josefine&#39;s Apartment]] 
 [[Visit the Mailboxes-&gt;Mailboxes]]
 [[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="36" name="Rafael&#39;s Apartment" tags="" position="1586,1851" size="100,200">(set:$visitsRafael to it + 1)
-\You go over to Rafael&#39;s apartment and knock on the door. (if: $visitsRafael is 1)[You and Rafael are good friends, but you dont visit that often anymore.
+\You go over to Rafael&#39;s apartment and knock on the door. (if: $visitsRafael is 1)[You and Rafael are good friends, but you don&#39;t visit that often anymore.
 
 &quot;Hello- oh! Hey Jed! Its been a while. How have things been?&quot;]
 \(if: $visitsRafael is 2)[
@@ -453,7 +453,7 @@ Jed was at a loss of words. Jed wondered what could have caused all of this. An 
 [[Bookshelves]]]
 [[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="41" name="City Hall" tags="" position="2418,1581" size="100,200">(set:$visitsCityHall to it + 1)
 \(if: $visitsCityHall is 1)[
-\You enter the Webster Groves City Hall. It&#39;s a beautiful building. The room your standing in is nothing short of luxerious, with lots of decorations and a lot more open space. 
+\You enter the Webster Groves City Hall. It&#39;s a beautiful building. The room you&#39;re standing in is nothing short of luxurious, with lots of decorations and a lot more open space. 
 
 Oddly, in what is a very open and spacious room, you can only see one other person. The mayor&#39;s secretary is sitting at her desk busy. She is completely enveloped in her computer screen, almost frantically typing and scrolling. She hasn&#39;t even noticed that you&#39;ve come in.]
 \(else:)[
@@ -682,9 +682,8 @@ Current funds: $$MONEY
 (if:$MONEY &gt;= 9)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Burgerocity - $9&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 9)]](else:)[[[The Burgerocity - $9-&gt;Too Poor]]]
 \(if:$FUN is 2)[
 (if:$MONEY &gt;= 14)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Big Boy - $14&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 14)]](else:)[[[The Big Boy - $14-&gt;Too Poor]]]]
-(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Fries - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 1)]](else:)[[[Fries - $1-&gt;Too Poor]]]
-(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Soda - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 1)]](else:)[[[Soda - $1-&gt;Too Poor]]]
-
+(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Fries - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;fries&quot;))(set:$MONEY to it - 1)]](else:)[[[Fries - $1-&gt;Too Poor]]]
+(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Soda - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;soda&quot;))(set:$MONEY to it - 1)]](else:)[[[Soda - $1-&gt;Too Poor]]]
 
 [[Exit-&gt;Burgerocity]] </tw-passagedata><tw-passagedata pid="62" name="Going Downstairs" tags="" position="2424,2137" size="100,100">The secretary hands you two name tags: one has a fake name and fake plumbing business, and one labels you as a City Hall visitor. The secretary then gets up from her desk and gestures for you to follow her. You go through the two large double doors on the right side of the room.
 
@@ -809,7 +808,7 @@ BLAH BLAH BLAH
 &quot;That&#39;s fine,&quot; you retort, &quot;I don&#39;t need to fight you.&quot; You jump towards the TV past the mayor and dump the soda onto the communication panel. The screen glitches out, sparks begin to fly, and suddenly it bursts into flames, producing a large amount of smoke.
 
 While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guardslaying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
-\(if:$weapon is &quot;superjed&quot;)[You put on your superhero cape and transform into SuperJed! You make a laser noise while you poke the eyes of the guard on the right. The mayor steps back, while the second guard jumps towards you. You make an explosion noise while punching his gut, which causes him to fall down to the floor.
+\(else-if:$weapon is &quot;superjed&quot;)[You put on your superhero cape and transform into SuperJed! You make a laser noise while you poke the eyes of the guard on the right. The mayor steps back, while the second guard jumps towards you. You make an explosion noise while punching his gut, which causes him to fall down to the floor.
 
 &quot;SuperJed chooses option 3!&quot;
 
@@ -818,7 +817,7 @@ While the mayor looks around for a fire extinguisher, you run out of the room, w
 &quot;That&#39;s fine,&quot; you retort, &quot;SuperJed doesn&#39;t need to fight you.&quot; You fly towards the TV past the mayor and smash down on the panel as hard as you can. The screen glitches out, sparks begin to fly, and suddenly it bursts into flames, producing a large amount of smoke.
 
 While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guardslaying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
-\(if:$weapon is &quot;lightsaber&quot;)[You pull out the strange device that you recieved in your mailbox this morning. Despite the fact that it didn&#39;t work earlier, you try again. You push the button, and then a beam of energy comes out of the device. The device is actually a lightsaber. 
+\(else-if:$weapon is &quot;lightsaber&quot;)[You pull out the strange device that you recieved in your mailbox this morning. Despite the fact that it didn&#39;t work earlier, you try again. You push the button, and then a beam of energy comes out of the device. The device is actually a lightsaber. 
 
 &quot;I choose option 3!&quot; you yell.
 
@@ -930,7 +929,7 @@ Congratulations, Jed. Your work here is done.
 &quot;Thank you, Josefine!&quot;
 
 [[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="80" name="Ted&#39;s Apartment" tags="" position="1737,1849" size="100,200">(set:$visitsTed to it + 1)
-\You go over to Ted&#39;s&#39;s apartment and knock on the door. (if: $visitsTed is 1)[You and Ted have talked a few times, but not often.
+\You go over to Ted&#39;s apartment and knock on the door. (if: $visitsTed is 1)[You and Ted have talked a few times, but not often.
 
 &quot;Hello, sir. How can help you?&quot;]
 \(if: $visitsTed is 2)[
@@ -953,7 +952,7 @@ Congratulations, Jed. Your work here is done.
 
 &quot;Yes it has,&quot; Jed says. (if:$josefineStore is &quot;known&quot;)[&quot;But I&#39;m here to check out some books finally!&quot;]
 
-&quot;(unless:$josefineStore is &quot;known&quot;)[Are you here to check something out? ]You do know that you can&#39;t check anything out with that late return on unresolved late return on your record?&quot;
+&quot;(unless:$josefineStore is &quot;known&quot;)[Are you here to check something out? ]You do know that you can&#39;t check anything out with that unresolved late return on your record?&quot;
 
 &quot;Oh yeah,&quot; Jed whispers to himself. He then asks the librarian, &quot;Can I just pay for the book?&quot;
 
@@ -1053,7 +1052,7 @@ Ted looks at you confused. &quot;Oh, that burger place. I&#39;ve never been.&quo
 
 [[&quot;Goodbye!&quot;-&gt;Ted&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="90" name="Ted Names" tags="" position="1744,2420" size="100,100">&quot;Have you ever thought about how our names rhyme?&quot; you ask Ted.
 
-Ted states at you. &quot;I don&#39;t know who you are. How do you know my name?&quot;
+Ted stares at you. &quot;I don&#39;t know who you are. How do you know my name?&quot;
 
 &quot;I don&#39;t remember how I remember stuff! That&#39;d be useless!&quot;
 
@@ -1093,7 +1092,7 @@ The owner leans forward. &quot;If anyone asks, you never heard this. I was told 
 
 &quot;I already talked to the person who was holding onto it for me,&quot; Josefine responds, &quot;so now we&#39;re just waiting for snail mail! Should arrive in your mailbox in a day or two.&quot;
 
-[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="95" name="Train Station" tags="" position="2883,524.5" size="200,200">(set:$visitsTrainStation to it + 1)
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="95" name="Train Station" tags="" position="2883,524" size="200,200">(set:$visitsTrainStation to it + 1)
 \(unless:$INV contains any of (a:&quot;train pass&quot;,&quot;train pass new&quot;,&quot;train ticket&quot;))[
 \(if:$visitsTrainStation is 1)[
 \&quot;(either:&quot;Good morning&quot;,&quot;Hey there&quot;,&quot;Howdy&quot;,&quot;Hello&quot;,&quot;Hey&quot;,&quot;How&#39;s it going&quot;,&quot;How ya doin&#39;&quot;,&quot;What&#39;s up&quot;) Jed!&quot; the ticket seller greets. &quot;Welcome to the $LOC Train Station! Do you have your pass?&quot;
