@@ -264,7 +264,7 @@ An anonymous help-seeker]]
 \(set: $INV to it + (a:&quot;letter&quot;))
 
 Jed folded the letter and put it in his pocket.
-\(if:$MAILBOX is not &quot;empty&quot;)[He then looked in his mailbox again and saw something else pushed further back.]
+\(if:$MAILBOX is not &quot;empty&quot;)[ He then looked in his mailbox again and saw something else pushed further back.]
 
 [[Return Home-&gt;The Apartment Complex]]
 [[Go to Town-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="16" name="East Side of Town" tags="" position="619,1218" size="200,200">You&#39;re in the East Side of Webster Groves. The weather feels very nice today!
@@ -468,8 +468,8 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 \(if:$josefineStore is &quot;wait&quot;)[This is where Josefine used to have her old bakery, Taste of Heaven. She sent you the deed, and now you&#39;re waiting to get it through the mail.]
 \(if:$josefineStore is &quot;has deed&quot;)[
 \(if:$INV contains &quot;wallpaper&quot; and &quot;paint&quot;)[
-\This is the empty store that given to you by Josefine. It&#39;s been your lifelong dream to open a shop called &quot;Jed&#39;s Jams,&quot; a shop where you sell jelly and vinyl records. You have the jelly and records stored at home, and now you have the real estate. You&#39;d be able to make the place look nice using the wallpaper and paint you bought at the hardware store. Jed, your dream, it&#39;s almost come true!]
-\(else:)[This is the empty store that given to you by Josefine. It&#39;s been your lifelong dream to open a shop called &quot;Jed&#39;s Jams,&quot; a shop where you sell jelly and vinyl records. You have the jelly and records stored at home, and now you have the real estate, so the only thing left to set up shop would be to clean up the place with some wallpaper and paint.]]
+\This is the empty store given to you by Josefine. It&#39;s been your lifelong dream to open a shop called &quot;Jed&#39;s Jams,&quot; a shop where you sell jelly and vinyl records. You have the jelly and records stored at home, and now you have the real estate. You&#39;d be able to make the place look nice using the wallpaper and paint you bought at the hardware store. Jed, your dream, it&#39;s almost come true!]
+\(else:)[This is the empty store given to you by Josefine. It&#39;s been your lifelong dream to open a shop called &quot;Jed&#39;s Jams,&quot; a shop where you sell jelly and vinyl records. You have the jelly and records stored at home, and now you have the real estate, so the only thing left to set up shop would be to clean up the place with some wallpaper and paint.]]
 \(if:$josefineStore is &quot;has deed&quot; and $INV contains &quot;wallpaper&quot; and $INV contains &quot;paint&quot;)[
 
 [[Open Jed&#39;s Jams-&gt;Open Jed&#39;s Jams]]
@@ -606,7 +606,8 @@ Does that mean there really are only 5 endings? Am I wrong about being wrong? Is
 
 No! We can&#39;t give up hope! Surely there&#39;s another ending out there. Try something else! Oh, but be sure to rest first. Can&#39;t find new endings without proper relaxation!]]
 \(if:$ENDINGS&#39;s length is 6 and not $visit6)[
-\YOU DID IT! ENDING NUMBER 6!
+\(live:0.1s)[(if:time&lt;2s)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;](else:)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;]]
+YOU DID IT! ENDING NUMBER 6!
 
 See look, I even brought back the party popper. This is a truly momentous occasion.
 
@@ -731,7 +732,7 @@ the two of you start to walk around towards the front of the elevator. But befor
 \(set: $TOILETS to it + (a:&quot;CityHall&quot;))
 \(if:$visitsJedsToilet &gt; 3)[Jed, why do you keep doing this? What&#39;s your deal with toilets?](else:)[You flush the toilet.
 
-&quot;What are you doing Jed?&quot; the secretary whispers. &quot;You don&#39;t have to be a real plumber, but I appreciate the getting in character.&quot;]]
+&quot;What are you doing Jed?&quot; the secretary whispers. &quot;You don&#39;t have to be a real plumber, but I appreciate the getting-in-character.&quot;]]
 \(else:)[
 \The toilet doesn&#39;t flush.
 
@@ -756,13 +757,13 @@ On the back wall of the room is a giant TV screen with a big panel underneath it
 
 &quot;So,&quot; the mayor says, &quot;you heard about my little shutdown. You&#39;re upset that your favorite burger place is shutting down. I get that.&quot; He starts to walk towards you. &quot;But let me explain why. I met up with some people last night, Jed. People not of this earth. And they are going to give me great power. I just have to do a little something for them in return.&quot;
 
-&quot;What are you talking about?&quot; you interregate.
+&quot;What are you talking about?&quot; you interrogate.
 
 &quot;They told me that long long ago, they left something behind, something very important to them. It got left right under that nasty burger shop over in West Side.&quot;
 
 &quot;You take that back!&quot;
 
-&quot;Unfortunately for you, I&#39;m not going to. They&#39;re going to tear that place down and dig. And keep on digging until they find what I need. And then... I&#39;ll be a god on Earth. And as for you, well, you&#39;ve got two options here. Option number 1: I arrest you for fraud and tresspassing. Option number 2: you join me, helping me get what we need, and then you can join me.&quot; 
+&quot;Unfortunately for you, I&#39;m not going to. They&#39;re going to tear that place down and dig. And keep on digging until they find what I need. And then... I&#39;ll be a god on Earth. And as for you, well, you&#39;ve got two options here. Option number 1: I arrest you for fraud and tresspassing. Option number 2: you join me, helping me get what we need, and then you we can share the power.&quot; 
 
 The mayor turns around and looks at the TV, down at the panel, then back to you. &quot;So, which is it? I assume this won&#39;t be a hard decision.&quot;
 
@@ -807,7 +808,7 @@ BLAH BLAH BLAH
 
 &quot;That&#39;s fine,&quot; you retort, &quot;I don&#39;t need to fight you.&quot; You jump towards the TV past the mayor and dump the soda onto the communication panel. The screen glitches out, sparks begin to fly, and suddenly it bursts into flames, producing a large amount of smoke.
 
-While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guardslaying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
+While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guards laying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
 \(else-if:$weapon is &quot;superjed&quot;)[You put on your superhero cape and transform into SuperJed! You make a laser noise while you poke the eyes of the guard on the right. The mayor steps back, while the second guard jumps towards you. You make an explosion noise while punching his gut, which causes him to fall down to the floor.
 
 &quot;SuperJed chooses option 3!&quot;
@@ -816,7 +817,7 @@ While the mayor looks around for a fire extinguisher, you run out of the room, w
 
 &quot;That&#39;s fine,&quot; you retort, &quot;SuperJed doesn&#39;t need to fight you.&quot; You fly towards the TV past the mayor and smash down on the panel as hard as you can. The screen glitches out, sparks begin to fly, and suddenly it bursts into flames, producing a large amount of smoke.
 
-While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guardslaying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
+While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guards laying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
 \(else-if:$weapon is &quot;lightsaber&quot;)[You pull out the strange device that you recieved in your mailbox this morning. Despite the fact that it didn&#39;t work earlier, you try again. You push the button, and then a beam of energy comes out of the device. The device is actually a lightsaber. 
 
 &quot;I choose option 3!&quot; you yell.
@@ -846,7 +847,7 @@ Suddenly, the mayor runs after you, but you and the secretary get in the elevato
 
 &quot;That&#39;s fine,&quot; you retort, &quot;I don&#39;t need to fight you.&quot; You jump towards the TV past the mayor and smash your $weapon down on the panel as hard as you can. The screen glitches out, sparks begin to fly, and suddenly it bursts into flames, producing a large amount of smoke.
 
-While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guardslaying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
+While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guards laying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
 
 [[Continue-&gt;Normal Ending]] </tw-passagedata><tw-passagedata pid="74" name="Normal Ending" tags="" position="2297,3018" size="200,100">(unless:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$ENDINGS to it + (a:&quot;NormalRoute&quot;))]
 \When you exit City Hall, you notice a large gathering of people outside in the walkway. A commotion has begun due to the large amount of smoke pouring from the building.
@@ -870,7 +871,7 @@ The crowd is quiet. Everyone knows Burgerocity has a very high health rating; th
 
 &quot;Glen Dixon,&quot; states Chairwoman Sandra Clifton of the County Board of Commissions, &quot;I will see that your impeachment trial happens soon. And I&#39;m canceling those construction plans of yours.&quot;
 
-The fire department soon arrives, ushering everyone away. As you begin to walk towards the train station, the secretary catches you. &quot;Thank you so much Jed,&quot; she says. &quot;Not only for trusting me but for diving head in to fix the problem.(if:$visitsSecretary is 1)[ Still strange how you already came to my desk in uniform, though!] Tomorrow I&#39;ll talk to you about refinancing. Have a good night!&quot; She then walked off.
+The fire department soon arrives, ushering everyone away. As you begin to walk towards the train station, the secretary catches you. &quot;Thank you so much Jed,&quot; she says. &quot;Not only for trusting me, but for diving head first to fix the problem.(if:$visitsSecretary is 1)[ Still strange how you already came to my desk in uniform, though!] Tomorrow I&#39;ll talk to you about refinancing. Have a good night!&quot; She then walked off.
 
 Congratulations, Jed. Your work here is done.
 
@@ -922,7 +923,7 @@ Congratulations, Jed. Your work here is done.
 
 &quot;Oh no,&quot; Josefine winces, &quot;Jed&#39;s Jams... Okay, don&#39;t get me wrong, I think that idea is really... cute, and I&#39;d be willing to help you with the real estate, but-&quot;
 
-&quot;Really?&quot; Jed interupts.
+&quot;Really?&quot; Jed interrupts.
 
 &quot;BUT,&quot; Josefine continues, &quot;I scratch your back, you scratch mine. I would like something in return. You have a library membership, right? If you could somehow get ahold of the entire //Adventures of Charles Howard// series, I&#39;ll see what I can do about the deed.&quot;
 
@@ -973,7 +974,7 @@ The librarian types into her computer, &quot;Sorry, Jed. That book is so old it&
 
 &quot;Do you have a recommendation on what book to read?&quot;
 
-&quot;In the finished game I will. But as of right now I only have placeholder text.&quot;]
+&quot;In the finished game I will. But as of right now, I only have placeholder text.&quot;]
 
 [[Continue-&gt;Library]] </tw-passagedata><tw-passagedata pid="82" name="Computer Lab" tags="" position="476,1979" size="100,100">(if:$FUN is 5)[You walk up to the library&#39;s computer lab. All of the computers are out of order, except for one. You walk up to it, and it looks like something is wrong with it. There are tons of error messages on the screen, all saying various sentences in broken English. You can just barely make out the browser behind all the windows, where the search bar says &quot;http://arewebsite.com&quot;] 
 \(else:)[You walk up to the library&#39;s computer lab. Each computer is turned off, with a piece of paper taped to them that reads &quot;OUT OF ORDER.&quot; (if:$FUN is 1)[What a shame. We could&#39;ve installed AreWebsite Antivirus onto all of them.]]
@@ -1067,7 +1068,7 @@ At long last, your life dream had been completed. Jed&#39;s Jams was open for bu
 
 No one&#39;s bought anything. No one&#39;s even came into the store. And it&#39;s not like you didn&#39;t advertise it! You told many people about it: your neighbors, random people in the supermarket, random people on the train, random people that happened to walk by your shop, and more.
 
-Was Jed&#39;s Jams never meant to be? Was it too good to be true? Or did Jed care about this idea so much that you never realized it was something no one wanted?
+Was Jed&#39;s Jams never meant to be? Was it too good to be true? Or did Jed care about this idea so much that he never realized it was something no one wanted?
 
 The incoming bills began to scare you. In about 25 days you&#39;d have to pay them all. What revenue would you pay them with? You walked out the store and looked at the front, wondering where you went wrong.
 
@@ -1088,7 +1089,7 @@ The owner leans forward. &quot;If anyone asks, you never heard this. I was told 
 
 &quot;Don&#39;t worry. I&#39;ll get to the bottom of this.&quot;
 
-[[Continue-&gt;Burgerocity]] </tw-passagedata><tw-passagedata pid="94" name="Josefine Deed" tags="" position="1898,2550" size="100,100">You mention the deed to the empty store.
+[[Continue-&gt;Burgerocity]] </tw-passagedata><tw-passagedata pid="94" name="Josefine Deed" tags="" position="1894,2555" size="100,100">You mention the deed to the empty store.
 
 &quot;I already talked to the person who was holding onto it for me,&quot; Josefine responds, &quot;so now we&#39;re just waiting for snail mail! Should arrive in your mailbox in a day or two.&quot;
 
