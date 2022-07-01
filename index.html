@@ -793,8 +793,8 @@ the two of you start to walk around towards the front of the elevator. But befor
 
 &quot;This is a restrited area. Only certified persons are allowed.&quot; They rip off your plumber nametag. &quot;We know about your little setup. You two are under arrest for fraud and tresspassing.&quot;
 
-[[Continue-&gt;Tresspassing Ending]]]</tw-passagedata><tw-passagedata pid="67" name="City Hall Toilet" tags="" position="2501,2539" size="100,100">(unless:$TOILETS contains &quot;CityHall&quot;)[
-\(set: $TOILETS to it + (a:&quot;CityHall&quot;))
+[[Continue-&gt;Tresspassing Ending]]]</tw-passagedata><tw-passagedata pid="67" name="City Hall Toilet" tags="" position="2501,2539" size="100,100">(unless:$toilets contains &quot;CityHall&quot;)[
+\(set: $toilets to it + (a:&quot;CityHall&quot;))
 \(if:$visitsJedsToilet &gt; 3)[Jed, why do you keep doing this? What&#39;s your deal with toilets?](else:)[You flush the toilet.
 
 &quot;What are you doing Jed?&quot; the secretary whispers. &quot;You don&#39;t have to be a real plumber, but I appreciate the getting-in-character.&quot;]]
@@ -1246,13 +1246,13 @@ Strapping into the seat, the Hyper Speedy Zoom-Zoom Wowie-Wow-Wow Zoom Fast Mach
 
 “Yeah, I think I’m done,” Starch uttered, ready to go home.]
 
-[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="99" name="Electronics Store" tags="" position="796,1559.5" size="100,200">You&#39;re inside the Gadget Factorie, an electronics store in East Side. The interior has a very sleek and modern design. &quot;How ya doin&#39; Jed?&quot; the clerk greets.
+[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="99" name="Electronics Store" tags="" position="796,1559" size="100,200">You&#39;re inside the Gadget Factorie, an electronics store in East Side. The interior has a very sleek and modern design. &quot;How ya doin&#39; Jed?&quot; the clerk greets.
 \(set:$previousPassage to (passage:)&#39;s name)
 
 [[Purchase Items-&gt;Buy Electronics]] 
 (if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
-\[[Exit-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="100" name="Buy Electronics" tags="" position="796,1829.5" size="100,100">&quot;We got the goods, provided you got the dough.&quot;
+\[[Exit-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="100" name="Buy Electronics" tags="" position="796,1829" size="100,100">&quot;We got the goods, provided you got the dough.&quot;
 
 Current funds: $$MONEY
 
@@ -1318,7 +1318,7 @@ Curent Funds: $$MONEY
 [[Kitchenette-&gt;BL Apartments]]
 [[Bedroom-&gt;BL Apartments]]
 [[Bathroom-&gt;BL Apartments]]
-[[Exit-&gt;BL Apartments]]</tw-passagedata><tw-passagedata pid="108" name="Ice Rink BL" tags="" position="6522,1240.5" size="100,100">&quot;Welcome to the Bloomhurst Lake Ice rink. Want to sake but the lake&#39;s not frozen over yet? You&#39;ve come to the right place!&quot;
+[[Exit-&gt;BL Apartments]]</tw-passagedata><tw-passagedata pid="108" name="Ice Rink BL" tags="" position="6522,1240" size="100,100">&quot;Welcome to the Bloomhurst Lake Ice rink. Want to sake but the lake&#39;s not frozen over yet? You&#39;ve come to the right place!&quot;
 \(set:$visitedBL to it + (a:&quot;ice rink&quot;))
 
 [[Enter the door on the left-&gt;Stanley Parable Reference]]
@@ -1341,7 +1341,7 @@ Oh, why am I asking you? You had trust in it from the very start. It was I who w
 There&#39;s only two more to go after this one. Godspeed, Jed!]
 \(if:$visitsMegaToilet is 9)[There is only more toilet left. One more toilet left in the game after this. Do you (cond:$ENDINGS contains any of (a:&quot;NormalRoute&quot;,&quot;Evil&quot;,&quot;Arrested&quot;),&quot;remember&quot;,&quot;know&quot;) where it is? I don&#39;t want to give away the answer, but to find it you&#39;re going to have to go underground.]
 
-[[Flush the Toilet-&gt;Mega-Toilet]] </tw-passagedata><tw-passagedata pid="111" name="Mega-Toilet" tags="" position="1379,3595.5" size="100,100">You flush the toilet.
+[[Flush the Toilet-&gt;Mega-Toilet]] </tw-passagedata><tw-passagedata pid="111" name="Mega-Toilet" tags="" position="1379,3595" size="100,100">You flush the toilet.
 \(if:$toilets does not contain $previousPassage)[(set:$toilets to it + (a:$previousPassage))]
 
 (link-goto:&quot;Continue&quot;,$previousPassage)</tw-passagedata><tw-passagedata pid="112" name="The Final Flush" tags="" position="2977,2680" size="100,100">You flush the toilet. And...
@@ -1354,7 +1354,7 @@ Well this is a big giant let down.
 
 Oh well, let&#39;s go defeat the mayor... or whatever...
 
-[[Continue-&gt;The Toilet Ending]] </tw-passagedata><tw-passagedata pid="113" name="The Toilet Ending" tags="" position="2934,2855.5" size="200,100">(unless:$ENDINGS contains &quot;Toilet&quot;)[(set:$ENDINGS to it + (a:&quot;Toilet&quot;))]
+[[Continue-&gt;The Toilet Ending]] </tw-passagedata><tw-passagedata pid="113" name="The Toilet Ending" tags="" position="2934,2855" size="200,100">(unless:$ENDINGS contains &quot;Toilet&quot;)[(set:$ENDINGS to it + (a:&quot;Toilet&quot;))]
 \(font:&quot;Raleway&quot;)[As the narrator started to mope, Jed and the secretary walked out of the maintenance room. Jed and the narrator are both upset, while the secretary is just confused. How would Jed explain to her what was happening? Would she ever be able to understand? Would the concept of a &quot;toilet ending&quot; ever make sense to her? Would the process of explaining the Toilet Ending give her an existential crisis?
 
 However, moments later, the room began to shake. &quot;This is it!&quot; the narrator cried. The toilet inside the maintenance room began to grow. Jed and the secretary looked back, and saw it begin to take up the entire room. They ran to the elevator and pushed the button to go up, but the door quickly opened and revealed four securiry guards. 
