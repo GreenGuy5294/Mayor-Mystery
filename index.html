@@ -122,7 +122,7 @@ The bus stops and no one gets off. One person walks onto the bus, and then start
 (if:_option2 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option2 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option2 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option2 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option2 is 4)[[[_fail4-&gt;Test2 Failed]]]
 (if:_option3 is &quot;correct&quot;)[[[&quot;Not at all!&quot;-&gt;Test2 Passed]]](if:_option3 is 1)[[[_fail1-&gt;Test2 Failed]]](if:_option3 is 2)[[[_fail2-&gt;Test2 Failed]]](if:_option3 is 3)[[[_fail3-&gt;Test2 Failed]]](if:_option3 is 4)[[[_fail4-&gt;Test2 Failed]]]
 
-&lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1022,618" size="200,100">(set:$maxfun to 12)
+&lt;!-- &quot;Wow. You&#39;re ugly. Please find another seat. I can&#39;t look at your face any longer, let alone a whole bus ride.&quot;, &quot;Yes, it&#39;s taken. It&#39;s taken by me. I am superior to everyone else in this town, so I deserver two seats on this bus.&quot;, &quot;Get lost, nerd. What&#39;s your name, nerd? I bet it&#39;s Nerd, because that&#39;s what your parents thought you were going to amount to in life. A big nerd.&quot;, &quot;Why would you ever think I would let you sit here? I don&#39;t even know who you are. No you can&#39;t sit here, weirdo.&quot; --&gt;</tw-passagedata><tw-passagedata pid="6" name="START" tags="" position="1022,618" size="200,100">(set:$maxfun to 13)
 \(if:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$FUN to (random:1,$maxfun))
 \(if:$FUN is $previousFun)[(set:$FUN to (random:1,$maxfun))]]
 \(set:$previousFun to $FUN)
@@ -269,6 +269,8 @@ Alright, that was fun for you wasn&#39;t it? Don&#39;t come back here. I&#39;m s
 [[Kitchenette-&gt;Jed&#39;s Kitchen]]
 [[Bedroom-&gt;Jed&#39;s Bedroom]]
 [[Bathroom-&gt;Jed&#39;s Bathroom]]
+\(if:$INV contains &quot;vr headset&quot;)[
+[[Setup VR Headset-&gt;Setup VR]]]
 \(if:$INV contains &quot;paint&quot;)[
 [[Paint the Walls-&gt;Paint Apartment]]]
 [[Exit-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="15" name="Letter" tags="letter" position="1308,622" size="100,100">(font:&quot;Kaushan Script&quot;)[
@@ -335,12 +337,12 @@ Jed folded the letter and put it in his pocket.
 [[Cabinet-&gt;Grab Ticket]] 
 [[Closet-&gt;Closet]]
 [[Bed-&gt;Sleep]] 
-(if: $INV does not contain any of (a:&quot;train pass&quot;,&quot;train pass new&quot;) and visits is 1)[[[Exit-&gt;Train Ticket Warning]]](else:)[[[Exit-&gt;Jed&#39;s Apartment]]]</tw-passagedata><tw-passagedata pid="22" name="Jed&#39;s Bathroom" tags="" position="1038,2145" size="100,100">You are in your bathroom. It&#39;s pretty cramped, but it fulfills the basic necessities of a bathroom. (if:$visitsJedsToilet is 8 or 11 and $hat is not &quot;yes&quot;)[//There is nothing to do here.//](else:)[There is nothing to do here.]
+(if: $INV does not contain any of (a:&quot;train pass&quot;,&quot;train pass new&quot;) and visits is 1)[[[Exit-&gt;Train Ticket Warning]]](else:)[[[Exit-&gt;Jed&#39;s Apartment]]]</tw-passagedata><tw-passagedata pid="22" name="Jed&#39;s Bathroom" tags="" position="1037,2140" size="100,100">You are in your bathroom. It&#39;s pretty cramped, but it fulfills the basic necessities of a bathroom. (if:$visitsJedsToilet is 8 or 11 and $hat is not &quot;yes&quot;)[//There is nothing to do here.//](else:)[There is nothing to do here.]
 
 (if:$visitsJedsToilet is 8 or 11)[[[Flush the Toilet]]](else:)[[[Flush the Toilet-&gt;Flush Toilet]]]
 \(if:$hat is &quot;yes&quot;)[
 [[Look At Mirror-&gt;Mirror]]]
-[[Exit-&gt;Jed&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="23" name="Flush Toilet" tags="" position="1038,2295" size="100,100">(set:$visitsJedsToilet to it + 1)
+[[Exit-&gt;Jed&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="23" name="Flush Toilet" tags="" position="1037,2290" size="100,100">(set:$visitsJedsToilet to it + 1)
 \(unless:$toilets contains &quot;JedsApartment&quot;)[(set:$toilets to it + (a:&quot;JedsApartment&quot;))]
 \(if:$visitsJedsToilet is 1)[
 \You flush the toilet.]
@@ -397,7 +399,7 @@ Jed folded the letter and put it in his pocket.
 [[Continue-&gt;Jed&#39;s Bedroom]]</tw-passagedata><tw-passagedata pid="28" name="Put On Hat" tags="" position="1389,2693" size="100,100">Yes.... yes... YES! Do you feel it Jed? The power of this amazing hat? If only you had a mirror to look into so you could see yourself. You look amazing. I&#39;m going to say it, this hat makes your handsomeness tenfold. 
 \(set:$hat to &quot;yes&quot;)
 
-[[Continue-&gt;Jed&#39;s Bedroom]]</tw-passagedata><tw-passagedata pid="29" name="Mirror" tags="" position="1044,2426" size="100,100">Jed, do you see how wonderful this hat is? How amazing, how beautiful, how-
+[[Continue-&gt;Jed&#39;s Bedroom]]</tw-passagedata><tw-passagedata pid="29" name="Mirror" tags="" position="1043,2421" size="100,100">Jed, do you see how wonderful this hat is? How amazing, how beautiful, how-
 
 Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I... I didn&#39;t know you felt that way about this hat. Why&#39;d you even keep it if you don&#39;t even like it, huh? Oh well, your loss. Not my fault you can&#39;t see its true magnificance. Now stop that dry heaving.
 
@@ -564,7 +566,7 @@ Jacob, Quirb, Theep, Thurm
 \Hello player. So this is a bit akward but... Twine doesn&#39;t exactly have a feature to close the tab for you. Trust me, I looked into it just for this joke. I kept the button here because I thought the menu looked nicer with 3 options. So if you want to quit you&#39;re going to have to put in some more effort! But hey, instead of leaving, maybe you could find some more endings!]]
 
 [[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="51" name="Train Ride" tags="" position="2926,800" size="100,100">(set:$traintext to (either:&quot;Welp, looks like we&#39;re here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh we stopped moving? I didn&#39;t even notice!&quot;,&quot;Finally, we&#39;re here! Was it just me or was that train ride unbearably long?&quot;,&quot;Soon after, the train came to a stop and pulled into the station.&quot;))
-\During the train ride, (either:&quot;Jed wondered if Burgerocity was selling the Big Boy today. The Big Boy is a special burger that the owner only sells on random days. On one hand, today is Burgerocity’s last day, so it would be a missed opportunity if the owner didn’t sell it. On the other hand, it had only been a few days since it was last sold, and it takes lots of material to make, so he probably does not have enough.&quot;,&quot;Jed looked out the train window for some birds. Jed had made it a habit to birdwatch while on the train. Strangely enough, Jed didn’t see any during his ride. The weather’s normal today, where are all the birds? Did someone scare them all away? Or some//thing//?&quot;,&quot;Jed thought about the events happening today. His favorite burger place being shut down, the letter he received in the mail, and the quest given to him. Jed loves to help people, and wanted to succeed in this regard, but the things happening today seem a bit much. Was this quest expected of him? What would happen if he never met up with the writer of the letter? When is it okay to let things take their own course?&quot;,&quot;Jed thought about his neighbor Rafael. He and Jed met when he first moved in the apartment complex, and they got along quite well. They have quite a few things in common, and have hung out a few times. However, their schedules rarely line up, so they don’t talk to each other as much as they would like.&quot;,&quot;Jed thought about his neighbor Ted. Ted is much older than Jed, and Ted had been living in the apartment complex way before Jed moved in. Despite the fact that they’ve been neighbors for a while, they have barely gotten to know each other. Ted has almost completely forgotten who Jed is, despite his numerous attempts to introduce himself. Maybe one day they shall become friends…&quot;,&quot;Jed thought about his neighbor Josefine. Jed and Josefine have known each other for years, but only just recently did Josefine move near Jed. She had been living with her parents for a few years but eventually wanted her own place. Jed convinced her to move in near him, and she did. She’s not new to Webster Groves, however, since she used to (cond:$josefineStore is ‘unknown’,’have a job’,’own a business’) here.&quot;)
+\During the train ride, (either:&quot;Jed wondered if Burgerocity was selling the Big Boy today. The Big Boy is a special burger that the owner only sells on random days. On one hand, today is Burgerocity’s last day, so it would be a missed opportunity if the owner didn’t sell it. On the other hand, it had only been a few days since it was last sold, and it takes lots of material to make, so he probably does not have enough.&quot;,&quot;Jed looked out the train window for some birds. Jed had made it a habit to birdwatch while on the train. Strangely enough, Jed didn’t see any during his ride. The weather’s normal today, where are all the birds? Did someone scare them all away? Or some//thing//?&quot;,&quot;Jed thought about the events happening today. His favorite burger place being shut down, the letter he received in the mail, and the quest given to him. Jed loves to help people, and wanted to succeed in this regard, but the things happening today seem a bit much. Was this quest expected of him? What would happen if he never met up with the writer of the letter? When is it okay to let things take their own course?&quot;,&quot;Jed thought about his neighbor Rafael. He and Jed met when he first moved in the apartment complex, and they got along quite well. They have quite a few things in common, and have hung out a few times. However, their schedules rarely line up, so they don’t talk to each other as much as they would like.&quot;,&quot;Jed thought about his neighbor Ted. Ted is much older than Jed, and Ted had been living in the apartment complex way before Jed moved in. Despite the fact that they’ve been neighbors for a while, they have barely gotten to know each other. Ted has almost completely forgotten who Jed is, despite his numerous attempts to introduce himself. Maybe one day they shall become friends…&quot;,&quot;Jed thought about his neighbor Josefine. Jed and Josefine have known each other for years, but only just recently did Josefine move near Jed. She had been living with her parents for a few years but eventually wanted her own place. Jed convinced her to move in near him, and she did. She’s not new to Webster Groves, however, since she used to (cond: $josefineStore is &#39;unknown&#39;,&#39;have a job&#39;,&#39;own a business&#39;) here.&quot;)
 \(live:1s)[(if:time &gt; 10s)[
 
 $traintext
@@ -1042,9 +1044,12 @@ The librarian types into her computer, &quot;Sorry, Jed. That book is so old it&
 &quot;In the finished game I will. But as of right now, I only have placeholder text.&quot;]
 
 [[Continue-&gt;Library]] </tw-passagedata><tw-passagedata pid="82" name="Computer Lab" tags="" position="476,1979" size="100,100">(if:$FUN is 5)[You walk up to the library&#39;s computer lab. All of the computers are out of order, except for one. You walk up to it, and it looks like something is wrong with it. There are tons of error messages on the screen, all saying various sentences in broken English. You can just barely make out the browser behind all the windows, where the search bar says &quot;http://arewebsite.com&quot;] 
+\(else-if: $FUN is 13)[You walk up to the library&#39;s computer lab. All of the computers are out of order. except for one. You can barely make out the text on its screen.]
 \(else:)[You walk up to the library&#39;s computer lab. Each computer is turned off, with a piece of paper taped to them that reads &quot;OUT OF ORDER.&quot; (if:$FUN is 1)[What a shame. We could&#39;ve installed AreWebsite Antivirus onto all of them.]]
 
-[[Continue-&gt;Library]]</tw-passagedata><tw-passagedata pid="83" name="Bookshelves" tags="" position="477,2133" size="100,100">You walk over to the library&#39;s bookshelves. The library has a very small selection, filling only about two and a half bookshelves worth.
+(if:$FUN is 13)[[[Look at Computer-&gt;Fun BBTA]]
+]
+\[[Continue-&gt;Library]]</tw-passagedata><tw-passagedata pid="83" name="Bookshelves" tags="" position="477,2133" size="100,100">You walk over to the library&#39;s bookshelves. The library has a very small selection, filling only about two and a half bookshelves worth.
 
 (if:$josefineStore is &quot;known&quot; and $INV does not contain &quot;book series&quot;)[//[[The Adventures of Charles Howard and the Formidable Fruitcake-&gt;Book Series]]//
 ]
@@ -1218,7 +1223,7 @@ Current funds: $$MONEY
 &quot;The trains that go in and out of town are only for business reasons,&quot; the ticket seller explains. &quot;If you want to get a ride out of town you&#39;ll need t- wait, what&#39;s this? Ok, it looks like there is one train going out of town. To a place called &#39;Bloomhurst Lake...&#39; Oddly enough, it doesn&#39;t look like any trains are coming back from this location. What do you think?&quot;
 
 [[&quot;I&#39;ll do it!&quot;-&gt;Train Ride Bloomhurst Lake]]
-(if:$LOC is &quot;East Side&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;East Side of Town&quot;)[(set:$justSoldTicket to false)]](if:$LOC is &quot;Town Square&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;Town Square&quot;)[(set:$justSoldTicket to false)](if:$LOC is &quot;West Side&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;West Side of Town&quot;)[(set:$justSoldTicket to false)]]]</tw-passagedata><tw-passagedata pid="97" name="Paint Apartment" tags="" position="1029,1944" size="100,100">(set:$visitsPaint to it + 1)
+(if:$LOC is &quot;East Side&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;East Side of Town&quot;)[(set:$justSoldTicket to false)]](if:$LOC is &quot;Town Square&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;Town Square&quot;)[(set:$justSoldTicket to false)](if:$LOC is &quot;West Side&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;West Side of Town&quot;)[(set:$justSoldTicket to false)]]]</tw-passagedata><tw-passagedata pid="97" name="Paint Apartment" tags="" position="1028,1939" size="100,100">(set:$visitsPaint to it + 1)
 \(set:_a2 to (rotated-to: where it is &quot;paint&quot;,...$INV))
 \(set:$INV to _a2&#39;s 2ndtolast)
 \(set:$wallColor to (a:&quot;vermilion&quot;,&quot;gamboge&quot;,&quot;glaucous&quot;,&quot;ginerline&quot;,&quot;smalt&quot;,&quot;coquelicot&quot;,&quot;eburnean&quot;,&quot;skobeloff&quot;,&quot;wenge&quot;,&quot;zaffre&quot;,&quot;puce&quot;,&quot;falu&quot;,&quot;incarnadine&quot;,&quot;pervenche&quot;,&quot;Green-Guy-green&quot;,&quot;Blue-Cat-blue&quot;,&quot;sang-de-boeuf&quot;,&quot;sinoper&quot;,&quot;watchet&quot;)&#39;s random)
@@ -1367,7 +1372,23 @@ The guards stare at Jed for a second, but then invite Jed and the secretary into
 
 A commotion has begin around city hall. People began gathering around, wondering what the noise was. After a minute or two, the toilet grew so large that it completely destroyed City Hall. Once there was nothing left, it stopped growing.]
 
-[[The End-&gt;Waiting Room Entrance]] </tw-passagedata></tw-storydata>
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="114" name="Fun BBTA" tags="" position="635,1979" size="100,100">You walk up to the computer and see a story written on the screen.
+
+&lt;blockquote&gt;//It stalks the countryside with ears that cannot hear...//
+
+Your body jolts upwards in an unfamiliar bed by the startling sound of crows mocking you in the distance. The frigid air streaks across your face, cooling the sweat from your fever dream. Your vision is hazy, perhaps from the abrupt wake-up call, but starts to slowly clear up. Looking past the dusty sheets, you find yourself in a surprisingly well-furnished room.
+
+Next to you is a nightstand with a crumbled, cryptic note written in seemingly incoherent gibberish; perhaps another language you don’t understand. Atop the note is a pouch of shillings held there by a small, strategically placed knife. On the opposite side of the room, is an open window with an unrealistically large crow sitting on the window frame, staring you dead in the eyes. It doesn’t blink, move, or appear to be breathing at all.
+
+You’re unsure of how long it had been sitting there for. For all you know, it could’ve been there for hours. It could’ve also just gotten here, given what woke you up. The window frame it sits upon has been royally fucked by deep claw marks as the crow grips onto the polished wood firmly—not only is it large, but incredibly strong as well.
+
+What do you do about the bird? Should you (color:#4169e1)[&#39;&#39;Talk to the Bird&#39;&#39;], (color:#4169e1)[&#39;&#39;Ignore the Bird&#39;&#39;] or (color:#4169e1)[&#39;&#39;Throw Knife at the Bird&#39;&#39;]?&lt;/blockquote&gt;
+You try to click the links, but it looks like the screen is frozen.
+
+[[Continue-&gt;Computer Lab]] </tw-passagedata><tw-passagedata pid="115" name="Setup VR" tags="" position="1048,2557" size="100,100">(set:$INV to it - (a:&quot;vr headset&quot;))
+\You set up your VR Headset inside your apartment, and you enter a virtual version of Webster Groves! Everything seems so realistic... I wonder what kind of schenanigans we can get up to in this fake VR world, Jed!
+
+[[Continue-&gt;Jed&#39;s Apartment]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
