@@ -532,9 +532,9 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 [[Buy Tokens]]
 [[Play Games-&gt;Arcade Games]]
 [[Spend Tickets]]
-\(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
+(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
-[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="41" name="Hardware Store" tags="" position="3118,1584" size="100,200">(unless:$banned contains &quot;hardware store&quot; and (($wearing is &quot;ski mask&quot; and $boxMask) or ($wearing is not &quot;ski mask&quot; and $boxMask is false)))[
+\[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="41" name="Hardware Store" tags="" position="3118,1584" size="100,200">(unless:$banned contains &quot;hardware store&quot; and (($wearing is &quot;ski mask&quot; and $boxMask) or ($wearing is not &quot;ski mask&quot; and $boxMask is false)))[
 \You&#39;re inside the Town Square Hardware Store. It feels strangely cold. 
 \(set:$previousPassage to (passage:)&#39;s name)
 
@@ -1390,7 +1390,7 @@ Oh no. The passage is broken. And I don&#39;t see a way to go back from here. Ar
 \(if:$visitsMegaToilet is 7)[Well Jed, I never thought I was going to say this, but I think I am... actually... invested in this ending. Is something going to happen? I don&#39;t know. I... I actually don&#39;t know! Oh, this is exciting! The //Toilet Ending// is exciting me, of all things. Okay Jed, hurry along! We only have 3 more toilets to go after this one.]
 \(if:$visitsMegaToilet is 8)[Do you think there&#39;s actually an ending to all this? Sure, it&#39;s called the Toilet //Ending//, but how do we know that it upholds that title? Is it just a trust thing we have to do? Do you have trust in the Toilet Ending, Jed?
 
-Oh, why am I asking you? You had trust in it from the very start. It was I who was unfaithfull. You&#39;ve pulled me along this amazing journey. And I truly mean journey, because our destination, while elusive and mystical, is belittled in comparison to the adventure we&#39;ve had together. The character growth. The toilet flushing. 
+Oh, why am I asking you? You had trust in it from the very start. It was I who was unfaithful. You&#39;ve pulled me along this amazing journey. And I truly mean journey, because our destination, while elusive and mystical, is belittled in comparison to the adventure we&#39;ve had together. The character growth. The toilet flushing. 
 
 There&#39;s only two more to go after this one. Godspeed, Jed!]
 \(if:$visitsMegaToilet is 9)[There is only more toilet left. One more toilet left in the game after this. Do you (cond:$ENDINGS contains any of (a:&quot;NormalRoute&quot;,&quot;Evil&quot;,&quot;Arrested&quot;),&quot;remember&quot;,&quot;know&quot;) where it is? I don&#39;t want to give away the answer, but to find it you&#39;re going to have to go underground.]
