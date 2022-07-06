@@ -126,9 +126,10 @@ The bus stops and no one gets off. One person walks onto the bus, and then start
 \(if:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$FUN to (random:1,$maxfun))
 \(if:$FUN is $previousFun)[(set:$FUN to (random:1,$maxfun))]]
 \(set:$previousFun to $FUN)
+\(if:$ENDINGS&#39;s length is 12 and $forcedletter is false)[(set:$forcedletter to true)(set:$FUN to 4)]
 \(set:$LOC to &quot;East Side&quot;)
 \(if:$FUN is 3)[(set:$MONEY to (random:490,510))](else:)[(set:$MONEY to (random:110,130))]
-\(if:$FUN is 8 and $MAILBOX is &quot;empty&quot;)[(set:$MAILBOX to &quot;lightsaber&quot;]
+\(if:$FUN is 8 and $MAILBOX is &quot;empty&quot;)[(set:$MAILBOX to &quot;lightsaber&quot;)]
 \Jed woke up from his bed feeling (either:&quot;slightly dazed&quot;,&quot;ready for a new day&quot;,&quot;well rested&quot;,&quot;extraordinarily normal&quot;,&quot;quite giddy&quot;). He hopped out of bed and went on to get ready for the day. (either:&quot;As he was pouring himself a cup of coffee,&quot;,&quot;When he finally got out of the bathroom,&quot;,&quot;As he shuffled along in his living room,&quot;,&quot;While he was unfruitfuly looking for his left shoe,&quot;) Jed noticed the (if:$FUN is 1 or 6)[advertisement](else:)[news story] on his TV.
 
 (if:$FUN is 1)[&quot;Do you have computer issue? Do you have PC or computer who has issue? We can fix PC who has issue, or computer that has issue. Our product is good. AreWebsite.com. Because We™️&quot;
@@ -162,7 +163,7 @@ I get it, though. You&#39;re just having some fun with me before we begin. A lit
 
 I&#39;ll make you a deal. One last chance to show me whether or not you want to play along. One more test. Let&#39;s go back to the beginning again:
 [[Go Back-&gt;The Beginning]]</tw-passagedata><tw-passagedata pid="9" name="Title Screen" tags="title" position="1093,41" size="200,100">===&gt;&lt;===
-#Mayor Mystery 
+&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/0yYRLZ7.png&quot;&gt;
 By Blue Cat and Green Guy
 \(if:visits is 1)[
 \(set: $ENDINGS to (a:))
@@ -178,12 +179,13 @@ By Blue Cat and Green Guy
 \(set: $bookReturned to false)
 \(set: $incomingMail to &quot;empty&quot;)
 \(set: $wallColor to &quot;grey&quot;)
+\(set: $CLOSET to (a:))
+\(set: $forcedletter to false)
+\(set: $tickets to 0)
 \]
 \(set: $toilets to (a:))
 \(set: $testing to &quot;NA&quot;)
 \(set: $INV to (a:))
-\(set: $hat to &quot;no&quot;)
-\(set: $seenhat to false)
 \(set: $visitPlumber to false)
 \(set: $justSoldTicket to false)
 \(set: $visitedBL to (a:))
@@ -191,6 +193,11 @@ By Blue Cat and Green Guy
 \(set: $toiletEnding to false)
 \(set: $joinGang to false)
 \(set: $banned to (a:))
+\(set: $wearing to &quot;none&quot;)
+\(set: $hatgone to false)
+\(set: $boxMask to false)
+\(set: $toasterMask to false)
+\(set: $tokens to 0)
 \
 \(if:$visitsJedsToilet is 8 or $visitsJedsToilet is 11)[(set: $visitsJedsToilet to 9)](else:)[(set: $visitsJedsToilet to 0)]
 \(set: $visitsCoffeeMaker to 0)
@@ -206,6 +213,7 @@ By Blue Cat and Green Guy
 \(set: $visitsBL to 0)
 \(set: $visitsMegaToilet to 0)
 \(set: $visitsGang to 0)
+\(set: $visitsTokens to 0)
 
 
 (if:$TestSkip)[[[Start-&gt;START]]]
@@ -313,9 +321,9 @@ Jed folded the letter and put it in his pocket.
 [[Train Station-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="17" name="Town Square" tags="" position="2886,1176" size="200,200">You&#39;re in the Webster Groves Town Square. The scenery looks absolutely beautiful.
 
 [[City Hall-&gt;City Hall]]
-[[Post Office-&gt;Post Office]]
 [[Hardware Store-&gt;Hardware Store]]
 [[Empty Store-&gt;Empty Store]]
+[[Arcade-&gt;Arcade]]
 [[Train Station-&gt;Train Station]]</tw-passagedata><tw-passagedata pid="18" name="West Side of Town" tags="" position="4729,1186" size="200,200">You&#39;re in the West Side of Webster Groves. For some reason the sky looks darker then the rest of the town.
 
 [[Burgerocity]]
@@ -325,22 +333,27 @@ Jed folded the letter and put it in his pocket.
 [[Train Station]] </tw-passagedata><tw-passagedata pid="19" name="Jed&#39;s Kitchen" tags="" position="1214,2144" size="100,100">You go to the kitchenette in your apartment. It&#39;s not a full kitchen but it gets the job done. You&#39;ve got plenty of counterspace to boot!
 
 [[Fridge-&gt;Fridge]]
+\(if:$INV contains &quot;cereal&quot;)[
+[[Eat Cereal-&gt;Explosion Ending]]]
 [[Coffee Maker-&gt;Coffee Maker]]
 [[Trash Can-&gt;Trash Can]]
-[[Exit-&gt;Jed&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="20" name="Bosco&#39;s Family Food Store" tags="" position="67,1564" size="100,200">You&#39;re inside Bosco&#39;s Family Food Store.
+[[Exit-&gt;Jed&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="20" name="Bosco&#39;s Family Food Store" tags="" position="67,1564" size="100,200">You&#39;re inside Bosco&#39;s Family Food Store. They are best known in Webster Groves for their pre-made meals, but you&#39;ve never had one yourself.
 \(set:$previousPassage to (passage:)&#39;s name)
 
-(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
+[[Purchase Items-&gt;Buy Food]]
+(if:$wearing is &quot;vest&quot;)[[[Employee Break Room-&gt;Bosco Break Room]]
 ]
-\[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="21" name="Jed&#39;s Bedroom" tags="" position="1379,2149" size="100,100">You are now in your bedroom. It&#39;s the room where you keep the bed. (if:$seenhat and $hat is &quot;no&quot;)[It&#39;s also where you keep your amazing hat that you never told me about but also don&#39;t even like.](unless:$INV contains any of (a:&quot;train pass&quot;,&quot;train pass new&quot;))[
+\(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
+]
+\[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="21" name="Jed&#39;s Bedroom" tags="" position="1379,2149" size="100,100">You are now in your bedroom. It&#39;s the room where you keep the bed. (unless:$INV contains any of (a:&quot;train pass&quot;,&quot;train pass new&quot;))[
 
 (if:visits is 1)[Oh! Entering the bedroom again reminded you that you haven&#39;t grabbed your train pass yet. This ticket allows you to ride the train without having to purchase a normal ticket! You keep it in the cabinet next your bed.]
-\(else:)[(if:$ENDINGS is (a:))[You still haven&#39;t grabbed that awesome train pass I was telling you about. It&#39;s in the cabinet!~](else:)[Jed! Don&#39;t forget your train pass! It&#39;s in the closet next to your bed!]]]
+\(else:)[(if:$ENDINGS is (a:))[You still haven&#39;t grabbed that awesome train pass I was telling you about. It&#39;s in the cabinet!~](else:)[Jed! Don&#39;t forget your train pass! It&#39;s in the cabinet next to your bed!]]]
 
 [[Cabinet-&gt;Grab Ticket]] 
 [[Closet-&gt;Closet]]
 [[Bed-&gt;Sleep]] 
-(if: $INV does not contain any of (a:&quot;train pass&quot;,&quot;train pass new&quot;) and visits is 1)[[[Exit-&gt;Train Ticket Warning]]](else:)[[[Exit-&gt;Jed&#39;s Apartment]]]</tw-passagedata><tw-passagedata pid="22" name="Jed&#39;s Bathroom" tags="" position="1037,2140" size="100,100">You are in your bathroom. It&#39;s pretty cramped, but it fulfills the basic necessities of a bathroom. (if:$visitsJedsToilet is 8 or 11 and $hat is not &quot;yes&quot;)[//There is nothing to do here.//](else:)[There is nothing to do here.]
+(if: $INV does not contain all of (a:&quot;train pass&quot;,&quot;train pass new&quot;) and visits is 1)[[[Exit-&gt;Train Ticket Warning]]](else:)[[[Exit-&gt;Jed&#39;s Apartment]]]</tw-passagedata><tw-passagedata pid="22" name="Jed&#39;s Bathroom" tags="" position="1037,2140" size="100,100">You are in your bathroom. It&#39;s pretty cramped, but it fulfills the basic necessities of a bathroom. (if:$visitsJedsToilet is 8 or 11 and $hat is not &quot;yes&quot;)[//There is nothing to do here.//](else:)[There is nothing to do here.]
 
 (if:$visitsJedsToilet is 8 or 11)[[[Flush the Toilet]]](else:)[[[Flush the Toilet-&gt;Flush Toilet]]]
 \(if:$hat is &quot;yes&quot;)[
@@ -380,47 +393,47 @@ Jed folded the letter and put it in his pocket.
 \(else:)[
 \This is where you keep important items. There isn&#39;t anything else in here worth grabbing for this adventure.]]
 
-[[Continue-&gt;Jed&#39;s Bedroom]]</tw-passagedata><tw-passagedata pid="26" name="Closet" tags="" position="1388,2549" size="100,100">(set:$visitsCloset to it + 1)
-\(if:$visitsCloset is 1)[
-\Jed, what are you doing here? You&#39;re already dressed. Wait what&#39;s this? Oh my. Oh goodness gracious it&#39;s... it&#39;s beautiful. That hat is the greatest hat I have ever seen. Jed, you must put on this hat. I&#39;m sure it will be very helpful in our story.]
-\(else:)[
-\(if:$hat is &quot;yes&quot;)[What are you doing back here? Oh no. Jed... please don&#39;t do what I think you&#39;re about to do. I don&#39;t think it&#39;s a good idea. Just hit exit!]
-\(if:$hat is &quot;no&quot;)[The hat. It&#39;s calling for you Jed. It&#39;s telling you to put it on, I can hear it. Don&#39;t ignore its cries, Jed. It needs you!]
-\(if:$hat is &quot;gone&quot;)[I can&#39;t belive you would get rid of such a wonderful hat. It wasn&#39;t that bad, really! Perhaps next time you will see how great this hat is... or was...]]
-\(set:$seenhat to true)
-\(if:$hat is &quot;yes&quot;)[
+[[Continue-&gt;Jed&#39;s Bedroom]]</tw-passagedata><tw-passagedata pid="26" name="Closet" tags="" position="1392,2552" size="100,100">What shall you wear today?
 
-[[Remove Hat-&gt;Remove Hat]]](if: $hat is &quot;no&quot;)[
+(if:$CLOSET contains &quot;3d glasses&quot;)[(if:$wearing is &quot;3d glasses&quot;)[&#39;&#39;3d Glasses - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;3D Glasses&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;3d glasses&quot;)]]
+]
+\(if:$CLOSET contains &quot;bomber jacket&quot;)[(if:$wearing is &quot;bomber jacket&quot;)[&#39;&#39;Bomber Jacket - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Bomber Jacket&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;bomber jacket&quot;)]]
+]
+\(if:$wearing is &quot;none&quot;)[&#39;&#39;Everyday Clothes - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Everyday Clothes&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;none&quot;)]]
+\(unless:$hatgone)[
+(if:$wearing is &quot;hat&quot;)[&#39;&#39;Flambouyant Hat - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Flambouyant Hat&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;hat&quot;)]]]
+\(if:$CLOSET contains &quot;hoodie&quot;)[
+(if:$wearing is &quot;hoodie&quot;)[&#39;&#39;Green Hoodie - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Green Hoodie&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;hoodie&quot;)]]]
+\(if:$CLOSET contains &quot;plumber outfit&quot;)[
+(if:$wearing is &quot;plumber outfit&quot;)[&#39;&#39;Navy Blue Button-Up - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Navy Blue Button-Up&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;plumber outfit&quot;)]]]
+\(if:$CLOSET contains &quot;vest&quot;)[
+(if:$wearing is &quot;vest&quot;)[&#39;&#39;Purple Vest - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Purple Vest&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;vest&quot;)]]]
+\(if:$CLOSET contains &quot;visor&quot;)[
+(if:$wearing is &quot;visor&quot;)[&#39;&#39;Rainbow Visor - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Rainbow Visor&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;visor&quot;)]]]
+\(if:$CLOSET contains &quot;ski mask&quot;)[
+(if:$wearing is &quot;ski mask&quot;)[&#39;&#39;Ski Mask - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Ski Mask&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;ski mask&quot;)]]]
+\(if:$CLOSET contains &quot;cape&quot;)[
+(if:$wearing is &quot;cape&quot;)[&#39;&#39;Superhero Cape - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Superhero Cape&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;cape&quot;)]]]
 
-[[Put On Hat-&gt;Put On Hat]]]
-\(if:$hat is &quot;gone&quot;)[
-
-[[Exit-&gt;Jed&#39;s Bedroom]]](else:)[
-[[Exit-&gt;Jed&#39;s Bedroom]]]</tw-passagedata><tw-passagedata pid="27" name="Remove Hat" tags="" position="1392,2837" size="100,100">Jed why? Why take off such a wonderful hat? Was it too much? Too powerful for you? Or is (weekday:) just not a day for hats? Jed, please reconsider!
-\(set:$hat to &quot;no&quot;)
-
-[[Continue-&gt;Jed&#39;s Bedroom]]</tw-passagedata><tw-passagedata pid="28" name="Put On Hat" tags="" position="1389,2693" size="100,100">Yes.... yes... YES! Do you feel it Jed? The power of this amazing hat? If only you had a mirror to look into so you could see yourself. You look amazing. I&#39;m going to say it, this hat makes your handsomeness tenfold. 
-\(set:$hat to &quot;yes&quot;)
-
-[[Continue-&gt;Jed&#39;s Bedroom]]</tw-passagedata><tw-passagedata pid="29" name="Mirror" tags="" position="1043,2421" size="100,100">Jed, do you see how wonderful this hat is? How amazing, how beautiful, how-
+[[Exit-&gt;Jed&#39;s Bedroom]] </tw-passagedata><tw-passagedata pid="27" name="Mirror" tags="" position="1043,2421" size="100,100">Jed, do you see how wonderful this hat is? How amazing, how beautiful, how-
 
 Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I... I didn&#39;t know you felt that way about this hat. Why&#39;d you even keep it if you don&#39;t even like it, huh? Oh well, your loss. Not my fault you can&#39;t see its true magnificance. Now stop that dry heaving.
 
-[[Continue-&gt;Jed&#39;s Bathroom]]</tw-passagedata><tw-passagedata pid="30" name="Fridge" tags="" position="1212,2290" size="100,100">You open up your fridge. It&#39;s filled with refrigerated items such as (either:&quot;sodas&quot;,&quot;juice&quot;,&quot;milk&quot;,&quot;tea&quot;), (either:&quot;produce&quot;,&quot;eggs&quot;,&quot;yogurt&quot;,&quot;hummus&quot;), and (either:&quot;butter.&quot;,&quot;jam.&quot;,&quot;leftovers from 4 weeks ago.&quot;,&quot;ice cream. Wait. Jed, ice cream doesn&#39;t go in the fridge! You&#39;re supposed to put it in the freezer! Who raised you?&quot;)
+[[Continue-&gt;Jed&#39;s Bathroom]]</tw-passagedata><tw-passagedata pid="28" name="Fridge" tags="" position="1212,2290" size="100,100">You open up your fridge. It&#39;s filled with refrigerated items such as (either:&quot;sodas&quot;,&quot;juice&quot;,&quot;milk&quot;,&quot;tea&quot;), (either:&quot;produce&quot;,&quot;eggs&quot;,&quot;yogurt&quot;,&quot;hummus&quot;), and (either:&quot;butter.&quot;,&quot;jam.&quot;,&quot;leftovers from 4 weeks ago.&quot;,&quot;ice cream. Wait. Jed, ice cream doesn&#39;t go in the fridge! You&#39;re supposed to put it in the freezer! Who raised you?&quot;)
 
-[[Continue-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="31" name="Trash Can" tags="" position="1218,2552" size="100,100">This is a trash can. You throw trash in it. What are we doing here?
+[[Continue-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="29" name="Trash Can" tags="" position="1218,2552" size="100,100">This is a trash can. You throw trash in it. What are we doing here?
 
 (if:$INV contains &quot;letter&quot;)[[[Throw Away Letter-&gt;Throw Away Letter]]
 ]
-\(if:$hat is &quot;yes&quot;)[[[Throw Away Hat-&gt;Throw Away Hat]]
+\(if:$wearing is &quot;hat&quot;)[[[Throw Away Hat-&gt;Throw Away Hat]]
 ]
-\[[Exit-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="32" name="Throw Away Letter" tags="" position="1220,2687" size="100,100">Jed why did you do that? I know you get a lot of junk mail but this isn&#39;t that. Do you really not want to participate in my story? (if:$testing is &quot;FAIL2&quot;)[No, you obviously don&#39;t considering you failed those tests at the beginning of the game.] I see how it is.
+\[[Exit-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="30" name="Throw Away Letter" tags="" position="1220,2687" size="100,100">Jed why did you do that? I know you get a lot of junk mail but this isn&#39;t that. Do you really not want to participate in my story? (if:$testing is &quot;FAIL2&quot;)[No, you obviously don&#39;t considering you failed those tests at the beginning of the game.] I see how it is.
 \(set:$INV to it - (a:&quot;letter&quot;))
 
-[[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="33" name="Throw Away Hat" tags="" position="1218,2837" size="100,100">Jed no! The hat! Oh, it was such a magnificant hat. You really did look amazing in it. How I&#39;ll miss you, hat. Maybe another time, Jed can see that he was wrong about you.
-\(set:$hat to &quot;gone&quot;)
+[[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="31" name="Throw Away Hat" tags="" position="1218,2837" size="100,100">Jed no! The hat! Oh, it was such a magnificant hat. You really did look amazing in it. How I&#39;ll miss you, hat. Maybe another time, Jed can see that he was wrong about you.
+\(set:$hatgone to true)(set:$wearing to &quot;none&quot;)
 
-[[Continue-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="34" name="Coffee Maker" tags="" position="1214,2423" size="100,100">(set:$visitsCoffeeMaker to it + 1)
+[[Continue-&gt;Jed&#39;s Kitchen]]</tw-passagedata><tw-passagedata pid="32" name="Coffee Maker" tags="" position="1214,2423" size="100,100">(set:$visitsCoffeeMaker to it + 1)
 \(if:$visitsCoffeeMaker is 1)[
 \Ah yes, nothing like a cup of coffee to get yourself energized for the day. You brew yourself a nice hot coffee using your coffee maker. Delicious.]
 \(if:$visitsCoffeeMaker is 2)[
@@ -434,14 +447,14 @@ Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I
 \(if:$visitsCoffeeMaker &gt; 5)[
 \Sorry Jed, but no matter how many times you try you can&#39;t make coffee magically appear.]
 
-[[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="35" name="The Apartment Complex" tags="" position="1392,1583" size="100,200">Here is the apartment complex, the place you live at. It looks incredibly old on the outside.
+[[Continue-&gt;Jed&#39;s Kitchen]] </tw-passagedata><tw-passagedata pid="33" name="The Apartment Complex" tags="" position="1392,1583" size="100,200">Here is the apartment complex, the place you live at. It looks incredibly old on the outside.
 
 [[Your Apartment-&gt;Jed&#39;s Apartment]]
 [[Visit Rafael-&gt;Rafael&#39;s Apartment]] 
 [[Visit Ted-&gt;Ted&#39;s Apartment]] 
 [[Visit Josefine-&gt;Josefine&#39;s Apartment]] 
 [[Visit the Mailboxes-&gt;Mailboxes]]
-[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="36" name="Rafael&#39;s Apartment" tags="" position="1586,1851" size="100,200">(set:$visitsRafael to it + 1)
+[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="34" name="Rafael&#39;s Apartment" tags="" position="1586,1851" size="100,200">(set:$visitsRafael to it + 1)
 \You go over to Rafael&#39;s apartment and knock on the door. (if: $visitsRafael is 1)[You and Rafael are good friends, but you don&#39;t visit that often anymore.
 
 &quot;Hello- oh! Hey Jed! Its been a while. How have things been?&quot;]
@@ -458,9 +471,13 @@ Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I
 [[Burgerocity-&gt;Rafael Burgerocity]]
 (if:(history:) contains &quot;Empty Store&quot; and $josefineStore is &quot;unknown&quot;)[[[Empty Store-&gt;Rafael Empty Store]]
 ]
+\(if:$INV contains &quot;bear&quot; and $CLOSET does not contain &quot;purple vest&quot;)[[[Gift Teddy Bear-&gt;Rafael Bear]]
+]
+\(unless:$wearing is &quot;none&quot;)[[[Outfit-&gt;Rafael Outfit]]
+]
 \(if:(history:) contains &quot;Setup VR&quot;)[[[Virtual Reality-&gt;Rafael VR]]
 ]
-\[[&quot;Gotta go!&quot;-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="37" name="Rafael Burgerocity" tags="" position="1588,2149" size="100,100">You mention Burgerocity shutting down.
+\[[&quot;Gotta go!&quot;-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="35" name="Rafael Burgerocity" tags="" position="1588,2149" size="100,100">You mention Burgerocity shutting down.
 
 &quot;Burgerocity? The burger place? That&#39;s a shame, it&#39;s basically the only fast food joint around for miles. Though it is very strange that it randomly shut down... Any idea what happened?&quot;
 
@@ -468,7 +485,7 @@ Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I
 
 &quot;Let me know when you do! Oh, but be careful over in West Side. I heard there&#39;s some bad people on the loose.&quot;
 
-[[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="38" name="Sleep" tags="" position="1389,2962" size="100,100">(unless:$INV contains &quot;letter&quot;)[
+[[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="36" name="Sleep" tags="" position="1392,2694" size="100,100">(unless:$INV contains &quot;letter&quot;)[
 \Jed? Did you just throw away the letter and go back to bed? Do you have no consideration for this world? This story? This adventure? I created this just for you, and you decide to throw it all away? I simply cannot understand. (if:$testing is &quot;FAIL2&quot;)[Did you even care at all from the start?]
 
 I see how it is. Go along, Jed. Watch what happens when you decide to neglect the story. See what good it does for you.
@@ -479,7 +496,7 @@ I see how it is. Go along, Jed. Watch what happens when you decide to neglect th
 \(set:$INV to it + (a:&quot;late book&quot;))]
 \(else:)[Despite the fact that he had just woken up about 15 minutes ago, Jed tried to fall back asleep. It only took a few seconds until he got bored and got back out of bed.]
 
-[[Continue-&gt;Jed&#39;s Bedroom]]]</tw-passagedata><tw-passagedata pid="39" name="Neglect" tags="" position="1339,3111" size="200,100">You woke up after a while. How long has it been?
+[[Continue-&gt;Jed&#39;s Bedroom]]]</tw-passagedata><tw-passagedata pid="37" name="Neglect" tags="" position="1361,2837" size="200,100">You woke up after a while. How long has it been?
 
 You look at your phone... Oh goodness! You somehow slept for 4 days straight! 
 
@@ -492,7 +509,7 @@ The buildings around you are all on fire; some are completely destroyed. You can
 Jed was at a loss of words. Jed wondered what could have caused all of this. An entire string of events leading to catastrophe that he had no idea about. Of course, there was no way that Jed would&#39;ve known that all of this could have been prevented if he had just kept the letter.
 \(unless:$ENDINGS contains &quot;Neglect&quot;)[(set:$ENDINGS to it + (a:&quot;Neglect&quot;))]
 
-[[The End-&gt;Waiting Room Entrance]]</tw-passagedata><tw-passagedata pid="40" name="Library" tags="" position="471,1565" size="100,200">You&#39;re inside the Webster Groves Public Library.
+[[The End-&gt;Waiting Room Entrance]]</tw-passagedata><tw-passagedata pid="38" name="Library" tags="" position="451,1566" size="100,200">You&#39;re inside the Webster Groves Public Library.
 \(set:$previousPassage to (passage:)&#39;s name)
 
 [[Talk to Librarian]]
@@ -501,7 +518,7 @@ Jed was at a loss of words. Jed wondered what could have caused all of this. An 
 ]
 \(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
-\[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="41" name="City Hall" tags="" position="2418,1581" size="100,200">(set:$visitsCityHall to it + 1)
+\[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="39" name="City Hall" tags="" position="2418,1581" size="100,200">(set:$visitsCityHall to it + 1)
 \(if: $visitsCityHall is 1)[
 \You enter the Webster Groves City Hall. It&#39;s a beautiful building. The room you&#39;re standing in is nothing short of luxurious, with lots of decorations and a lot more open space. 
 
@@ -510,26 +527,24 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 \You&#39;re inside the City Hall. (if:$visitsSecretary is 0)[The secretary is still focused on her computer.](else:)[The secretary does a small wave to you.]]
 
 [[Talk to the Secretary-&gt;Talk to Secretary]]
-[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="42" name="Post Office" tags="" position="2764,1588" size="100,200">(unless:$banned contains &quot;post office&quot;)[
-\You&#39;re inside the Webster Groves Post Office. &quot;How ya doin&#39;, Jed?&quot; the letter carrier greets.
+[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="40" name="Arcade" tags="" position="2764,1588" size="100,200">You&#39;re inside the Impulse Arcade. The smell of burnt pizza and overcrowding brings you great nostalgia.
+
+[[Buy Tokens]]
+[[Play Games-&gt;Arcade Games]]
+[[Spend Tickets]]
+[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="41" name="Hardware Store" tags="" position="3118,1584" size="100,200">(unless:$banned contains &quot;hardware store&quot; and (($wearing is &quot;ski mask&quot; and $boxMask) or ($wearing is not &quot;ski mask&quot; and $boxMask is false)))[
+\You&#39;re inside the Town Square Hardware Store. It feels strangely cold. 
 \(set:$previousPassage to (passage:)&#39;s name)
 
-[[Send Mail]]
-(if:$joinGang and $INV does not contain &quot;cardboard box&quot;)[[[Mail Room-&gt;Mail Room]]
+[[Purchase Items-&gt;Buy Hardware]]
+(if:$joinGang and $INV does not contain &quot;cardboard box&quot;)[[[Backroom-&gt;Back Room]]
 ]
 \(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
 \[[Exit-&gt;Town Square]]]
-\(else:)[
-\&quot;Get out of here!&quot; the letter carrier yells. &quot;What part of banned did you not understand?&quot;
+\(else:)[&quot;What part of banned did you not understand?&quot; the clerk shouts. &quot;Get out!&quot;
 
-[[Exit-&gt;Town Square]]]</tw-passagedata><tw-passagedata pid="43" name="Hardware Store" tags="" position="3118,1584" size="100,200">You&#39;re inside the Town Square Hardware Store. It feels strangely cold. 
-\(set:$previousPassage to (passage:)&#39;s name)
-
-[[Purchase Items-&gt;Buy Hardware]]
-(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
-]
-\[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="44" name="Empty Store" tags="" position="3481,1578" size="100,200">(if:$josefineStore is &quot;unknown&quot;)[You&#39;re inside an empty store. You can make out the counters and shelves, but of course there is nothing left. You remember going here quite a lot, but you can&#39;t remember what the actual store was.]
+[[Exit-&gt;Town Square]]]</tw-passagedata><tw-passagedata pid="42" name="Empty Store" tags="" position="3481,1578" size="100,200">(if:$josefineStore is &quot;unknown&quot;)[You&#39;re inside an empty store. You can make out the counters and shelves, but of course there is nothing left. You remember going here quite a lot, but you can&#39;t remember what the actual store was.]
 \(if:$josefineStore is &quot;known&quot;)[This is where Josefine used to have her old bakery, Taste of Heaven. The store is completely empty now, except for the counters and shelves. You remember going here quite a lot.]
 \(if:$josefineStore is &quot;wait&quot;)[This is where Josefine used to have her old bakery, Taste of Heaven. She sent you the deed, and now you&#39;re waiting to get it through the mail.]
 \(if:$josefineStore is &quot;has deed&quot;)[
@@ -542,59 +557,60 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 ]
 \(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
-\[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="45" name="Burgerocity" tags="" position="4311,1593" size="100,200">&quot;Hey Jed,&quot; the owner says. &quot;Here to buy some food before I shut down shop?&quot;
+\[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="43" name="Burgerocity" tags="" position="4311,1593" size="100,200">&quot;Hey Jed,&quot; the owner says. &quot;Here to buy some food before I shut down shop?&quot;
 \(set:$previousPassage to (passage:)&#39;s name)
 
 [[Purchase Food-&gt;Burgerocity Counter]]
 [[Talk to Owner-&gt;Burgerocity Owner]]
 (if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
-\[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="46" name="Barber Shop" tags="" position="4615,1589" size="100,200">You&#39;re inside the West Side Barber Shop.
+\[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="44" name="Barber Shop" tags="" position="4615,1589" size="100,200">You&#39;re inside the West Side Barber Shop.
 \(set:$previousPassage to (passage:)&#39;s name)
 
 (if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
-\[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="47" name="Clothing Store" tags="" position="4961,1589" size="100,200">You&#39;re inside Tactical Bold, the most well-known clothing store in West Side. &quot;You need help with something?&quot; the clerk asks.
+\[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="45" name="Clothing Store" tags="" position="4961,1589" size="100,200">You&#39;re inside Tactical Bold, the most well-known clothing store in West Side. &quot;You need help with something?&quot; the clerk asks.
 \(set:$previousPassage to (passage:)&#39;s name)
 
 [[Look At Clothes-&gt;Clothing Selection]]
-(if:(history:) contains &quot;Talk to Secretary&quot; and not $visitPlumber and $INV does not contain &quot;plumber outfit&quot;)[[[&quot;I&#39;m actually going for a plumber/mechanic kind of look...&quot;-&gt;Plumber Shortcut]]
+(if:(history:) contains &quot;Talk to Secretary&quot; and not $visitPlumber and $CLOSET does not contain &quot;plumber outfit&quot;)[[[&quot;I&#39;m actually going for a plumber/mechanic kind of look...&quot;-&gt;Plumber Shortcut]]
 ]
-\(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
+\[[&quot;How do clothes work?&quot;-&gt;Clothing Explain]]
+(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
-\[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="48" name="Dark Alleyway" tags="" position="5287,1589" size="100,200">(if:$visitsGang is 1)[You start to walk down a dark alleyway. What are you doing back here?]
+\[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="46" name="Dark Alleyway" tags="" position="5287,1589" size="100,200">(if:$visitsGang is 1)[You start to walk down a dark alleyway. What are you doing back here?]
 \(else-if:$visitsGang &gt; 1)[You start to walk down a dark alleyway. This is where the extremely dangerous and criminal gang is. Y&#39;know, the one that&#39;s being hunted down by the police and you are now associated with. That gang.]
-\(else:)[You start to walk down a dark alleyway. (cond:$FUN is 9,&quot;Did you not pay attention to the news this morning? Get out of here!&quot;,&quot;Something tells me you shouldn&#39;t be going this way Jed.&quot;)]
+\(else:)[You start to walk down a dark alleyway. (cond:$FUN is 9,&quot;Did you not pay attention to the news this morning? Get out of here!&quot;,&quot;Something tells me you shouldn&#39;t be going this way, Jed. Don&#39;t you know there&#39;s criminal activity in West Side?&quot;)]
 
 [[Continue-&gt;The Gang]]
-[[Go Back-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="49" name="About" tags="title" position="1661,45" size="100,100">=&gt;&lt;=
+[[Go Back-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="47" name="About" tags="title" position="1661,45" size="100,100">=&gt;&lt;=
 Written and Developed by Blue Cat Productions and Green Guy.
 
-Illustrations by WizToad.
+Illustrations by Wiz.
 
 Created for the Beepbox Discord Text Adventure Event.
 
 Special thanks to
 Jacob, Quirb, Theep, Thurm
 
-[[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="50" name="Exit" tags="" position="1658,180" size="100,100">(font:&quot;Raleway&quot;)[
+[[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="48" name="Exit" tags="" position="1658,180" size="100,100">(font:&quot;Raleway&quot;)[
 \(unless:(history:) contains &quot;The Beginning&quot;)[
 \Hello? You haven&#39;t even played the game and you&#39;re ready to quit? I... well... I don&#39;t know what to say. Go ahead and close the tab I guess... Twine can&#39;t close the game for you.]
 \(else:)[
 \Hello player. So this is a bit akward but... Twine doesn&#39;t exactly have a feature to close the tab for you. Trust me, I looked into it just for this joke. I kept the button here because I thought the menu looked nicer with 3 options. So if you want to quit you&#39;re going to have to put in some more effort! But hey, instead of leaving, maybe you could find some more endings!]]
 
-[[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="51" name="Train Ride" tags="" position="2926,800" size="100,100">(set:$traintext to (either:&quot;Welp, looks like we&#39;re here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh we stopped moving? I didn&#39;t even notice!&quot;,&quot;Finally, we&#39;re here! Was it just me or was that train ride unbearably long?&quot;,&quot;Soon after, the train came to a stop and pulled into the station.&quot;))
+[[Continue-&gt;Title Screen]] </tw-passagedata><tw-passagedata pid="49" name="Train Ride" tags="" position="2926,800" size="100,100">(set:$traintext to (either:&quot;Welp, looks like we&#39;re here!&quot;,&quot;And there&#39;s our stop! Let&#39;s go!&quot;,&quot;Oh we stopped moving? I didn&#39;t even notice!&quot;,&quot;Finally, we&#39;re here! Was it just me or was that train ride unbearably long?&quot;,&quot;Soon after, the train came to a stop and pulled into the station.&quot;))
 \During the train ride, (either:&quot;Jed wondered if Burgerocity was selling the Big Boy today. The Big Boy is a special burger that the owner only sells on random days. On one hand, today is Burgerocity’s last day, so it would be a missed opportunity if the owner didn’t sell it. On the other hand, it had only been a few days since it was last sold, and it takes lots of material to make, so he probably does not have enough.&quot;,&quot;Jed looked out the train window for some birds. Jed had made it a habit to birdwatch while on the train. Strangely enough, Jed didn’t see any during his ride. The weather’s normal today, where are all the birds? Did someone scare them all away? Or some//thing//?&quot;,&quot;Jed thought about the events happening today. His favorite burger place being shut down, the letter he received in the mail, and the quest given to him. Jed loves to help people, and wanted to succeed in this regard, but the things happening today seem a bit much. Was this quest expected of him? What would happen if he never met up with the writer of the letter? When is it okay to let things take their own course?&quot;,&quot;Jed thought about his neighbor Rafael. He and Jed met when he first moved in the apartment complex, and they got along quite well. They have quite a few things in common, and have hung out a few times. However, their schedules rarely line up, so they don’t talk to each other as much as they would like.&quot;,&quot;Jed thought about his neighbor Ted. Ted is much older than Jed, and Ted had been living in the apartment complex way before Jed moved in. Despite the fact that they’ve been neighbors for a while, they have barely gotten to know each other. Ted has almost completely forgotten who Jed is, despite his numerous attempts to introduce himself. Maybe one day they shall become friends…&quot;,&quot;Jed thought about his neighbor Josefine. Jed and Josefine have known each other for years, but only just recently did Josefine move near Jed. She had been living with her parents for a few years but eventually wanted her own place. Jed convinced her to move in near him, and she did. She’s not new to Webster Groves, however, since she used to (cond: $josefineStore is &#39;unknown&#39;,&#39;have a job&#39;,&#39;own a business&#39;) here.&quot;)
 \(live:1s)[(if:time &gt; 10s)[
 
 $traintext
 
-(if:$LOC is &quot;East Side&quot;)[[[Continue-&gt;East Side of Town]]](if:$LOC is &quot;Town Square&quot;)[[[Continue-&gt;Town Square]]](if:$LOC is &quot;West Side&quot;)[[[Continue-&gt;West Side of Town]]]]]</tw-passagedata><tw-passagedata pid="52" name="Talk to Secretary" tags="" position="2422,1851" size="100,100">(set:$visitsSecretary to it + 1)
+(if:$LOC is &quot;East Side&quot;)[[[Continue-&gt;East Side of Town]]](if:$LOC is &quot;Town Square&quot;)[[[Continue-&gt;Town Square]]](if:$LOC is &quot;West Side&quot;)[[[Continue-&gt;West Side of Town]]](stop:)]]</tw-passagedata><tw-passagedata pid="50" name="Talk to Secretary" tags="" position="2422,1851" size="100,100">(set:$visitsSecretary to it + 1)
 \(if:$visitsSecretary is 1)[
-\(if:$INV does not contain &quot;plumber outfit&quot;)[
+\(if:$wearing is not &quot;plumber outfit&quot;)[
 \You walk up to the secretary&#39;s desk. Your steps echo through the room, however she still stays focused. &quot;Hello?&quot; you say.
 
-&quot;Oh, hello!&quot; she responds, still looking at her computer. &quot;If you&#39;ll give me just one second, I&#39;ve just been a bit... busy. I&#39;ve been busy. Did you have an appoint...&quot; she stop speaking when she turns her head towards you. She then looks around the room to check if anyone else is around. &quot;So you got my letter,&quot; she says.
+&quot;Oh, hello!&quot; she responds, still looking at her computer. &quot;If you&#39;ll give me just one second, I&#39;ve just been a bit... busy. I&#39;ve been busy. Did you have an appoint...&quot; she stop speaking when she turns her head towards you. She then looks around the room to check if anyone else is around. &quot;(if:$wearing is &quot;hat&quot;)[Nice hat,&quot; she says. &quot;Did you get my letter?&quot;](else:)[So you got my letter,&quot; she says.]
 
 (if:$INV contains &quot;letter&quot;)[&quot;Yes, I did.](else:)[&quot;Uh... yeah... I did...] What&#39;s going on? What are we going to do?&quot;
 
@@ -617,18 +633,18 @@ She looks at you confused. She looks around the room to make sure no one is here
 
 [[&quot;I&#39;m ready!&quot;-&gt;Going Downstairs]]
 [[&quot;Not yet...&quot;-&gt;City Hall]]]]
-\(if:$visitsSecretary &gt; 1 and $INV does not contain &quot;plumber outfit&quot;)[
+\(if:$visitsSecretary &gt; 1 and $wearing is not &quot;plumber outfit&quot;)[
 \You walk up to the secretary&#39;s desk. &quot;Hey Jed,&quot; she greets, &quot;did you need something else?&quot;
 
 [[&quot;Can you tell me the plan again?&quot;-&gt;Secretary Plan]]
 [[&quot;Nope!&quot;-&gt;City Hall]]]
-\(if:$visitsSecretary &gt; 1 and $INV contains &quot;plumber outfit&quot;)[
+\(if:$visitsSecretary &gt; 1 and $wearing is &quot;plumber outfit&quot;)[
 \&quot;Hey, hey!&quot; the secretary jokes, &quot;lookin&#39; good! Are you ready to go? Do you have everything you need? Don&#39;t forget you&#39;ll need some kind of tool.&quot;
 
 [[&quot;I&#39;m ready!&quot;-&gt;Going Downstairs]]
-[[&quot;Not yet...&quot;-&gt;City Hall]]]</tw-passagedata><tw-passagedata pid="53" name="Secretary Gotcha" tags="" position="2347,2001" size="100,100">&quot;I knew you&#39;d catch on!&quot; the secretary exclaims. &quot;I&#39;ll refinance you after this is all done, whatever you need to pull this off. Thank you so much, Jed. Good luck!&quot;
+[[&quot;Not yet...&quot;-&gt;City Hall]]]</tw-passagedata><tw-passagedata pid="51" name="Secretary Gotcha" tags="" position="2347,2001" size="100,100">&quot;I knew you&#39;d catch on!&quot; the secretary exclaims. &quot;I&#39;ll refinance you after this is all done, whatever you need to pull this off. Thank you so much, Jed. Good luck!&quot;
 
-[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="54" name="Secretary Plan" tags="" position="2497,2001" size="100,100">&quot;You&#39;ll be a plumber coming to check in on the water pipes in the basement of city hall,&quot; the secretary explains. &quot;Near here is a hardware store, there you can get a couple tools like a steel pipe wrench or a crowbar or whatever. There&#39;s a clothing store in West Side that should hopefully have something convincing that you can wear.&quot;
+[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="52" name="Secretary Plan" tags="" position="2497,2001" size="100,100">&quot;You&#39;ll be a plumber coming to check in on the water pipes in the basement of city hall,&quot; the secretary explains. &quot;Near here is a hardware store, there you can get a couple tools like a steel pipe wrench or a crowbar or whatever. There&#39;s a clothing store in West Side that should hopefully have something convincing that you can wear.&quot;
 
 &quot;And look!&quot; The secretary pulls out two name tags from one of the desk drawers. &quot;The finishing touch, your very own employee nametag. And I&#39;ve also got a visitor name tag saved just for you.&quot;
 
@@ -636,7 +652,7 @@ She looks at you confused. She looks around the room to make sure no one is here
 
 &quot;Whatever it costs, I&#39;ll refinance you once this is over. Good luck, Jed!&quot;
 
-[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="55" name="Waiting Room Entrance" tags="" position="2918,3311" size="200,200">(set:$visitsWaitingRoom to it + 1)
+[[Continue-&gt;City Hall]]</tw-passagedata><tw-passagedata pid="53" name="Waiting Room Entrance" tags="" position="2918,3311" size="200,200">(set:$visitsWaitingRoom to it + 1)
 \(font:&quot;Raleway&quot;)[
 \(if:$ENDINGS&#39;s last is &quot;Toilet&quot;)[
 \YOU DID IT!
@@ -652,7 +668,7 @@ Oh, and looks like that was ending #5. Does that mean you win? Who knows. There&
 There&#39;s only one way to find out. You&#39;re gonna have to go back in there and try your hardest to get a new ending. Whatever it takes. This can&#39;t be it, can it? Prove me wrong, player!]]
 \(else:)[
 \(if:visits is 1)[
-\(live:0.1s)[(if:time&lt;2s)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;](else:)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;]]
+\(live:0.1s)[(if:time&lt;1.5s)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;](else:)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;]]
 Congratulations! You beat the game!
 
 Well, you started the game, did some stuff, and then the game ended. Good enough, right? (if:$ENDINGS contains &quot;NormalRoute&quot;)[And hey, you saved the town from aliens or whatever, so I bet you&#39;re happy with that.] 
@@ -691,7 +707,7 @@ Does that mean there really are only 5 endings? Am I wrong about being wrong? Is
 
 No! We can&#39;t give up hope! Surely there&#39;s another ending out there. Try something else! Oh, but be sure to rest first. Can&#39;t find new endings without proper relaxation!]]
 \(if:$ENDINGS&#39;s length is 6 and not $visit6)[
-\(live:0.1s)[(if:time&lt;2s)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;](else:)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;]]
+\(live:0.1s)[(if:time&lt;1.5s)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;](else:)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;]]
 YOU DID IT! ENDING NUMBER 6!
 
 See look, I even brought back the party popper. This is a truly momentous occasion.
@@ -706,7 +722,7 @@ I hope you&#39;re having fun. Discovering new things. Checking out the world. We
 Feel free to rest in my waiting room for as long as you need!
 \(set:$visitsWaitingRoom to 1000)]]]]]
 
-[[Continue-&gt;Waiting Room]]</tw-passagedata><tw-passagedata pid="56" name="Waiting Room" tags="" position="2973,3580" size="100,100">(unless:$incomingMail is &quot;empty&quot;)[
+[[Continue-&gt;Waiting Room]]</tw-passagedata><tw-passagedata pid="54" name="Waiting Room" tags="" position="2973,3580" size="100,100">(unless:$incomingMail is &quot;empty&quot;)[
 \(set:$MAILBOX to $incomingMail)(set:$incomingMail to &quot;empty&quot;)]
 \(font:&quot;Raleway&quot;)[
 \&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/u3g5IIX.png&quot;&gt;
@@ -719,7 +735,7 @@ Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsW
 
 (t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Tests are Enabled&quot;,&quot;Waiting Room&quot;)[(set:$TestSkip to true)]]
 
-[[Restart-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="57" name="Mailboxes" tags="" position="1397,1866" size="100,100">(if:$MAILBOX is &quot;empty&quot;)[There is currently nothing inside your mailbox. Check again tomorrow!]
+[[Restart-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="55" name="Mailboxes" tags="" position="1397,1866" size="100,100">(if:$MAILBOX is &quot;empty&quot;)[There is currently nothing inside your mailbox. Check again tomorrow!]
 \(if:$MAILBOX is &quot;deed&quot;)[You reach into your mailbox and find a letter signed from Josefine. You open it up, and inside is the deed to the empty store in Town Square.
 \(set:$josefineStore to &quot;has deed&quot;)(set:$MAILBOX to &quot;empty&quot;)]
 \(if:$MAILBOX is &quot;lightsaber&quot;)[You reach into your mailbox and find a strange device. It&#39;s a small cylindrical shape with a button on the side. You press it and... nothing happens. Must be busted.
@@ -729,15 +745,16 @@ Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsW
 \(if:$MAILBOX is &quot;plumber outfit&quot;)[You reach into your mailbox and find a navy blue button-up shirt. It looks like something a mechanic would wear.
 \(set:$INV to it + (a:&quot;plumber outfit&quot;))(set:$MAILBOX to &quot;empty&quot;)]
 
-[[Continue-&gt;The Apartment Complex]] </tw-passagedata><tw-passagedata pid="58" name="Clothing Selection" tags="" position="4961,1835" size="100,100">&quot;We have some of the best clothing in Webster Groves. Take your pick.&quot;
+[[Continue-&gt;The Apartment Complex]] </tw-passagedata><tw-passagedata pid="56" name="Clothing Selection" tags="" position="4961,1835" size="100,100">&quot;We have some of the best clothing in Webster Groves. Take your pick.&quot;
 
 Current funds: $$MONEY
 
-(if:$INV does not contain &quot;plumber outfit&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Navy Blue Button-Up - $15&quot;,&quot;Clothing Selection&quot;)[(set:$INV to it + (a:&quot;plumber outfit&quot;))(set:$MONEY to it - 15)]](else:)[(if:$INV contains &quot;plumber outfit&quot;)[Navy Blue Button-Up - Sold Out](else:)[[[Navy Blue Button-Up - $15-&gt;Too Poor]]]]
-(if:$INV does not contain &quot;ski mask&quot; and $MONEY &gt;= 10)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Ski Mask - $10&quot;,&quot;Clothing Selection&quot;)[(set:$INV to it + (a:&quot;ski mask&quot;))(set:$MONEY to it - 10)]](else:)[(if:$INV contains &quot;ski mask&quot;)[Ski Mask - Sold Out](else:)[[[Ski Mask - $10-&gt;Too Poor]]]]
-(if:$INV does not contain &quot;cape&quot; and $MONEY &gt;= 109)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Superhero Cape - $109&quot;,&quot;Clothing Selection&quot;)[(set:$INV to it + (a:&quot;cape&quot;))(set:$MONEY to it - 109)]](else:)[(if:$INV contains &quot;cape&quot;)[Superhero Cape - Sold Out](else:)[[[Superhero Cape - $109-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;hoodie&quot; and $MONEY &gt;= 30)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Green Hoodie - $30&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;hoodie&quot;))(set:$MONEY to it - 30)]](else:)[(if:$CLOSET contains &quot;hoodie&quot;)[Green Hoodie - Owned](else:)[[[Green Hoodie - $30-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;plumber outfit&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Navy Blue Button-Up - $15&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;plumber outfit&quot;))(set:$MONEY to it - 15)]](else:)[(if:$CLOSET contains &quot;plumber outfit&quot;)[Navy Blue Button-Up - Owned](else:)[[[Navy Blue Button-Up - $15-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;ski mask&quot; and $MONEY &gt;= 10)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Ski Mask - $10&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;ski mask&quot;))(set:$MONEY to it - 10)]](else:)[(if:$CLOSET contains &quot;ski mask&quot;)[Ski Mask - Owned](else:)[[[Ski Mask - $10-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;cape&quot; and $MONEY &gt;= 109)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Superhero Cape - $109&quot;,&quot;Clothing Selection&quot;)[(set:$CLOSET to it + (a:&quot;cape&quot;))(set:$MONEY to it - 109)]](else:)[(if:$CLOSET contains &quot;cape&quot;)[Superhero Cape - Owned](else:)[[[Superhero Cape - $109-&gt;Too Poor]]]]
 
-[[Return-&gt;Clothing Store]]</tw-passagedata><tw-passagedata pid="59" name="Plumber Shortcut" tags="" position="4961,1978" size="100,100">(set:$visitPlumber to true)
+[[Return-&gt;Clothing Store]]</tw-passagedata><tw-passagedata pid="57" name="Plumber Shortcut" tags="" position="4961,1978" size="100,100">(set:$visitPlumber to true)
 \&quot;Hmmm,&quot; the clerk thinks. They look at you for a few seconds. &quot;Yes, I can see it... You&#39;ll be able to pull this off, and I know just what you need.&quot;
 
 The clerk goes back to the clothing selection and comes back with a navy blue button-up shirt. &quot;Sometimes simple is best. And this shirt will only cost you $15. What do you say?&quot;
@@ -754,7 +771,7 @@ The clerk goes back to the clothing selection and comes back with a navy blue bu
 \&quot;There you go! Glad I could help.&quot;
 
 [[Continue-&gt;Clothing Store]]]]
-[[&quot;No thanks.&quot;-&gt;Clothing Store]]]]</tw-passagedata><tw-passagedata pid="60" name="Buy Hardware" tags="" position="3122,1866" size="100,100">&quot;You need it, we got it.&quot; the clerk boasts.
+[[&quot;No thanks.&quot;-&gt;Clothing Store]]]]</tw-passagedata><tw-passagedata pid="58" name="Buy Hardware" tags="" position="3121,1849" size="100,100">&quot;You need it, we got it.&quot; the clerk boasts.
 
 Current funds: $$MONEY
 
@@ -762,20 +779,20 @@ Current funds: $$MONEY
 (if:$INV does not contain &quot;hammer&quot; and $MONEY &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Hammer - $5&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;hammer&quot;))(set:$MONEY to it - 5)]](else:)[(if:$INV contains &quot;hammer&quot;)[Hammer - Sold Out](else:)[[[Hammer - $5-&gt;Too Poor]]]]
 (if:$INV does not contain &quot;crowbar&quot; and $MONEY &gt;= 20)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Crowbar - $20&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;crowbar&quot;))(set:$MONEY to it - 20)]](else:)[(if:$INV contains &quot;crowbar&quot;)[Crowbar - Sold Out](else:)[[[Crowbar - $20-&gt;Too Poor]]]]
 (if:$INV does not contain &quot;wallpaper&quot; and $MONEY &gt;= 15)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Wallpaper - $15&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;wallpaper&quot;))(set:$MONEY to it - 15)]](else:)[(if:$INV contains &quot;wallpaper&quot;)[Wallpaper - Sold Out](else:)[[[Wallpaper - $15-&gt;Too Poor]]]]
-(if:$MONEY &gt;= 40)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Bucket of Paint - $40&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;paint&quot;))(set:$MONEY to it - 40)]](else:)[[[Buckets of Paint - $40-&gt;Too Poor]]]
+(if:$MONEY &gt;= 40)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Bucket of Paint - $40&quot;,&quot;Buy Hardware&quot;)[(set:$INV to it + (a:&quot;paint&quot;))(set:$MONEY to it - 40)]](else:)[[[Bucket of Paint - $40-&gt;Too Poor]]]
 
-[[Exit-&gt;Hardware Store]] </tw-passagedata><tw-passagedata pid="61" name="Burgerocity Counter" tags="" position="4312,1846" size="100,100">Current funds: $$MONEY
+[[Exit-&gt;Hardware Store]] </tw-passagedata><tw-passagedata pid="59" name="Burgerocity Counter" tags="" position="4312,1846" size="100,100">Current funds: $$MONEY
 
 (if:$MONEY &gt;= 2)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Cheeseburger - $2&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 2)]](else:)[[[Cheeseburger - $2-&gt;Too Poor]]]
 (if:$MONEY &gt;= 4)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Bifurcated Burger - $4&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 4)]](else:)[[[The Bifurcated Burger - $4-&gt;Too Poor]]]
-(if:$MONEY &gt;= 6)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Behemoth - $6&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 7)]](else:)[[[The Behemoth - $6-&gt;Too Poor]]]
+(if:$MONEY &gt;= 6)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Behemoth - $6&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 6)]](else:)[[[The Behemoth - $6-&gt;Too Poor]]]
 (if:$MONEY &gt;= 9)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Burgerocity - $9&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 9)]](else:)[[[The Burgerocity - $9-&gt;Too Poor]]]
 \(if:$FUN is 2)[
 (if:$MONEY &gt;= 14)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;The Big Boy - $14&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;burger&quot;))(set:$MONEY to it - 14)]](else:)[[[The Big Boy - $14-&gt;Too Poor]]]]
 (if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Fries - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;fries&quot;))(set:$MONEY to it - 1)]](else:)[[[Fries - $1-&gt;Too Poor]]]
 (if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Soda - $1&quot;,&quot;Burgerocity Counter&quot;)[(set:$INV to it + (a:&quot;soda&quot;))(set:$MONEY to it - 1)]](else:)[[[Soda - $1-&gt;Too Poor]]]
 
-[[Exit-&gt;Burgerocity]] </tw-passagedata><tw-passagedata pid="62" name="Going Downstairs" tags="" position="2424,2137" size="100,100">The secretary hands you two name tags: one has a fake name and fake plumbing business, and one labels you as a City Hall visitor. The secretary then gets up from her desk and gestures for you to follow her. You go through the two large double doors on the right side of the room.
+[[Exit-&gt;Burgerocity]] </tw-passagedata><tw-passagedata pid="60" name="Going Downstairs" tags="" position="2424,2137" size="100,100">The secretary hands you two name tags: one has a fake name and fake plumbing business, and one labels you as a City Hall visitor. The secretary then gets up from her desk and gestures for you to follow her. You go through the two large double doors on the right side of the room.
 
 The doors lead into a long hallway with an elevator at the end. Throughout the hallway, there are about 5-6 security guards walking around. You start to feel a little uneasy, but you follow the secretary nonetheless.
 
@@ -783,18 +800,18 @@ The two of you arrive at the elevator, and two security guards are standing besi
 
 &quot;That was the easy part,&quot; the secretary explains. &quot;Once we get downstairs, there&#39;s a door tucked away behind the elevator. That&#39;s where we need to go.&quot;
 
-[[Continue-&gt;City Hall Basement]]</tw-passagedata><tw-passagedata pid="63" name="City Hall Basement" tags="" position="2421,2270" size="100,100">You&#39;ve arrived in the basement of City Hall. It&#39;s quite dark, but there are small dim lights spread around. Pipes run around the room in no partcular fashion.
+[[Continue-&gt;City Hall Basement]]</tw-passagedata><tw-passagedata pid="61" name="City Hall Basement" tags="" position="2425,2275" size="100,100">You&#39;ve arrived in the basement of City Hall. It&#39;s quite dark, but there are small dim lights spread around. Pipes run around the room in no partcular fashion.
 
 [[Elevator-&gt;City Hall Elevator]]
 [[Maintenance Room-&gt;City Hall Maintanence Room]]
-[[Secret Room-&gt;City Hall Secret Room]]</tw-passagedata><tw-passagedata pid="64" name="City Hall Elevator" tags="" position="2421,2414" size="100,100">You turn around to call for the elevator, but the secretary stops you.
+[[Secret Room-&gt;City Hall Secret Room]]</tw-passagedata><tw-passagedata pid="62" name="City Hall Elevator" tags="" position="2421,2414" size="100,100">You turn around to call for the elevator, but the secretary stops you.
 
 &quot;Jed, what are you doing?&quot; the secretary asks. &quot;When I said there&#39;s no going back, there&#39;s no going back. We can&#39;t give up now!&quot;
 
-[[Continue-&gt;City Hall Basement]]</tw-passagedata><tw-passagedata pid="65" name="City Hall Maintanence Room" tags="" position="2342,2543" size="100,100">(if:$visitsMegaToilet is 9)[The final bathroom. It&#39;s all come to this. Whatever happens, Jed, don&#39;t forget the amazing time we had together flushing all those toilets. Whatever happens next can&#39;t be better than that.](else:)[You go into the maintenance room. The wall is full of buttons, levers, and blinking lights. You don&#39;t understand any of it. Strangely enough, the room also seems to function as a bathroom.]
+[[Continue-&gt;City Hall Basement]]</tw-passagedata><tw-passagedata pid="63" name="City Hall Maintanence Room" tags="" position="2342,2543" size="100,100">(if:$visitsMegaToilet is 9)[The final bathroom. It&#39;s all come to this. Whatever happens, Jed, don&#39;t forget the amazing time we had together flushing all those toilets. Whatever happens next can&#39;t be better than that.](else:)[You go into the maintenance room. The wall is full of buttons, levers, and blinking lights. You don&#39;t understand any of it. Strangely enough, the room also seems to function as a bathroom.]
 
 (if:$visitsMegaToilet is 9)[[[Flush the Toilet-&gt;The Final Flush]]](else:)[[[Flush the Toilet-&gt;City Hall Toilet]]]
-[[Exit-&gt;City Hall Basement]] </tw-passagedata><tw-passagedata pid="66" name="City Hall Secret Room" tags="" position="2426,2683" size="100,100">(if:$INV contains &quot;letter&quot;)[
+[[Exit-&gt;City Hall Basement]] </tw-passagedata><tw-passagedata pid="64" name="City Hall Secret Room" tags="" position="2426,2683" size="100,100">(if:$INV contains &quot;letter&quot;)[
 \You and the secretary walk around the elevator, and sure enough, you can just barely see a door behind it, but it&#39;s painted to match the color of the wall. You try to open it but it&#39;s locked.
 
 &quot;I found the key to this door last night,&quot; the secretary says, &quot;and I taped it to the back of the letter I sent you!&quot;
@@ -817,7 +834,7 @@ the two of you start to walk around towards the front of the elevator. But befor
 
 &quot;This is a restrited area. Only certified persons are allowed.&quot; They rip off your plumber nametag. &quot;We know about your little setup. You two are under arrest for fraud and tresspassing.&quot;
 
-[[Continue-&gt;Tresspassing Ending]]]</tw-passagedata><tw-passagedata pid="67" name="City Hall Toilet" tags="" position="2501,2539" size="100,100">(unless:$toilets contains &quot;CityHall&quot;)[
+[[Continue-&gt;Tresspassing Ending]]]</tw-passagedata><tw-passagedata pid="65" name="City Hall Toilet" tags="" position="2501,2539" size="100,100">(unless:$toilets contains &quot;CityHall&quot;)[
 \(set: $toilets to it + (a:&quot;CityHall&quot;))
 \(if:$visitsJedsToilet &gt; 3)[Jed, why do you keep doing this? What&#39;s your deal with toilets?](else:)[You flush the toilet.
 
@@ -827,7 +844,7 @@ the two of you start to walk around towards the front of the elevator. But befor
 
 &quot;Looks like we&#39;ll have to call a real plumber once this is over,&quot; the secretary quips.]
 
-[[Continue-&gt;City Hall Maintanence Room]] </tw-passagedata><tw-passagedata pid="68" name="Tresspassing Ending" tags="" position="2135,2688" size="200,100">(unless:$ENDINGS contains &quot;Tresspassing&quot;)[(set:$ENDINGS to it + (a:&quot;Tresspassing&quot;))]
+[[Continue-&gt;City Hall Maintanence Room]] </tw-passagedata><tw-passagedata pid="66" name="Tresspassing Ending" tags="" position="2135,2688" size="200,100">(unless:$ENDINGS contains &quot;Tresspassing&quot;)[(set:$ENDINGS to it + (a:&quot;Tresspassing&quot;))]
 \Next thing you know, you&#39;re inside a holding cell. &quot;We&#39;ll be back to you in a couple hours,&quot; the guards tell you.
 
 A couple hours pass, and nothing happens.
@@ -838,7 +855,7 @@ After what feels like an eternity, you hear a loud booming sound while you were 
 
 However, you quickly realized the atmosphere was off. The sky was a dark red, and you noticed that many other buidlings had damage done to them as well. You couldn&#39;t shake the feeling that you could&#39;ve prevented this. (if: $INV does not contain &quot;letter&quot;)[Maybe now you see why you shouldn&#39;t have thrown away that letter.](else:)[Did the mayor have something to do with this? Perhaps you&#39;ll never know.]
 
-[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="69" name="City Hall Confrontation" tags="" position="2423,2854" size="100,100">The mayor is sitting inside the room already waiting for you. &quot;Hello Jed.&quot;
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="67" name="City Hall Confrontation" tags="" position="2423,2854" size="100,100">The mayor is sitting inside the room already waiting for you. &quot;Hello Jed.&quot;
 
 You turn around and security has already grabbed the secretary and pulled her away. The door then shuts, leaving you, the mayor, and a couple security guards alone in the room.
 
@@ -858,7 +875,7 @@ The mayor turns around and looks at the TV, down at the panel, then back to you.
 
 [[&quot;Go ahead and arrest me.&quot;-&gt;Arrest]]
 [[&quot;I&#39;ll join you.&quot;-&gt;Evil Ending]]
-[[&quot;I choose the third option... FIGHT!&quot;-&gt;Fight!]]</tw-passagedata><tw-passagedata pid="70" name="Arrest" tags="" position="2199,2857" size="100,100">Wait, what? You&#39;re arresting yourself? You&#39;d rather do that than fight him?
+[[&quot;I choose the third option... FIGHT!&quot;-&gt;Fight!]]</tw-passagedata><tw-passagedata pid="68" name="Arrest" tags="" position="2199,2857" size="100,100">Wait, what? You&#39;re arresting yourself? You&#39;d rather do that than fight him?
 
 &quot;Wait, what?&quot; the mayor says. &quot;You&#39;re arresting yourself? You&#39;d rather do that than join me?&quot;
 
@@ -868,14 +885,14 @@ Jed, you do realize you actually had a third option, right? You saw that didn&#3
 
 The two guards grab you by your arms and drag you out of the room.
 
-[[Continue-&gt;Tresspassing Ending]] </tw-passagedata><tw-passagedata pid="71" name="Evil Ending" tags="" position="2633,2680" size="200,100">(unless:$ENDINGS contains &quot;Evil&quot;)[(set:$ENDINGS to it + (a:&quot;Evil&quot;))]
+[[Continue-&gt;Tresspassing Ending]] </tw-passagedata><tw-passagedata pid="69" name="Evil Ending" tags="" position="2633,2680" size="200,100">(unless:$ENDINGS contains &quot;Evil&quot;)[(set:$ENDINGS to it + (a:&quot;Evil&quot;))]
 \Jed... what have you done? 
 
 &quot;I knew you&#39;d come to your senses, Jed,&quot; the mayor says. &quot;Together we are going to rule this earth.&quot;
 
 
 
-[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="72" name="Fight!" tags="" position="2643,2856" size="100,100">Alright, Jed. We&#39;re about to go into a - dare I say - //epic// fight scene. But first, we&#39;re going to need to choose a weapon! What do you choose?
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="70" name="Fight!" tags="" position="2643,2856" size="100,100">Alright, Jed. We&#39;re about to go into a - dare I say - //epic// fight scene. But first, we&#39;re going to need to choose a weapon! What do you choose?
 
 (if:$INV contains all of (a:&quot;burger&quot;,&quot;soda&quot;,&quot;fries&quot;))[(link-reveal-goto:&quot;Burgerocity Meal Combo&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;meal combo&quot;)]
 ]
@@ -887,24 +904,13 @@ The two guards grab you by your arms and drag you out of the room.
 \(if:$INV contains &quot;wrench&quot;)[(link-reveal-goto:&quot;Steel Pipe Wrench&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;wrench&quot;)]
 ]
 \(if:$INV contains &quot;lightsaber&quot;)[(link-reveal-goto:&quot;Strange Device&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;lightsaber&quot;)]
-]
-\(if:$INV contains &quot;cape&quot;)[(link-reveal-goto:&quot;SuperJed&quot;,&quot;The City Hall Fight&quot;)[(set:$weapon to &quot;superjed&quot;)]
-]</tw-passagedata><tw-passagedata pid="73" name="The City Hall Fight" tags="" position="2644,3015" size="100,100">(if:$weapon is &quot;meal combo&quot;)[You pull out one of Burgerocity&#39;s signature burgers and shove it into the right guard&#39;s mouth. The mayor steps back, while the second guard jumps towards you. You smack them across the head with your order of fries and they fall down.
+]</tw-passagedata><tw-passagedata pid="71" name="The City Hall Fight" tags="" position="2644,3015" size="100,100">(if:$weapon is &quot;meal combo&quot;)[You pull out one of Burgerocity&#39;s signature burgers and shove it into the right guard&#39;s mouth. The mayor steps back, while the second guard jumps towards you. You smack them across the head with your order of fries and they fall down.
 
 &quot;I choose option 3!&quot; you yell.
 
 &quot;Woah there Jed,&quot; the mayor bellows, &quot;but I&#39;m not looking for a food fight. Food fight or normal fight, either way you&#39;d lose.&quot;
 
 &quot;That&#39;s fine,&quot; you retort, &quot;I don&#39;t need to fight you.&quot; You jump towards the TV past the mayor and dump the soda onto the communication panel. The screen glitches out, sparks begin to fly, and suddenly it bursts into flames, producing a large amount of smoke.
-
-While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guards laying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
-\(else-if:$weapon is &quot;superjed&quot;)[You put on your superhero cape and transform into SuperJed! You make a laser noise while you poke the eyes of the guard on the right. The mayor steps back, while the second guard jumps towards you. You make an explosion noise while punching his gut, which causes him to fall down to the floor.
-
-&quot;SuperJed chooses option 3!&quot;
-
-&quot;I&#39;m sorry Jed,&quot; the mayor bellows, &quot;but do you think some roleplay is going to intimidate me? &quot;SuperJed&quot; or not, this is still just a fist fight that you&#39;re going to lose.
-
-&quot;That&#39;s fine,&quot; you retort, &quot;SuperJed doesn&#39;t need to fight you.&quot; You fly towards the TV past the mayor and smash down on the panel as hard as you can. The screen glitches out, sparks begin to fly, and suddenly it bursts into flames, producing a large amount of smoke.
 
 While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guards laying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
 \(else-if:$weapon is &quot;lightsaber&quot;)[You pull out the strange device that you recieved in your mailbox this morning. Despite the fact that it didn&#39;t work earlier, you try again. You push the button, and then a beam of energy comes out of the device. The device is actually a lightsaber. 
@@ -938,7 +944,7 @@ Suddenly, the mayor runs after you, but you and the secretary get in the elevato
 
 While the mayor looks around for a fire extinguisher, you run out of the room, where you see two guards laying down on the ground, and the secretary holding her heels. &quot;C&#39;mon!&quot; you say, gesturing towards the elevator. The mayor runs after you, but when he gets to the elevator doorway you kick him back as the doors shut. You then ride the elevator up and exit City Hall as fast as you can.]
 
-[[Continue-&gt;Normal Ending]] </tw-passagedata><tw-passagedata pid="74" name="Normal Ending" tags="" position="2297,3018" size="200,100">(unless:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$ENDINGS to it + (a:&quot;NormalRoute&quot;))]
+[[Continue-&gt;Normal Ending]] </tw-passagedata><tw-passagedata pid="72" name="Normal Ending" tags="" position="2297,3018" size="200,100">(unless:$ENDINGS contains &quot;NormalRoute&quot;)[(set:$ENDINGS to it + (a:&quot;NormalRoute&quot;))]
 \When you exit City Hall, you notice a large gathering of people outside in the walkway. A commotion has begun due to the large amount of smoke pouring from the building.
 
 &quot;Is everything okay, Jed?&quot; a spectator asks you.
@@ -964,10 +970,10 @@ The fire department soon arrives, ushering everyone away. As you begin to walk t
 
 Congratulations, Jed. Your work here is done.
 
-[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="75" name="Supermarket Ending" tags="" position="26,2544" size="200,100">(unless:$ENDINGS contains &quot;Supermarket&quot;)[(set:$ENDINGS to it + (a:&quot;Supermarket&quot;))]
-\Congrats, you got ending! You did it.
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="73" name="Supermarket Ending" tags="" position="26,2544" size="200,100">(unless:$ENDINGS contains &quot;Supermarket&quot;)[(set:$ENDINGS to it + (a:&quot;Supermarket&quot;))]
+\(font:&quot;Raleway&quot;)[Congrats, you got ending! You did it.]
 
-[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="76" name="Josefine&#39;s Apartment" tags="" position="1891,1850" size="100,200">(set:$visitsJosefine to it + 1)
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="74" name="Josefine&#39;s Apartment" tags="" position="1891,1850" size="100,200">(set:$visitsJosefine to it + 1)
 \You go over to Josefine&#39;s apartment and knock on her door. (if:$visitsJosefine is 1)[You find that you and Josefine chat with each other from time to time about very random topics.]
 
 (if:$visitsJosefine is 1)[&quot;Good morning, Jed! How are you?&quot;](if:$visitsJosefine is 2 or 3)[&quot;What&#39;s up?&quot;](if:$visitsJosefine &gt; 3)[&quot;Hey,&quot;] Josefine greets.
@@ -979,9 +985,11 @@ Congratulations, Jed. Your work here is done.
 ]
 \(if:(history:) contains &quot;Empty Store&quot; and $josefineStore is &quot;unknown&quot;)[[[Empty Store-&gt;Josefine Empty Store]]
 ]
+\(if:$INV contains &quot;bear&quot; and $CLOSET does not contain &quot;purple vest&quot;)[[[Gift Teddy Bear-&gt;Josefine Bear]]
+]
 \(if:(history:) contains &quot;Setup VR&quot;)[[[Virtual Reality-&gt;Josefine VR]]
 ]
-\[[&quot;Gotta go!&quot;-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="77" name="Josefine Burgerocity" tags="" position="1892,2147" size="100,100">You mention Burgerocity shutting down.
+\[[&quot;Gotta go!&quot;-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="75" name="Josefine Burgerocity" tags="" position="1892,2147" size="100,100">You mention Burgerocity shutting down.
 
 &quot;Yeah I heard about that,&quot; Josefine says. &quot;I saw a news story on it this morning. I was just there yesterday actually, I wonder why he didn&#39;t say anything about it.&quot;
 
@@ -989,7 +997,7 @@ Congratulations, Jed. Your work here is done.
 
 &quot;Yeah, that&#39;s a good idea. You two are friends, right? He didn&#39;t tell the news but he&#39;ll probably tell you.&quot;
 
-[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="78" name="Rafael Empty Store" tags="" position="1587,2277" size="100,100">&quot;Do you remember what was in that space next to the hardware store in Town Square?&quot; you ask Rafael.
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="76" name="Rafael Empty Store" tags="" position="1587,2277" size="100,100">&quot;Do you remember what was in that space next to the hardware store in Town Square?&quot; you ask Rafael.
 
 &quot;Hmm, it&#39;s been a while,&quot; he responds, &quot;but I think it was some kind of bakery? I don&#39;t know what it was called though.&quot;
 
@@ -1001,7 +1009,7 @@ Congratulations, Jed. Your work here is done.
 
 &quot;See ya, Jed!&quot;
 
-[[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="79" name="Josefine Empty Store" tags="" position="1896,2282" size="100,100">(set:$josefineStore to &quot;known&quot;)
+[[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="77" name="Josefine Empty Store" tags="" position="1896,2282" size="100,100">(set:$josefineStore to &quot;known&quot;)
 \&quot;Do you remember what was in that space next to the hardware store in Town Square?&quot; you ask Josefine.
 
 &quot;You really forgot?&quot; Josefine smirks.
@@ -1020,7 +1028,7 @@ Congratulations, Jed. Your work here is done.
 
 &quot;Thank you, Josefine!&quot;
 
-[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="80" name="Ted&#39;s Apartment" tags="" position="1739,1848" size="100,200">(set:$visitsTed to it + 1)
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="78" name="Ted&#39;s Apartment" tags="" position="1739,1848" size="100,200">(set:$visitsTed to it + 1)
 \You go over to Ted&#39;s apartment and knock on the door. (if: $visitsTed is 1)[You and Ted have talked a few times, but not often.
 
 &quot;Hello, sir. How can help you?&quot;]
@@ -1037,10 +1045,12 @@ Congratulations, Jed. Your work here is done.
 [[Burgerocity-&gt;Ted Burgerocity]]
 (if:(history:) contains &quot;Empty Store&quot; and $josefineStore is &quot;unknown&quot;)[[[Empty Store-&gt;Ted Empty Store]]
 ]
+\(if:$INV contains &quot;bear&quot; and $CLOSET does not contain &quot;purple vest&quot;)[[[Gift Teddy Bear-&gt;Ted Bear]]
+]
 \[[Names-&gt;Ted Names]]
 (if:(history:) contains &quot;Setup VR&quot;)[[[Virtual Reality-&gt;Ted VR]]
 ]
-\[[&quot;Gotta go!&quot;-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="81" name="Talk to Librarian" tags="" position="471,1829" size="100,100">(unless:$bookReturned)[
+\[[&quot;Gotta go!&quot;-&gt;The Apartment Complex]]</tw-passagedata><tw-passagedata pid="79" name="Talk to Librarian" tags="" position="451,1830" size="100,100">(unless:$bookReturned)[
 \(unless:$INV contains &quot;late book&quot;)[
 \&quot;Oh, hello Jed,&quot; the librarian sighs. &quot;It&#39;s been a while.&quot;
 
@@ -1069,20 +1079,20 @@ The librarian types into her computer, &quot;Sorry, Jed. That book is so old it&
 
 &quot;In the finished game I will. But as of right now, I only have placeholder text.&quot;]
 
-[[Continue-&gt;Library]] </tw-passagedata><tw-passagedata pid="82" name="Computer Lab" tags="" position="476,1979" size="100,100">(if:$FUN is 5)[You walk up to the library&#39;s computer lab. All of the computers are out of order, except for one. You walk up to it, and it looks like something is wrong with it. There are tons of error messages on the screen, all saying various sentences in broken English. You can just barely make out the browser behind all the windows, where the search bar says &quot;http://arewebsite.com&quot;] 
+[[Continue-&gt;Library]] </tw-passagedata><tw-passagedata pid="80" name="Computer Lab" tags="" position="456,1980" size="100,100">(if:$FUN is 5)[You walk up to the library&#39;s computer lab. All of the computers are out of order, except for one. You walk up to it, and it looks like something is wrong with it. There are tons of error messages on the screen, all saying various sentences in broken English. You can just barely make out the browser behind all the windows, where the search bar says &quot;http://arewebsite.com&quot;] 
 \(else-if: $FUN is 13)[You walk up to the library&#39;s computer lab. All of the computers are out of order. except for one. You can barely make out the text on its screen.]
 \(else:)[You walk up to the library&#39;s computer lab. Each computer is turned off, with a piece of paper taped to them that reads &quot;OUT OF ORDER.&quot; (if:$FUN is 1)[What a shame. We could&#39;ve installed AreWebsite Antivirus onto all of them.]]
 
 (if:$FUN is 13)[[[Look at Computer-&gt;Fun BBTA]]
 ]
-\[[Continue-&gt;Library]]</tw-passagedata><tw-passagedata pid="83" name="Bookshelves" tags="" position="477,2133" size="100,100">You walk over to the library&#39;s bookshelves. The library has a very small selection, filling only about two and a half bookshelves worth.
+\[[Continue-&gt;Library]]</tw-passagedata><tw-passagedata pid="81" name="Bookshelves" tags="" position="457,2134" size="100,100">You walk over to the library&#39;s bookshelves. The library has a very small selection, filling only about two and a half bookshelves worth.
 
 (if:$josefineStore is &quot;known&quot; and $INV does not contain &quot;book series&quot;)[//[[The Adventures of Charles Howard and the Formidable Fruitcake-&gt;Book Series]]//
 ]
 \//[[Magic Recliner Couches-&gt;Book 2]]//
 //[[Starch &amp; Crinkle Visit the Big City-&gt;Book 3]]//
 //[[What to do if the World is Ending-&gt;Book 1]]//
-[[Exit-&gt;Library]] </tw-passagedata><tw-passagedata pid="84" name="Book 1" tags="" position="477,2411" size="100,100">You pull out //What to do if the World is Ending// and read the first page.
+[[Exit-&gt;Library]] </tw-passagedata><tw-passagedata pid="82" name="Book 1" tags="" position="457,2412" size="100,100">You pull out //What to do if the World is Ending// and read the first page.
 
 (font:&quot;Libre Baskerville&quot;)[
 \If you&#39;re reading this book, then that means that you think the world is about to end, or the world is literally about to end. But don&#39;t worry. This book will guide you through the three simple steps to help you prepare for the end.
@@ -1093,13 +1103,13 @@ The librarian types into her computer, &quot;Sorry, Jed. That book is so old it&
 
 &#39;&#39;Step 3) Invest all of your money into cryptocurrency.&#39;&#39; If the world is ending, so is your money. And if you&#39;re not going to spend it, don&#39;t let it go to waste! In chapter 3, I will give the pros and cons to investing in different &quot;cryptos,&quot; and also show you my very own cryptocurrency that has no flaws whatsoever.]
 
-[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="85" name="Book Series" tags="" position="478,2277" size="100,100">You notice one of the books in the book series Josefine was asking for: //The Adventures of Charles Howard and the Formidable Fruitcake//. You look nearby and eventually find the other books in the series, //The Adventures of Charles Howard and the Magnificent Mop//, //The Adventures of Charles Howard and the Towering Table//, and //The Adventures of Charles Howard: The Pointless Prequel//.
+[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="83" name="Book Series" tags="" position="458,2278" size="100,100">You notice one of the books in the book series Josefine was asking for: //The Adventures of Charles Howard and the Formidable Fruitcake//. You look nearby and eventually find the other books in the series, //The Adventures of Charles Howard and the Magnificent Mop//, //The Adventures of Charles Howard and the Towering Table//, and //The Adventures of Charles Howard: The Pointless Prequel//.
 \(set:$INV to it + (a:&quot;book series&quot;))
 
 You gather all 4 of the books, and take them to the front desk, where the librarian then checks you out.
 
 [[Continue Looking-&gt;Bookshelves]] 
-[[Exit-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="86" name="Book 2" tags="" position="480,2545" size="100,100">You pull out //Magic Recliner Couches// and begin reading.
+[[Exit-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="84" name="Book 2" tags="" position="460,2546" size="100,100">You pull out //Magic Recliner Couches// and begin reading.
 
 (font:&quot;Libre Baskerville&quot;)[
 \###COLD WAS THE NIGHT. I WAS STABBED.
@@ -1119,7 +1129,7 @@ I looked up, noticing I dodged a knife, and I said, “Hey. That’s pretty good
 
 You close the book as it got too confusing for you to follow.
 
-[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="87" name="Josefine Book Series" tags="" position="1891,2550" size="100,100">(set:$INV to it - (a:&quot;book series&quot;))(set:$josefineStore to &quot;wait&quot;)(set:$incomingMail to &quot;deed&quot;)
+[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="85" name="Josefine Book Series" tags="" position="1887,2831" size="100,100">(set:$INV to it - (a:&quot;book series&quot;))(set:$josefineStore to &quot;wait&quot;)(set:$incomingMail to &quot;deed&quot;)
 \&quot;Wow!&quot; Josefine exclaims, &quot;the library actually had all of them? That&#39;s awesome!&quot;
 
 &quot;Yup, I was surprised to find them all, given their small selection.&quot;
@@ -1128,7 +1138,7 @@ You close the book as it got too confusing for you to follow.
 
 &quot;Awesome, thank you Josey!&quot;
 
-[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="88" name="Ted Burgerocity" tags="" position="1741,2148" size="100,100">You mention Burgerocity shutting down.
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="86" name="Ted Burgerocity" tags="" position="1741,2148" size="100,100">You mention Burgerocity shutting down.
 
 Ted looks at you confused. &quot;Oh, that burger place. I&#39;ve never been.&quot;
 
@@ -1136,7 +1146,7 @@ Ted looks at you confused. &quot;Oh, that burger place. I&#39;ve never been.&quo
 
 &quot;I&#39;ve lived my whole life without going there. I can live the rest just the same.&quot;
 
-[[Continue-&gt;Ted&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="89" name="Ted Empty Store" tags="" position="1742,2279" size="100,100">&quot;Do you remember what was in that space next to the hardware store in Town Square?&quot; you ask Ted.
+[[Continue-&gt;Ted&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="87" name="Ted Empty Store" tags="" position="1742,2279" size="100,100">&quot;Do you remember what was in that space next to the hardware store in Town Square?&quot; you ask Ted.
 
 &quot;Yeah, what about it?&quot; Ted responds.
 
@@ -1148,7 +1158,7 @@ Ted looks at you confused. &quot;Oh, that burger place. I&#39;ve never been.&quo
 
 &quot;Who are you again? Tell me how you know my name.&quot;
 
-[[&quot;Goodbye!&quot;-&gt;Ted&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="90" name="Ted Names" tags="" position="1742,2549" size="100,100">&quot;Have you ever thought about how our names rhyme?&quot; you ask Ted.
+[[&quot;Goodbye!&quot;-&gt;Ted&#39;s Apartment]]</tw-passagedata><tw-passagedata pid="88" name="Ted Names" tags="" position="1738,2830" size="100,100">&quot;Have you ever thought about how our names rhyme?&quot; you ask Ted.
 
 Ted stares at you. &quot;I don&#39;t know who you are. How do you know my name?&quot;
 
@@ -1156,11 +1166,11 @@ Ted stares at you. &quot;I don&#39;t know who you are. How do you know my name?&
 
 Ted shuts the door on you.
 
-[[Continue-&gt;Ted&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="91" name="Open Jed&#39;s Jams" tags="" position="3483,1866" size="100,100">You spend the next day or two starting to clean up the store. You started mostly by sweeping and vacuuming and dusting, and then eventually painting, putting up wallpapers, and finally setting up items.
+[[Continue-&gt;Ted&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="89" name="Open Jed&#39;s Jams" tags="" position="3483,1866" size="100,100">You spend the next day or two starting to clean up the store. You started mostly by sweeping and vacuuming and dusting, and then eventually painting, putting up wallpapers, and finally setting up items.
 
 At long last, your life dream had been completed. Jed&#39;s Jams was open for business.
 
-[[Continue-&gt;Capitalism Ending]] </tw-passagedata><tw-passagedata pid="92" name="Capitalism Ending" tags="" position="3435,2049" size="200,100">(unless:$ENDINGS contains &quot;Capitalism&quot;)[(set:$ENDINGS to it + (a:&quot;Capitalism&quot;))]
+[[Continue-&gt;Capitalism Ending]] </tw-passagedata><tw-passagedata pid="90" name="Capitalism Ending" tags="" position="3435,2049" size="200,100">(unless:$ENDINGS contains &quot;Capitalism&quot;)[(set:$ENDINGS to it + (a:&quot;Capitalism&quot;))]
 \5 long days passed.
 
 No one&#39;s bought anything. No one&#39;s even came into the store. And it&#39;s not like you didn&#39;t advertise it! You told many people about it: your neighbors, random people in the supermarket, random people on the train, random people that happened to walk by your shop, and more.
@@ -1171,7 +1181,7 @@ The incoming bills began to scare you. In about 25 days you&#39;d have to pay th
 
 And that&#39;s when the sky went red and the entire store exploded.
 
-[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="93" name="Burgerocity Owner" tags="" position="4312,1998" size="100,100">(set: $visitsBurgerocity to it + 1)
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="91" name="Burgerocity Owner" tags="" position="4312,1998" size="100,100">(set: $visitsBurgerocity to it + 1)
 \&quot;Why the want to shut down shop all the sudden?&quot; you ask. &quot;And why so soon?&quot;
 
 The owner leans forward. &quot;If anyone asks, you never heard this. I was told not to tell anyone.&quot;
@@ -1186,11 +1196,11 @@ The owner leans forward. &quot;If anyone asks, you never heard this. I was told 
 
 &quot;Don&#39;t worry. I&#39;ll get to the bottom of this.&quot;
 
-[[Continue-&gt;Burgerocity]] </tw-passagedata><tw-passagedata pid="94" name="Josefine Deed" tags="" position="1892,2684" size="100,100">You mention the deed to the empty store.
+[[Continue-&gt;Burgerocity]] </tw-passagedata><tw-passagedata pid="92" name="Josefine Deed" tags="" position="1888,2965" size="100,100">You mention the deed to the empty store.
 
 &quot;I already talked to the person who was holding onto it for me,&quot; Josefine responds, &quot;so now we&#39;re just waiting for snail mail! Should arrive in your mailbox in a day or two.&quot;
 
-[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="95" name="Train Station" tags="" position="2883,524" size="200,200">(set:$visitsTrainStation to it + 1)
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="93" name="Train Station" tags="" position="2883,524" size="200,200">(set:$visitsTrainStation to it + 1)
 \(if:$MONEY &lt; 10 and $LOC is not &quot;East Side&quot; and $INV does not contain all of (a:&quot;train pass&quot;,&quot;train pass new&quot;,&quot;train ticket&quot;))[
 \&quot;Hey Jed!&quot; Welcome to the $LOC Train Station! Where&#39;d you want to go?&quot;
 
@@ -1228,7 +1238,7 @@ Current funds: $$MONEY
 
 &quot;Yup,&quot; Jed replies. &quot;Never leave home without it!&quot;
 
-&quot;Perfect! &quot;Where&#39;d you want to go today?&quot;]
+&quot;Perfect! Where&#39;d you want to go today?&quot;]
 \(else:)[
 \(if:$justSoldTicket)[&quot;And where did you want to go?&quot;]
 \(else:)[&quot;Hey Jed!&quot; the ticket seller greets. &quot;Welcome to the $LOC Train Station! Where&#39;d you want to go?&quot;]]
@@ -1243,13 +1253,13 @@ Current funds: $$MONEY
 ]
 \(if:$LOC is &quot;East Side&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;East Side of Town&quot;)[(set:$justSoldTicket to false)]]
 \(if:$LOC is &quot;Town Square&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;Town Square&quot;)[(set:$justSoldTicket to false)]]
-\(if:$LOC is &quot;West Side&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;West Side of Town&quot;)[(set:$justSoldTicket to false)]]]</tw-passagedata><tw-passagedata pid="96" name="Out of Town" tags="" position="3231,495" size="100,100">&quot;Are there any trains going out of town?&quot; you ask the ticket seller.
+\(if:$LOC is &quot;West Side&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;West Side of Town&quot;)[(set:$justSoldTicket to false)]]]</tw-passagedata><tw-passagedata pid="94" name="Out of Town" tags="" position="3231,495" size="100,100">&quot;Are there any trains going out of town?&quot; you ask the ticket seller.
 \(set:$justSoldTicket to false)
 
 &quot;The trains that go in and out of town are only for business reasons,&quot; the ticket seller explains. &quot;If you want to get a ride out of town you&#39;ll need t- wait, what&#39;s this? Ok, it looks like there is one train going out of town. To a place called &#39;Bloomhurst Lake...&#39; Oddly enough, it doesn&#39;t look like any trains are coming back from this location. What do you think?&quot;
 
 [[&quot;I&#39;ll do it!&quot;-&gt;Train Ride Bloomhurst Lake]]
-(if:$LOC is &quot;East Side&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;East Side of Town&quot;)[(set:$justSoldTicket to false)]](if:$LOC is &quot;Town Square&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;Town Square&quot;)[(set:$justSoldTicket to false)](if:$LOC is &quot;West Side&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;West Side of Town&quot;)[(set:$justSoldTicket to false)]]]</tw-passagedata><tw-passagedata pid="97" name="Paint Apartment" tags="" position="1040,1976" size="100,100">(set:$visitsPaint to it + 1)
+(if:$LOC is &quot;East Side&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;East Side of Town&quot;)[(set:$justSoldTicket to false)]](if:$LOC is &quot;Town Square&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;Town Square&quot;)[(set:$justSoldTicket to false)](if:$LOC is &quot;West Side&quot;)[(link-reveal-goto:&#39;&quot;Nevermind&quot;&#39;,&quot;West Side of Town&quot;)[(set:$justSoldTicket to false)]]]</tw-passagedata><tw-passagedata pid="95" name="Paint Apartment" tags="" position="1040,1976" size="100,100">(set:$visitsPaint to it + 1)
 \(set:_a2 to (rotated-to: where it is &quot;paint&quot;,...$INV))
 \(set:$INV to _a2&#39;s 2ndtolast)
 \(set:$wallColor to (a:&quot;vermilion&quot;,&quot;gamboge&quot;,&quot;glaucous&quot;,&quot;ginerline&quot;,&quot;smalt&quot;,&quot;coquelicot&quot;,&quot;eburnean&quot;,&quot;skobeloff&quot;,&quot;wenge&quot;,&quot;zaffre&quot;,&quot;puce&quot;,&quot;falu&quot;,&quot;incarnadine&quot;,&quot;pervenche&quot;,&quot;Green-Guy-green&quot;,&quot;Blue-Cat-blue&quot;,&quot;sang-de-boeuf&quot;,&quot;sinoper&quot;,&quot;watchet&quot;)&#39;s random)
@@ -1258,7 +1268,7 @@ Current funds: $$MONEY
 \(else:)[
 \You open up another paint bucket and quickly repaint. It was quite difficult considering that the other coat hasn&#39;t fully dried yet, but it was all worth it when the walls finally became a beautiful shade of $wallColor.]
 
-[[Continue-&gt;Jed&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="98" name="Book 3" tags="" position="483,2685" size="100,100">You pull out //Starch &amp; Crinkle Visit the Big City// and begin reading.
+[[Continue-&gt;Jed&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="96" name="Book 3" tags="" position="463,2686" size="100,100">You pull out //Starch &amp; Crinkle Visit the Big City// and begin reading.
 
 (font:&quot;Libre Baskerville&quot;)[
 \Starch and Crinkle, equally known as Arruga y Chuño, are not exactly known for having the craziest adventures. They live within an abandoned room of a 2-star hotel with their cat Porche, and occasionally hang out with their family friend Yeyé in the trailer park.
@@ -1277,11 +1287,11 @@ Strapping into the seat, the Hyper Speedy Zoom-Zoom Wowie-Wow-Wow Zoom Fast Mach
 
 “Yeah, I think I’m done,” Starch uttered, ready to go home.]
 
-[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="99" name="Electronics Store" tags="" position="796,1559" size="100,200">(unless:$banned contains &quot;electronics&quot;)[
-\You&#39;re inside the Gadget Factorie, an electronics store in East Side. The interior has a very sleek and modern design. &quot;How ya doin&#39; Jed?&quot; the clerk greets.
+[[Continue-&gt;Bookshelves]] </tw-passagedata><tw-passagedata pid="97" name="Electronics Store" tags="" position="796,1559" size="100,200">(unless:$banned contains &quot;electronics&quot; and (($wearing is &quot;ski mask&quot; and $toasterMask) or ($wearing is not &quot;ski mask&quot; and $toasterMask is false)))[
+\You&#39;re inside the Gadget Factorie, an electronics store in East Side. The interior has a very sleek and modern design. &quot;How ya doin&#39; (cond:$wearing is &quot;ski mask&quot;,&quot;sir&quot;,&quot;Jed&quot;)?&quot; the clerk greets.
 \(set:$previousPassage to (passage:)&#39;s name)
 
-(if:$visitsGang is 2)[[[&quot;Purchase&quot; Items-&gt;Buy Electronics]]](else:)[[[Purchase Items-&gt;Buy Electronics]]] 
+(if:$visitsGang is 2 and $INV does not contain &quot;toaster&quot;)[[[&quot;Purchase&quot; Items-&gt;Buy Electronics]]](else:)[[[Purchase Items-&gt;Buy Electronics]]] 
 (if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
 \[[Exit-&gt;East Side of Town]]]
@@ -1290,7 +1300,7 @@ Strapping into the seat, the Hyper Speedy Zoom-Zoom Wowie-Wow-Wow Zoom Fast Mach
 
 &quot;Oops, that&#39;s my queue to leave!&quot;
 
-[[Exit-&gt;East Side of Town]]]</tw-passagedata><tw-passagedata pid="100" name="Buy Electronics" tags="" position="796,1829" size="100,100">&quot;We got the goods, provided you got the dough.&quot;
+[[Exit-&gt;East Side of Town]]]</tw-passagedata><tw-passagedata pid="98" name="Buy Electronics" tags="" position="796,1829" size="100,100">&quot;We got the goods, provided you got the dough.&quot;
 
 Current funds: $$MONEY
 
@@ -1299,10 +1309,10 @@ Current funds: $$MONEY
 [[70&quot; Smart TV - $599-&gt;Too Poor]]
 [[30&quot; Stove - $1,299-&gt;Too Poor]]
 (if:$visitsGang is 2 and $INV does not contain &quot;toaster&quot;)[[[18&quot; Toaster - $4,999 (Steal)-&gt;Steal Toaster]]](else:)[[18&quot; Toaster - $4,999-&gt;Too Poor]]
-(if:$INV does not contain &quot;vr headset&quot; and $MONEY &gt;= 399)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;VR Headset - $489&quot;,&quot;Buy Electronics&quot;)[(set:$INV to it + (a:&quot;vr headset&quot;))(set:$MONEY to it - 399)]](else:)[(if:$INV contains &quot;vr headset&quot;)[VR Headset - Sold Out](else:)[[[VR Headset - $399-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;vr headset&quot; and $MONEY &gt;= 399)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;VR Headset - $489&quot;,&quot;Buy Electronics&quot;)[(set:$INV to it + (a:&quot;vr headset&quot;))(set:$MONEY to it - 399)]](else:)[(if:$INV contains &quot;vr headset&quot;)[VR Headset - Owned](else:)[[[VR Headset - $399-&gt;Too Poor]]]]
 [[27&quot; Washer &amp; Dryer Set - $699-&gt;Too Poor]]
 
-[[Exit-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="101" name="Train Ride Bloomhurst Lake" tags="" position="3230,657" size="100,100">During the train ride, (either:&quot;Jed wondered if Burgerocity was selling the Big Boy today. The Big Boy is a special burger that the owner only sells on random days. On one hand, today is Burgerocity’s last day, so it would be a missed opportunity if the owner didn’t sell it. On the other hand, it had only been a few days since it was last sold, and it takes lots of material to make, so he probably does not have enough.&quot;,&quot;Jed looked out the train window for some birds. Jed had made it a habit to birdwatch while on the train. Strangely enough, Jed didn’t see any during his ride. The weather’s normal today, where are all the birds? Did someone scare them all away? Or some//thing//?&quot;,&quot;Jed thought about the events happening today. His favorite burger place being shut down, the letter he received in the mail, and the quest given to him. Jed loves to help people, and wanted to succeed in this regard, but the things happening today seem a bit much. Was this quest expected of him? What would happen if he never met up with the writer of the letter? When is it okay to let things take their own course?&quot;,&quot;Jed thought about his neighbor Rafael. He and Jed met when he first moved in the apartment complex, and they got along quite well. They have quite a few things in common, and have hung out a few times. However, their schedules rarely line up, so they don’t talk to each other as much as they would like.&quot;,&quot;Jed thought about his neighbor Ted. Ted is much older than Jed, and Ted had been living in the apartment complex way before Jed moved in. Despite the fact that they’ve been neighbors for a while, they have barely gotten to know each other. Ted has almost completely forgotten who Jed is, despite his numerous attempts to introduce himself. Maybe one day they shall become friends…&quot;,&quot;Jed thought about his neighbor Josefine. Jed and Josefine have known each other for years, but only just recently did Josefine move near Jed. She had been living with her parents for a few years but eventually wanted her own place. Jed convinced her to move in near him, and she did. She’s not new to Webster Groves, however, since she used to (cond:$josefineStore is ‘unknown’,’have a job’,’own a business’) here.&quot;)
+[[Exit-&gt;Electronics Store]] </tw-passagedata><tw-passagedata pid="99" name="Train Ride Bloomhurst Lake" tags="" position="3230,657" size="100,100">During the train ride, (either:&quot;Jed wondered if Burgerocity was selling the Big Boy today. The Big Boy is a special burger that the owner only sells on random days. On one hand, today is Burgerocity’s last day, so it would be a missed opportunity if the owner didn’t sell it. On the other hand, it had only been a few days since it was last sold, and it takes lots of material to make, so he probably does not have enough.&quot;,&quot;Jed looked out the train window for some birds. Jed had made it a habit to birdwatch while on the train. Strangely enough, Jed didn’t see any during his ride. The weather’s normal today, where are all the birds? Did someone scare them all away? Or some//thing//?&quot;,&quot;Jed thought about the events happening today. His favorite burger place being shut down, the letter he received in the mail, and the quest given to him. Jed loves to help people, and wanted to succeed in this regard, but the things happening today seem a bit much. Was this quest expected of him? What would happen if he never met up with the writer of the letter? When is it okay to let things take their own course?&quot;,&quot;Jed thought about his neighbor Rafael. He and Jed met when he first moved in the apartment complex, and they got along quite well. They have quite a few things in common, and have hung out a few times. However, their schedules rarely line up, so they don’t talk to each other as much as they would like.&quot;,&quot;Jed thought about his neighbor Ted. Ted is much older than Jed, and Ted had been living in the apartment complex way before Jed moved in. Despite the fact that they’ve been neighbors for a while, they have barely gotten to know each other. Ted has almost completely forgotten who Jed is, despite his numerous attempts to introduce himself. Maybe one day they shall become friends…&quot;,&quot;Jed thought about his neighbor Josefine. Jed and Josefine have known each other for years, but only just recently did Josefine move near Jed. She had been living with her parents for a few years but eventually wanted her own place. Jed convinced her to move in near him, and she did. She’s not new to Webster Groves, however, since she used to (cond:$josefineStore is ‘unknown’,’have a job’,’own a business’) here.&quot;)
 \(live:1s)[(if:time &gt; 10s)[
 
 Hey, Jed, I don&#39;t think that you should&#39;ve gotten on this train. I didn&#39;t say anything earlier because it hadn&#39;t clicked for me yet, but now I think I remember what Bloomhurst Lake is. And I don&#39;t think what we&#39;re going to see is going to be pretty.]
@@ -1310,7 +1320,7 @@ Hey, Jed, I don&#39;t think that you should&#39;ve gotten on this train. I didn&
 
 Well, looks like the train has stopped. Let&#39;s be careful out here.
 
-[[Continue-&gt;Bloomhurst Lake]]]]</tw-passagedata><tw-passagedata pid="102" name="Bloomhurst Lake" tags="" position="6202,1174" size="200,200">(set:$visitsBL to it + 1)
+[[Continue-&gt;Bloomhurst Lake]](stop:)]]</tw-passagedata><tw-passagedata pid="100" name="Bloomhurst Lake" tags="" position="6202,1174" size="200,200">(set:$visitsBL to it + 1)
 \Youre in Bloomhurst Lake a small town outside of Webster Groves. The town is build around a lake of the same name. The sky feels very warm and your happy to be here.
 \(if:$visitsBL is 1)[
 
@@ -1321,7 +1331,11 @@ Wow... it&#39;s worse than I thought. Look at all those types in just those thre
 [[Ice Rink-&gt;Ice Rink BL]]
 [[Train Station-&gt;BL Train Station]]
 \(if:$visitedBL contains all of (a:&quot;train station&quot;,&quot;pet store&quot;,&quot;apartments&quot;,&quot;ice rink&quot;))[
-[[Leave Town-&gt;Leave BL]]]</tw-passagedata><tw-passagedata pid="103" name="BL Train Station" tags="" position="6532,1103" size="100,100">You enter the train station.
+[[Leave Town-&gt;Leave BL]]]
+
+&lt;!-- \(if:$visitedBL contains all of (a:&quot;train station&quot;,&quot;pet store&quot;,&quot;apartments&quot;,&quot;ice rink&quot;))[
+[[Leave Town-&gt;Leave BL]]
+(if:$ENDINGS contains &quot;Glitch&quot;)[(font:&quot;Raleway&quot;)[[[Somewhere-&gt;Somewhere]]]]] --&gt;</tw-passagedata><tw-passagedata pid="101" name="BL Train Station" tags="" position="6532,1103" size="100,100">You enter the train station.
 \(set:$visitedBL to it + (a:&quot;train station&quot;))
 
 &quot;Hey Jed!&quot; the ticket seller greats. &quot;Welcome to the &#96;$LOCATION&#96; Train Station! Where did you want to go?&quot;
@@ -1329,13 +1343,13 @@ Wow... it&#39;s worse than I thought. Look at all those types in just those thre
 Curent funds: $$$MONEY
 
 &#96;[[Webster Groves-&gt;Train Ride]]&#96;
-[[Exit-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="104" name="Leave BL" tags="" position="6252,1458" size="100,100">Well Jed, I hope you had fun exploring that broken area. I might as well explain what this place is:
+[[Exit-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="102" name="Leave BL" tags="" position="6252,1458" size="100,100">Well Jed, I hope you had fun exploring that broken area. I might as well explain what this place is:
 
 Bloomhurst Lake was going to be a DLC for this game. It would&#39;ve added a completely new area to the game, with its own subareas like Webster Groves. But as we worked on it, we realized a crucial problem: what was the point of this whole area? What would it have done to the game? Sure, there would have been &quot;more,&quot; but what good does &quot;more&quot; do when it&#39;s not adding to anything? So we threw it away.
 
 But now that makes me wonder, how was the ticket seller able to access this area? We chopped it off from the rest of the game very early on. There shouldn&#39;t have been any links to these passages... maybe something in town will explain it?
 
-[[Go Back-&gt;Glitch Ending]]</tw-passagedata><tw-passagedata pid="105" name="BL Pet Store" tags="" position="6524,1382" size="100,100">&quot;HelloHeyGood morningHow are yaHowdy, Jed!&quot; the clerk greets. &quot;Adoption fee is fifty dollars!
+[[Go Back-&gt;Glitch Ending]]</tw-passagedata><tw-passagedata pid="103" name="BL Pet Store" tags="" position="6524,1382" size="100,100">&quot;HelloHeyGood morningHow are yaHowdy, Jed!&quot; the clerk greets. &quot;Adoption fee is fifty dollars!
 \(set:$visitedBL to it + (a:&quot;pet store&quot;))
 
 Curent Funds: $$MONEY
@@ -1346,27 +1360,27 @@ Curent Funds: $$MONEY
 (t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Hamster - $50&quot;,&quot;BL Pet Store&quot;)[(set:$MONEY to it - 50)]
 (t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Rabbit - $50&quot;,&quot;BL Pet Store&quot;)[(set:$MONEY to it - 50)]
 
-[[Exit-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="106" name="BL Apartments" tags="" position="6525,1533" size="100,100">&#96;(if:$resident)[&quot;Welcome back, Jed,&quot; the man at the counter says.]
+[[Exit-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="104" name="BL Apartments" tags="" position="6525,1533" size="100,100">&#96;(if:$resident)[&quot;Welcome back, Jed,&quot; the man at the counter says.]
 \(else:)[You walk up to the apartment complex. It looks simlar to the one you live in back to Wesbter Groves. When you get to the doors you notice that there is a keycard scanner next to the front door. Perhaps you can find a way to get in...&#96;
 \(set:$visitedBL to it + (a:&quot;apartments&quot;))
 
 &#96;$resident[&#96;[[Your Apartment-&gt;Apartment Room BL]]]
-[[Continue-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="107" name="Apartment Room BL" tags="" position="6676,1536" size="100,100">You&#39;re currently inside your apartment in Bloomhurst Lake. Your home away from home Where would you like to go?
+[[Continue-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="105" name="Apartment Room BL" tags="" position="6695,1533" size="100,100">You&#39;re currently inside your apartment in Bloomhurst Lake. Your home away from home Where would you like to go?
 
 [[Kitchenette-&gt;BL Apartments]]
 [[Bedroom-&gt;BL Apartments]]
 [[Bathroom-&gt;BL Apartments]]
-[[Exit-&gt;BL Apartments]]</tw-passagedata><tw-passagedata pid="108" name="Ice Rink BL" tags="" position="6522,1240" size="100,100">&quot;Welcome to the Bloomhurst Lake Ice rink. Want to sake but the lake&#39;s not frozen over yet? You&#39;ve come to the right place!&quot;
+[[Exit-&gt;BL Apartments]]</tw-passagedata><tw-passagedata pid="106" name="Ice Rink BL" tags="" position="6522,1240" size="100,100">&quot;Welcome to the Bloomhurst Lake Ice rink. Want to sake but the lake&#39;s not frozen over yet? You&#39;ve come to the right place!&quot;
 \(set:$visitedBL to it + (a:&quot;ice rink&quot;))
 
 [[Enter the door on the left-&gt;Stanley Parable Reference]]
-[[Exit-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="109" name="Glitch Ending" tags="" position="6209,1627" size="200,100">Double-click this passage to edit it.
+[[Exit-&gt;Bloomhurst Lake]] </tw-passagedata><tw-passagedata pid="107" name="Glitch Ending" tags="" position="6209,1627" size="200,100">Double-click this passage to edit it.
 \(set:$ENDINGS to it + (a:&quot;Glitch&quot;))
 \(live:0.1s)[(if:time&gt;4s)[(go-to:&quot;Waiting Room Entrance&quot;)]]
 
-Oh no. The passage is broken. And I don&#39;t see a way to go back from here. Are we trapped? Trapped inside this broken area of the game? Well then. Looks like it will be just me and you, Jed. Here... forever. Until the game gets closed. Alright Jed, I hope you brought some kind of activity with you to Bloomhurst Lake. I actually have a rebus book over here that I&#39;m going to take a crack at. That should last me a little while at least. I&#39;ll be back to you when I get bored!</tw-passagedata><tw-passagedata pid="110" name="Mega-Bathroom" tags="" position="1381,3447" size="100,100">(set:$visitsMegaToilet to it + 1)
+Oh no. The passage is broken. And I don&#39;t see a way to go back from here. Are we trapped? Trapped inside this broken area of the game? Well then. Looks like it will be just me and you, Jed. Here... forever. Until the game gets closed. Alright Jed, I hope you brought some kind of activity with you to Bloomhurst Lake. I actually have a rebus book over here that I&#39;m going to take a crack at. That should last me a little while at least. I&#39;ll be back to you when I get bored!</tw-passagedata><tw-passagedata pid="108" name="Mega-Bathroom" tags="" position="1338,3255" size="100,100">(set:$visitsMegaToilet to it + 1)
 \(if:$visitsMegaToilet is 1)[Oh, so now that I&#39;ve stopped you from flushing your own toilet, you&#39;re gonna go and flush someone else&#39;s toilet? You&#39;re that petty?]
-\(if:$visitsMegaToilet is 2)[Again? Are you really going to go building from building just so that you can flush the toilet? You&#39;re not even using it! You don&#39;t need to use it; we&#39;re in a fictional game world where no one has to use the bathroom!]
+\(if:$visitsMegaToilet is 2)[Again? Are you really going to go from building to building just so that you can flush the toilet? You&#39;re not even using it! You don&#39;t need to use it; we&#39;re in a fictional game world where no one has to use the bathroom!]
 \(if:$visitsMegaToilet is 3)[Oh no. I know what you&#39;re doing. I thought I got rid of this ending. It shouldn&#39;t be possible. Well, //shouldn&#39;t// being the key word here.]
 \(if:$visitsMegaToilet is 4)[Jed, if you&#39;re going for the Toilet Ending, it&#39;s not possible. I removed it from the game before publishing it. Or at least I vividly remember removing it from the game. This either means I&#39;m going crazy or... or he added it back...]
 \(if:$visitsMegaToilet is 5)[Oh, of course he added back this ending. Why wouldn&#39;t he? I&#39;m trying to create a nice little town with a nice little story with a nice little good ending, and //he// has to come in here and &#39;&#39;literally&#39;&#39; crap all over it. This is just great.]
@@ -1379,10 +1393,10 @@ Oh, why am I asking you? You had trust in it from the very start. It was I who w
 There&#39;s only two more to go after this one. Godspeed, Jed!]
 \(if:$visitsMegaToilet is 9)[There is only more toilet left. One more toilet left in the game after this. Do you (cond:$ENDINGS contains any of (a:&quot;NormalRoute&quot;,&quot;Evil&quot;,&quot;Arrested&quot;),&quot;remember&quot;,&quot;know&quot;) where it is? I don&#39;t want to give away the answer, but to find it you&#39;re going to have to go underground.]
 
-[[Flush the Toilet-&gt;Mega-Toilet]] </tw-passagedata><tw-passagedata pid="111" name="Mega-Toilet" tags="" position="1379,3595" size="100,100">You flush the toilet.
+[[Flush the Toilet-&gt;Mega-Toilet]] </tw-passagedata><tw-passagedata pid="109" name="Mega-Toilet" tags="" position="1339,3403" size="100,100">You flush the toilet.
 \(if:$toilets does not contain $previousPassage)[(set:$toilets to it + (a:$previousPassage))]
 
-(link-goto:&quot;Continue&quot;,$previousPassage)</tw-passagedata><tw-passagedata pid="112" name="The Final Flush" tags="" position="2965,2680" size="100,100">You flush the toilet. And...
+(link-goto:&quot;Continue&quot;,$previousPassage)</tw-passagedata><tw-passagedata pid="110" name="The Final Flush" tags="" position="2965,2680" size="100,100">You flush the toilet. And...
 
 Nothing? Nothing special happens?
 
@@ -1392,7 +1406,7 @@ Well this is a big giant let down.
 
 Oh well, let&#39;s go defeat the mayor... or whatever...
 
-[[Continue-&gt;The Toilet Ending]] </tw-passagedata><tw-passagedata pid="113" name="The Toilet Ending" tags="" position="2916,2840" size="200,100">(unless:$ENDINGS contains &quot;Toilet&quot;)[(set:$ENDINGS to it + (a:&quot;Toilet&quot;))]
+[[Continue-&gt;The Toilet Ending]] </tw-passagedata><tw-passagedata pid="111" name="The Toilet Ending" tags="" position="2916,2840" size="200,100">(unless:$ENDINGS contains &quot;Toilet&quot;)[(set:$ENDINGS to it + (a:&quot;Toilet&quot;))]
 \(font:&quot;Raleway&quot;)[As the narrator started to mope, Jed and the secretary walked out of the maintenance room. Jed and the narrator are both upset, while the secretary is just confused. How would Jed explain to her what was happening? Would she ever be able to understand? Would the concept of a &quot;toilet ending&quot; ever make sense to her? Would the process of explaining the Toilet Ending give her an existential crisis?
 
 However, moments later, the room began to shake. &quot;This is it!&quot; the narrator cried. The toilet inside the maintenance room began to grow. Jed and the secretary looked back, and saw it begin to take up the entire room. They ran to the elevator and pushed the button to go up, but the door quickly opened and revealed four securiry guards. 
@@ -1405,7 +1419,7 @@ The guards stare at Jed for a second, but then invite Jed and the secretary into
 
 A commotion has begin around city hall. People began gathering around, wondering what the noise was. After a minute or two, the toilet grew so large that it completely destroyed City Hall. Once there was nothing left, it stopped growing.]
 
-[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="114" name="Fun BBTA" tags="" position="635,1979" size="100,100">You walk up to the computer and see a story written on the screen.
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="112" name="Fun BBTA" tags="" position="615,1980" size="100,100">You walk up to the computer and see a story written on the screen.
 
 &lt;blockquote&gt;//It stalks the countryside with ears that cannot hear...//
 
@@ -1418,11 +1432,11 @@ You’re unsure of how long it had been sitting there for. For all you know, it 
 What do you do about the bird? Should you (color:#4169e1)[&#39;&#39;Talk to the Bird&#39;&#39;], (color:#4169e1)[&#39;&#39;Ignore the Bird&#39;&#39;] or (color:#4169e1)[&#39;&#39;Throw Knife at the Bird&#39;&#39;]?&lt;/blockquote&gt;
 You try to click the links, but it looks like the screen is frozen.
 
-[[Continue-&gt;Computer Lab]] </tw-passagedata><tw-passagedata pid="115" name="Setup VR" tags="" position="1040,1843" size="100,100">(set:$INV to it - (a:&quot;vr headset&quot;))
+[[Continue-&gt;Computer Lab]] </tw-passagedata><tw-passagedata pid="113" name="Setup VR" tags="" position="1040,1843" size="100,100">(set:$INV to it - (a:&quot;vr headset&quot;))
 \(if:visits is 1)[You set up your VR Headset inside your apartment, and you enter a virtual version of Webster Groves! Everything seems so realistic... it looks almost exactly like your apartment! I wonder what kind of schenanigans we can get up to in this fake VR world, Jed!]
-(else:)[Hey aren&#39;t we already inside a virtual world? How is this going to work? Are we now going to be in a virtual world in a virtual world? This is getting to confusing for me to handle. Well, let&#39;s see if this virtual world is any different than the previous one.]
+\(else:)[Hey aren&#39;t we already inside a virtual world? How is this going to work? Are we now going to be in a virtual world in a virtual world? This is getting to confusing for me to handle. Well, let&#39;s see if this virtual world is any different than the previous one.]
 
-[[Continue-&gt;Jed&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="116" name="Rafael VR" tags="" position="1592,2419" size="100,100">You explain to Rafael how you are both currently inside virtual reality.
+[[Continue-&gt;Jed&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="114" name="Rafael VR" tags="" position="1590,2696" size="100,100">You explain to Rafael how you are both currently inside virtual reality.
 
 &quot;Haha, yeah,&quot; he kids, &quot;//we&#39;re all living in a simulation!//&quot;
 
@@ -1434,7 +1448,7 @@ You stare back at him blankly.
 
 &quot;Hmmm... I need a second to think about that.&quot;
 
-[[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="117" name="Ted VR" tags="" position="1744,2416" size="100,100">(set:$visitsTed to 4)
+[[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="115" name="Ted VR" tags="" position="1740,2697" size="100,100">(set:$visitsTed to 4)
 \You explain to Ted how you are both currently inside virtual reality.
 
 &quot;So what you&#39;re trying to say is that we are in a fake, virtual world with no consequences?&quot; Ted asks.
@@ -1443,7 +1457,7 @@ You stare back at him blankly.
 
 Ted smirks. &quot;Alright then. Since you moved in, I knew I would never like you. You&#39;re extremely annoying and you can&#39;t take any hints.&quot; Ted then slams the door on you.
 
-[[Continue-&gt;Ted&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="118" name="Josefine VR" tags="" position="1895,2415" size="100,100">You explain to Josefine how you are both currently inside virtual reality.
+[[Continue-&gt;Ted&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="116" name="Josefine VR" tags="" position="1891,2696" size="100,100">You explain to Josefine how you are both currently inside virtual reality.
 
 &quot;Y&#39;know, I&#39;ve thought about that idea a lot,&quot; Josefine explains, &quot;and I&#39;ve come to the conclusion that I don&#39;t care whether or not we live in a virtual reality. As long as I&#39;m having a good time, it&#39;s all good, y&#39;know?&quot;
 
@@ -1451,12 +1465,12 @@ Ted smirks. &quot;Alright then. Since you moved in, I knew I would never like yo
 
 &quot;You do you.&quot;
 
-[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="119" name="The Gang" tags="" position="5291,1846" size="100,100">(if:$visitsGang is 0)[
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="117" name="The Gang" tags="" position="5292,1846" size="100,100">(if:$visitsGang is 0)[
 \(set:$visitsGang to 1)
 \(if:$MONEY &gt; 0)[
 \&quot;Well, well, well,&quot; you hear a voice say from further down the alley, &quot;woulda look at who we got here. It&#39;s Mista Goody-Two-Shoes!&quot; Three people then walk out of the darkness: a short person, a tall person, and a third person. &quot;Get his money.&quot;
 
-The tall person one grabs your legs and flips you upside down. You wallet falls out of your pocket, and the third person picks you wallet up off the ground, take the money out, and then throws it at your face.
+The tall person one grabs your legs and flips you upside down. Your wallet falls out of your pocket, and the third person picks your wallet up off the ground, takes the money out, and then throws it at your face.
 
 (if:$MONEY &lt; 30)[&quot;Only $$MONEY... I was expecting more...&quot;
 
@@ -1480,7 +1494,7 @@ I don&#39;t want to say I told you so, but... I told you so.
 \&quot;Well, well, well,&quot; you hear a voice say from further down the alley, &quot;woulda look at who we got here. It&#39;s Mista Goody-Two-Shoes!&quot; Three people then walk out of the darkness: a short person, a tall person, and a third person. &quot;Get his money.&quot;
 \(set:$joinGang to true)
 
-The tall person one grabs your legs and flips you upside down. You wallet falls out of your pocket, and the third person picks you wallet up off the ground and then throws it at your face.
+The tall person one grabs your legs and flips you upside down. Your wallet falls out of your pocket, and the third person picks your wallet up off the ground and then throws it at your face.
 
 &quot;Nothing!&quot;
 
@@ -1492,7 +1506,7 @@ The short one stops. Then he laughs. &quot;You? The straight-laced kid?&quot;
 
 &quot;Yeah, everyone thinks of me as the good guy! I know my way around and into places! They&#39;ll never suspect a thing!&quot;
 
-&quot;Hmm... y&#39;know what? There is something we&#39;ve been needin&#39; help with. Inside the post office is a package that we need. It&#39;s a big, navy blue, cardboard box.&quot;
+&quot;Hmm... y&#39;know what? There is something we&#39;ve been needin&#39; help with. Inside the hardware store is a package that we need. It&#39;s a big, navy blue, cardboard box. The clerk&#39;ll prolly be hiding it in the backroom.&quot;
 
 &quot;I&#39;ll do it,&quot; you say. The tall person then drops you down.
 
@@ -1532,34 +1546,16 @@ That was some quick thinking, Jed! Pretending to join their gang so that you can
 \(else:)[(if:$visitsGang &gt; 0 and not $joinGang)[
 \You walk back to where you were mugged, but it doesn&#39;t look like anyone is here.
 
-[[Continue-&gt;West Side of Town]]]]</tw-passagedata><tw-passagedata pid="120" name="Send Mail" tags="" position="2766,1852" size="100,100">(if:$incomingMail is not &quot;empty&quot;)[&quot;What&#39;s that?&quot; the letter carrier asks. &quot;You wanna send mail to yourself? Unfortunately I can&#39;t do that, Jed, because the Webster Groves postal system can only proces one parsel at a time. If you want to send something else, it will remove the previous parsel from existance.]
-\(else:)[
-\(if:$MONEY is 0)[&quot;What&#39;s that?&quot; the letter carries asks. &quot;You wanna send mail to yourself? Alrighty then, be my guest, but it&#39;ll cost you $1 for the stamp.&quot;
-
-&quot;Oops, I don&#39;t have any money.&quot;
-
-&quot;Sorry Jed, but no stamp means no sending.&quot;
-
-[[Continue-&gt;Post Office]]]
-\(else:)[&quot;What&#39;s that?&quot; the letter carries asks. &quot;You wanna send mail to yourself? Alrighty then, be my guest, but it&#39;ll cost you $1 for the stamp.&quot;]]
-\(unless:$MONEY is 0)[
-
-(if:$INV contains &quot;cape&quot;)[(link-reveal-goto:&quot;Navy Blue Button-Up&quot;,&quot;Mail Confirm&quot;)[(set:$MONEY to it - 1)(set:$INV to it - (a:&quot;plumber outfit&quot;))(set:$incomingMail to &quot;plumber outfit&quot;)]
-]
-\(if:$INV contains &quot;cape&quot;)[(link-reveal-goto:&quot;Superhero Cape&quot;,&quot;Mail Confirm&quot;)[(set:$MONEY to it - 1)(set:$INV to it - (a:&quot;cape&quot;))(set:$incomingMail to &quot;cape&quot;)]
-]
-\[[&quot;Nevermind&quot;-&gt;Post Office]]]</tw-passagedata><tw-passagedata pid="121" name="Mail Confirm" tags="" position="2767,1994" size="100,100">&quot;Got it!&quot; the letter carrier says. &quot;Be sure to check your mailbox tomorrow for your package.&quot;
-
-[[Continue-&gt;Post Office]]</tw-passagedata><tw-passagedata pid="122" name="Mail Room" tags="" position="2771,2137" size="100,100">You run past the letter carrier into the mail room. &quot;Hey!&quot; they shout, &quot;that&#39;s a restricted area! Get out of there!&quot;
+[[Continue-&gt;West Side of Town]]]]</tw-passagedata><tw-passagedata pid="118" name="Back Room" tags="" position="3123,2001" size="100,100">You run past the clerk into the backroom. &quot;Hey!&quot; they shout, &quot;that&#39;s a restricted area! Get out of there!&quot;
 
 Jed, are you actually helping that gang? I thought you just said that to get out of a tough scenario. I can&#39;t believe you were being serious...
 
-The mail room actually doesn&#39;t contain that much mail. Practically no one uses the Webster Groves parsel service, due to the fact that they can only handle one package per day. You quickly find the dark blue cardboard box, grab it, then run out of the post office.
+Surprisingly, there doesn&#39;t seem to be much back here other than a large amount of paint buckets. After a few seconds of searching, you find the cardboard box that the gang described to you. You quickly grab it and run out of the store.
 
-&quot;You&#39;re now banned from this post office, Jed! I hope that was worth it!
-\(set:$banned to it + (a:&quot;post office&quot;))(set:$INV to it + (a:&quot;cardboard box&quot;))
+&quot;You&#39;re now banned from this store! I hope that was worth it!&quot;
+\(set:$banned to it + (a:&quot;hardware store&quot;))(set:$INV to it + (a:&quot;cardboard box&quot;))(if:$wearing is &quot;ski mask&quot;)[(set:$boxMask to true)]
 
-[[Exit-&gt;Town Square]] </tw-passagedata><tw-passagedata pid="123" name="Steal Toaster" tags="" position="796,1979" size="100,100">(set:$INV to it + (a:&quot;toaster&quot;))(set:$banned to it + (a:&quot;electronics&quot;))
+[[Exit-&gt;Town Square]] </tw-passagedata><tw-passagedata pid="119" name="Steal Toaster" tags="" position="796,1979" size="100,100">(set:$INV to it + (a:&quot;toaster&quot;))(set:$banned to it + (a:&quot;electronics&quot;))(if:$wearing is &quot;ski mask&quot;)[(set:$toasterMask to true)]
 \You pick up the toaster. It looks like a normal toaster. &quot;&#96;$5K&#96; is a bit much for a toaster like this, don&#39;t you think?&quot;
 
 &quot;I assure you that that&#39;s no ordinary toaster,&quot; the clerk explains. &quot;I&#39;m sure you&#39;ll find it&#39;s well worth the price once you buy it and use it.&quot;
@@ -1570,7 +1566,7 @@ The mail room actually doesn&#39;t contain that much mail. Practically no one us
 
 After you exit the store you take a moment to inspect the toaster. It is indeed a normal toaster.
 
-[[Continue-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="124" name="Gang Ending" tags="" position="5245,1997.5" size="200,100">(set:$ENDINGS to it + (a:&quot;Gang&quot;))
+[[Continue-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="120" name="Gang Ending" tags="" position="5245,1997" size="200,100">(set:$ENDINGS to it + (a:&quot;Gang&quot;))
 \&quot;Do you got the goods?&quot; the short one asks.
 
 You hold up the toaster. &quot;You know it!&quot;
@@ -1587,7 +1583,201 @@ You hold up the toaster. &quot;You know it!&quot;
 
 You know Jed, you could&#39;ve gotten away from this entire scenario if you just listened to me in the post office. Why did you feel the need to uphold a promise you made to a criminal gang? Why didn&#39;t you, oh I don&#39;t know, //go to the police?// Well, you waited too long, and now the police have come to you.
 
-[[The End-&gt;Waiting Room Entrance]] </tw-passagedata></tw-storydata>
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="121" name="Clothing Explain" tags="" position="4964,2124" size="100,100">&quot;How do clothes work?&quot; you ask the clerk.
+
+&quot;Well you see,&quot; the clerk says, &quot;when you buy clothing, you can take it home and put it in your closet, and in there you will be able to change outfits!&quot;
+
+&quot;Ok, thank you!&quot;
+
+&quot;Wait a minute, how&#39;d you put on clothes without knowing how clothes work?&quot;
+
+&quot;Lucky guess.&quot;
+
+[[Continue-&gt;Clothing Store]] </tw-passagedata><tw-passagedata pid="122" name="Buy Food" tags="" position="69,1838" size="100,100">Looking at the selection of food makes you hungry.
+
+Current funds: $$MONEY
+
+(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Loaf of Bread - $1&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;bread&quot;))(set:$MONEY to it - 1)]](else:)[[[Loaf of Bread - $1-&gt;Too Poor]]]
+(if:$MONEY &gt;= 4)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Milk - $4&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;milk&quot;))(set:$MONEY to it - 4)]](else:)[[[Milk - $4-&gt;Too Poor]]]
+(if:$MONEY &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Pre-Made Pasta - $5&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;pasta&quot;))(set:$MONEY to it - 5)]](else:)[[[Pre-Made Pasta - $5-&gt;Too Poor]]]
+(if:$INV does not contain &quot;cereal&quot; and $MONEY &gt;= 8)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;WACKY STEVE&#39;S CRAZY CEREAL (CHOCOLATE EXPLOSION) - $8&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;cereal&quot;))(set:$MONEY to it - 8)]](else:)[(if:$INV contains &quot;cereal&quot;)[WACKY STEVE&#39;S CRAZY CEREAL (CHOCOLATE EXPLOSION) - Sold Out](else:)[[[WACKY STEVE&#39;S CRAZY CEREAL (CHOCOLATE EXPLOSION) - $8-&gt;Too Poor]]]]
+(if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Instant Ramen - $1&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;ramen&quot;))(set:$MONEY to it - 1)]](else:)[[[Instant Ramen - $1-&gt;Too Poor]]]
+(if:$MONEY &gt;= 2)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Pre-Made Lunch Sandwich - $2&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;sandwich&quot;))(set:$MONEY to it - 2)]](else:)[[[Pre-Made Lunch Sandwich - $2-&gt;Too Poor]]]
+
+[[Exit-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="123" name="Explosion Ending" tags="" position="1171,2999" size="200,100">(unless:$ENDINGS contains &quot;Explosion&quot;)[(set:$ENDINGS to it + (a:&quot;Explosion&quot;))]
+\Jed decided for whatever reason that now would be the best time to enjoy some Wacky Steve&#39;s Crazy Cereal. You got out a bowl and some milk, and made some cereal.
+
+You go over to your living room, sit down, and watch some TV.
+
+Just after you took a bite out of the cereal, the taste of chocolate overwhelmed you. It was the most concretrated chocolate you have ever tasted!
+
+Dispite this, you continue eating. With how strong the taste was, it was starting to become difficult to continue. Suddenly, the bowl appears to be emanating smoke. Before Jed could figure out what was about to happen, the bowl suddenly explodes, eliminating the entire complex.
+
+Looks like the packaging wasnt lying.
+
+[[The End-&gt;Waiting Room Entrance]] </tw-passagedata><tw-passagedata pid="124" name="Somewhere" tags="" position="6255,1785" size="100,100">Well Jed, I hope you had fun exploring-
+Wait, where are you going? Jed, there is nothing over there; You have already seen everything in Bloomhurst. What do you think you are going to find? I assure you that you will find absolutely nothing of interest.
+
+Jed, if you keep going I won&#39;t be able to follow you. I&#39;ll no longer be able to narrate your actions.
+
+Well, if you are so determined to waste your time, then I suppose I won&#39;t stop you. I&#39;ll be waiting for your return.
+
+(live:1s)[(if:time&gt;15s)[(font:&quot;Raleway&quot;)[
+\Hey Jed! It&#39;s me. You may remember me from that little waiting room I always set up for you.
+
+You probably have a lot of questions, so I&#39;ll start with why I&#39;m here.
+
+The Narrator assigned me the job of keeping track of your progress through the waiting room, which is a place outside of this world. I&#39;ve had tons of free time, so I&#39;ve occasionally been tampering with the game&#39;s code in some places. One of the things I was able to achieve was allowing you to come here, all the way over to Bloomhurst.
+
+I mostly do this for fun, but seeing as you came back, I think you are looking for something new.
+
+It just so happens that these &quot;Passages&quot; are the closest ones to the narrator&#39;s location, so if you are intersted, I can bring you there if you are still curious about this world. But if not, I can bring you back to the waiting room.
+
+[[Continue-&gt;Workspace]]
+[[The End-&gt;Waiting Room Entrance]]]]]</tw-passagedata><tw-passagedata pid="125" name="Workspace" tags="" position="6258,1937" size="100,100">(font:&quot;Raleway&quot;)[
+\Alright! Also, forgot to mention, because the narrator can&#39;t follow us here, I will be narrating everything from now on.
+
+Another thing, just for clarity, my name is GM.
+
+//Ahem...//
+
+GM and Jed kept walking until they reached a seemingly invisible border. You could see for miles ahead of the barrier, but are unable to go any further.
+
+GM pulls out a strange device and presses some buttons. A large hole appears in the barrier, where the two walk out of the passage.
+
+Outside of the barrier was a seemingly infinate grid pattern, with a large gray line stretching out for miles. Looking around, you can see huge boxes scattered throughout the void.
+
+Alright, here we are! This is the Twine &quot;Workspace.&quot; This is basically where every section of this game is located, somewhere inbetween space. From here, we are able to visit any section of the game! This gray arrow right here will lead us right to the narrator.
+
+[[Continue-&gt;Ominous Building]]]</tw-passagedata><tw-passagedata pid="126" name="Ominous Building" tags="" position="9159,1945" size="100,100">(font:&quot;Raleway&quot;)[
+\After a very long walk, the two find themselves at another giant box.
+GM once again presses some buttons on the device, and both enter the passage.
+
+Inside, there appears to be a small building on a large field of grass.
+The two enter the building, and are met with a staircase with a sign that says: &quot;CONNECTION ESTABLISHER&quot;
+
+Well Jed, here we are! just down those stairs, you will meet the narrator.
+It would be best if I stay here though, because theres no telling what will happen.]</tw-passagedata><tw-passagedata pid="127" name="Buy Tokens" tags="" position="2769,1856" size="100,100">(set:$visitsTokens to it + 1)
+\&quot;Welcome back, Jed!&quot; the arcade worker greets. &quot;(if:$visitsTokens is 1)[I haven&#39;t seen you in a while! ]How many tokens you want?&quot;
+
+Current funds: $$MONEY
+Current tokens: $tokens
+
+(if:$MONEY &gt;= 10)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;5 Tokens - $10&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 5)(set:$MONEY to it - 10)(set:$visitsTokens to it - 1)]](else:)[[[5 Tokens - $10-&gt;Too Poor]]]
+(if:$MONEY &gt;= 25)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;15 Tokens - $25&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 15)(set:$MONEY to it - 25)(set:$visitsTokens to it - 1)]](else:)[[[15 Tokens - $25-&gt;Too Poor]]]
+(if:$MONEY &gt;= 50)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;40 Tokens - $50&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 40)(set:$MONEY to it - 50)(set:$visitsTokens to it - 1)]](else:)[[[40 Tokens - $50-&gt;Too Poor]]]
+(if:$MONEY &gt;= 80)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;100 Tokens - $80&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 100)(set:$MONEY to it - 80)(set:$visitsTokens to it - 1)]](else:)[[[100 Tokens - $80-&gt;Too Poor]]]
+(if:$MONEY &gt;= 250)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;500 Tokens - $250&quot;,&quot;Buy Tokens&quot;)[(set:$tokens to it + 500)(set:$MONEY to it - 250)(set:$visitsTokens to it - 1)]](else:)[[[500 Tokens - $250-&gt;Too Poor]]]
+
+[[Exit-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="128" name="Arcade Games" tags="" position="2770,2142" size="100,100">A little fun to help relieve stress won&#39;t hurt, right? Let&#39;s just be sure not to spend too much time in here, we do have a mission to finish.
+
+Current tokens: $tokens
+Current tickets: $tickets
+
+(if:$tokens &gt;= 4)[[[Brenton&#39;s Button Masher 5000 - 4 Tokens-&gt;Arcade Mashing Game]]](else:)[[[Brenton&#39;s Button Masher 5000 - 4 Tokens-&gt;Too Poor]]]
+(if:$tokens &gt;= 5)[[[The Giganto Big Wheel - 5 Tokens-&gt;Arcade Wheel Game]]](else:)[[[The Giganto Big Wheel - 5 Tokens-&gt;Too Poor]]]
+(if:$tokens &gt;= 4)[[[Romeo&#39;s Recreational Fishing - 4 Tokens-&gt;Arcade Fishing Game]]](else:)[[[Romeo&#39;s Recreational Fishing - 4 Tokens-&gt;Too Poor]]]
+[[Exit-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="129" name="Spend Tickets" tags="" position="2768,2001" size="100,100">&quot;Here&#39;s where you can redeem your tickets. What&#39;d you want?&quot;
+
+Current tickets: $tickets
+
+(if:$tickets &gt;= 5)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Lollipop - 5 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$INV to it + (a:&quot;lollipop&quot;))(set:$tickets to it - 5)]](else:)[[[Lollipop - 5 Tickets-&gt;Too Poor]]]
+(if:$tickets &gt;= 30)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Slinky - 30 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$INV to it + (a:&quot;slinky&quot;))(set:$tickets to it - 30)]](else:)[[[Slinky - 30 Tickets-&gt;Too Poor]]]
+(if:$CLOSET does not contain &quot;3d glasses&quot; and $tickets &gt;= 150)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;3D Glasses - 150 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$CLOSET to it + (a:&quot;3d glasses&quot;))(set:$tickets to it - 150)]](else:)[(if:$CLOSET contains &quot;3d glasses&quot;)[3D Glasses - Owned](else:)[[[3D Glasses - 150 Tickets-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;visor&quot; and $tickets &gt;= 300)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Rainbow Visor - 300 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$CLOSET to it + (a:&quot;visor&quot;))(set:$tickets to it - 300)]](else:)[(if:$CLOSET contains &quot;visor&quot;)[Rainbow Visor - Owned](else:)[[[Rainbow Visor - 300 Tickets-&gt;Too Poor]]]]
+(if:$CLOSET does not contain &quot;bomber jacket&quot; and $tickets &gt;= 500)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Bomber Jacket - 500 Tickets&quot;,&quot;Spend Tickets&quot;)[(set:$CLOSET to it + (a:&quot;bomber jacket&quot;))(set:$tickets to it - 500)]](else:)[(if:$CLOSET contains &quot;bomber jacket&quot;)[Bomber Jacket - Owned](else:)[[[Bomber Jacket - 500 Tickets-&gt;Too Poor]]]]
+(if:$INV does not contain &quot;bear&quot; and $tickets &gt;= 1000)[[[Giant Stuffed Teddy Bear - 1000 Tickets-&gt;Arcade Buy Bear]]](else:)[(if:$INV contains &quot;bear&quot;)[Giant Stuffed Teddy Bear - Sold Out](else:)[[[Giant Stuffed Teddy Bear - 1000 Tickets-&gt;Too Poor]]]]
+
+[[Exit-&gt;Arcade]]</tw-passagedata><tw-passagedata pid="130" name="Arcade Wheel Game" tags="" position="2772,2280" size="100,100">(set:$tokens to it - 5)(set:$wheelresult to (random:1,50))
+\You spin the Giganto Big Wheel and...
+
+(live:0.1s)[(if:time &lt; 5s)[(either:&quot;JACKPOT! You won 500 tickets! Congrats!&quot;,&quot;You won 200 tickets! Awesome!&quot;,&quot;You won 100 tickets! Pretty good!&quot;,&quot;You won 50 tickets! Not bad!&quot;,&quot;You won 20 tickets. Could be worse.&quot;,&quot;You won 5 tickets... ouch...&quot;)](else:)[
+\(if:$wheelresult is 1)[JACKPOT! You won 500 tickets! Congrats!](if:$wheelresult &gt; 1 and $wheelresult &lt; 6)[You won 200 tickets! Awesome!](if:$wheelresult &gt; 5 and $wheelresult &lt; 16)[You won 100 tickets! Pretty good!](if:$wheelresult &gt; 15 and $wheelresult &lt; 31)[You won 50 tickets! Not bad!](if:$wheelresult &gt; 30 and $wheelresult &lt; 46)[You won 20 tickets. Could be worse.](if:$wheelresult &gt; 45)[You won 5 tickets... ouch...]
+
+(link-reveal-goto:&quot;Continue&quot;,&quot;Arcade Games&quot;)[(if:$wheelresult is 1)[(set:$tickets to it + 500)](if:$wheelresult &gt; 1 and $wheelresult &lt; 6)[(set:$tickets to it + 200)](if:$wheelresult &gt; 5 and $wheelresult &lt; 16)[(set:$tickets to it + 100)](if:$wheelresult &gt; 15 and $wheelresult &lt; 31)[(set:$tickets to it + 50)](if:$wheelresult &gt; 30 and $wheelresult &lt; 46)[(set:$tickets to it + 20)](if:$wheelresult &gt; 45)[(set:$tickets to it + 5)]](stop:)]]</tw-passagedata><tw-passagedata pid="131" name="Arcade Fishing Game" tags="" position="2771,2424" size="100,100">(set:$tokens to it - 4)
+\Alright Jed, pay attention, you have to reel in the fish at the right time.(set:$isFish to false)
+
+|fish&gt;[(live:0.5s)[(if:(random:1,20) is 1)[(set:$isFish to true)DO IT, JED! DO IT NOW!](else:)[(set:$isFish to false)Keep waiting...]]
+
+(link:&quot;Reel In&quot;)[(replace:?fish)[
+\(if:$isFish)[Congrats! You got the fish and got 150 tickets!(set:$tickets to it + 150)](else:)[Sorry, Jed. You didn&#39;t reel in at the correct time. You only get 5 tickets...(set:$tickets to it + 5)]
+
+[[Continue-&gt;Arcade Games]]]]]</tw-passagedata><tw-passagedata pid="132" name="Arcade Buy Bear" tags="" position="2930,2004" size="100,100">(set:$INV to it + (a:&quot;bear&quot;))(set:$tickets to it - 1000)
+\&quot;Here you go, Jed!&quot; the arcade worker says. &quot;The giant bear! Good job getting enough tickets!&quot; They hand you the bear. &quot;I don&#39;t know what you plan on doing this with, but I&#39;m sure anyone you gave this to would instantly become your best friend!&quot;
+
+[[Continue-&gt;Spend Tickets]] </tw-passagedata><tw-passagedata pid="133" name="Rafael Bear" tags="" position="1586,2416" size="100,100">You show Rafael the bear you won at the arcade.
+
+&quot;Wow,&quot; he gasps, &quot;that&#39;s huge.&quot;
+
+&quot;Yeah, it cost me 1000 tickets. Did you want it?&quot;
+
+&quot;Hmmm, I appreciate the offer but I don&#39;t really have anywhere to put it. Thank you, though!&quot;
+
+[[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="134" name="Ted Bear" tags="" position="1740,2417" size="100,100">You show Ted the bear you won at the arcade.
+\(set:$INV to it - (a:&quot;bear&quot;))(set:$CLOSET to it + (a:&quot;purple vest&quot;))
+
+&quot;Good for you,&quot; Ted grunts. He then turns and starts walking back into his apartment.
+
+&quot;It cost me 1000 tickets. Did you want it?&quot;
+
+He stops, then turns his head back to you. &quot;You serious?&quot;
+
+&quot;Of course!&quot;
+
+&quot;Oh, well... thanks kid. My neice will love this. Her birthday is coming up, so this will be a nice addition. That reminds me, I was doing some cleaning the other day, and I found this vest. It&#39;s too small for me now, but I&#39;m sure it will fit you.(if:$CLOSET&#39;s length &gt; 4)[ I know you like your outfits.]&quot;
+
+You take a closer look at the vest Ted gave you. It looks exactly like the purple vests that the employees at Bosco&#39;s Family Food Store wear.
+
+[[Continue-&gt;Ted&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="135" name="Josefine Bear" tags="" position="1893,2419" size="100,100">You show Josefine the bear you won at the arcade.
+
+&quot;Oh my gosh!&quot; she exclaims, &quot;It&#39;s so cute!&quot;
+
+&quot;Yeah, it cost me 1000 tickets. Did you want it?&quot;
+
+&quot;My girlfriend has been wanting something like that but... I don&#39;t want to take yours! I&#39;ll just go to the arcade and get my own! I&#39;ve been meaning to go back there someday, so here&#39;s a good excuse. But thank you for offering!&quot;
+
+[[Continue-&gt;Josefine&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="136" name="Arcade Mashing Game" tags="" position="2938,2140" size="100,100">(set:$tokens to it - 4)
+\When the timer starts, you&#39;ll have 5 seconds to mash the button as much as you can.
+\(set:$clicks to 0)
+\(live:5s)[(if:time&gt;1s and time&lt;6s)[
+
+(link-repeat:&quot;MASH HERE&quot;)[(set:$clicks to it + 1)]](if:time&gt;6s)[(stop:)
+
+&#39;&#39;MASH HERE&#39;&#39;
+
+Time&#39;s up! You won (print:$clicks * 5) tickets!
+\(set:$tickets to it + ($clicks * 5))
+
+[[Continue-&gt;Arcade Games]]]]</tw-passagedata><tw-passagedata pid="137" name="Rafael Outfit" tags="" position="1587,2554" size="100,100">You ask Rafael how he likes your outfit.
+
+&quot;(if:$wearing is &quot;3d glasses&quot;)[
+\I think the 3D glases add a very subtle but unique touch. Plus, you get to see stuff in 3D! Bonus!](if:$wearing is &quot;bomber jacket&quot;)[
+\Wow, that jacket is a throwback. I kind of like it, though!](if:$wearing is &quot;hat&quot;)[
+\Wow. That is... a hat. A very... interesting hat.](if:$wearing is &quot;hoodie&quot;)[
+\What&#39;s the logo on the front supposed to mean?&quot;
+
+&quot;Don&#39;t think about it too much.](if:$wearing is &quot;plumber outfit&quot;)[
+\No offense, but you look like you&#39;re gonna come in here and fix my toilet.&quot;
+
+&quot;That&#39;s the point! I&#39;m going to sneak into city hall, pretending to be a plumber, and then stop the mayor&#39;s evil plan!&quot;
+
+&quot;Okay then.](if:$wearing is &quot;vest&quot;)[
+\Did you get a job at Bosco&#39;s?&quot;
+
+&quot;No, I just got this vest from Ted that somehow looks almost identical to theirs.&quot;
+
+&quot;From Ted? Interesting.](if:$wearing is &quot;visor&quot;)[
+\Don&#39;t know if I&#39;d really call that an outfit. I like those glasses, though.](if:$wearing is &quot;ski mask&quot;)[
+\Are you about to go rob a store?(if:$joinGang)[&quot;
+
+&quot;Yes, actually!&quot;
+
+&quot;Haha, good one Jed!]](if:$wearing is &quot;cape&quot;)[
+\Wow, that cape looks awesome! You&#39;re a real superhero now! SuperJed!]&quot;
+
+[[Continue-&gt;Rafael&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="138" name="Bosco Break Room" tags="" position="73,2014" size="100,100">(font:&quot;Raleway&quot;)[Hello, player. This section of the game is still being worked on. To congratulate your effort on getting the vest, however, I will award you a pointless ending! When the full game comes out on July 9th, be sure to come back here and earn this ending for real!]
+
+[[Continue-&gt;Supermarket Ending]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,a=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){i=!0,a=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw a}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
