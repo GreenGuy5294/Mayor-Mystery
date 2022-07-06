@@ -84,13 +84,13 @@ You&#39;re well known around Webster Groves for being nice to everyone and givin
 \(if:$testing is &quot;FAIL1&quot;)[[[Begin-&gt;Test2]]]
 \(if:$testing is &quot;FAIL2&quot;)[[[Begin-&gt;Test3]]]</tw-passagedata><tw-passagedata pid="2" name="The Test" tags="" position="953,322" size="100,100">You find yourself in the following scenario:
 \(set:_option1 to 0)(set:_option2 to 0)(set:_option3 to 0)
-\(set: _correct to (random:1,3)) (if:_correct is 1)[(set:_option1 to &quot;correct&quot;)(set:_option2 to (random:1,4))(set:_option3 to (random:1,4))(if: _option2 is _option3)[(set:_option3 to (_option2 + 1))](if:_option3 is 5)[(set:_option3 to 1)]] (if:_correct is 2)[(set:_option2 to &quot;correct&quot;)(set:_option3 to (random:1,4))(set:_option1 to (random:1,4))(if: _option3 is _option1)[(set:_option1 to (_option3 + 1))](if:_option1 is 5)[(set:_option1 to 1)]] (if:_correct is 3)[(set:_option3 to &quot;correct&quot;)(set:_option1 to (random:1,4))(set:_option2 to (random:1,4))(if: _option1 is _option2)[(set:_option2 to (_option1 + 1))](if:_option2 is 5)[(set:_option2 to 1)]]
+\(set: _correct to (random:1,3)) (if:_correct is 1)[(set:_option1 to &quot;correct&quot;)(set:_option2 to (random:1,5))(set:_option3 to (random:1,5))(if: _option2 is _option3)[(set:_option3 to (_option2 + 1))](if:_option3 is 5)[(set:_option3 to 1)]] (if:_correct is 2)[(set:_option2 to &quot;correct&quot;)(set:_option3 to (random:1,5))(set:_option1 to (random:1,5))(if: _option3 is _option1)[(set:_option1 to (_option3 + 1))](if:_option1 is 5)[(set:_option1 to 1)]] (if:_correct is 3)[(set:_option3 to &quot;correct&quot;)(set:_option1 to (random:1,5))(set:_option2 to (random:1,5))(if: _option1 is _option2)[(set:_option2 to (_option1 + 1))](if:_option2 is 5)[(set:_option2 to 1)]]
 
 You&#39;re inside Bosco&#39;s Family Food Store. You&#39;re currently looking for the best bread for the amazing gourmet grilled cheese sandwiches that you&#39;re going to make for dinner tonight. Someone walks past you with her arms full of groceries, when suddenly she trips and falls, dropping all her items on the floor.
 
-(if:_option1 is &quot;correct&quot;)[[[Help her pick up the grocieries-&gt;Test Passed]]](if:_option1 is 1)[[[Laugh at her misfortune-&gt;Test Failed]]](if:_option1 is 2)[[[Steal her groceries-&gt;Test Failed]]](if:_option1 is 3)[[[Sneak away from the situation-&gt;Test Failed]]](if:_option1 is 4)[[[Pretend you didn&#39;t see it-&gt;Test Failed]]]
-(if:_option2 is &quot;correct&quot;)[[[Help her pick up the grocieries-&gt;Test Passed]]](if:_option2 is 1)[[[Laugh at her misfortune-&gt;Test Failed]]](if:_option2 is 2)[[[Steal her groceries-&gt;Test Failed]]](if:_option2 is 3)[[[Sneak away from the situation-&gt;Test Failed]]](if:_option2 is 4)[[[Pretend you didn&#39;t see it-&gt;Test Failed]]]
-(if:_option3 is &quot;correct&quot;)[[[Help her pick up the grocieries-&gt;Test Passed]]](if:_option3 is 1)[[[Laugh at her misfortune-&gt;Test Failed]]](if:_option3 is 2)[[[Steal her groceries-&gt;Test Failed]]](if:_option3 is 3)[[[Sneak away from the situation-&gt;Test Failed]]](if:_option3 is 4)[[[Pretend you didn&#39;t see it-&gt;Test Failed]]]
+(if:_option1 is &quot;correct&quot;)[[[Help her pick up the grocieries-&gt;Test Passed]]](if:_option1 is 1)[[[Laugh at her misfortune-&gt;Test Failed]]](if:_option1 is 2)[[[Steal her groceries-&gt;Test Failed]]](if:_option1 is 3)[[[Sneak away from the situation-&gt;Test Failed]]](if:_option1 is 4)[[[Pretend you didn&#39;t see it-&gt;Test Failed]]](if:_option1 is 5)[[[Kick her while she&#39;s down-&gt;Test Failed]]]
+(if:_option2 is &quot;correct&quot;)[[[Help her pick up the grocieries-&gt;Test Passed]]](if:_option2 is 1)[[[Laugh at her misfortune-&gt;Test Failed]]](if:_option2 is 2)[[[Steal her groceries-&gt;Test Failed]]](if:_option2 is 3)[[[Sneak away from the situation-&gt;Test Failed]]](if:_option2 is 4)[[[Pretend you didn&#39;t see it-&gt;Test Failed]]](if:_option2 is 5)[[[Kick her while she&#39;s down-&gt;Test Failed]]]
+(if:_option3 is &quot;correct&quot;)[[[Help her pick up the grocieries-&gt;Test Passed]]](if:_option3 is 1)[[[Laugh at her misfortune-&gt;Test Failed]]](if:_option3 is 2)[[[Steal her groceries-&gt;Test Failed]]](if:_option3 is 3)[[[Sneak away from the situation-&gt;Test Failed]]](if:_option3 is 4)[[[Pretend you didn&#39;t see it-&gt;Test Failed]]](if:_option3 is 5)[[[Kick her while she&#39;s down-&gt;Test Failed]]]
 
 &lt;!-- Laugh at her misfortune, Steal her groceries, Sneak away from the situation, Pretend you didn&#39;t see it --&gt;</tw-passagedata><tw-passagedata pid="3" name="Test Passed" tags="" position="868,458" size="100,100">Congratulations! You passed the test!
 \(set: $TestFinish to it + 1)
@@ -401,7 +401,7 @@ Jed folded the letter and put it in his pocket.
 ]
 \(if:$wearing is &quot;none&quot;)[&#39;&#39;Everyday Clothes - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Everyday Clothes&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;none&quot;)]]
 \(unless:$hatgone)[
-(if:$wearing is &quot;hat&quot;)[&#39;&#39;Flambouyant Hat - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Flambouyant Hat&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;hat&quot;)]]]
+(if:$wearing is &quot;hat&quot;)[&#39;&#39;Flamboyant Hat - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Flamboyant Hat&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;hat&quot;)]]]
 \(if:$CLOSET contains &quot;hoodie&quot;)[
 (if:$wearing is &quot;hoodie&quot;)[&#39;&#39;Green Hoodie - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Green Hoodie&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;hoodie&quot;)]]]
 \(if:$CLOSET contains &quot;plumber outfit&quot;)[
@@ -767,7 +767,7 @@ The clerk goes back to the clothing selection and comes back with a navy blue bu
 \(else:)[
 \|option&gt;[
 \(link:&quot;\&quot;I&#39;ll take it!\&quot;&quot;)[(replace:?option)[
-\(set:$INV to it + (a:&quot;plumber outfit&quot;))(set:$MONEY to it - 15)
+\(set:$CLOSET to it + (a:&quot;plumber outfit&quot;))(set:$MONEY to it - 15)
 \&quot;There you go! Glad I could help.&quot;
 
 [[Continue-&gt;Clothing Store]]]]
@@ -1470,7 +1470,7 @@ Ted smirks. &quot;Alright then. Since you moved in, I knew I would never like yo
 \(if:$MONEY &gt; 0)[
 \&quot;Well, well, well,&quot; you hear a voice say from further down the alley, &quot;woulda look at who we got here. It&#39;s Mista Goody-Two-Shoes!&quot; Three people then walk out of the darkness: a short person, a tall person, and a third person. &quot;Get his money.&quot;
 
-The tall person one grabs your legs and flips you upside down. Your wallet falls out of your pocket, and the third person picks your wallet up off the ground, takes the money out, and then throws it at your face.
+The tall one grabs your legs and flips you upside down. Your wallet falls out of your pocket, and the third person picks your wallet up off the ground, takes the money out, and then throws it at your face.
 
 (if:$MONEY &lt; 30)[&quot;Only $$MONEY... I was expecting more...&quot;
 
@@ -1494,7 +1494,7 @@ I don&#39;t want to say I told you so, but... I told you so.
 \&quot;Well, well, well,&quot; you hear a voice say from further down the alley, &quot;woulda look at who we got here. It&#39;s Mista Goody-Two-Shoes!&quot; Three people then walk out of the darkness: a short person, a tall person, and a third person. &quot;Get his money.&quot;
 \(set:$joinGang to true)
 
-The tall person one grabs your legs and flips you upside down. Your wallet falls out of your pocket, and the third person picks your wallet up off the ground and then throws it at your face.
+The tall one grabs your legs and flips you upside down. Your wallet falls out of your pocket, and the third person picks your wallet up off the ground and then throws it at your face.
 
 &quot;Nothing!&quot;
 
