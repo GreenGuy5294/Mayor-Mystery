@@ -452,7 +452,7 @@ Jed... are you... about to vomit? Is this hat that disgusting to you Jed? Wow. I
 \(if:$visitsCoffeeMaker is 3)[
 \Jed, I don&#39;t think this is healthy. You can barely even drink it because you&#39;re basically burning yourself with these hot coffees!]
 \(if:$visitsCoffeeMaker is 4)[
-\Alright this definitely isn&#39;t good. Aside from the fact that you seem to be drinking painfully hot coffee, this much cafine can&#39;t be good for you. You&#39;re causing yourself to crash later on in the day. We can&#39;t have that during such an important mission!]
+\Alright, this definitely isn&#39;t good. Aside from the fact that you seem to be drinking painfully hot coffee, this much cafine can&#39;t be good for you. You&#39;re causing yourself to crash later on in the day. We can&#39;t have that during such an important mission!]
 \(if:$visitsCoffeeMaker is 5)[
 \You try to make yourself yet another coffee, but fortunately it appears the coffee maker is out of coffee grounds. What was supposed to last you 4-5 days has now been used up in one morning. Congratulations, Jed.]
 \(if:$visitsCoffeeMaker &gt; 5)[
@@ -1499,7 +1499,7 @@ You try to click the links, but it looks like the screen is frozen.
 
 [[Continue-&gt;Computer Lab]] </tw-passagedata><tw-passagedata pid="113" name="Setup VR" tags="" position="1040,1843" size="100,100">(set:$INV to it - (a:&quot;vr headset&quot;))
 \(if:visits is 1)[You set up your VR Headset inside your apartment, and you enter a virtual version of Webster Groves! Everything seems so realistic... it looks almost exactly like your apartment! I wonder what kind of shenanigans we can get up to in this fake VR world, Jed!]
-\(else:)[Hey aren&#39;t we already inside a virtual world? How is this going to work? Are we now going to be in a virtual world in a virtual world? This is getting to confusing for me to handle. Well, let&#39;s see if this virtual world is any different than the previous one.]
+\(else:)[Hey, aren&#39;t we already inside a virtual world? How is this going to work? Are we now going to be in a virtual world in a virtual world? This is getting to confusing for me to handle. Well, let&#39;s see if this virtual world is any different than the previous one.]
 
 [[Continue-&gt;Jed&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="114" name="Rafael VR" tags="" position="1590,2696" size="100,100">You explain to Rafael how you are both currently inside virtual reality.
 
@@ -1669,7 +1669,7 @@ Current funds: $$MONEY
 (if:$MONEY &gt;= 1)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Instant Ramen - $1&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;ramen&quot;))(set:$MONEY to it - 1)]](else:)[[[Instant Ramen - $1-&gt;Too Poor]]]
 (if:$MONEY &gt;= 2)[(t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto: &quot;Pre-Made Lunch Sandwich - $2&quot;,&quot;Buy Food&quot;)[(set:$INV to it + (a:&quot;sandwich&quot;))(set:$MONEY to it - 2)]](else:)[[[Pre-Made Lunch Sandwich - $2-&gt;Too Poor]]]
 
-(if:$wearing is &quot;vest&quot;)[[[Brek Room-&gt;Bosco Break Room]]
+(if:$wearing is &quot;vest&quot;)[[[Break Room-&gt;Bosco Break Room]]
 ]
 \[[Exit-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="123" name="Explosion Ending" tags="" position="1171,2999" size="200,100">(unless:$ENDINGS contains &quot;Explosion&quot;)[(set:$ENDINGS to it + (a:&quot;Explosion&quot;))]
 \Jed decided for whatever reason that now would be the best time to enjoy some Wacky Steve&#39;s Crazy Cereal. You got out a bowl and some milk, and made some cereal.
@@ -1722,9 +1722,9 @@ Alright, here we are! This is the Twine &quot;Workspace.&quot; This is basically
 GM once again presses some buttons on the device, and both enter the passage.
 
 Inside, there appears to be a small building on a large field of grass.
-The two enter the building, and are met with a staircase with a sign that says: &quot;CONNECTION POINT&quot;
+The two enter the building, and are met with a staircase with a sign that says: &quot;CONNECTION POINT.&quot;
 
-Well Jed, here we are! just down those stairs, you will meet the narrator. Let&#39;s just hope that nothing goes wrong...
+Well Jed, here we are! Just down those stairs, you will meet the narrator. Let&#39;s just hope that nothing goes wrong...
 
 [[Continue-&gt;Narrator]]]</tw-passagedata><tw-passagedata pid="127" name="Buy Tokens" tags="" position="2765,1858" size="100,100">(set:$visitsTokens to it + 1)
 \&quot;Welcome back, Jed!&quot; the arcade worker greets. &quot;(if:$visitsTokens is 1)[I haven&#39;t seen you in a while! ]How many tokens you want?&quot;
@@ -1937,7 +1937,7 @@ Wait... Jed? Is that you? How in the world did you get here? You aren&#39;t supp
 ]
 \(unless:$askedNarrator contains &quot;narratorroom&quot;)[[[What is this place?-&gt;Narrator Room]]
 ]
-\(if:$askedNarrator contains all of (a:&quot;endings&quot;,&quot;waitingroom&quot;,&quot;narratorroom&quot;))[[[That&#39;s all.-&gt;The End]]]]</tw-passagedata><tw-passagedata pid="142" name="Narrator Endings" tags="" position="9663,1776" size="100,100">(font:&quot;Raleway&quot;)[Why did you include alternate choises if you are wanting Jed to stay on the regular path?]
+\(if:$askedNarrator contains all of (a:&quot;endings&quot;,&quot;waitingroom&quot;,&quot;narratorroom&quot;))[[[That&#39;s all.-&gt;The End]]]]</tw-passagedata><tw-passagedata pid="142" name="Narrator Endings" tags="" position="9663,1776" size="100,100">(font:&quot;Raleway&quot;)[Why did you include alternate choices if you want Jed to stay on the regular path?]
 \(set:$askedNarrator to it + (a:&quot;endings&quot;))
 
 Basically, I just wanted Webster Groves to feel more &quot;alive,&quot; so I decided to add plenty of buildings and such. However, it seems I got too carried away. And by the time I realized, it was too late to make any major changes.
@@ -2004,7 +2004,7 @@ The barber then shaves all your hair off. You are now bald.]
 
 &quot;Finally,&quot; the man says. &quot;I&#39;ve been waiting all day. I&#39;d just like to trim my beard a bit. It&#39;s gotten a bit too rowdy.&quot;
 
-Jed has never been a barber. He shaves every morning, so he had absolutely no experience in trimming facial hair. Despite this. Jed begins trimming this man&#39;s beard, and he does... a surprising decent job. Of course, it&#39;s not the greatest or best beard trimming ever, but at least you didn&#39;t shave his beard off accidentally. The man thanks you, pays for his trim, and then leaves.
+Jed has never been a barber. He shaves every morning, so he had absolutely no experience in trimming facial hair. Despite this, Jed begins trimming this man&#39;s beard, and he does... a surprising decent job. Of course, it&#39;s not the greatest or best beard trimming ever, but at least you didn&#39;t shave his beard off accidentally. The man thanks you, pays for his trim, and then leaves.
 
 What, were you expecting something more standoffish? It was his first time trimming, give him a break.
 
@@ -2013,7 +2013,7 @@ What, were you expecting something more standoffish? It was his first time trimm
 
 You follow them outside to see that the sky has turned a dark red, and buildings are being destroyed throughout town. &quot;You have to help us SuperJed!&quot; someone says to you.
 
-You look up into the sky and what you believe to be an alien spaceship, shooting down at buildings around town. &quot;Hey you,&quot; you yell up to the sky, &quot;stop messing with our town or I&#39;ll destroy you!&quot;
+You look up into the sky and see what you believe to be an alien spaceship, shooting down at buildings around town. &quot;Hey you,&quot; you yell up to the sky, &quot;stop messing with our town or I&#39;ll destroy you!&quot;
 
 The $lastLocation then explodes.
 
@@ -2041,7 +2041,7 @@ The two of you then play the game as best you can. Level after level, enemy afte
 \(if:$visitsTokenMuncher is 8)[It then gives you 160 tickets. Let&#39;s hope this machine doesn&#39;t break!(set:$tickets to it + 160)]
 \(if:$visitsTokenMuncher is 9)[The machine gives you 320 tickets. Uh oh, I might&#39;ve jinxed us, I think it&#39;s starting to shake.(set:$tickets to it + 320)]
 \(if:$visitsTokenMuncher is 10)[It then gives you 640 tickets. It&#39;s starting to shake more.(set:$tickets to it + 640)]
-\(if:$visitsTokenMuncher is 11)[The machine gives you 1,280. It starts shaking even more.(set:$tickets to it + 1280)]
+\(if:$visitsTokenMuncher is 11)[The machine gives you 1,280 tickets. It starts shaking even more.(set:$tickets to it + 1280)]
 \(if:$visitsTokenMuncher is 12)[The machine gives you 2,520 tickets, and then promptly sets on fire. After a few seconds, the fire is out but the machine is permanently damaged.(set:$tickets to it + 2520)]
 \(if:$visitsTokenMuncher &gt; 12)[(set:$tokens to it + 1)The machine has blown up. Putting a token inside of it would not be the brightest idea.]
 
@@ -2051,14 +2051,14 @@ The two of you then play the game as best you can. Level after level, enemy afte
 [[Break Room-&gt;Bosco Break Room]] 
 (if:$boscoMayhem does not contain &quot;samples&quot;)[[[Take Free Samples-&gt;Free Samples]]
 ]
-\(if:$boscoMayhem does not contain &quot;display&quot;)[[[Knock Down a Dsiplay-&gt;Knock Down Display]]
+\(if:$boscoMayhem does not contain &quot;display&quot;)[[[Knock Down a Display-&gt;Knock Down Display]]
 ]
 \(if:$boscoMayhem does not contain &quot;soda&quot;)[[[Drink Some Soda-&gt;Drink Soda]]
 ]
 \[[Exit-&gt;East Side of Town]] </tw-passagedata><tw-passagedata pid="153" name="Free Samples" tags="" position="81,2313" size="100,100">(set:$boscoMayhem to it + (a:&quot;samples&quot;))
-\You walk up the free samples table in the deli and eat one. Then you eat another. And another. Before you know it, you&#39;ve shoved all the free samples in your mouth like some kind of human squirrel. (if:$boscoMayhem&#39;s length is 1)[It doesn&#39;t look like anyone say you do that.
+\You walk up to the free samples table in the deli and eat one. Then you eat another. And another. Before you know it, you&#39;ve shoved all the free samples in your mouth like some kind of human squirrel. (if:$boscoMayhem&#39;s length is 1)[It doesn&#39;t look like anyone saw you do that.
 
-[[Continue-&gt;Supermarket Mayhem]]](if:$boscoMayhem&#39;s length is 2)[Uh oh, Jed. I think someone saw you think time. And that someone is none other than John Bosco.
+[[Continue-&gt;Supermarket Mayhem]]](if:$boscoMayhem&#39;s length is 2)[Uh oh, Jed. I think someone saw you this time. And that someone is none other than John Bosco.
 
 [[Continue-&gt;Supermarket Mayhem]]](if:$boscoMayhem&#39;s length is 3)[As you turn around. You see John Bosco standing right in front of you. &quot;Funny that you wear that vest, cause I don&#39;t remember hiring you at all.&quot;
 
@@ -2071,9 +2071,9 @@ The two of you then play the game as best you can. Level after level, enemy afte
 John doesn&#39;t respond, but instead points at the front door. You slowly shuffle your way out of the store.
 
 [[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="154" name="Knock Down Display" tags="" position="80,2453" size="100,100">(set:$boscoMayhem to it + (a:&quot;display&quot;))
-\You walk up a display of cereal boxes. It&#39;s none other than Wacky Steve&#39;s cereal. Except... it&#39;s the healthy version! Oh, what a disgrace! Wacky Steve cereal was never meant to be healthy! You kick the display, knocking it down  and causing a giant mess. (if:$boscoMayhem&#39;s length is 1)[It doesn&#39;t look like anyone say you do that.
+\You walk up to a display of cereal boxes. It&#39;s none other than Wacky Steve&#39;s cereal. Except... it&#39;s the healthy version! Oh, what a disgrace! Wacky Steve cereal was never meant to be healthy! You kick the display, knocking it down  and causing a giant mess. (if:$boscoMayhem&#39;s length is 1)[It doesn&#39;t look like anyone saw you do that.
 
-[[Continue-&gt;Supermarket Mayhem]]](if:$boscoMayhem&#39;s length is 2)[Uh oh, Jed. I think someone saw you think time. And that someone is none other than John Bosco.
+[[Continue-&gt;Supermarket Mayhem]]](if:$boscoMayhem&#39;s length is 2)[Uh oh, Jed. I think someone saw you this time. And that someone is none other than John Bosco.
 
 [[Continue-&gt;Supermarket Mayhem]]](if:$boscoMayhem&#39;s length is 3)[As you turn around. You see John Bosco standing right in front of you. &quot;Funny that you wear that vest, cause I don&#39;t remember hiring you at all.&quot;
 
@@ -2086,9 +2086,9 @@ John doesn&#39;t respond, but instead points at the front door. You slowly shuff
 John doesn&#39;t respond, but instead points at the front door. You slowly shuffle your way out of the store.
 
 [[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="155" name="Drink Soda" tags="" position="81,2593" size="100,100">(set:$boscoMayhem to it + (a:&quot;soda&quot;))
-\You walk up the vending machine and start shaking it. It makes a large amount of noise. After a few seconds, a can falls out. You open it to drink it, but due to how shaken up it is it sprays you in the face. You reactively drop the can on the ground. (if:$boscoMayhem&#39;s length is 1)[It doesn&#39;t look like anyone say you do that (but they definitely heard it.)
+\You walk up to the vending machine and start shaking it. It makes a large amount of noise. After a few seconds, a can falls out. You open it to drink it, but due to how shaken up it is it sprays you in the face. You reactively drop the can on the ground. (if:$boscoMayhem&#39;s length is 1)[It doesn&#39;t look like anyone saw you do that (but they definitely heard it.)
 
-[[Continue-&gt;Supermarket Mayhem]]](if:$boscoMayhem&#39;s length is 2)[Uh oh, Jed. I think someone saw you think time. And that someone is none other than John Bosco.
+[[Continue-&gt;Supermarket Mayhem]]](if:$boscoMayhem&#39;s length is 2)[Uh oh, Jed. I think someone saw you this time. And that someone is none other than John Bosco.
 
 [[Continue-&gt;Supermarket Mayhem]]](if:$boscoMayhem&#39;s length is 3)[As you turn around. You see John Bosco standing right in front of you. &quot;Funny that you wear that vest, cause I don&#39;t remember hiring you at all.&quot;
 
