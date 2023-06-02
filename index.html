@@ -1055,7 +1055,7 @@ Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsW
 (t8n-arrive: &quot;instant&quot;)+(t8n-depart: &quot;instant&quot;)+(link-reveal-goto:&quot;Tests are Enabled&quot;,&quot;Waiting Room&quot;)[(set:$TestSkip to true)]]
 
 (if:($ENDINGS&#39;s length &gt; 2 and (random:1,10) is 1 and $sequel and $ENDINGS contains &quot;NormalRoute&quot;) or ($sequel and $ENDINGS&#39;s length is 10) or ($nextFun is -1))[[[Restart-&gt;Title Screen 2]]](else:)[[[Restart-&gt;Title Screen]]]
-\(if:$anomalies&#39;s length &gt; 1 and $mayorFights&#39;s length is 8 and $CLOSET&#39;s length is 10 and $STATS&#39;s 1th &gt; 0 and $STATS&#39;s 2th &gt; 0 and $STATS&#39;s 3th &gt; 0 and $STATS&#39;s 4th &gt; 0 and $STATS&#39;s 5th &gt; 0 and $STATS&#39;s 6th &gt; 0 and $STATS&#39;s 7th &gt; 0 and $STATS&#39;s 8th &gt; 0 and $STATS&#39;s 9th &gt; 0 and $STATS&#39;s 10th &gt; 0 and $STATS&#39;s 11th &gt; 0 and $STATS&#39;s 12th &gt; 0 and $STATS&#39;s 13th &gt; 0)[
+\(if:$anomalies&#39;s length &gt; 0 and $mayorFights&#39;s length is 8 and $CLOSET&#39;s length is 10 and $STATS&#39;s 1th &gt; 0 and $STATS&#39;s 2th &gt; 0 and $STATS&#39;s 3th &gt; 0 and $STATS&#39;s 4th &gt; 0 and $STATS&#39;s 5th &gt; 0 and $STATS&#39;s 6th &gt; 0 and $STATS&#39;s 7th &gt; 0 and $STATS&#39;s 8th &gt; 0 and $STATS&#39;s 9th &gt; 0 and $STATS&#39;s 10th &gt; 0 and $STATS&#39;s 11th &gt; 0 and $STATS&#39;s 12th &gt; 0 and $STATS&#39;s 13th &gt; 0)[
 [[Continue-&gt;Stats Complete]]]</tw-passagedata><tw-passagedata pid="55" name="Mailboxes" tags="" position="2200,1950" size="100,100">(if:$MAILBOX is &quot;empty&quot;)[There is currently nothing inside your mailbox. Check again tomorrow!]
 \(if:$MAILBOX is &quot;deed&quot;)[You reach into your mailbox and find a letter signed by Josefine. You open it up, and inside is the deed to the empty store in Town Square.
 \(set:$josefineStore to &quot;has deed&quot;)(set:$MAILBOX to &quot;empty&quot;)]
@@ -1443,7 +1443,7 @@ But of course, you can&#39;t sit in one place for long before your basic human n
 \(if:$stTopic is 4)[(set:4 of $stJosefine to true)
 \&quot;Do you have any plans today?&quot; you ask Josefine.
 
-&quot;(either:&quot;I&#39;ve got a lot tidying up I need to do. Cleaning, laundry, dishes, the like. I unhealthily push them off until I just do &#39;em all at once. I gotta get in the right mood, but when I am I can just power through.&quot;,&quot;Today&#39;s gonna be sort-of an \&quot;off\&quot; day for me. I&#39;ve got my schedule clear, so I can just sit back, relax, head empty, no thoughts.&quot;,&quot;I got some odd jobs to do today, like getting grocieries, but other than that I don&#39;t really have much going on. I&#39;ll probably just watch TV most of the day.&quot;,&quot;Me and Robyn, my girfriend, are gonna go watch a movie together tonight! It&#39;s one we&#39;ve both been wanting to see for a while. I finally got tried of waiting for spoilers and broke, got us both tickets.&quot;)&quot;]
+&quot;(either:&quot;I&#39;ve got a lot tidying up I need to do. Cleaning, laundry, dishes, the like. I unhealthily push them off until I just do &#39;em all at once. I gotta get in the right mood, but when I am I can just power through.&quot;,&quot;Today&#39;s gonna be sort-of an &#39;off&#39; day for me. I&#39;ve got my schedule clear, so I can just sit back, relax, head empty, no thoughts.&quot;,&quot;I got some odd jobs to do today, like getting grocieries, but other than that I don&#39;t really have much going on. I&#39;ll probably just watch TV most of the day.&quot;,&quot;Me and Robyn, my girfriend, are gonna go watch a movie together tonight! It&#39;s one we&#39;ve both been wanting to see for a while. I finally got tried of waiting for spoilers and broke, got us both tickets.&quot;)&quot;]
 
 (if:$stJosefine is (a:true,true,true,true))[[[Continue-&gt;Josefine&#39;s Apartment]]](else:)[[[Continue-&gt;Josefine ST Select]]]</tw-passagedata><tw-passagedata pid="76" name="Rafael Empty Store" tags="" position="2400,2550" size="100,100">&quot;Do you remember what was in that space next to the hardware store in Town Square?&quot; you ask Rafael.
 
@@ -1725,7 +1725,7 @@ The owner leans forward. &quot;If anyone asks, you never heard this. I was told 
 (if:$INV contains &quot;train pass&quot;)[&quot;Never leave home without it!&quot;](else:)[&quot;Oh shoot, I left it at home.&quot;
 
 &quot;We can just sell you a ticket if you&#39;d like.(if:$FUN is 7)[ We have a special promotion where train passes are 75% off!]&quot;]]
-\(else:)[(either:&quot;Good morning&quot;,&quot;Hey there&quot;,&quot;Howdy&quot;,&quot;Hello&quot;,&quot;How&#39;s it going&quot;,&quot;How ya doin&#39;&quot;,&quot;What&#39;s up&quot;) Jed!&quot; the ticket seller greets. &quot;Welcome to the $LOC Train Station! Do you have your pass?&quot; the ticket seller asks.
+\(else:)[&quot;(either:&quot;Good morning&quot;,&quot;Hey there&quot;,&quot;Howdy&quot;,&quot;Hello&quot;,&quot;How&#39;s it going&quot;,&quot;How ya doin&#39;&quot;,&quot;What&#39;s up&quot;) Jed!&quot; the ticket seller greets. &quot;Welcome to the $LOC Train Station! Do you have your pass?&quot; the ticket seller asks.
 
 (if:$INV contains &quot;train pass&quot;)[&quot;Never leave home without it!&quot;](else:)[&quot;Oh shoot, I left it at home.&quot;
 
