@@ -7271,7 +7271,7 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 \(if:$waitingRoomHint is &quot;closet&quot;)[
 \(unless:$CLOSET contains all of (a:&quot;ghost&quot;,&quot;hoodie&quot;,&quot;plumber outfit&quot;,&quot;ski mask&quot;,&quot;cape&quot;))[(set:$closetHintList to it + (a:&quot;clothingstore&quot;))]
 \(unless:$CLOSET contains all of (a:&quot;3d glasses&quot;,&quot;visor&quot;,&quot;bomber jacket&quot;,&quot;icloak&quot;))[(set:$closetHintList to it + (a:&quot;arcade&quot;))]
-\(unless:$CLOSET contains &quot;vest&quot;))[(set:$closetHintList to it + (a:&quot;vest&quot;))]
+\(unless:$CLOSET contains &quot;vest&quot;)[(set:$closetHintList to it + (a:&quot;vest&quot;))]
 \(set:$closetHint to (either:...$closetHintList))
 \(if:$closetHint is &quot;clothingstore&quot;)[There&#39;s some outfits in Tactical Bold you haven&#39;t bought yet.]
 \(if:$closetHint is &quot;arcade&quot;)[There&#39;s some outfits in the Impulse Arcade you haven&#39;t bought yet.]
