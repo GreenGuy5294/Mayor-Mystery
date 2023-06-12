@@ -1040,7 +1040,23 @@ I hope you&#39;re having fun. Discovering new things. Checking out the world. (e
 Feel free to rest in my waiting room for as long as you need!
 \(set:$visitsWaitingRoom to 1000)]]]]]
 
-[[Continue-&gt;Waiting Room]]</tw-passagedata><tw-passagedata pid="54" name="Waiting Room" tags="" position="3975,4050" size="100,100">(unless:$incomingMail is &quot;empty&quot;)[
+[[Continue-&gt;Waiting Room]]
+\(set:$waitingRoomHintList to (a:))
+\(if:$STATS&#39;s 1st is 0)[(set:$waitingRoomHintList to it + (a:&quot;worldendings&quot;))]
+\(if:$STATS&#39;s 2nd is 0)[(set:$waitingRoomHintList to it + (a:&quot;thrownaway&quot;))]
+\(if:$STATS&#39;s 3rd is 0)[(set:$waitingRoomHintList to it + (a:&quot;moneyspent&quot;))]
+\(if:$STATS&#39;s 4th is 0)[(set:$waitingRoomHintList to it + (a:&quot;petsadopted&quot;))]
+\(if:$STATS&#39;s 5th is 0)[(set:$waitingRoomHintList to it + (a:&quot;ticketsearned&quot;))]
+\(if:$STATS&#39;s 6th is 0)[(set:$waitingRoomHintList to it + (a:&quot;toiletflushes&quot;))]
+\(if:$STATS&#39;s 7th is 0)[(set:$waitingRoomHintList to it + (a:&quot;trainrides&quot;))]
+\(if:$STATS&#39;s 8th is 0)[(set:$waitingRoomHintList to it + (a:&quot;roompaintings&quot;))]
+\(if:$STATS&#39;s 10th is 0)[(set:$waitingRoomHintList to it + (a:&quot;haircuts&quot;))]
+\(if:$STATS&#39;s 11th is 0)[(set:$waitingRoomHintList to it + (a:&quot;lotterywinnings&quot;))]
+\(if:$STATS&#39;s 12th is 0)[(set:$waitingRoomHintList to it + (a:&quot;debtaccrued&quot;))]
+\(if:$STATS&#39;s 13th is 0)[(set:$waitingRoomHintList to it + (a:&quot;prankcalls&quot;))]
+\(if:$anomalies&#39;s length is 0)[(set:$waitingRoomHintList to it + (a:&quot;anomalies&quot;))]
+\(if:$mayorFights&#39;s length &gt; 0 and $mayorFights&#39;s length &lt; 8)[(set:$waitingRoomHintList to it + (a:&quot;mayorfights&quot;))]
+\(if:$CLOSET&#39;s length &lt; 12)[(set:$waitingRoomHintList to it + (a:&quot;closet&quot;))]</tw-passagedata><tw-passagedata pid="54" name="Waiting Room" tags="" position="3975,4050" size="100,100">(unless:$incomingMail is &quot;empty&quot;)[
 \(set:$MAILBOX to $incomingMail)(set:$incomingMail to &quot;empty&quot;)]
 \(font:&quot;Raleway&quot;)[
 \&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/u3g5IIX.png&quot;&gt;
@@ -2974,9 +2990,11 @@ Outfits Owned: (print:$CLOSET&#39;s length + 2)/12
 (cond:$mayorFights&#39;s length is 0,&quot;?????:&quot;,&quot;Unique Mayor Fights:&quot;) (print:$mayorFights&#39;s length)/8
 (cond:$STATS&#39;s 1st is 0,&quot;?????:&quot;,&quot;World Endings:&quot;) (print:$STATS&#39;s 1st)
 
-(if:$anomalies&#39;s length is 16 and $CLOSET&#39;s length is 10 and $mayorFights&#39;s length is 8)[Wow! You did it! Sunglasses emoji
+(if:$waitingRoomHintList is (a:))[Wow! You did it! Sunglasses emoji
 
 ]]
+\(if:$ENDINGS&#39;s length &gt; 6 and $waitingRoomHintList is not (a:))[[[Help-&gt;Waiting Room Help]]
+]
 \[[Return-&gt;Waiting Room]] </tw-passagedata><tw-passagedata pid="182" name="Throw Away Key" tags="" position="1900,2850" size="100,100">(if:$INV contains &quot;letter&quot;)[
 \Jed, you fool! You were supposed to throw away the letter, not the key! There&#39;s no way you could&#39;ve made that mistake, unless-
 
@@ -3384,7 +3402,7 @@ Jed then blinks and finds himself back at his apartment complex. He reached in t
 (link-reveal-goto: $curQ&#39;s 3rd,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 3)]
 (link-reveal-goto: $curQ&#39;s 4th,&quot;Question &quot; + (str:$questionNum of $questions))[(set:$prevAnswer to 4)]</tw-passagedata><tw-passagedata pid="211" name="Question 5" tags="" position="1550,3600" size="100,100">(if:$questionNum is not 1 and $prevAnswer is not $correct)[(go-to:&quot;Gameshow Lose&quot;)]
 \(if:$questionNum is 6)[(go-to:&quot;Gameshow Win&quot;)]
-\(set:$options to (a:&quot;20&quot;,&quot;30&quot;,&quot;15&quot;,&quot;25&quot;))
+\(set:$options to (a:&quot;$20&quot;,&quot;$30&quot;,&quot;$15&quot;,&quot;$25&quot;))
 \(set:$curQ to (shuffled:...$options))
 \(set: _i to 0)
 \(for: each _item, ...$curQ)[(set:_i to it + 1)(if:_item is $options&#39;s 1st)[(set:$correct to _i)]]
@@ -7216,7 +7234,50 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 ]
 \(unless:4 of $stStanley)[(link-reveal-goto:&quot;Plans for Today&quot;,&quot;Stanley Small Talk&quot;)[(set:$stTopic to 4)]
 ]
-\[[Nevermind-&gt;Stanley&#39;s Apartment]] </tw-passagedata></tw-storydata>
+\[[Nevermind-&gt;Stanley&#39;s Apartment]] </tw-passagedata><tw-passagedata pid="437" name="Waiting Room Help" tags="" position="4275,4200" size="100,100">(set:$fightHintList to (a:))(set:$closetHintList to (a:))
+\(font:&quot;Raleway&quot;)[
+\Oh, you need some help completeing &lt;u&gt;The Paper of Amazing Statistics&lt;/u&gt;? (if:$waitingRoomHintList&#39;s length &gt; 8)[I think you should do some more experimentation on your own. Come back after you&#39;ve made some progress and I&#39;ll give you hints on the harder ones! Don&#39;t wanna ruin the feeling of accomplishment you&#39;ll get when you finish...]
+\(else-if:$ENDINGS does not contain &quot;NormalRoute&quot;)[You should probably &quot;beat the game&quot; first. Solve the &#39;&#39;Mayor Mystery&#39;&#39;, y&#39;know? We didn&#39;t call it that for nothing!]
+\(else:)[Let&#39;s see here... 
+\(set:$waitingRoomHint to (either:...$waitingRoomHintList))
+\(if:$waitingRoomHint is &quot;worldendings&quot;)[What would happen if you select one of the other options after finding the mayor?]
+\(if:$waitingRoomHint is &quot;thrownaway&quot; or &quot;toiletflushes&quot;)[Have you tried interacting with everything in Jed&#39;s apartment?]
+\(if:$waitingRoomHint is &quot;moneyspent&quot;)[No need to be so frugal! Go spend some money!]
+\(if:$waitingRoomHint is &quot;petsadopted&quot;)[(if:(history:) contains &quot;Bloomhurst Lake&quot;)[Ever notice the glitchy shops in Bloomhurst Lake?](else:)[You should try going outside of town...]]
+\(if:$waitingRoomHint is &quot;anomalies&quot;)[(if:$escapadeArrow contains &quot;arrow&quot;)[Try pressing some of those weird colored buttons...](else:)[You should try going outside of town...]]
+\(if:$waitingRoomHint is &quot;ticketsearned&quot;)[You&#39;ve earned yourself a break! Go have fun at the arcade!]
+\(if:$waitingRoomHint is &quot;trainrides&quot;)[It is impossible to see this text in-game. At least I&#39;m pretty sure. If you are seeing this send a screenshot to the developers.]
+\(if:$waitingRoomHint is &quot;roompaintings&quot;)[Aren&#39;t you sick of those gray walls in your apartment? What if you tried to spice them up?]
+\(if:$waitingRoomHint is &quot;haircuts&quot;)[You should check out the barber shop in West Side. I go there all the time, and look at my hair!]
+\(if:$waitingRoomHint is &quot;lotterywinnings&quot;)[There&#39;s an age old saying that can help you out: KEEP GAMBLING!]
+\(if:$waitingRoomHint is &quot;debtaccrued&quot;)[There is a way to get some stuff from the electronic store without money...]
+\(if:$waitingRoomHint is &quot;prankcalls&quot;)[(if:$PREMIUM is &quot;yes&quot;)[How have you resested the urge to prank call someone? If I were you, I&#39;d have pranked every single contact of mine tenfold by now.](else:)[Try riding the train around some more. Something cool might happen...]]
+\(if:$waitingRoomHint is &quot;mayorfights&quot;)[
+\(unless:$mayorFights contains &quot;meal combo&quot;)[(set:$fightHintList to it + (a:&quot;mealcombo&quot;))]
+\(unless:$mayorFights contains &quot;buster&quot;)[(set:$fightHintList to it + (a:&quot;buster&quot;))]
+\(unless:$mayorFights contains &quot;crowbar&quot;)[(set:$fightHintList to it + (a:&quot;crowbar&quot;))]
+\(unless:$mayorFights contains &quot;fists&quot;)[(set:$fightHintList to it + (a:&quot;fists&quot;))]
+\(unless:$mayorFights contains &quot;nerf gun&quot;)[(set:$fightHintList to it + (a:&quot;nerfgun&quot;))]
+\(unless:$mayorFights contains &quot;hammer&quot;)[(set:$fightHintList to it + (a:&quot;hammer&quot;))]
+\(unless:$mayorFights contains &quot;wrench&quot;)[(set:$fightHintList to it + (a:&quot;wrench&quot;))]
+\(unless:$mayorFights contains &quot;lightsaber&quot;)[(set:$fightHintList to it + (a:&quot;lightsaber&quot;))]
+\(set:$fightHint to (either:...$fightHintList))
+\(if:$fightHint is &quot;mealcombo&quot;)[I heard the mayor is hungry. Go get him a meal from his favorite restaurant, Burgerocity! Make sure you&#39;ve got an entree, side, and drink.]
+\(if:$fightHint is &quot;buster&quot;)[(if:$BUSTER)[Let Buster help you beat up the mayor!](else:)[There&#39;s a special someone waiting for you in Burgerocity...]]
+\(if:$fightHint is &quot;crowbar&quot; or &quot;wrench&quot; or &quot;hammer&quot;)[You&#39;re yet to take the $fightHint to beat up the mayor.]
+\(if:$fightHint is &quot;fists&quot;)[Have you tried fighting the mayor with no weapon?]
+\(if:$fightHint is &quot;nerfgun&quot;)[There&#39;s something in the arcade you can take to the mayor to blow his socks off... and his brains out... Okay, not actually, but it&#39;s a funny hint.]
+\(if:$fightHint is &quot;lightsaber&quot;)[(if:$STANLEY)[Try pressing the gray button in that weird building. Trust me!](else:)[You should try going outside of town...]]]
+\(if:$waitingRoomHint is &quot;closet&quot;)[
+\(unless:$CLOSET contains all of (a:&quot;ghost&quot;,&quot;hoodie&quot;,&quot;plumber outfit&quot;,&quot;ski mask&quot;,&quot;cape&quot;))[(set:$closetHintList to it + (a:&quot;clothingstore&quot;))]
+\(unless:$CLOSET contains all of (a:&quot;3d glasses&quot;,&quot;visor&quot;,&quot;bomber jacket&quot;,&quot;icloak&quot;))[(set:$closetHintList to it + (a:&quot;arcade&quot;))]
+\(unless:$CLOSET contains &quot;vest&quot;))[(set:$closetHintList to it + (a:&quot;vest&quot;))]
+\(set:$closetHint to (either:...$closetHintList))
+\(if:$closetHint is &quot;clothingstore&quot;)[There&#39;s some outfits in Tactical Bold you haven&#39;t bought yet.]
+\(if:$closetHint is &quot;arcade&quot;)[There&#39;s some outfits in the Impulse Arcade you haven&#39;t bought yet.]
+\(if:$closetHint is &quot;vest&quot;)[Have you tried getting that big stuffed bear from the arcade?]]]]
+
+[[Continue-&gt;Stats Page]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
