@@ -1056,7 +1056,7 @@ Feel free to rest in my waiting room for as long as you need!
 \(if:$STATS&#39;s 13th is 0)[(set:$waitingRoomHintList to it + (a:&quot;prankcalls&quot;))]
 \(if:$anomalies&#39;s length is 0)[(set:$waitingRoomHintList to it + (a:&quot;anomalies&quot;))]
 \(if:$mayorFights&#39;s length &gt; 0 and $mayorFights&#39;s length &lt; 8)[(set:$waitingRoomHintList to it + (a:&quot;mayorfights&quot;))]
-\(if:$CLOSET&#39;s length &lt; 12)[(set:$waitingRoomHintList to it + (a:&quot;closet&quot;))]</tw-passagedata><tw-passagedata pid="54" name="Waiting Room" tags="" position="3975,4050" size="100,100">(unless:$incomingMail is &quot;empty&quot;)[
+\(if:$CLOSET&#39;s length &lt; 10)[(set:$waitingRoomHintList to it + (a:&quot;closet&quot;))]</tw-passagedata><tw-passagedata pid="54" name="Waiting Room" tags="" position="3975,4050" size="100,100">(unless:$incomingMail is &quot;empty&quot;)[
 \(set:$MAILBOX to $incomingMail)(set:$incomingMail to &quot;empty&quot;)]
 \(font:&quot;Raleway&quot;)[
 \&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/u3g5IIX.png&quot;&gt;
