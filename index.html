@@ -803,7 +803,7 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 [[Vending Machine Secret-&gt;Secret Reminder]]]
 (if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
-\[[Exit-&gt;Town Square]]</tw-passagedata><tw-passagedata pid="41" name="Hardware Store" tags="" position="4250,1700" size="100,200">(unless:$banned contains &quot;hardware store&quot; and (($wearing is &quot;ski mask&quot; and $boxMask) or ($wearing is not &quot;ski mask&quot; and $boxMask is false)) and $wearing is not &quot;icloak&quot;)[
+\(if:$secretEndingProgress contains &quot;masher&quot; and does not contain &quot;arcade worker&quot;)[[[Exit-&gt;Secret Ending Hint]]](else:)[[[Exit-&gt;Town Square]]]</tw-passagedata><tw-passagedata pid="41" name="Hardware Store" tags="" position="4250,1700" size="100,200">(unless:$banned contains &quot;hardware store&quot; and (($wearing is &quot;ski mask&quot; and $boxMask) or ($wearing is not &quot;ski mask&quot; and $boxMask is false)) and $wearing is not &quot;icloak&quot;)[
 \You&#39;re inside the Town Square Hardware Store. (if:(current-date:) contains &quot;Dec 25&quot;)[Thank goodness they&#39;re still open on Christmas Day.](else:)[It feels strangely cold.] 
 \(set:$previousPassage to (passage:)&#39;s name)
 
