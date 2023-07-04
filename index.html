@@ -4220,12 +4220,12 @@ Tonight, Jed has an important interview with a local talk show. This interview r
 
 Jed cracked his eyes open, knowing today is his last chance to prepare for the interview. He has 30 hours left. Jed must choose his actions wisely.
 
-[[Start Preparing!-&gt;Apartment Kyle]]</tw-passagedata><tw-passagedata pid="262" name="Apartment Kyle" tags="" position="4550,2800" size="100,100">(set:$hours to it - 1)(if:$hours is -1)[(goto:&quot;Jed Hurried&quot;)]
+[[Start Preparing!-&gt;Apartment Kyle]]</tw-passagedata><tw-passagedata pid="262" name="Apartment Kyle" tags="" position="4550,2800" size="100,100">(set:$hours to it - 1)(if:$hours &lt; 0)[(goto:&quot;Jed Hurried&quot;)]
 \HOURS LEFT: $hours
 
 [[Kitchenette-&gt;Kitchen Kyle]]
 [[Bedroom-&gt;Bedroom Kyle]]
-[[Bathroom-&gt;Bathroom Kyle]]</tw-passagedata><tw-passagedata pid="263" name="Kitchen Kyle" tags="" position="4400,2950" size="100,100">(set:$hours to it - 1)(if:$hours is -1)[(goto:&quot;Jed Hurried&quot;)]
+[[Bathroom-&gt;Bathroom Kyle]]</tw-passagedata><tw-passagedata pid="263" name="Kitchen Kyle" tags="" position="4400,2950" size="100,100">(set:$hours to it - 1)(if:$hours &lt; 0)[(goto:&quot;Jed Hurried&quot;)]
 \HOURS LEFT: $hours
 
 (unless:$visitedKyle contains &#39;fridge&#39;)[[[Fridge-&gt;Fridge Kyle]]
@@ -4233,14 +4233,14 @@ Jed cracked his eyes open, knowing today is his last chance to prepare for the i
 \(unless:$visitedKyle contains &#39;coffee&#39;)[[[Coffee Maker-&gt;Coffee Kyle]]
 ]
 \[[Trash Can-&gt;Trash Kyle]]
-[[Exit-&gt;Apartment Kyle]]</tw-passagedata><tw-passagedata pid="264" name="Bedroom Kyle" tags="" position="4550,2950" size="100,100">(set:$hours to it - 1)(if:$hours is -1)[(goto:&quot;Jed Hurried&quot;)]
+[[Exit-&gt;Apartment Kyle]]</tw-passagedata><tw-passagedata pid="264" name="Bedroom Kyle" tags="" position="4550,2950" size="100,100">(set:$hours to it - 1)(if:$hours &lt; 0)[(goto:&quot;Jed Hurried&quot;)]
 \HOURS LEFT: $hours
 
 [[Cabinet-&gt;Cabinet Kyle]]
 [[Closet-&gt;Closet Kyle]]
 (unless:$visitedKyle contains &quot;bed&quot;)[[[Bed-&gt;Bed Kyle]]
 ]
-\[[Exit-&gt;Apartment Kyle]]</tw-passagedata><tw-passagedata pid="265" name="Bathroom Kyle" tags="" position="4700,2950" size="100,100">(set:$hours to it - 1)(if:$hours is -1)[(goto:&quot;Jed Hurried&quot;)]
+\[[Exit-&gt;Apartment Kyle]]</tw-passagedata><tw-passagedata pid="265" name="Bathroom Kyle" tags="" position="4700,2950" size="100,100">(set:$hours to it - 1)(if:$hours &lt; 0)[(goto:&quot;Jed Hurried&quot;)]
 \HOURS LEFT: $hours
 
 [[Flush Toilet-&gt;Toilet Kyle]]
@@ -4298,7 +4298,7 @@ It looks like you bit off more than you can chew. (if:$FUN is 6)[I warned you ab
 
 [[Continue-&gt;Kitchen Kyle]] </tw-passagedata><tw-passagedata pid="271" name="Cabinet Kyle" tags="" position="4550,3100" size="100,100">Jed searched inside his cabinet. Doesn&#39;t look like there&#39;s anything worth grabbing for the interview.
 
-[[Continue-&gt;Bedroom Kyle]] </tw-passagedata><tw-passagedata pid="272" name="Closet Kyle" tags="" position="4550,3250" size="100,100">(if:$hours is -1)[(goto:&quot;Jed Hurried&quot;)]
+[[Continue-&gt;Bedroom Kyle]] </tw-passagedata><tw-passagedata pid="272" name="Closet Kyle" tags="" position="4550,3250" size="100,100">(if:$hours &lt; 0)[(goto:&quot;Jed Hurried&quot;)]
 \HOURS LEFT: $hours
 
 (if:$CLOSET contains &quot;3d glasses&quot;)[(if:$wearing is &quot;3d glasses&quot;)[&#39;&#39;3d Glasses - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;3D Glasses&quot;,&quot;Closet Kyle&quot;)[(set:$hours to it - 1)(set:$wearing to &quot;3d glasses&quot;)]]
@@ -5130,7 +5130,7 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 \(if:($currentPage) of $JOURNAL is &quot;Ghost&quot;)[(if:(range:1,$currentPage-1) of $JOURNAL contains &quot;Ghost&quot;)[I had one of these dreams again. ]I wore an invisibility cloak and snuck into the city hall, and I found out the mayor was gonna get rid of Burgerocity! So, I used my newfound powers to haunt the mayor, which made him stop.]
 \(if:($currentPage) of $JOURNAL is &quot;WACKY STEVE&quot;)[I had one of the weirdest dreams last night. Wacky Steve was there and talked about going to each store in town. I went to each store and they each sold a piece of this statue. When I put them all together, they came to life and destroyed every shop in town! Thank goodness the real Wacky Steve isn&#39;t evil!]
 \(if:($currentPage) of $JOURNAL is &quot;Prank&quot;)[(if:(range:1,$currentPage-1) of $JOURNAL contains &quot;Prank&quot;)[I had one of these dreams again. ]I was making some prank calls on the train station&#39;s phone, but someone recognized my voice and found out who I was. They tried to fight me, which got me evicted! They start the fight and I get in trouble. What is this, kindergarten?]
-\(if:($currentPage) of $JOURNAL is &quot;Interrogation&quot;)[(if:(range:1,$currentPage-1) of $JOURNAL contains &quot;Interrogation&quot;)[I had this weird dream again. ]I got beat up in the dark alleyway in West Side. They tied me up and asked me a bunch of random questions. After that, they did a mind-wipe on me or something. If they erased my memory then how do I know what happened? Dream logic makes no sense!]
+\(if:($currentPage) of $JOURNAL is &quot;Interrogation&quot;)[(if:(range:1,$currentPage-1) of $JOURNAL contains &quot;Interrogate&quot;)[I had this weird dream again. ]I got beat up in the dark alleyway in West Side. They tied me up and asked me a bunch of random questions. After that, they did a mind-wipe on me or something. If they erased my memory then how do I know what happened? Dream logic makes no sense!]
 \(if:($currentPage) of $JOURNAL is &quot;Marriage&quot;)[This one&#39;s more of a memory than a dream. It was the day Buster and I eloped. That was such a great day! I remember it like it was yesterday...]
 \(if:($currentPage) of $JOURNAL is &quot;Secret&quot;)[(if:(range:1,$currentPage-1) of $JOURNAL contains &quot;Secret&quot;)[I had this weird dream again. ]I went into the future, and Webster Groves was completely gone! There was only a crater where everythhing once was. There were also these weird figures walking around, screaming and being scary! What could it all mean?]
 \]
@@ -5265,7 +5265,8 @@ It appears as by completing the Paper of Amazing Statistics, a mysterious door h
 
 [Test]&lt;gg|[Test]&lt;bc|
 
-|gg&gt;[Ok, looking for a hint, a- wait. You&#39;ve gotten this far and you haven&#39;t even beaten the game yet? Solved the titular Mayor Mystery? (text-style:&quot;flat&quot;)[I guess maybe we did add too much fluff...]]</tw-passagedata><tw-passagedata pid="338" name="Worthy Test" tags="" position="4125,4200" size="100,100">(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
+|gg&gt;[Ok, looking for a hint, a- wait. You&#39;ve gotten this far and you haven&#39;t even beaten the game yet? Solved the titular Mayor Mystery? (text-style:&quot;flat&quot;)[I guess maybe we did add too much fluff...]]</tw-passagedata><tw-passagedata pid="338" name="Worthy Test" tags="" position="4125,4200" size="100,100">(set:$ENDINGS to (a:))\
+(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
 \(enchant:?bc, (font:&quot;PressStart&quot;)+(text-style:&quot;condense&quot;))
 \(if:visits is 1)[
 \(font:&quot;Raleway&quot;)[You hear voices begin to speak at you, but you can&#39;t see where they&#39;re coming from...]
