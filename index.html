@@ -358,6 +358,7 @@ By Blue Cat and Green Guy
 [[Extras-&gt;Sequels]]]
 [[About-&gt;About]]
 [[Exit-&gt;Exit]]
+[[Debug for Hails-&gt;Hails]]
 \(font:&quot;HKNova&quot;)[]
 \&lt;img style=&quot;width:0px;height:0px;&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/u3g5IIX.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/pbg85sl.png&quot;&gt;</tw-passagedata><tw-passagedata pid="10" name="Test3" tags="" position="2400,400" size="100,100">You find yourself in the following scenario:
 \(set: _correct to (either:1,2))(set:$hint to false)
@@ -5265,8 +5266,7 @@ It appears as by completing the Paper of Amazing Statistics, a mysterious door h
 
 [Test]&lt;gg|[Test]&lt;bc|
 
-|gg&gt;[Ok, looking for a hint, a- wait. You&#39;ve gotten this far and you haven&#39;t even beaten the game yet? Solved the titular Mayor Mystery? (text-style:&quot;flat&quot;)[I guess maybe we did add too much fluff...]]</tw-passagedata><tw-passagedata pid="338" name="Worthy Test" tags="" position="4125,4200" size="100,100">(set:$ENDINGS to (a:))\
-(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
+|gg&gt;[Ok, looking for a hint, a- wait. You&#39;ve gotten this far and you haven&#39;t even beaten the game yet? Solved the titular Mayor Mystery? (text-style:&quot;flat&quot;)[I guess maybe we did add too much fluff...]]</tw-passagedata><tw-passagedata pid="338" name="Worthy Test" tags="" position="4125,4200" size="100,100">(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
 \(enchant:?bc, (font:&quot;PressStart&quot;)+(text-style:&quot;condense&quot;))
 \(if:visits is 1)[
 \(font:&quot;Raleway&quot;)[You hear voices begin to speak at you, but you can&#39;t see where they&#39;re coming from...]
@@ -7278,7 +7278,9 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 \(if:$closetHint is &quot;arcade&quot;)[There&#39;s some outfits in the Impulse Arcade you haven&#39;t bought yet.]
 \(if:$closetHint is &quot;vest&quot;)[Have you tried getting that big stuffed bear from the arcade?]]]]
 
-[[Continue-&gt;Stats Page]] </tw-passagedata></tw-storydata>
+[[Continue-&gt;Stats Page]] </tw-passagedata><tw-passagedata pid="438" name="Hails" tags="" position="2150,250" size="100,100">(set:$ENDINGS to (a:&quot;TestFailure&quot;,&quot;NormalRoute&quot;,&quot;Neglect&quot;,&quot;Trespassing&quot;,&quot;Toilet&quot;,&quot;Explosion&quot;,&quot;Glitch&quot;,&quot;Sunglasses&quot;,&quot;Capitalism&quot;,&quot;Supermarket&quot;,&quot;SuperJed&quot;,&quot;Gang&quot;,&quot;Evil&quot;,&quot;Construction&quot;,&quot;Prank&quot;,&quot;Ghost&quot;,&quot;Narrator&quot;,&quot;Marriage&quot;,&quot;Toaster&quot;,&quot;Kyle&quot;))
+
+[[Back-&gt;Title Screen]] </tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
