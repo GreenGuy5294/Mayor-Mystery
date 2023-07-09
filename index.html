@@ -1717,7 +1717,7 @@ The owner leans forward. &quot;If anyone asks, you never heard this. I was told 
 
 &quot;Hey, wait a minute, is that my cardboard cutout?&quot;
 
-&quot;Oh uhhh, no this is just a replica I made after the other one disappeared!](else:)[
+&quot;Oh uhhh, no this is just a replica I made after the other one disappeared!&quot;](else:)[
 
 &quot;Hey, by the way, did you ever see what happened to Buster? He just kinda disappeared.&quot;
 
@@ -3497,7 +3497,7 @@ Jed, you might want to get out of this area. It&#39;s dangerous to just walk aro
 
 &quot;What are you guys doing here?&quot; Jed asks.
 
-&quot;We&#39;re working on something. Come back (print:($STATS&#39;s 9th) of $constructionDialogue) and you&#39;ll see.]]
+&quot;We&#39;re working on something. Come back (print:($STATS&#39;s 9th) of $constructionDialogue) and you&#39;ll see.&quot;]]
 \(else:)[
 \Jed walks up to the construction zone and noticed that all of the workers were gone. What could it mean? The construction was supposed to be finished by now.
 
@@ -3771,7 +3771,8 @@ Was the toilet stolen? If it was, how are the police going to find the culprit? 
 
 Right, I&#39;ll see myself out. Sorry.]
 \(else:)[
-\You start to walk towards the gas station bathroom but the cashier shouts at you.
+\(if:$wearing is &quot;icloack&quot;)[You walk up to go into the batroom, but the door is locked. There&#39;s a sign on it that reads &quot;BATHROOM FOR CUSTOMERS ONLY.&quot;]
+\(else:)[You start to walk towards the gas station bathroom but the cashier shouts at you.
 
 &quot;Hey, can&#39;t you read?&quot; she nags. &quot;Paying customers only!&quot;]
 
@@ -5516,7 +5517,7 @@ Alrighty then, I&#39;ll go ahead and teleport you guys back to the beginning. Ga
 \(set:$JOURNAL to it + (a:&quot;Narrator&quot;))</tw-passagedata><tw-passagedata pid="356" name="Narrator Room" tags="" position="12450,1750" size="100,100">(set:$askedNarrator to it + (a:&quot;narratorroom&quot;))\
 (font:&quot;Raleway&quot;)[What even is this place? What are all these monitors for? Where are we?]
 
-This place is how communicate with the world. It allows me to see what&#39;s going on and narrate Jed&#39;s actions. That&#39;s partly why I needed some help with the menus, because I&#39;m not here physically.
+This place is how I communicate with the world. It allows me to see what&#39;s going on and narrate Jed&#39;s actions. That&#39;s partly why I needed some help with the menus, because I&#39;m not here physically.
 
 (font:&quot;Raleway&quot;)[[[Continue-&gt;The Narrator]]]</tw-passagedata><tw-passagedata pid="357" name="GGBC 2" tags="" position="4125,4350" size="100,100">(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
 \(enchant:?bc, (font:&quot;PressStart&quot;)+(text-style:&quot;condense&quot;))
@@ -5582,7 +5583,7 @@ You, the player :)
 \Hey woah woah c&#39;mon i didnt stay up for 1 hours just for you to exit this. you better play this NOW.]
 
 [[Return-&gt;TITLE SCREEN 3]] </tw-passagedata><tw-passagedata pid="362" name="Start 3" tags="" position="4950,4250" size="100,100">#The year is 203X.
-Jed Winchester is now the mayor of Webster Groves. After helping uncover the Dixon scandal, he was seen well in the public eye. Years later, he decided to run mayor. Of course, being the local town helper, he already had a headstart in the election. His platform of being for the people was quite appealing.
+Jed Winchester is now the mayor of Webster Groves. After helping uncover the Dixon scandal, he was seen well in the public eye. Years later, he decided to run for mayor. Of course, being the local town helper, he already had a headstart in the election. His platform of being for the people was quite appealing.
 
 Jed has been running the town, using his mayoral powers for the good of the community.
 
@@ -5640,7 +5641,7 @@ The other person hangs up on you.
 
 [[Continue-&gt;Train Station Phone]]</tw-passagedata><tw-passagedata pid="367" name="GGBC PostGame" tags="" position="3825,4200" size="100,100">(enchant:?gg, (font:&quot;Trebuchet MS&quot;))
 \(enchant:?bc, (font:&quot;PressStart&quot;)+(text-style:&quot;condense&quot;))
-\(if:$funFactPos is 0 or 17)[(set:$funfacts to (shuffled:...(range:1,16)))(set:$funFactPos to 1)](else:)[(set:$funFactPos to it + 1)]
+\(if:$funFactPos is 0 or 16)[(set:$funfacts to (shuffled:...(range:1,16)))(set:$funFactPos to 1)](else:)[(set:$funFactPos to it + 1)]
 \(set:$curFact to ($funFactPos) of $funfacts)
 \(if:$curFact &lt;= 8)[|gg&gt;[welcome back jed. (either:&quot;fun fact incoming&quot;,&quot;were playing among us later if you wanna join but for now have this&quot;,&quot;wanna be in our fun fact youtube video, heres something to entise you&quot;,&quot;we shall impose upon you a trivial bite&quot;)]
 
@@ -5753,7 +5754,7 @@ I&#39;m sorry, I don&#39;t understand the command &quot;_input.&quot; Please try
 
 &quot;How does that even work? Where did the anvil come from?&quot;
 
-&quot;I have no idea. These zombies are so weird. Why could we get normal ones like what was on TV shows?&quot;]
+&quot;I have no idea. These zombies are so weird. Why couldn&#39;t we get normal ones like what was on TV shows?&quot;]
 \(else-if:1stto2nd of $rescued contains all of (a:&quot;Mei&quot;,&quot;Josefine&quot;))[&quot;Has Jed been behaving in the office?&quot; Josefine asks Mei. She laughs in return. &quot;I&#39;m kidding, I&#39;m kidding. Gosh, it must be awful having to be in charge during a time like this.&quot;
 
 &quot;Yes, it&#39;s very stressful,&quot; Mei affirms. &quot;But I&#39;m sure it&#39;s stressful for everyone. Especially right now.&quot;
@@ -6032,7 +6033,7 @@ Lonny mumbles to himself, &quot;So that it can finally go away, dying here in We
 \[[Back-&gt;Town Square 3]] </tw-passagedata><tw-passagedata pid="380" name="Rescue Bev 3" tags="" position="5400,4550" size="100,100">(set:$rescued to it + (a:&quot;Bev&quot;))(set:$needCheck to true)
 \&quot;So,&quot; you begin to explain, &quot;the zombies have been planning something. Something big. They&#39;ve said this whole town is set to blow in about a day&#39;s time.&quot;
 
-&quot;Oh jeez,&quot; the say. &quot;What&#39;s the plan?&quot;
+&quot;Oh jeez,&quot; they say. &quot;What&#39;s the plan?&quot;
 
 &quot;We&#39;ve got a little setup in the empty store in Town Square. That&#39;s where we&#39;ll meet up and try to plan something together.&quot;
 
@@ -6267,7 +6268,7 @@ Mei also begins counting heads. &quot;Yeah... I guess it really is...&quot;
 
 [[Continue-&gt;The End 3]]</tw-passagedata><tw-passagedata pid="417" name="The End 3" tags="" position="4900,5500" size="200,100">Jed and the others left the empty store, grabbing their belongings and valuables. They began the trek out of town, going around the port and along the river. There was an aura of melancholy and sorrow around the group. No one wanted to speak. Everyone was lost in their own thoughts, perhaps reliving the memories of their soon-to-be-former home. 
 
-Jed thought about his time in Webster Groves. How he started as just an average guy who took the opportunity to help when he could, to stopping an alien invasion, to becoming mayor, to helping keep Webster Groves as safe as possible during the zombie invasion. It was unfortunate that not everyone could be saved, and that now the town itself could not be saved, but this was out of Jed&#39;s hands. At the very least, he had to tell himself that or the betterment of his mental health. 
+Jed thought about his time in Webster Groves. How he started as just an average guy who took the opportunity to help when he could, to stopping an alien invasion, to becoming mayor, to helping keep Webster Groves as safe as possible during the zombie invasion. It was unfortunate that not everyone could be saved, and that now the town itself could not be saved, but this was out of Jed&#39;s hands. At the very least, he had to tell himself that for the betterment of his mental health. 
 
 It was the next morning after everyone left that Webster Groves blew up, completely destroying everything. All that was left was a gigantic crater where the town used to be, with no signs of life or infrastructure anywhere. 
 
