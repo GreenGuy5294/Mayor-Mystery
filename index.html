@@ -589,7 +589,7 @@ An anonymous help-seeker]]
 \[[Continue-&gt;Jed&#39;s Bedroom]]</tw-passagedata><tw-passagedata pid="26" name="Closet" tags="" position="2200,2700" size="100,100">What shall you wear today?
 \(set:$previousPassage to (passage:)&#39;s name)
 
-(if:$CLOSET contains &quot;3d glasses&quot;)[(if:$wearing is &quot;3d glasses&quot;)[&#39;&#39;3d Glasses - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;3D Glasses&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;3d glasses&quot;)]]
+(if:$CLOSET contains &quot;3d glasses&quot;)[(if:$wearing is &quot;3d glasses&quot;)[&#39;&#39;3D Glasses - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;3D Glasses&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;3d glasses&quot;)]]
 ]
 \(if:$CLOSET contains &quot;bomber jacket&quot;)[(if:$wearing is &quot;bomber jacket&quot;)[&#39;&#39;Bomber Jacket - Wearing&#39;&#39;](else:)[(link-reveal-goto:&quot;Bomber Jacket&quot;,&quot;Closet&quot;)[(set:$wearing to &quot;bomber jacket&quot;)]]
 ]
@@ -1459,7 +1459,7 @@ But of course, you can&#39;t sit in one place for long before your basic human n
 \(if:$stTopic is 4)[(set:4 of $stJosefine to true)
 \&quot;Do you have any plans today?&quot; you ask Josefine.
 
-&quot;(either:&quot;I&#39;ve got a lot tidying up I need to do. Cleaning, laundry, dishes, the like. I unhealthily push them off until I just do &#39;em all at once. I gotta get in the right mood, but when I am I can just power through.&quot;,&quot;Today&#39;s gonna be sort-of an &#39;off&#39; day for me. I&#39;ve got my schedule clear, so I can just sit back, relax, head empty, no thoughts.&quot;,&quot;I got some odd jobs to do today, like getting grocieries, but other than that I don&#39;t really have much going on. I&#39;ll probably just watch TV most of the day.&quot;,&quot;Me and Robyn, my girfriend, are gonna go watch a movie together tonight! It&#39;s one we&#39;ve both been wanting to see for a while. I finally got tried of waiting for spoilers and broke, got us both tickets.&quot;)&quot;]
+&quot;(either:&quot;I&#39;ve got a lot tidying up I need to do. Cleaning, laundry, dishes, the like. I unhealthily push them off until I just do &#39;em all at once. I gotta get in the right mood, but when I am I can just power through.&quot;,&quot;Today&#39;s gonna be sort-of an &#39;off&#39; day for me. I&#39;ve got my schedule clear, so I can just sit back, relax, head empty, no thoughts.&quot;,&quot;I got some odd jobs to do today, like getting groceries, but other than that I don&#39;t really have much going on. I&#39;ll probably just watch TV most of the day.&quot;,&quot;Me and Robyn, my girfriend, are gonna go watch a movie together tonight! It&#39;s one we&#39;ve both been wanting to see for a while. I finally got tried of waiting for spoilers and broke, got us both tickets.&quot;)&quot;]
 
 (if:$stJosefine is (a:true,true,true,true))[[[Continue-&gt;Josefine&#39;s Apartment]]](else:)[[[Continue-&gt;Josefine ST Select]]]</tw-passagedata><tw-passagedata pid="76" name="Rafael Empty Store" tags="" position="2400,2550" size="100,100">&quot;Do you remember what was in that space next to the hardware store in Town Square?&quot; you ask Rafael.
 
@@ -2691,7 +2691,7 @@ Jed folded the letter and put it in his pocket.
 \(if:visits is 3)[This is a reminder that speedrunning has been removed from the game. We would like all players of (color:#ff0000)[Mayor Mystery 2] to be able to explore all the game has to offer, and so we have removed speedrunning. Please finish all required tasks before entering a new area.]
 \(if:visits &gt; 3)[It seems you have forgotten that speedrunning has been removed from the game. Please finish your current task before entering this area.]]
 
-(link-goto:&quot;Continue&quot;,$previousPassage)</tw-passagedata><tw-passagedata pid="158" name="Jed&#39;s Bedroom 2" tags="" position="5525,3650" size="100,100">(if:visits is 1)[(set:$sequelProgress to it + (a:&quot;del&quot;))
+(link-goto:&quot;Continue&quot;,$previousPassage)</tw-passagedata><tw-passagedata pid="158" name="Jed&#39;s Bedroom 2" tags="" position="5525,3650" size="100,100">(unless:$sequelProgress contains &quot;del&quot;)[(set:$sequelProgress to it + (a:&quot;del&quot;))
 \Jed walks down the hallway to the Jedroom door, which is currently closed. Jed knocks on it, and the door swings open.
 
 &quot;Good morning, Jed!&quot; shouts Del Buffington. Del is your sidekick. &quot;Oh boy, I&#39;m so excited for what we have planned today!&quot;
@@ -4183,13 +4183,13 @@ Amount in hand: $(if:$MONEY &gt; 999)[(digit-format:&quot;###,###&quot;,$MONEY)]
 ]
 \(if:$MONEY &gt;= 500)[(t8n-time:0.4s)+(link-reveal-goto: &quot;Deposit $500&quot;,&quot;Train Station ATM&quot;)[(set:$MONEY to it - 500)(set:$ATM to it + 500)(set:$visitsATM to it - 1)]
 ]
-\(if:$ATM &gt;= 10)[(t8n-time:0.4s)+(link-reveal-goto: &quot;Withdrawl $10&quot;,&quot;Train Station ATM&quot;)[(set:$MONEY to it + 10)(set:$ATM to it - 10)(set:$visitsATM to it - 1)]
+\(if:$ATM &gt;= 10)[(t8n-time:0.4s)+(link-reveal-goto: &quot;Withdraw $10&quot;,&quot;Train Station ATM&quot;)[(set:$MONEY to it + 10)(set:$ATM to it - 10)(set:$visitsATM to it - 1)]
 ]
-\(if:$ATM &gt;= 50)[(t8n-time:0.4s)+(link-reveal-goto: &quot;Withdrawl $50&quot;,&quot;Train Station ATM&quot;)[(set:$MONEY to it + 50)(set:$ATM to it - 50)(set:$visitsATM to it - 1)]
+\(if:$ATM &gt;= 50)[(t8n-time:0.4s)+(link-reveal-goto: &quot;Withdraw $50&quot;,&quot;Train Station ATM&quot;)[(set:$MONEY to it + 50)(set:$ATM to it - 50)(set:$visitsATM to it - 1)]
 ]
-\(if:$ATM &gt;= 100)[(t8n-time:0.4s)+(link-reveal-goto: &quot;Withdrawl $100&quot;,&quot;Train Station ATM&quot;)[(set:$MONEY to it + 100)(set:$ATM to it - 100)(set:$visitsATM to it - 1)]
+\(if:$ATM &gt;= 100)[(t8n-time:0.4s)+(link-reveal-goto: &quot;Withdraw $100&quot;,&quot;Train Station ATM&quot;)[(set:$MONEY to it + 100)(set:$ATM to it - 100)(set:$visitsATM to it - 1)]
 ]
-\(if:$ATM &gt;= 500)[(t8n-time:0.4s)+(link-reveal-goto: &quot;Withdrawl $500&quot;,&quot;Train Station ATM&quot;)[(set:$MONEY to it + 500)(set:$ATM to it - 500)(set:$visitsATM to it - 1)]]</tw-passagedata><tw-passagedata pid="258" name="Train Station Shop" tags="" position="4300,600" size="100,100">&quot;What do you need?(if:$FUN is 7)[ Don&#39;t forget our train passes are 75% off!]&quot;
+\(if:$ATM &gt;= 500)[(t8n-time:0.4s)+(link-reveal-goto: &quot;Withdraw $500&quot;,&quot;Train Station ATM&quot;)[(set:$MONEY to it + 500)(set:$ATM to it - 500)(set:$visitsATM to it - 1)]]</tw-passagedata><tw-passagedata pid="258" name="Train Station Shop" tags="" position="4300,600" size="100,100">&quot;What do you need?(if:$FUN is 7)[ Don&#39;t forget our train passes are 75% off!]&quot;
 
 Current funds: $$MONEY
 
@@ -7278,7 +7278,7 @@ Nope. Okay, well, this is just great. Perfect. We&#39;ll have to just restart no
 \(if:$closetHint is &quot;arcade&quot;)[There&#39;s some outfits in the Impulse Arcade you haven&#39;t bought yet.]
 \(if:$closetHint is &quot;vest&quot;)[Have you tried getting that big stuffed bear from the arcade?]]]]
 
-[[Continue-&gt;Stats Page]] </tw-passagedata><tw-passagedata pid="438" name="Hails" tags="" position="850,650" size="100,100">I had to make this so Hail&#39;s save isnt corrupted LOL
+[[Continue-&gt;Stats Page]]</tw-passagedata><tw-passagedata pid="438" name="Hails" tags="" position="850,650" size="100,100">I had to make this so Hail&#39;s save isnt corrupted LOL
 
 (set: $ENDINGS to (a:&quot;TestFailure&quot;,&quot;NormalRoute&quot;,&quot;Neglect&quot;,&quot;Trespassing&quot;,&quot;Toilet&quot;,&quot;Explosion&quot;,&quot;Glitch&quot;,&quot;Sunglasses&quot;,&quot;Capitalism&quot;,&quot;Supermarket&quot;,&quot;SuperJed&quot;,&quot;Gang&quot;,&quot;Evil&quot;,&quot;Construction&quot;,&quot;Prank&quot;,&quot;Ghost&quot;,&quot;Narrator&quot;,&quot;Marriage&quot;,&quot;Toaster&quot;,&quot;Kyle&quot;))
 
