@@ -898,7 +898,7 @@ Jed was at a loss for words. Jed wondered what could have caused all of this. An
 \(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
 \[[Exit-&gt;East Side of Town]]</tw-passagedata><tw-passagedata pid="39" name="City Hall" tags="" position="3600,1700" size="100,200">(unless:(track:&#39;cityhall&#39;,&#39;isplaying&#39;))[(track:&#39;townsquare&#39;,&#39;fadeout&#39;,0.5)(track:&#39;basement&#39;,&#39;fadeout&#39;,0.5)
-\(after:0.5s)[(track:&#39;cityhall&#39;,&#39;playwhenpossible&#39;)]
+\(after:0.5s)[(masteraudio:&quot;stopall&quot;)(track:&#39;cityhall&#39;,&#39;playwhenpossible&#39;)]
 \](else:)[(track:&#39;cityhall&#39;,&#39;fadeto&#39;,0.5,1)]
 \(set:$visitsCityHall to it + 1)
 \(if: $visitsCityHall is 1)[
@@ -1008,7 +1008,7 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 [[Go Back-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="47" name="About" tags="title" position="2400,100" size="100,100">=&gt;&lt;=
 Written and Developed by Green Guy and Jinx.
 
-Music by Green Guy. &lt;a href=&quot;https://www.youtube.com/watch?v=Kdu5bK2hXQY&quot; target=&quot;_blank&quot;&gt;On YouTube&lt;/a&gt;
+Music by Green Guy. &lt;a href=&quot;https://www.youtube.com/watch?v=BZ3tdRAw0UY&quot; target=&quot;_blank&quot;&gt;On YouTube&lt;/a&gt;
 
 Illustrations by Wiz.
 
