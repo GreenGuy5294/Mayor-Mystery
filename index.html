@@ -7917,7 +7917,24 @@ You have pressed the button _count times.]]]
 
 [[No Thanks-&gt;Title Screen]]
 [[Sure-&gt;Mini-Mystery 1]]]
-\]</tw-passagedata><tw-passagedata pid="451" name="RPS Gag" tags="" position="1350,100" size="100,100">(font:&quot;Raleway&quot;)[(if:$rps is &quot;none&quot;)[Hmmm, okay! Let&#39;s play Rock Paper Scissors then! You choose first!](else:)[(if:$rps is &quot;rock&quot;)[I chose paper!](if:$rps is &quot;paper&quot;)[I chose scissors!](if:$rps is &quot;scissors&quot;)[I chose rock!] (either:&quot;I&#39;m just too good at this game.&quot;,&quot;Let&#39;s go again!&quot;,&quot;Nice, didn&#39;t expect to win that one!&quot;,&quot;I am somewhat of a grandmaster in this game...&quot;,&quot;Don&#39;t worry, I&#39;m not cheating...&quot;)]]
+\]
+\(if:$gag is 18)[
+\(font:&quot;Raleway&quot;)[O! say can you solve
+By the mayor&#39;s myst&#39;ry
+⁠What so Webster we Groves
+At the East Side&#39;s last Town Square
+Whose Mayor Mystery
+Through the perilous route
+⁠O&#39;er the endings we got
+were so gallantly West Side
+And the secretary
+the Jed Winchester, too
+Gave proof through the game
+That Mayor Mystery
+⁠O! say does that text adventure yet wave
+⁠O&#39;er the land of the mayor and the home of the mystery]
+
+[[May the Jed be Winchester-&gt;Title Screen]]]</tw-passagedata><tw-passagedata pid="451" name="RPS Gag" tags="" position="1350,100" size="100,100">(font:&quot;Raleway&quot;)[(if:$rps is &quot;none&quot;)[Hmmm, okay! Let&#39;s play Rock Paper Scissors then! You choose first!](else:)[(if:$rps is &quot;rock&quot;)[I chose paper!](if:$rps is &quot;paper&quot;)[I chose scissors!](if:$rps is &quot;scissors&quot;)[I chose rock!] (either:&quot;I&#39;m just too good at this game.&quot;,&quot;Let&#39;s go again!&quot;,&quot;Nice, didn&#39;t expect to win that one!&quot;,&quot;I am somewhat of a grandmaster in this game...&quot;,&quot;Don&#39;t worry, I&#39;m not cheating...&quot;)]]
 
 SCORE: 0-(print:$rpsscore)
 
