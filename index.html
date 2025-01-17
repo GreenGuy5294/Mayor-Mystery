@@ -993,7 +993,8 @@ Oddly, in what is a very open and spacious room, you can only see one other pers
 ]
 \(if:$toiletEnding and $toilets does not contain (passage:)&#39;s name)[(link-goto:&quot;Bathroom&quot;,&quot;Mega-Bathroom&quot;)
 ]
-\[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="46" name="Dark Alleyway" tags="" position="6800,1700" size="100,200">(unless:(track:&#39;westside&#39;,&#39;isplaying&#39;))[
+\[[Exit-&gt;West Side of Town]]</tw-passagedata><tw-passagedata pid="46" name="Dark Alleyway" tags="" position="6800,1700" size="100,200">(track:&#39;alleyway&#39;,&#39;volume&#39;,1)
+\(unless:(track:&#39;westside&#39;,&#39;isplaying&#39;))[
 \(if:(track:&#39;alleyway&#39;,&#39;isplaying&#39;))[(track:&#39;alleyway&#39;,&#39;fadeout&#39;,0.5)]
 \(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;westside&#39;,&#39;volume&#39;,0.5)(track:&#39;westside&#39;,&#39;playwhenpossible&#39;)]
 \]
@@ -3584,7 +3585,7 @@ Jed grabbed his coffee maker with both hands and pulled on it, ripping its cord 
 \(set:$furnitureEaten to it + (a:&quot;cabinet&quot;))
 \(set: $INV to it + (a:&quot;train pass&quot;))
 
-Jed then leaned over the cabinet and grabbed onto its sides and began gnawing on the corner. Jed was biting on the wood so quickly it made an extremely loud sound that resonated throughout his entire apartment. Jed made quick work of the cabinet until nothing was left but small wood shavings where the cabinet used to be.
+Jed then leaned over the cabinet, grabbed onto its sides, and began gnawing on the corner. Jed was biting on the wood so quickly it made an extremely loud sound that resonated throughout his entire apartment. Jed made quick work of the cabinet until nothing was left but small wood shavings where the cabinet used to be.
 
 [[Continue-&gt;Jed&#39;s Bedroom]] 
 \(unless:$anomalies contains &quot;eat furniture&quot;)[(set:$anomalies to it + (a:&quot;eat furniture&quot;))]</tw-passagedata><tw-passagedata pid="206" name="Gameshow Lose" tags="" position="800,3750" size="100,100">&quot;I&#39;m sorry Jed,&quot; the host says sadly, &quot;but that is incorrect. That means it&#39;s game over for you! (if:$questionNum is 2)[(set:$winnings to 0)Since you messed up on the first question, you do not get any money.](else-if:$questionNum is 3)[(set:$winnings to 20)Since you only got one question right, you only win $20.](else-if:$questionNum is 4)[(set:$winnings to 70)But, you got the first two right, so you get to go home with $70!](else-if:$questionNum is 5)[(set:$winnings to 150)You got three questions correct, and all that together adds up to $150!](else-if:$questionNum is 6)[(set:$winnings to 300)You were so close but weren&#39;t able to get that last question. But you&#39;re going home empty-handed, because all together you won $300!]&quot; The host then turns to the crowd. &quot;That&#39;s our show, folks! Tune in next time we try to solve this &#39;&#39;Mayor Mystery Mystery&#39;&#39;!&quot; 
