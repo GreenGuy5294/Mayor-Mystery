@@ -46,6 +46,14 @@
 	src: url(https://zacstan.github.io/oofboys/PressStart.ttf);
 }
 
+tw-story {
+  background-color:#141414;
+}
+
+#text {
+	color:#dddddd;  
+}
+
 tw-align {
   	min-width:100%
 }
@@ -100,12 +108,20 @@ tw-sidebar {
   	display: none;
 }
 
+tw-link {
+	color:#5a7be0;
+}
+
+tw-link:hover {
+	color:#74c1ed;
+}
+
 tw-link.visited {
-	color:#4169e1;
+	color:#5a7be0;
 }
 
 tw-link.visited:hover {
-	color:#00bfff;
+	color:#74c1ed;
 }
 
 html {
@@ -266,8 +282,8 @@ I&#39;ll make you a deal. One last chance to show me whether or not you want to 
 
 [[Go Back-&gt;The Beginning]]</tw-passagedata><tw-passagedata pid="9" name="Title Screen" tags="title" position="1850,100" size="200,100">===&gt;&lt;===
 (unless:(track:&#39;adventureawaits&#39;,&#39;isplaying&#39;))[(track:&quot;huzzah&quot;,&quot;fadeout&quot;,0.5)(track:&quot;mm2end&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr3&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr4&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(masteraudio:&#39;stopall&#39;)(track:&#39;adventureawaits&#39;,&#39;volume&#39;,1)(track:&#39;reprise&#39;,&#39;volume&#39;,0)(if:$REPRISE is true)[(track:&#39;adventureawaits&#39;,&#39;volume&#39;,0)(track:&#39;reprise&#39;,&#39;volume&#39;,1)](track:&#39;adventureawaits&#39;,&#39;playwhenpossible&#39;)(track:&#39;reprise&#39;,&#39;playwhenpossible&#39;)]]
-\(if:(history:) contains &quot;The Beginning&quot; and (random:1,25) is 1)[&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/VK6qlSj.png&quot;&gt;
-\(set:$theGame to true)](else:)[&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/0yYRLZ7.png&quot;&gt;
+\(if:(history:) contains &quot;The Beginning&quot; and (random:1,25) is 1)[&lt;img id=&quot;waitingroom&quot; src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/logo3.png&quot;&gt;
+\(set:$theGame to true)](else:)[&lt;img id=&quot;waitingroom&quot; src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/logo.png&quot;&gt;
 \(set:$theGame to false)]
 By Green Guy and Jinx
 \(if:visits is 1)[
@@ -391,7 +407,7 @@ By Green Guy and Jinx
 [[Audio-&gt;Audio Settings]]
 (if:$POSTGAME is true)[(link-reveal-goto:&quot;Exit&quot;,&quot;Real Exit&quot;)[(save-game:&quot;Slot J3&quot;)]](else:)[[[Exit-&gt;Exit]]]
 \(font:&quot;HKNova&quot;)[]
-\&lt;img style=&quot;width:0px;height:0px;&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/u3g5IIX.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://i.imgur.com/pbg85sl.png&quot;&gt;
+\&lt;img style=&quot;width:0px;height:0px;&quot; src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/partyPopper1.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/partyPopper2.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/waitingRoom.png&quot;&gt;&lt;img style=&quot;width:0px;height:0px;&quot;src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/logo2.png&quot;&gt;
 \(if:$SFX and $theGame)[(after:0.5s)[(track:&#39;vineboom&#39;,&#39;play&#39;)]]
 \(if:$loadGame is 2)[(go-to:&quot;Title Screen 2&quot;)]
 \(if:$loadGame is 3)[(go-to:&quot;TITLE SCREEN 3&quot;)]
@@ -1150,7 +1166,7 @@ There&#39;s only one way to find out. You&#39;re gonna have to go back in there 
 \(else:)[
 \(if:visits is 1)[
 \(after:1.4s)[(if:$SFX)[(track:&#39;popper&#39;,&#39;play&#39;)]]
-\(live:0.1s)[(if:time&lt;1.5s)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;](else:)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;]]
+\(live:0.1s)[(if:time&lt;1.5s)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/partyPopper1.png&quot;&gt;](else:)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/partyPopper2.png&quot;&gt;]]
 Congratulations! You beat the game!
 
 Well, you started the game, did some stuff, and then the game ended. Good enough, right? (if:$ENDINGS contains &quot;NormalRoute&quot; or &quot;Ghost&quot;)[And hey, you saved the town from aliens or whatever, so I bet you&#39;re happy with that.] 
@@ -1190,7 +1206,7 @@ Does that mean there really are only 5 endings? Am I wrong about being wrong? Is
 No! We can&#39;t give up hope! Surely there&#39;s another ending out there. Try something else! Oh, but be sure to rest first. Can&#39;t find new endings without proper relaxation!]]
 \(if:$ENDINGS&#39;s length is 6 and not $visit6)[
 \(after:1.4s)[(if:$SFX)[(track:&#39;popper&#39;,&#39;play&#39;)]]
-\(live:0.1s)[(if:time&lt;1.5s)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/emvWMoT.png&quot;&gt;](else:)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://i.imgur.com/ElUFkDK.png&quot;&gt;]]
+\(live:0.1s)[(if:time&lt;1.5s)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/partyPopper1.png&quot;&gt;](else:)[&lt;img style=&quot;width:300px;height:303px;&quot; float=&quot;center&quot; src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/partyPopper2.png&quot;&gt;]]
 YOU DID IT! ENDING NUMBER 6!
 
 See look, I even brought back the party popper. This is a truly momentous occasion.
@@ -1226,7 +1242,7 @@ Feel free to rest in my waiting room for as long as you need!
 \(unless:$incomingMail is &quot;empty&quot;)[
 \(set:$MAILBOX to $incomingMail)(set:$incomingMail to &quot;empty&quot;)]
 \(font:&quot;Raleway&quot;)[
-\&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/u3g5IIX.png&quot;&gt;
+\&lt;img id=&quot;waitingroom&quot; src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/waitingRoom.png&quot;&gt;
 
 Endings: (print:$ENDINGS&#39;s length)(if:$visitsWaitingRoom &gt; 2 and $visitsWaitingRoom &lt; 1000)[/5](if:$visitsWaitingRoom &gt; 999)[(if:$POSTGAME is true)[/25](else:)[/???]]]
 [[View Statistics-&gt;Stats Page]]
@@ -2797,7 +2813,7 @@ John doesn&#39;t respond but instead points at the front door. You slowly shuffl
 
 [[Continue-&gt;Supermarket Ending]]]</tw-passagedata><tw-passagedata pid="148" name="Title Screen 2" tags="" position="5800,2500" size="200,100">(unless:(track:&quot;mm2title&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;reprise&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr3&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr4&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(track:&quot;reprise&quot;,&quot;volume&quot;,0)(masteraudio:&#39;stopall&#39;)(track:&#39;mm2title&#39;,&#39;playwhenpossible&#39;)]]\
 =&gt;&lt;===
-&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/pbg85sl.png&quot;&gt;
+&lt;img id=&quot;waitingroom&quot; src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/logo2.png&quot;&gt;
 By Kaffemik Studios
 \(set: $sequel to false)
 \(set: $toilets to (a:))
@@ -5856,7 +5872,7 @@ This place is how I communicate with the world. It allows me to see what&#39;s g
 \]
 \]</tw-passagedata><tw-passagedata pid="359" name="TITLE SCREEN 3" tags="title" position="4900,4100" size="200,100">(unless:(track:&quot;mm3title&quot;,&quot;isplaying&quot;))[(track:&quot;adventureawaits&quot;,&quot;fadeout&quot;,0.5)(track:&quot;reprise&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr1&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr2&quot;,&quot;fadeout&quot;,0.5)(track:&quot;wr3&quot;,&quot;fadeout&quot;,0.5)(after:0.5s)[(track:&quot;adventureawaits&quot;,&quot;volume&quot;,0)(track:&quot;reprise&quot;,&quot;volume&quot;,0)(masteraudio:&#39;stopall&#39;)(track:&#39;mm3title&#39;,&#39;playwhenpossible&#39;)]]\
 ===&gt;&lt;===
-&lt;img id=&quot;waitingroom&quot; src=&quot;https://i.imgur.com/ZfnWBcO.png&quot;&gt;
+&lt;img id=&quot;waitingroom&quot; src=&quot;https://greenguy5294.github.io/Mayor-Mystery/imgs/logo5.png&quot;&gt;
 By Green Guy and Jinx
 \(set:$rescued to (a:&quot;Mei&quot;))
 \(set:$INV to (a:))
@@ -15680,7 +15696,7 @@ You sat alone in your office, bored as heck. You were a detective, and this was 
 
 [[&quot;Tell me more...&quot;-&gt;Mini-Mystery 3]]
 [[&quot;Before I can give you help, you&#39;re gonna need to give me cash.&quot;-&gt;Mini-Mystery 3]]
-[[&quot;I can already tell by your voice that you did it!&quot;-&gt;Mini-Mystery 3]]</tw-passagedata><tw-passagedata pid="457" name="Mini-Mystery 3" tags="" position="1200,550" size="100,100">(font:&quot;Raleway&quot;)[Okay, that&#39;s all I have for right now. I was mostly just curious about which option you would pick given all the information in the story so far. I don&#39;t know if you could tell, but that lady is definately hiding something, and I&#39;ve just got to figure out what. I tried to drop a few subtle hints in the prose.
+[[&quot;I can already tell by your voice that you did it!&quot;-&gt;Mini-Mystery 3]]</tw-passagedata><tw-passagedata pid="457" name="Mini-Mystery 3" tags="" position="1200,550" size="100,100">(font:&quot;Raleway&quot;)[Okay, that&#39;s all I have for right now. I was mostly just curious about which option you would pick given all the information in the story so far. I don&#39;t know if you could tell, but that lady is definitely hiding something, and I&#39;ve just got to figure out what. I tried to drop a few subtle hints in the prose.
 
 Anyway, thanks for checking that out. On to Mayor Mystery!]
 
