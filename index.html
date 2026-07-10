@@ -586,9 +586,7 @@ An anonymous help-seeker]]
 (if:$escapadeArrow contains &quot;paint&quot; and does not contain &quot;arrow&quot;)[(link-reveal-goto:&quot;Return Home&quot;,&quot;Notice Arrow&quot;)[(set:$prevPassage to &quot;home&quot;)]
 (link-reveal-goto:&quot;Go to Town&quot;,&quot;Notice Arrow&quot;)[(set:$prevPassage to &quot;town&quot;)]]
 \(else:)[(if:$prankRandom and not $fightReject)[[[Return Home-&gt;Phone Call Fight]]](else:)[[[Return Home-&gt;Jed&#39;s Apartment]]]
-[[Go to Town-&gt;East Side of Town]]]]</tw-passagedata><tw-passagedata pid="16" name="East Side of Town" tags="" position="1250,1350" size="200,200">(alert:$CLOSET)\
-(alert:$waitingRoomHintList)\
-(unless:(track:&#39;eastside&#39;,&#39;isplaying&#39;))[
+[[Go to Town-&gt;East Side of Town]]]]</tw-passagedata><tw-passagedata pid="16" name="East Side of Town" tags="" position="1250,1350" size="200,200">(unless:(track:&#39;eastside&#39;,&#39;isplaying&#39;))[
 \(track:&#39;ccamp&#39;,&#39;fadeout&#39;,0.5)(track:&#39;apartment&#39;,&#39;fadeout&#39;,0.5)(track:&#39;intro&#39;,&#39;fadeout&#39;,0.5)(after:0.5s)[(track:&#39;eastside&#39;,&#39;volume&#39;,1)(track:&#39;eastside&#39;,&#39;playwhenpossible&#39;)]
 \]
 \(else:)[(track:&#39;eastside&#39;, &#39;fadeto&#39;, 0.5, 1)]
@@ -15697,7 +15695,7 @@ You sat alone in your office, bored as heck. You were a detective, and this was 
 
 Anyway, thanks for checking that out. On to Mayor Mystery!]
 
-[[Continue-&gt;Title Screen]]</tw-passagedata><tw-passagedata pid="458" name="Untitled Passage 1" tags="" position="1875,1425" size="100,100"></tw-passagedata></tw-storydata>
+[[Continue-&gt;Title Screen]]</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">(function(){"use strict";
 var require,define;!function(){var e={},r={};require=function(i){var n=e[i];return n&&(r[i]=n[1].apply(void 0,n[0].map(require)),e[i]=void 0),r[i]},(define=function(r,i,n){if("function"==typeof r)return r();e[r]=[i,n]}).amd=!0}();/*!
  * https://github.com/paulmillr/es6-shim
